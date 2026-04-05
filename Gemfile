@@ -9,7 +9,7 @@ gem "pg"
 gem "pg_search"
 gem "activerecord-postgis-adapter", github: "boolder-org/activerecord-postgis-adapter", branch: "rails-8" # waiting for official Rails 8 support
 gem "aws-sdk-s3"
-gem "image_processing", "~> 1.2"
+gem "image_processing", "~> 1.14"
 gem "propshaft"
 gem "importmap-rails"
 gem "turbo-rails"
