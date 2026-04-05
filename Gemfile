@@ -15,7 +15,7 @@ gem "importmap-rails"
 gem "turbo-rails"
 gem "stimulus-rails"
 gem "tailwindcss-rails", "~> 3.3.1" # pin to tailwindcss 3.3.1 (weird bug with 4.0 on my machine: https://github.com/tailwindlabs/tailwindcss/issues/17728#issuecomment-2884340873)
-gem "bcrypt", "~> 3.1.7"
+gem "bcrypt", "~> 3.1.22"
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 gem "solid_cache"
 gem "solid_cable"
