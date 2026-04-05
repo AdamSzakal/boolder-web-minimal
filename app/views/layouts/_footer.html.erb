@@ -1,0 +1,43 @@
+<footer class="bg-white border-t border-gray-200">
+  <div class="max-w-7xl mx-auto py-4 px-4 overflow-hidden sm:px-6 lg:px-8">
+
+    <div class="flex justify-between">
+
+      <nav class="flex flex-wrap justify-center" aria-label="Footer">
+        <div class="pr-4 py-2">
+          <a href="<%= app_path %>" class="text-base text-gray-400 hover:text-gray-900">
+            <%= t('views.layout.nav.app') %>
+          </a>
+        </div>
+
+        <div class="px-4 py-2">
+          <a href="<%= about_path %>" class="text-base text-gray-400 hover:text-gray-900">
+            <%= t('views.layout.footer.about') %>
+          </a>
+        </div>
+
+        <div class="px-4 py-2">
+          <a href="<%= contribute_path %>" class="text-base text-gray-400 hover:text-gray-900">
+            <%= t('views.layout.footer.contribute') %>
+          </a>
+        </div>
+      </nav>
+
+      <div></div>
+
+      <nav class="flex flex-wrap justify-center" aria-label="Footer">
+        <% if I18n.locale == :en %>
+          <a href="<%= request.env['PATH_INFO'].sub('/en', '/fr') %>" class="py-2 text-base text-gray-400 hover:text-gray-900">
+            Français
+          </a>
+        <% else %>
+          <a href="<%= request.env['PATH_INFO'].sub('/fr', '/en') %>" class="py-2 text-base text-gray-400 hover:text-gray-900">
+            English
+          </a>
+        <% end %>
+        
+      </nav>
+    </div>
+  </div>
+</footer>
+

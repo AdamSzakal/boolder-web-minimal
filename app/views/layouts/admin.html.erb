@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Boolder</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+
+    <script async src="https://ga.jspm.io/npm:es-module-shims@1.8.2/dist/es-module-shims.js" data-turbo-track="reload"></script>
+    <%= javascript_importmap_tags %>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      // This code uses custom events coming from search_controller.js
+      // FIXME: make code more robust
+      let locale = "<%= I18n.locale %>";
+      window.addEventListener('gotoproblem', function(event) {
+        window.location = `/${locale}/admin/redirects/new?problem_id=${event.detail.id}`
+      });
+      window.addEventListener('gotoarea', function(event) {
+        window.location = `/${locale}/admin/redirects/new?area_id=${event.detail.id}`
+      });
+    </script>
+  </head>
+
+  <body class="bg-gray-100">
+
+<div>
+  <nav class="bg-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center w-full ">
+          <div class="w-full">
+            <div class="flex justify-between w-full ">
+              <div class="flex items-center space-x-4">
+                <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                <%= link_to root_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" do %>
+                  <%= image_tag 'logo.svg', class: "h-8 w-auto", alt:"Boolder admin" %>
+                <% end %>
+
+                <%= link_to "Areas", admin_areas_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %>
+
+                <%= link_to "Mapping", admin_mapping_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %>
+
+                <%= link_to "Contributions (#{Contribution.pending.count})", admin_contributions_path(state: "pending"), class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %>
+
+                <div class="flex md:hidden">
+                  <%= render 'shared/search_modal', show_button: true %>
+                </div>
+
+                <!-- <%= link_to "Pois", admin_pois_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %> -->
+
+                <!--  <div class="relative" data-controller="dropdown">
+                  <div class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium cursor-pointer"  data-action="click->dropdown#toggle click@window->dropdown#hide" data-dropdown-target="button">
+                    Import
+                  </div>
+
+                  <div class="hidden origin-top-left absolute left-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu" data-dropdown-target="menu">
+                    <%= link_to "Import GeoJSON", new_admin_import_path, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100",  role: "menuitem" %>
+                    <%= link_to "Import topo", new_admin_topo_path, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100",  role: "menuitem" %>
+                    <%= link_to "Import problem infos", new_admin_problem_import_path, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100",  role: "menuitem" %>
+                    <%= link_to "Bleau problems", admin_bleau_problems_path, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100",  role: "menuitem" %>
+                  </div>
+                </div> -->
+              </div>
+              <div class="hidden md:flex">
+                <%= render 'shared/search_modal', show_button: false %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+<%= render "layouts/breadcrumbs" if breadcrumbs.count > 0 %>
+
+<%= render "layouts/flash" %>
+
+  <main>
+    <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+      <%= yield %>
+    </div>
+  </main>
+</div>
+
+  </body>
+</html>

@@ -1,0 +1,46 @@
+<% if params[:contribute] %> 
+  <% set_meta_tags nofollow: true %>
+  <% set_meta_tags title: t("views.mapping.map.metas.title") %>
+  <% set_meta_tags description: t("views.mapping.map.metas.description") %>
+<% elsif @area %> 
+  <% set_meta_tags title: t("views.map.area.metas.title", area: @area.name) %>
+  <% set_meta_tags description: t("views.map.area.metas.description", area: @area.name) %>
+
+  <% if @area.cover.persisted? %>
+  <% set_meta_tags og: { type: "website", image: cdn_image_url(@area.cover.variant(:medium)) } %>
+  <% end %>
+  <% set_meta_tags canonical: map_url(@area) %>
+<% else %>
+  <% set_meta_tags title: t("views.map.fontainebleau.metas.title") %>
+  <% set_meta_tags description: t("views.map.fontainebleau.metas.description") %>
+  <% set_meta_tags og: { type: "website", image: image_url("map-og.png") } %>
+  <% set_meta_tags canonical: map_url %>
+<% end %>
+
+<div 
+data-controller="mapbox"
+data-action="gotoproblem@window->mapbox#gotoproblem gotoarea@window->mapbox#gotoarea"
+class="h-screen w-full relative"
+data-mapbox-target="map"
+data-mapbox-locale-value="<%= I18n.locale %>"
+
+data-mapbox-contribute-source-value="<%= mapping_requests_path(format: :geojson) %>"
+data-mapbox-contribute-value="<%= params[:contribute] ? "true" : "false" %>"
+
+data-mapbox-circuit7a-source-value="<%= circuit7a_problems_path(format: :geojson) %>"
+data-mapbox-circuit7a-value="<%= params[:circuit7a] ? "true" : "false" %>"
+
+<% if @problem %> 
+data-mapbox-problem-value="<%= @problem.to_json %>" 
+<% end %>
+
+<% if @bounds %> 
+data-mapbox-bounds-value="<%= @bounds.to_json %>"
+<% end %>
+
+data-mapbox-token-value="<%= Rails.env.local? ? ENV['MAPBOX_DEV_ACCESS_KEY'] : Rails.application.credentials.dig(:mapbox, :access_token) %>"
+>
+  <div id="map"></div>
+  <%= render "filters" %>
+
+</div>

@@ -1,0 +1,12 @@
+<p>
+  <%= @contribution&.problem&.name %>
+</p>
+
+<p>
+  <%= edit_admin_contribution_url(@contribution, locale: :fr) %>
+</p>
+
+<ul>
+  <li>Name: <%= @contribution.contributor_name %></li>
+  <li>Email: <%= @contribution.contributor_email %></li>
+</ul>
