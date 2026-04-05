@@ -1,11 +1,11 @@
-<li class="px-4 sm:-mx-2 sm:px-2 hover:bg-gray-50 rounded-lg">
+<li class="px-4 sm:-mx-2 sm:px-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg">
   <%= link_to circuit_path(circuit), class: "flex justify-between items-center" do %>
     <div class="flex justify-between py-2">
       <div>
         <%= circuit_circle_view(circuit) %>
         <span class="ml-2">Circuit <%= circuit.name %></span>
         <% if show_area %>
-          <span class="ml-2 text-gray-400"><%= circuit.main_area&.name %></span>
+          <span class="ml-2 text-gray-400 dark:text-gray-500"><%= circuit.main_area&.name %></span>
         <% end %>
       </div>
     </div>
@@ -24,7 +24,7 @@
           </svg>
         </span>
       <% end %>
-      <span class="text-gray-500"><%= circuit.average_grade %></span>
+      <span class="text-gray-500 dark:text-gray-400"><%= circuit.average_grade %></span>
     </span>
   <% end %>
 </li>

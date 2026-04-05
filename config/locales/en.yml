@@ -344,6 +344,22 @@ en:
         popularity: Popularity
         metas:
           title: All boulders in Fontainebleau
+    project_lists:
+      show:
+        default_title: Project list
+        problem_count:
+          zero: "No problems yet"
+          one: "1 problem"
+          other: "%{count} problems"
+        rename: Rename list
+        name_placeholder: List name
+        save: Save
+        share: "Share this list:"
+        empty: No problems in this list yet. Add problems from any problem page.
+        add_to_project: Add to project list
+        added_to_project: Added ✓
+        metas:
+          title: Project list
     problems:
       show:
         see_circuit: See the circuit
@@ -371,6 +387,7 @@ en:
         privacy: Privacy Policy
         about: About
         contribute: Contribute
+        project_list: Project list
     pagination:
       first: "First"
       last: "Last"

@@ -344,6 +344,22 @@ fr:
         popularity: Popularité
         metas:
           title: Tous les blocs à Fontainebleau
+    project_lists:
+      show:
+        default_title: Liste de projets
+        problem_count:
+          zero: "Aucune voie"
+          one: "1 voie"
+          other: "%{count} voies"
+        rename: Renommer la liste
+        name_placeholder: Nom de la liste
+        save: Enregistrer
+        share: "Partager cette liste :"
+        empty: Aucune voie dans cette liste. Ajoutez des voies depuis n'importe quelle page de voie.
+        add_to_project: Ajouter à la liste de projets
+        added_to_project: Ajouté ✓
+        metas:
+          title: Liste de projets
     problems:
       show:
         see_circuit: Voir le circuit
@@ -371,6 +387,7 @@ fr:
         privacy: Confidentialité
         about: À propos
         contribute: Contribuer
+        project_list: Liste de projets
     pagination:
       first: "Début"
       last: "Fin"

@@ -3,7 +3,7 @@
 
 <% set_meta_tags og: { type: "website", image: image_url("circuit7a-cover.jpg") } %>
 
-<div class="max-w-7xl mx-auto pt-5 mt-1 px-4 sm:px-6 lg:px-8 bg-gray-100 hidden sm:block mb-4"></div>
+<div class="max-w-7xl mx-auto pt-5 mt-1 px-4 sm:px-6 lg:px-8 bg-gray-100 dark:bg-gray-800 hidden sm:block mb-4"></div>
 
 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
   <div class="lg:grid lg:grid-cols-2 lg:gap-16">
@@ -64,17 +64,17 @@
             <ul role="list">
               <% problems.each do |problem| %>
                 <% i += 1 %>
-                <li class="px-4 sm:-mx-2 sm:px-2 hover:bg-gray-50 rounded-lg">
+                <li class="px-4 sm:-mx-2 sm:px-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg">
                   <%= link_to problem_friendly_path(problem) do %>
                     <div class="flex justify-between py-2">
                       <div>
-                        <span class="w-6 inline-block text-gray-400 font-medium"><%= i %></span><%-
+                        <span class="w-6 inline-block text-gray-400 dark:text-gray-500 font-medium"><%= i %></span><%-
                         -%><!-- <%= circle_view(i.to_s, background_color: "rgb(80% 80% 80%)", text_color: "#333") %> --><%-
                         -%><span class="ml-2"><%= problem.name_with_fallback %></span>
                       </div>
                       <div>
                         <div class="flex space-x-2">
-                          <div class="text-gray-500">
+                          <div class="text-gray-500 dark:text-gray-400">
                             <%= problem.grade %>
                           </div>
                         </div>

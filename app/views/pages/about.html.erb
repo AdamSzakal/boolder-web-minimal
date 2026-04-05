@@ -2,10 +2,10 @@
 
 <% set_meta_tags og: { type: "website", image: image_url("hero-about.jpg") } %>
 
-<main class="lg:relative bg-white">
+<main class="lg:relative bg-white dark:bg-gray-900">
   <div class="mx-auto w-full max-w-7xl pt-16 pb-20 text-center lg:py-48 lg:text-left">
     <div class="px-6 sm:px-8 lg:w-1/2 xl:pr-16">
-      <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl">
+      <h1 class="text-4xl font-bold tracking-tight text-gray-900 dark:text-gray-100 sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl">
         <span class="block xl:inline"><%= t("views.about.title_prefix") %></span>
         <span class="block text-emerald-600 xl:inline">Boolder</span>
       </h1>
@@ -223,7 +223,7 @@
     </h2>
     <dl class="space-y-10 my-8">
       <div>
-        <dt class="text-base font-semibold leading-7 text-gray-900">
+        <dt class="text-base font-semibold leading-7 text-gray-900 dark:text-gray-100">
           <%= t("views.about.faq.data.question") %>
         </dt>
         <dd class="mt-2 text-base leading-7 text-gray-600">
@@ -236,7 +236,7 @@
       </div>
 
       <div>
-        <dt class="text-base font-semibold leading-7 text-gray-900">
+        <dt class="text-base font-semibold leading-7 text-gray-900 dark:text-gray-100">
           <%= t("views.about.faq.why_free.question") %>
         </dt>
         <dd class="mt-2 text-base leading-7 text-gray-600">
@@ -247,7 +247,7 @@
       </div>
 
       <div>
-        <dt class="text-base font-semibold leading-7 text-gray-900">
+        <dt class="text-base font-semibold leading-7 text-gray-900 dark:text-gray-100">
           <%= t("views.about.faq.privacy.question") %>
         </dt>
         <dd class="mt-2 text-base leading-7 text-gray-600">

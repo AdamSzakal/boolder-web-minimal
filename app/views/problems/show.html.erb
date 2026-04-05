@@ -10,20 +10,20 @@
   <div class="md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-8">
     <div class="col-span-2">
       <div class="px-4 sm:px-0">
-        <div class="flex items-center space-x-1 text-sm font-medium text-gray-500">
-          <div><%= link_to "Fontainebleau", areas_path, class: "hover:text-gray-700" %></div>
+        <div class="flex items-center space-x-1 text-sm font-medium text-gray-500 dark:text-gray-400">
+          <div><%= link_to "Fontainebleau", areas_path, class: "hover:text-gray-700 dark:hover:text-gray-300" %></div>
           <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
           </svg>
-          <div><%= link_to @problem.area.name, area_path(@problem.area), class: "hover:text-gray-700" %></div>
+          <div><%= link_to @problem.area.name, area_path(@problem.area), class: "hover:text-gray-700 dark:hover:text-gray-300" %></div>
         </div>
         <div class="flex justify-between items-center">
           <div class="flex justify-between items-center w-full mt-2">
             <h1 class="text-4xl font-bold"><%= @problem.name_with_fallback %></h1>
-            <div class="text-gray-400 text-4xl font-bold"><%= @problem.grade %></div>
+            <div class="text-gray-400 dark:text-gray-500 text-4xl font-bold"><%= @problem.grade %></div>
           </div>
         </div>
-        <div class="text-gray-500 flex space-x-2 mt-2">
+        <div class="text-gray-500 dark:text-gray-400 flex space-x-2 mt-2">
           <% if @problem.sit_start %>
             <div><%= t("problem.sit_start") %></div>
           <% end %>
@@ -34,9 +34,9 @@
         <% if @line %>
           <%= render 'shared/topo_with_line', line: @line, scope: :front %>
         <% else %>
-          <div class="w-full aspect-w-4 aspect-h-3 bg-gray-300 sm:rounded-lg">
+          <div class="w-full aspect-w-4 aspect-h-3 bg-gray-300 dark:bg-gray-700 sm:rounded-lg">
             <div class="flex flex-wrap justify-center content-center">
-              <span class="text-gray-400">
+              <span class="text-gray-400 dark:text-gray-500">
                 <%= render 'svg/nophoto', width: 98, height: 98 %>
               </span>
             </div>
@@ -74,6 +74,13 @@
       <% end %>
 
       <div class="px-4 sm:px-0 py-2">
+        <div data-controller="project-list-button"
+          data-project-list-button-problem-id-value="<%= @problem.id %>"
+          data-project-list-button-locale-value="<%= I18n.locale %>"
+          data-add-label="<%= t('views.project_lists.show.add_to_project') %>"
+          data-added-label="<%= t('views.project_lists.show.added_to_project') %>">
+        </div>
+
         <% if @problem.location.present? %>
           <%= link_to map_path(@problem.area, pid: @problem.id), rel: "nofollow" do %>
             <div class="flex items-center space-x-2 text-emerald-600 mt-2">
@@ -130,7 +137,7 @@
                 <%= link_to problem_friendly_path(variant) do %>
                   <%= problem_circle_view(variant) %>
                   <span class="ml-2 font-medium"><%= variant.name_with_fallback %></span>
-                  <span class="ml-2 text-gray-400"><%= variant.grade %></span>
+                  <span class="ml-2 text-gray-400 dark:text-gray-500"><%= variant.grade %></span>
                 <% end %>
               </li>
             <% end %>
@@ -147,7 +154,7 @@
                 <%= link_to problem_friendly_path(bis) do %>
                   <%= problem_circle_view(bis) %>
                   <span class="ml-2 font-medium"><%= bis.name_with_fallback %></span>
-                  <span class="ml-2 text-gray-400"><%= bis.grade %></span>
+                  <span class="ml-2 text-gray-400 dark:text-gray-500"><%= bis.grade %></span>
                 <% end %>
               </li>
             <% end %>
@@ -164,7 +171,7 @@
                 <%= link_to problem_friendly_path(bis) do %>
                   <%= problem_circle_view(bis) %>
                   <span class="ml-2 font-medium"><%= bis.name_with_fallback %></span>
-                  <span class="ml-2 text-gray-400"><%= bis.grade %></span>
+                  <span class="ml-2 text-gray-400 dark:text-gray-500"><%= bis.grade %></span>
                 <% end %>
               </li>
             <% end %>

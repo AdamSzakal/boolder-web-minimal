@@ -1,23 +1,34 @@
-<footer class="bg-white border-t border-gray-200">
+<div class="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700" data-controller="project-list-link" data-project-list-link-locale-value="<%= I18n.locale %>">
+  <div class="max-w-7xl mx-auto py-3 px-4 sm:px-6 lg:px-8 flex justify-center">
+    <a href="#" class="flex items-center space-x-1.5 text-base text-gray-400 dark:text-gray-500 hover:text-gray-900 dark:hover:text-gray-100">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+      </svg>
+      <span><%= t('views.layout.footer.project_list') %></span>
+    </a>
+  </div>
+</div>
+
+<footer class="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
   <div class="max-w-7xl mx-auto py-4 px-4 overflow-hidden sm:px-6 lg:px-8">
 
     <div class="flex justify-between">
 
       <nav class="flex flex-wrap justify-center" aria-label="Footer">
         <div class="pr-4 py-2">
-          <a href="<%= app_path %>" class="text-base text-gray-400 hover:text-gray-900">
+          <a href="<%= app_path %>" class="text-base text-gray-400 dark:text-gray-500 hover:text-gray-900 dark:hover:text-gray-100">
             <%= t('views.layout.nav.app') %>
           </a>
         </div>
 
         <div class="px-4 py-2">
-          <a href="<%= about_path %>" class="text-base text-gray-400 hover:text-gray-900">
+          <a href="<%= about_path %>" class="text-base text-gray-400 dark:text-gray-500 hover:text-gray-900 dark:hover:text-gray-100">
             <%= t('views.layout.footer.about') %>
           </a>
         </div>
 
         <div class="px-4 py-2">
-          <a href="<%= contribute_path %>" class="text-base text-gray-400 hover:text-gray-900">
+          <a href="<%= contribute_path %>" class="text-base text-gray-400 dark:text-gray-500 hover:text-gray-900 dark:hover:text-gray-100">
             <%= t('views.layout.footer.contribute') %>
           </a>
         </div>
@@ -27,11 +38,11 @@
 
       <nav class="flex flex-wrap justify-center" aria-label="Footer">
         <% if I18n.locale == :en %>
-          <a href="<%= request.env['PATH_INFO'].sub('/en', '/fr') %>" class="py-2 text-base text-gray-400 hover:text-gray-900">
+          <a href="<%= request.env['PATH_INFO'].sub('/en', '/fr') %>" class="py-2 text-base text-gray-400 dark:text-gray-500 hover:text-gray-900 dark:hover:text-gray-100">
             Français
           </a>
         <% else %>
-          <a href="<%= request.env['PATH_INFO'].sub('/fr', '/en') %>" class="py-2 text-base text-gray-400 hover:text-gray-900">
+          <a href="<%= request.env['PATH_INFO'].sub('/fr', '/en') %>" class="py-2 text-base text-gray-400 dark:text-gray-500 hover:text-gray-900 dark:hover:text-gray-100">
             English
           </a>
         <% end %>
@@ -40,4 +51,3 @@
     </div>
   </div>
 </footer>
-

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_02_06_120000) do
+ActiveRecord::Schema[8.0].define(version: 2026_04_05_120000) do
   create_schema "heroku_ext"
 
   # These are extensions that must be enabled in order to support this database
@@ -236,6 +236,15 @@ ActiveRecord::Schema[8.0].define(version: 2026_02_06_120000) do
     t.index ["grade"], name: "index_problems_on_grade"
     t.index ["has_line"], name: "index_problems_on_has_line"
     t.index ["location"], name: "index_problems_on_location", using: :gist
+  end
+
+  create_table "project_lists", force: :cascade do |t|
+    t.string "slug", null: false
+    t.string "name"
+    t.integer "problem_ids", default: [], null: false, array: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["slug"], name: "index_project_lists_on_slug", unique: true
   end
 
   create_table "topos", force: :cascade do |t|
