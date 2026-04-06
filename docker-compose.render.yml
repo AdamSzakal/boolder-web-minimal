@@ -1,0 +1,33 @@
+# Tests the production Render setup locally.
+# Usage: docker compose -f docker-compose.render.yml up --build
+#
+# Requires RAILS_MASTER_KEY to be set in your environment:
+#   export RAILS_MASTER_KEY=$(cat config/master.key)
+
+services:
+  db:
+    image: postgis/postgis:16-3.4
+    environment:
+      POSTGRES_USER: boolder
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: boolder_production
+    ports:
+      - "5433:5432"  # 5433 to avoid clashing with a local PostgreSQL on 5432
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U boolder"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  web:
+    build: .
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgres://boolder:password@db:5432/boolder_production
+      RAILS_MASTER_KEY: ${RAILS_MASTER_KEY}
+      SOLID_QUEUE_IN_PUMA: "true"
+      RAILS_LOG_TO_STDOUT: "enabled"
+    ports:
+      - "3000:80"
