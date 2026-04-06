@@ -1,11 +1,7 @@
 <%
-  area = locals["area"]
-  popular_problems = locals["popular_problems"]
-  circuits = locals["circuits"]
-  poi_routes = locals["poi_routes"]
-  media_manifest = locals["media_manifest"]
   description = area["description_en"]
   warning = area["warning_en"]
+  color_hex = { "yellow" => "#FFCC02", "purple" => "#D783FF", "orange" => "#FF9500", "green" => "#77C344", "blue" => "#017AFF", "skyblue" => "#5AC7FA", "salmon" => "#FDAF8A", "red" => "#FF3B2F", "black" => "#000000", "white" => "#FFFFFF" }
 %>
 
 <div class="max-w-7xl mx-auto pt-5 mt-1 px-4 sm:px-6 lg:px-8 bg-gray-100 dark:bg-gray-800 hidden sm:block mb-4">
@@ -121,7 +117,6 @@
               <ul role="list">
                 <%- circuits.each do |circuit| -%>
                   <%
-                    color_hex = { "yellow" => "#FFCC02", "purple" => "#D783FF", "orange" => "#FF9500", "green" => "#77C344", "blue" => "#017AFF", "skyblue" => "#5AC7FA", "salmon" => "#FDAF8A", "red" => "#FF3B2F", "black" => "#000000", "white" => "#FFFFFF" }
                     hex = color_hex[circuit["color"]] || "#999"
                     text_col = circuit["color"] == "white" ? "#000" : "#FFF"
                   %>

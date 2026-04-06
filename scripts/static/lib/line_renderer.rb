@@ -17,7 +17,7 @@ module Static
     IMG_HEIGHT = 300
 
     def self.render_topo_with_line(topo_url:, line:, circuit_color: nil, circuit_number: nil)
-      return render_image_only(topo_url) unless line && line["coordinates"]&.size >= 2
+      return render_image_only(topo_url) unless line && line["coordinates"].is_a?(Array) && line["coordinates"].size >= 2
 
       coords = line["coordinates"]
       path_d = bezier_curve(coords)

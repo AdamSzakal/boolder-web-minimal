@@ -1,11 +1,6 @@
 <%
-  problem = locals["problem"]
-  area = locals["area"]
-  topo_html = locals["topo_html"] || ""
-  circuit = locals["circuit"]
-  circuit_previous = locals["circuit_previous"]
-  circuit_next = locals["circuit_next"]
-  variants = locals["variants"] || []
+  topo_html = (defined?(topo_html) && topo_html) || ""
+  variants = (defined?(variants) && variants) || []
 %>
 
 <div class="max-w-7xl mx-auto pt-6 pb-6 sm:px-6 lg:px-8">
@@ -50,7 +45,7 @@
             <%- if circuit_previous -%>
               <%
                 prev_slug = [circuit_previous["id"], circuit_previous["name"]&.downcase&.gsub(/[^a-z0-9]+/, "-")&.gsub(/-$/, "")].compact.join("-")
-                prev_area = locals["_areas_by_id"] && locals["_areas_by_id"][circuit_previous["area_id"]]
+                prev_area = (defined?(_areas_by_id) && _areas_by_id) && _areas_by_id[circuit_previous["area_id"]]
                 prev_area_slug = prev_area ? prev_area["slug"] : area["slug"]
               %>
               <a href="/en/fontainebleau/<%= prev_area_slug %>/<%= prev_slug %>">
@@ -67,7 +62,7 @@
             <%- if circuit_next -%>
               <%
                 next_slug = [circuit_next["id"], circuit_next["name"]&.downcase&.gsub(/[^a-z0-9]+/, "-")&.gsub(/-$/, "")].compact.join("-")
-                next_area = locals["_areas_by_id"] && locals["_areas_by_id"][circuit_next["area_id"]]
+                next_area = (defined?(_areas_by_id) && _areas_by_id) && _areas_by_id[circuit_next["area_id"]]
                 next_area_slug = next_area ? next_area["slug"] : area["slug"]
               %>
               <a href="/en/fontainebleau/<%= next_area_slug %>/<%= next_slug %>">
@@ -131,7 +126,7 @@
             <%- variants.each do |variant| -%>
               <%
                 v_slug = [variant["id"], variant["name"]&.downcase&.gsub(/[^a-z0-9]+/, "-")&.gsub(/-$/, "")].compact.join("-")
-                v_area = locals["_areas_by_id"] && locals["_areas_by_id"][variant["area_id"]]
+                v_area = (defined?(_areas_by_id) && _areas_by_id) && _areas_by_id[variant["area_id"]]
                 v_area_slug = v_area ? v_area["slug"] : area["slug"]
               %>
               <li class="mt-2">

@@ -1,5 +1,3 @@
-require "unicode_normalize"
-
 module Static
   class SearchIndexBuilder
     def initialize(catalog)
