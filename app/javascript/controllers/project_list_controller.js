@@ -1,11 +1,13 @@
 import { Controller } from "@hotwired/stimulus"
+import { loadProjectList } from "../lib/project_list_storage"
 
-// Stores the current project list slug in localStorage so the "Add to project list"
-// button on problem pages knows which list to add to.
+// Hydrates the project list page from localStorage.
+// Dispatches a "projectlist:loaded" event with the list data.
 export default class extends Controller {
-  static values = { slug: String, addUrl: String, locale: String }
+  static values = { locale: String }
 
   connect() {
-    localStorage.setItem("projectListSlug", this.slugValue)
+    const list = loadProjectList()
+    this.dispatch("loaded", { detail: list })
   }
 }

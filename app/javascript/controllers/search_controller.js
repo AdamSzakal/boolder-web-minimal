@@ -1,21 +1,5 @@
 import { Controller } from "@hotwired/stimulus";
 
-function debouncePromise(fn, time) {
-  let timerId;
-  return function (...args) {
-    if (timerId) clearTimeout(timerId);
-    return new Promise(resolve => {
-      timerId = setTimeout(() => resolve(fn(...args)), time);
-    });
-  };
-}
-
-const debouncedFetch = debouncePromise((query, params = {}) => {
-  if (!query) return Promise.resolve(null);
-  const searchParams = new URLSearchParams({ query, ...params });
-  return fetch(`/search?${searchParams.toString()}`).then(res => res.json());
-}, 400);
-
 const colorMapping = {
   yellow: "#FFCC02",
   purple: "#D783FF",
@@ -35,6 +19,17 @@ function bgColor(circuit_color) {
 
 function textColor(circuit_color) {
   return circuit_color === "white" ? "#333" : "#FFF";
+}
+
+// Unicode NFD decompose, strip combining marks, strip non-alphanumeric, lowercase
+function normalize(str) {
+  if (!str) return "";
+  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-zA-Z0-9]/g, "").toLowerCase();
+}
+
+function problemSlug(problem) {
+  const name = (problem.name || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/-$/, "");
+  return `${problem.id}-${name}`;
 }
 
 export default class extends Controller {
@@ -62,9 +57,14 @@ export default class extends Controller {
   connect() {
     this.searchInputTarget.value = "";
     this.locale = this.hasLocaleValue ? this.localeValue : "en";
-    this.showUnpublished = this.showUnpublishedValue;
     this._activeDescendant = '';
-    this.updatingResults = false;
+    this.index = null;
+
+    // Lazy-load the search index
+    fetch("/assets/search-index.json")
+      .then(res => res.json())
+      .then(data => { this.index = data; })
+      .catch(() => { /* silently fail */ });
   }
 
   get activeDescendant() {
@@ -91,42 +91,54 @@ export default class extends Controller {
     }
   }
 
-  async performSearch() {
+  performSearch() {
     const query = this.searchInputTarget.value.trim();
-
-    this.searchResultsTarget.classList.add('!text-gray-400', 'grayscale', 'filter');
-
-    if (query.length) {
-      this.searchIconTarget.classList.add("hidden");
-      this.spinnerIconTarget.classList.remove("hidden");
-      this.clearButtonTarget.classList.remove("hidden");
-    }
-
-    const results = await debouncedFetch(query, 
-      this.showUnpublished ? { show_unpublished: true } : {});
-
-    this.searchResultsTarget.classList.remove('!text-gray-400', 'grayscale', 'filter');
 
     if (query.length === 0) {
       this.clearResults();
       return;
     }
 
-    this.searchIconTarget.classList.remove("hidden");
-    this.spinnerIconTarget.classList.add("hidden");
+    if (!this.index) return;
 
+    this.clearButtonTarget.classList.remove("hidden");
+
+    const normalizedQuery = normalize(query);
+
+    // Search areas
+    const areaResults = this.index.areas
+      .filter(a => a.normalized_name.includes(normalizedQuery))
+      .map(a => ({ ...a, type: "Area", url: `/en/fontainebleau/${a.slug}` }));
+
+    // Search problems (limit to 20)
+    const problemResults = this.index.problems
+      .filter(p => p.normalized_name && p.normalized_name.includes(normalizedQuery))
+      .sort((a, b) => (b.popularity || 0) - (a.popularity || 0))
+      .slice(0, 20)
+      .map(p => {
+        // Look up area slug for URL
+        const area = this.index.areas.find(a => a.id === p.area_id);
+        const areaSlug = area ? area.slug : "";
+        return {
+          ...p,
+          type: "Problem",
+          area_name: area ? area.name : "",
+          url: `/en/fontainebleau/${areaSlug}/${problemSlug(p)}`
+        };
+      });
+
+    const results = [...areaResults, ...problemResults];
     this.updateResults(results);
   }
 
   updateResults(results) {
     this.searchResultsTarget.innerHTML = "";
-
     this.disableMouseEvents = true;
 
     results.forEach((item) => {
       const li = document.createElement("li");
       li.className = "select-none px-4 py-2";
-      li.id = `option-${item.id}`;
+      li.id = `option-${item.type}-${item.id}`;
       li.role = "option";
       li.tabIndex = "-1";
       li.setAttribute('aria-selected', 'false');
@@ -178,7 +190,7 @@ export default class extends Controller {
             <span class="ml-2">${item.name}</span>
             <span class="ml-2 text-gray-400">${item.grade}</span>
           </div>
-          <span class="ml-2 text-gray-400 flex-shrink-0">${item.area_name}</span>
+          <span class="ml-2 text-gray-400 flex-shrink-0">${item.area_name || ""}</span>
         </div>
       `;
     } else {
@@ -187,32 +199,10 @@ export default class extends Controller {
   }
 
   handleResultClick(item) {
-    const event = new CustomEvent(item.type === "Area" ? "gotoarea" : "gotoproblem", {
-      detail: this.createDetail(item)
-    });
-    window.dispatchEvent(event);
-    this.closeModal();
-  }
-
-  createDetail(item) {
-    if (item.type === "Area") {
-      return {
-        id: item.id,
-        name: item.name,
-        south_west_lat: item.bounds.south_west.lat,
-        south_west_lon: item.bounds.south_west.lng,
-        north_east_lat: item.bounds.north_east.lat,
-        north_east_lon: item.bounds.north_east.lng,
-      };
-    } else {
-      return {
-        id: item.id,
-        name: item.name,
-        grade: item.grade,
-        lat: item.geolocation.lat,
-        lon: item.geolocation.lng
-      };
+    if (item.url) {
+      window.location = item.url;
     }
+    this.closeModal();
   }
 
   handleKeydown(event) {
@@ -245,8 +235,13 @@ export default class extends Controller {
 
   openModal(event) {
     event.stopPropagation();
-    const modal = this.searchModalTarget;
-    modal.classList.remove("hidden");
+    if (!this.hasSearchModalTarget) {
+      // Static layout: modal is not a Stimulus target, find by ID
+      const modal = document.getElementById("searchModal");
+      if (modal) modal.classList.remove("hidden");
+    } else {
+      this.searchModalTarget.classList.remove("hidden");
+    }
     document.body.style.overflow = "hidden";
     this.searchInputTarget.focus();
     document.addEventListener("click", this.closeModal.bind(this));
@@ -254,11 +249,12 @@ export default class extends Controller {
   }
 
   closeModal(event) {
-    const modal = this.searchModalTarget;
-    const searchDropdown = this.searchDropdownTarget;
+    const modal = this.hasSearchModalTarget
+      ? this.searchModalTarget
+      : document.getElementById("searchModal");
 
-    if (!event || (!this.searchInputTarget.contains(event.target) && !searchDropdown.contains(event.target))) {
-      modal.classList.add("hidden");
+    if (!event || (!this.searchInputTarget.contains(event.target) && !this.searchDropdownTarget.contains(event.target))) {
+      if (modal) modal.classList.add("hidden");
       document.body.style.overflow = "";
       document.removeEventListener("click", this.closeModal.bind(this));
       this.searchInputTarget.setAttribute("aria-expanded", "false");
@@ -277,9 +273,9 @@ export default class extends Controller {
   clearResults() {
     this.searchResultsTarget.innerHTML = "";
     this.searchDropdownTarget.classList.add("hidden");
-    this.spinnerIconTarget.classList.add("hidden");
+    if (this.hasSpinnerIconTarget) this.spinnerIconTarget.classList.add("hidden");
     this.clearButtonTarget.classList.add("hidden");
-    this.searchIconTarget.classList.remove("hidden");
+    if (this.hasSearchIconTarget) this.searchIconTarget.classList.remove("hidden");
     this.activeDescendant = '';
     this.searchInputTarget.setAttribute("aria-expanded", "false");
     this.searchInputTarget.setAttribute("aria-activedescendant", '');
