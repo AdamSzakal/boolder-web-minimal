@@ -1,82 +1,39 @@
-# Boolder Rails
+# Boolder Static Site
 
-Boolder is the best way to discover bouldering in Fontainebleau. 
+A static site for discovering bouldering in Fontainebleau, built from the open data provided by the [Boolder](https://www.boolder.com) project.
 
-This is the code powering the [Boolder website](https://www.boolder.com) and all the backend & data processing.
+This project is a lightweight, database-free rebuild of the public-facing parts of the Boolder website. It takes exported JSON data and generates a fully static site that can be hosted on any file server or CDN.
 
-NB: if you just want a quick access to the data, check out [boolder-data](https://github.com/boolder-org/boolder-data)
+## Based on
+
+- [boolder-org/boolder](https://github.com/boolder-org/boolder) — the original Rails application powering boolder.com
+- [boolder-org/boolder-data](https://github.com/boolder-org/boolder-data) — the open dataset of 17,000+ bouldering problems in Fontainebleau
+
+Topo photos are served from the Boolder CDN (`assets.boolder.com`). Map tiles are hosted on Mapbox using the original Boolder tileset and style.
+
+## What's included
+
+- **Area pages** — 80+ climbing areas with descriptions, circuits, popular problems, and access info
+- **Problem pages** — 16,000+ individual boulder problems with topo photos and SVG line overlays
+- **Circuit pages** — 200+ color-coded circuits with sorted problem lists
+- **Interactive map** — Mapbox GL JS with area/problem deep links and grade filtering
+- **Search** — client-side search over areas and problems (accent-insensitive)
+- **Boulders browser** — filterable/sortable list by grade, steepness, and popularity
+- **Project lists** — local-only (localStorage) problem bookmarks
 
 ## Stack
 
-- Ruby On Rails
-- PostgreSQL
-- Tailwind CSS
-- [Stimulus](https://stimulus.hotwired.dev) and [Turbo](https://turbo.hotwired.dev)
+- Ruby 3.3 (build scripts only, no runtime server)
+- ERB templates with Tailwind CSS
+- Mapbox GL JS for the map
+- Vanilla JavaScript for search, filtering, and project lists
+- Static JSON for all data
 
-
-## How to run the app (on a Mac)
-
-### Install homebrew
-
-- See https://brew.sh/
-
-### Install Ruby
-
-- `brew install rbenv libyaml`
-- `rbenv install 3.3.5` (replace `3.3.5` with the content of `.ruby-version`)
-
-### Install Postgre
-- cd to the app directory
-- `brew install postgresql`
-- `brew install postgis`
-- `brew services start postgresql`
-- `createdb dump-prod`
-
-### Set up the app
-- cd to the app directory
-- install rails: `sudo gem install rails`
-- `bundle install`
-- `rake db:setup`
-
-### Import prod data
-- `dropdb dump-prod && createdb dump-prod`
-- `psql -d dump-prod < db/dump-prod.sql`
-- `rake db:migrate`
-
-### Run the app
-
-- `bin/dev`
-
-### Mapbox credentials
-
-- Create an account on https://www.mapbox.com. 
-- Go to the [Tokens]([url](https://account.mapbox.com/access-tokens/)) page and create a public token with all the public `scopes` (or just use the default token).
-- Back in the Rails app, copy the `.env.example` to `.env` and fill out `MAPBOX_DEV_ACCESS_KEY` with your token
-- Restart the server
-
-### Optional: JOSM
-
-Josm is an open source tool used by the OpenStreetMap community.
-We use it to edit GeoJSON files.
-
-- Follow the instructions here: `https://josm.openstreetmap.de/wiki/Download#macOS`
-- Go to File > Preferences > Plugins
-- Click on the checkbox next to `Fastdraw` and `PicLayer`, and then click on OK
-- Restart Josm
-- In the menu bar (on the left), click on `Fast Drawing mode` and then type `Q` to enter the options dialog. Click on `Draw closed polygons only`, choose `3` for `Starting Epsilon` and `Simplify with initial epsilon` for `Enter key mode`
-
-## Static Site Build
-
-The public site can be built as a static, file-backed site. Source
-data lives under `data/source/` (see `data/source/README.md` for the layout).
+## Quick start
 
 ### Prerequisites
 
-Ensure source data files are in place:
-
-```bash
-mkdir -p data/source/content
-```
+- Ruby 3.3+ (`brew install rbenv && rbenv install 3.3.5`)
 
 ### Build
 
@@ -84,26 +41,39 @@ mkdir -p data/source/content
 ruby scripts/static/build.rb
 ```
 
-This generates a deployable `dist/` directory.
+This reads source data from `data/source/content/` and generates a deployable `dist/` directory.
+
+### Preview locally
+
+```bash
+python3 -m http.server 4173 --directory dist
+```
+
+Then open http://localhost:4173/en/fontainebleau
 
 ### Deploy
 
 ```bash
-rsync -av dist/ <static-host>
+rsync -av dist/ <your-static-host>
 ```
 
-## Contribute
+## Refreshing the data
 
-Want to help us improve the app for thousands of climbers? Great!
+Source data lives under `data/source/` as JSON files. To re-export from a Boolder database:
 
-Here are a few ways you can contribute:
-- Open an issue if you find a bug
-- Open an issue if you want to suggest an improvement
-- Open a Pull Request (please get in touch with us beforehand, though)
+```bash
+bin/rails static:export
+```
 
-We already have a lot of features waiting to be built, and lots of new ideas to try out!
-We'd be happy to share the fun with you :)
+See `data/source/README.md` for the file layout.
 
-As the project is still young, the best way to get started is to drop us a line at hello@boolder.com
+## Project structure
 
-You can also contribute to our mapping efforts at https://www.boolder.com/en/contribute
+```
+data/source/content/     — exported JSON (areas, problems, circuits, topos, lines, etc.)
+scripts/static/build.rb  — single entry point that generates dist/
+scripts/static/lib/       — build modules (catalog, read models, renderer, search, media, map)
+scripts/static/templates/ — ERB page templates
+test/static/              — tests for build modules
+dist/                     — generated output (gitignored)
+```
