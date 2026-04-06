@@ -23,7 +23,10 @@ def main
 
   # Build areas_by_id lookup for circuit navigation links
   areas_by_id = catalog.areas.each_with_object({}) { |a, h| h[a["id"]] = a }
-  mapbox_token = "pk.eyJ1Ijoibm1vbmRvbGxvdCIsImEiOiJjbHJvb3JnNHgxaTV0MnJvY2FreDA1bWszIn0.Piovbm5BZRpyAPk8OaUiMA"
+  # Use MAPBOX_ACCESS_TOKEN env var for local dev (production token is domain-restricted)
+  mapbox_token = ENV.fetch("MAPBOX_ACCESS_TOKEN",
+    "pk.eyJ1Ijoibm1vbmRvbGxvdCIsImEiOiJjbHJvb3JnNHgxaTV0MnJvY2FreDA1bWszIn0.Piovbm5BZRpyAPk8OaUiMA"
+  )
 
   # Clean dist
   FileUtils.rm_rf(DIST)
