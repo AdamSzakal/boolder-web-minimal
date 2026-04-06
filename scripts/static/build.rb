@@ -96,7 +96,7 @@ def main
 
     problem_slug = [problem["id"], problem["name"]&.downcase&.gsub(/[^a-z0-9]+/, "-")&.gsub(/-$/, "")].compact.join("-")
 
-    write_page("en/fontainebleau/#{area["slug"]}/#{problem_slug}.html", renderer.render("problems/show",
+    write_page("en/fontainebleau/#{area["slug"]}/#{problem_slug}/index.html", renderer.render("problems/show",
       "page_title" => "#{problem["name"]} #{problem["grade"]}",
       "problem" => problem,
       "area" => area,
@@ -129,7 +129,7 @@ def main
       p["_area_slug"] = p_area ? p_area["slug"] : main_area["slug"]
     end
 
-    write_page("en/fontainebleau/circuits/#{circuit["id"]}.html", renderer.render("circuits/show",
+    write_page("en/fontainebleau/circuits/#{circuit["id"]}/index.html", renderer.render("circuits/show",
       "page_title" => "Circuit #{circuit["color"].capitalize}",
       "circuit" => circuit,
       "problems" => problems,
