@@ -81,7 +81,7 @@ mkdir -p data/source/content
 ### Build
 
 ```bash
-ruby scripts/static/build.rb
+MAPBOX_ACCESS_TOKEN=pk.your_token ruby scripts/static/build.rb
 ```
 
 This generates a deployable `dist/` directory.
