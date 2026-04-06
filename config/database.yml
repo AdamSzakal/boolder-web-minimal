@@ -23,16 +23,16 @@ production:
   # The URL must use the postgis:// scheme for the activerecord-postgis-adapter.
   primary:
     <<: *default
-    url: <%= ENV["DATABASE_URL"]&.sub("postgres://", "postgis://") %>
+    url: <%= ENV["DATABASE_URL"]&.sub(/\Apostgres(ql)?:\/\//, "postgis://") %>
   cache:
     <<: *default
-    url: <%= ENV["DATABASE_URL"]&.sub("postgres://", "postgis://") %>
+    url: <%= ENV["DATABASE_URL"]&.sub(/\Apostgres(ql)?:\/\//, "postgis://") %>
     migrations_paths: db/cache_migrate
   queue:
     <<: *default
-    url: <%= ENV["DATABASE_URL"]&.sub("postgres://", "postgis://") %>
+    url: <%= ENV["DATABASE_URL"]&.sub(/\Apostgres(ql)?:\/\//, "postgis://") %>
     migrations_paths: db/queue_migrate
   cable:
     <<: *default
-    url: <%= ENV["DATABASE_URL"]&.sub("postgres://", "postgis://") %>
+    url: <%= ENV["DATABASE_URL"]&.sub(/\Apostgres(ql)?:\/\//, "postgis://") %>
     migrations_paths: db/cable_migrate
