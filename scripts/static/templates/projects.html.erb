@@ -1,0 +1,18 @@
+<div class="max-w-3xl mx-auto pt-6 pb-12 px-4 sm:px-6 lg:px-8"
+  data-controller="project-list"
+  data-project-list-locale-value="en">
+  <div>
+    <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-100">My project list</h1>
+    <p class="text-gray-500 dark:text-gray-400 mt-1">
+      Projects are stored locally on your device.
+    </p>
+  </div>
+
+  <div class="mt-8 text-center text-gray-400 dark:text-gray-500" data-project-list-target="emptyState">
+    <p>Your project list is empty. Add problems from their detail pages.</p>
+  </div>
+
+  <ul class="mt-6 divide-y divide-gray-100 dark:divide-gray-700" data-project-list-target="problemList">
+    <!-- Populated by project_list_controller.js from localStorage -->
+  </ul>
+</div>

@@ -1,0 +1,150 @@
+<%
+  problem = locals["problem"]
+  area = locals["area"]
+  topo_html = locals["topo_html"] || ""
+  circuit = locals["circuit"]
+  circuit_previous = locals["circuit_previous"]
+  circuit_next = locals["circuit_next"]
+  variants = locals["variants"] || []
+%>
+
+<div class="max-w-7xl mx-auto pt-6 pb-6 sm:px-6 lg:px-8">
+  <div class="md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-8">
+    <div class="col-span-2">
+      <div class="px-4 sm:px-0">
+        <div class="flex items-center space-x-1 text-sm font-medium text-gray-500 dark:text-gray-400">
+          <div><a href="/en/fontainebleau" class="hover:text-gray-700 dark:hover:text-gray-300">Fontainebleau</a></div>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+          <div><a href="/en/fontainebleau/<%= area["slug"] %>" class="hover:text-gray-700 dark:hover:text-gray-300"><%= area["name"] %></a></div>
+        </div>
+        <div class="flex justify-between items-center">
+          <div class="flex justify-between items-center w-full mt-2">
+            <h1 class="text-4xl font-bold text-gray-900 dark:text-gray-100"><%= problem["name"] %></h1>
+            <div class="text-gray-400 dark:text-gray-500 text-4xl font-bold"><%= problem["grade"] %></div>
+          </div>
+        </div>
+        <div class="text-gray-500 dark:text-gray-400 flex space-x-2 mt-2">
+          <%- if problem["sit_start"] -%>
+            <div>Sit start</div>
+          <%- end -%>
+        </div>
+      </div>
+
+      <div class="mt-4">
+        <%- if topo_html.to_s.strip.length > 0 -%>
+          <%= topo_html %>
+        <%- else -%>
+          <div class="w-full aspect-w-4 aspect-h-3 bg-gray-300 dark:bg-gray-700 sm:rounded-lg">
+            <div class="flex flex-wrap justify-center content-center">
+              <span class="text-gray-400 dark:text-gray-500 text-sm">No photo</span>
+            </div>
+          </div>
+        <%- end -%>
+      </div>
+
+      <%- if circuit && (circuit_previous || circuit_next) -%>
+        <div class="px-4 sm:px-0 py-2 flex justify-between items-center">
+          <div>
+            <%- if circuit_previous -%>
+              <%
+                prev_slug = [circuit_previous["id"], circuit_previous["name"]&.downcase&.gsub(/[^a-z0-9]+/, "-")&.gsub(/-$/, "")].compact.join("-")
+                prev_area = locals["_areas_by_id"] && locals["_areas_by_id"][circuit_previous["area_id"]]
+                prev_area_slug = prev_area ? prev_area["slug"] : area["slug"]
+              %>
+              <a href="/en/fontainebleau/<%= prev_area_slug %>/<%= prev_slug %>">
+                <div class="flex items-center space-x-2 text-emerald-600">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18" />
+                  </svg>
+                  <div>Previous</div>
+                </div>
+              </a>
+            <%- end -%>
+          </div>
+          <div>
+            <%- if circuit_next -%>
+              <%
+                next_slug = [circuit_next["id"], circuit_next["name"]&.downcase&.gsub(/[^a-z0-9]+/, "-")&.gsub(/-$/, "")].compact.join("-")
+                next_area = locals["_areas_by_id"] && locals["_areas_by_id"][circuit_next["area_id"]]
+                next_area_slug = next_area ? next_area["slug"] : area["slug"]
+              %>
+              <a href="/en/fontainebleau/<%= next_area_slug %>/<%= next_slug %>">
+                <div class="flex items-center space-x-2 text-emerald-600">
+                  <div>Next</div>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </div>
+              </a>
+            <%- end -%>
+          </div>
+        </div>
+      <%- end -%>
+
+      <div class="px-4 sm:px-0 py-2">
+        <div data-controller="project-list-button"
+          data-project-list-button-problem-id-value="<%= problem["id"] %>"
+          data-project-list-button-locale-value="en"
+          data-add-label="Add to projects"
+          data-added-label="Added to projects">
+        </div>
+
+        <a href="/en/map/<%= area["slug"] %>?pid=<%= problem["id"] %>" rel="nofollow">
+          <div class="flex items-center space-x-2 text-emerald-600 mt-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+            <div>See on map</div>
+          </div>
+        </a>
+
+        <%- if circuit -%>
+          <a href="/en/fontainebleau/circuits/<%= circuit["id"] %>" rel="nofollow">
+            <div class="flex items-center space-x-2 text-emerald-600 mt-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <div>See circuit</div>
+            </div>
+          </a>
+        <%- end -%>
+
+        <%- if problem["bleau_info_id"].to_s.strip.length > 0 -%>
+          <a href="https://bleau.info/a/<%= problem["bleau_info_id"] %>.html" rel="nofollow" target="_blank">
+            <div class="flex items-center space-x-2 text-emerald-600 mt-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+              <div>See on bleau.info</div>
+            </div>
+          </a>
+        <%- end -%>
+      </div>
+
+      <%- if variants && variants.any? -%>
+        <div class="px-4 sm:px-0 py-4">
+          <h2 class="text-xl font-semibold mb-3">Variants</h2>
+          <ul>
+            <%- variants.each do |variant| -%>
+              <%
+                v_slug = [variant["id"], variant["name"]&.downcase&.gsub(/[^a-z0-9]+/, "-")&.gsub(/-$/, "")].compact.join("-")
+                v_area = locals["_areas_by_id"] && locals["_areas_by_id"][variant["area_id"]]
+                v_area_slug = v_area ? v_area["slug"] : area["slug"]
+              %>
+              <li class="mt-2">
+                <a href="/en/fontainebleau/<%= v_area_slug %>/<%= v_slug %>">
+                  <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-gray-200 dark:bg-gray-700 text-xs">&nbsp;</span>
+                  <span class="ml-2 font-medium"><%= variant["name"] %></span>
+                  <span class="ml-2 text-gray-400 dark:text-gray-500"><%= variant["grade"] %></span>
+                </a>
+              </li>
+            <%- end -%>
+          </ul>
+        </div>
+      <%- end -%>
+    </div>
+  </div>
+</div>

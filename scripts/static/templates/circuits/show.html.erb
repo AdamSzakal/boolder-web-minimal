@@ -1,0 +1,91 @@
+<%
+  circuit = locals["circuit"]
+  problems = locals["problems"]
+  area = locals["area"]
+  color_hex = { "yellow" => "#FFCC02", "purple" => "#D783FF", "orange" => "#FF9500", "green" => "#77C344", "blue" => "#017AFF", "skyblue" => "#5AC7FA", "salmon" => "#FDAF8A", "red" => "#FF3B2F", "black" => "#000000", "white" => "#FFFFFF" }
+  hex = color_hex[circuit["color"]] || "#999"
+  text_col = circuit["color"] == "white" ? "#000" : "#FFF"
+%>
+
+<div class="max-w-7xl mx-auto pt-6 sm:px-6 lg:px-8">
+  <div class="px-4 sm:px-0">
+    <div class="flex items-center space-x-1 text-sm font-medium text-gray-500 dark:text-gray-400">
+      <div><a href="/en/fontainebleau" class="hover:text-gray-700 dark:hover:text-gray-300">Fontainebleau</a></div>
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+      </svg>
+      <div><a href="/en/fontainebleau/<%= area["slug"] %>" class="hover:text-gray-700 dark:hover:text-gray-300"><%= area["name"] %></a></div>
+    </div>
+  </div>
+</div>
+
+<div class="max-w-7xl mx-auto sm:px-6 lg:px-8 pb-8">
+  <div class="md:grid md:grid-cols-2 md:gap-16 mb-4">
+    <div class="col-span-1">
+      <div>
+        <h1 class="text-3xl font-bold mb-4 mt-2 px-4 sm:px-0">
+          Circuit <%= circuit["color"].capitalize %>
+        </h1>
+
+        <%- if circuit["beginner_friendly"] -%>
+          <span class="flex mb-2 px-4 sm:px-0">
+            <span class="text-emerald-500 mr-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </span>
+            <span class="text-emerald-500">Beginner friendly</span>
+          </span>
+        <%- end -%>
+
+        <%- if circuit["dangerous"] -%>
+          <span class="flex mb-2 px-4 sm:px-0">
+            <span class="text-red-500 mr-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+              </svg>
+            </span>
+            <span class="text-red-500">Dangerous</span>
+          </span>
+        <%- end -%>
+
+        <ul role="list" class="pt-2">
+          <%- problems.each do |problem| -%>
+            <%
+              problem_slug = [problem["id"], problem["name"]&.downcase&.gsub(/[^a-z0-9]+/, "-")&.gsub(/-$/, "")].compact.join("-")
+              area_slug = problem["_area_slug"] || area["slug"]
+            %>
+            <li class="px-4 sm:-mx-2 sm:px-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg">
+              <a href="/en/fontainebleau/<%= area_slug %>/<%= problem_slug %>">
+                <div class="flex justify-between py-2">
+                  <div>
+                    <%- if problem["circuit_number"] -%>
+                      <span class="inline-flex items-center justify-center w-6 h-6 rounded-full text-xs font-bold" style="background-color: <%= hex %>; color: <%= text_col %>;"><%= problem["circuit_number"] %></span>
+                    <%- else -%>
+                      <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-gray-200 dark:bg-gray-700 text-xs">&nbsp;</span>
+                    <%- end -%>
+                    <span class="ml-2"><%= problem["name"] %></span>
+                  </div>
+                  <div>
+                    <div class="flex space-x-2">
+                      <%- if problem["featured"] -%>
+                        <div class="text-red-400">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
+                          </svg>
+                        </div>
+                      <%- end -%>
+                      <div class="text-gray-500 dark:text-gray-400">
+                        <%= problem["grade"] %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </li>
+          <%- end -%>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
