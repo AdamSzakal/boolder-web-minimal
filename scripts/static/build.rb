@@ -166,7 +166,7 @@ def main
   puts "Rendering map pages..."
   map_data = map_builder.build
   map_data_json = JSON.generate(map_data)
-  mapbox_token = ENV.fetch("MAPBOX_ACCESS_TOKEN") { abort "Set MAPBOX_ACCESS_TOKEN env var before building" }
+  mapbox_token = "pk.eyJ1Ijoibm1vbmRvbGxvdCIsImEiOiJjbHJvb3JnNHgxaTV0MnJvY2FreDA1bWszIn0.Piovbm5BZRpyAPk8OaUiMA"
 
   # Main map page
   write_page("en/map/index.html", renderer.render_standalone("map",
