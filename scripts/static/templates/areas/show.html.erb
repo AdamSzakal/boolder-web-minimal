@@ -14,10 +14,13 @@
   <div class="lg:grid lg:grid-cols-2 lg:gap-16">
     <div class="col-span-1">
       <div class="aspect-w-16 aspect-h-9 relative overflow-hidden sm:rounded-lg">
-        <%- begin -%>
-          <div class="bg-no-repeat bg-cover bg-center" style="background-image: url(<%= media_manifest.area_cover_url(area["id"]) %>);"></div>
-        <%- rescue KeyError -%>
-          <div class="bg-gray-300 dark:bg-gray-700"></div>
+        <%
+          cover_url = media_manifest.area_cover_url(area["id"])
+        %>
+        <%- if cover_url -%>
+          <div class="bg-no-repeat bg-cover bg-center" style="background-image: url(<%= cover_url %>);"></div>
+        <%- else -%>
+          <div class="bg-gradient-to-br from-emerald-600 to-emerald-800"></div>
         <%- end -%>
         <div class="bg-transparent" style="background-image: linear-gradient(to top, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.1) 100%);"></div>
         <div class="absolute flex items-center text-center justify-center">

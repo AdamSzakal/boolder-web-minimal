@@ -174,8 +174,7 @@ def main
   copy_if_exists(ROOT.join("public/icon.png"), DIST.join("icon.png"))
   copy_if_exists(ROOT.join("public/icon.svg"), DIST.join("icon.svg"))
 
-  # Media (topo photos and area covers)
-  copy_dir_if_exists(ROOT.join("data/source/media"), DIST.join("media"))
+  # Topo photos served from CDN (assets.boolder.com) — no local media copy needed
 
   puts "Done! Output in dist/"
 end

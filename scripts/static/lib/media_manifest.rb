@@ -1,5 +1,7 @@
 module Static
   class MediaManifest
+    TOPO_CDN_BASE = "https://assets.boolder.com/proxy/topos"
+
     def initialize(data)
       @data = data
     end
@@ -9,20 +11,16 @@ module Static
     end
 
     def area_cover_url(id)
-      @data.fetch("area_covers").fetch(id.to_s)
+      @data.dig("area_covers", id.to_s)
     end
 
-    # Build manifest from catalog data using path conventions
+    # Build manifest using CDN URLs for topos (no local media needed)
     def self.build(topos:, areas:)
       topo_map = topos.each_with_object({}) do |t, h|
-        h[t["id"].to_s] = "/media/topos/area-#{t['area_id']}/topo-#{t['id']}.jpg"
+        h[t["id"].to_s] = "#{TOPO_CDN_BASE}/#{t['id']}"
       end
 
-      cover_map = areas.each_with_object({}) do |a, h|
-        h[a["id"].to_s] = "/media/area-covers/area-cover-#{a['id']}.jpg"
-      end
-
-      new("topos" => topo_map, "area_covers" => cover_map)
+      new("topos" => topo_map, "area_covers" => {})
     end
   end
 end
