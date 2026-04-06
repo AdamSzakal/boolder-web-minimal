@@ -5,8 +5,6 @@ class Poi < ApplicationRecord
   include Geolocatable
   geolocatable :location
 
-  audited
-
   TYPE_VALUES = %w[parking train_station]
 
   validates :poi_type, inclusion: { in: TYPE_VALUES }

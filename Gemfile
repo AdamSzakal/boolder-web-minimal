@@ -20,21 +20,15 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 gem "solid_cache"
 gem "solid_cable"
 gem "solid_queue"
-gem "mission_control-jobs"
 
 gem "bootsnap", require: false
 gem "kamal", require: false
 gem "thruster", require: false
 
 gem "rack-cors"
-gem "bugsnag"
 gem "kaminari"
-gem "httparty"
-gem "colorize"
-gem "audited"
 gem "ostruct" # TODO: remove
 gem "rgeo-geojson", "~> 2.1.1" # TODO: update
-gem "differ"
 gem "breadcrumbs_on_rails"
 gem "meta-tags"
 

@@ -1,0 +1,56 @@
+<%
+  color_map = {"yellow"=>"#FFCC02","purple"=>"#D783FF","orange"=>"#FF9500","green"=>"#77C344","blue"=>"#017AFF","skyblue"=>"#5AC7FA","salmon"=>"#FDAF8A","red"=>"#FF3B2F","black"=>"#000000","white"=>"#FFFFFF"}
+  steepness_labels = locale == "fr" ? {"wall"=>"Mur","slab"=>"Dalle","overhang"=>"Dévers","roof"=>"Toit","traverse"=>"Traverse"} : {"wall"=>"Wall","slab"=>"Slab","overhang"=>"Overhang","roof"=>"Roof","traverse"=>"Traverse"}
+%>
+<div class="max-w-7xl mx-auto pt-6 sm:px-6 lg:px-8">
+  <div class="px-4 sm:px-0">
+    <div class="flex items-center space-x-1 text-sm font-medium text-gray-500 dark:text-gray-400">
+      <a href="/<%= locale %>/fontainebleau" class="hover:text-gray-700 dark:hover:text-gray-300">Fontainebleau</a>
+    </div>
+  </div>
+</div>
+
+<div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mb-8">
+  <h1 class="text-3xl font-bold mt-2 mb-4 px-4 sm:px-0"><%= locale == "fr" ? "Voies populaires" : "Popular boulders" %></h1>
+  <div class="lg:grid lg:grid-cols-2 lg:gap-16 mt-4">
+    <div class="col-span-1">
+      <ul role="list">
+        <%- (problems || []).each do |p| -%>
+          <li class="px-4 sm:-mx-2 sm:px-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg">
+            <a href="/<%= locale %>/fontainebleau/<%= p["_area_slug"] || "" %>/<%= p["id"] %>">
+              <div class="py-2">
+                <div>
+                  <span><%= p["name"] %></span>
+                  <span class="ml-1 text-gray-500 dark:text-gray-400"><%= p["grade"] %></span>
+                </div>
+                <div class="flex flex-wrap items-center gap-1.5 text-xs text-gray-500 dark:text-gray-400 mt-1">
+                  <%- if p["popularity"].to_i > 0 -%>
+                    <span class="inline-flex items-center gap-1 rounded-full bg-gray-200 dark:bg-gray-700 px-2 py-0.5">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      </svg>
+                      <%= p["popularity"] %>
+                    </span>
+                  <%- end -%>
+                  <%- if p["steepness"] && steepness_labels[p["steepness"]] -%>
+                    <span class="inline-flex items-center rounded-full bg-gray-200 dark:bg-gray-700 px-2 py-0.5"><%= steepness_labels[p["steepness"]] %></span>
+                  <%- end -%>
+                  <%- if p["_area_name"] -%>
+                    <span class="inline-flex items-center rounded-full bg-gray-200 dark:bg-gray-700 px-2 py-0.5"><%= p["_area_name"] %></span>
+                  <%- end -%>
+                  <%- if p["circuit_color"] -%>
+                    <%
+                      bg = color_map[p["circuit_color"]] || "rgb(80% 80% 80%)"
+                      fg = p["circuit_color"] == "white" ? "#333" : "#FFF"
+                    %>
+                    <span class="inline-flex items-center rounded-full px-2 py-0.5" style="background-color: <%= bg %>; color: <%= fg %>;"><%= p["circuit_color"]&.capitalize %><%= " #{p["circuit_number"]}" if p["circuit_number"] %></span>
+                  <%- end -%>
+                </div>
+              </div>
+            </a>
+          </li>
+        <%- end -%>
+      </ul>
+    </div>
+  </div>
+</div>

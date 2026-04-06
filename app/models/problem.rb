@@ -9,12 +9,9 @@ class Problem < ApplicationRecord
   has_many :topos, through: :lines
   has_many :children, class_name: "Problem", foreign_key: "parent_id"
   belongs_to :parent, class_name: "Problem", optional: true
-  belongs_to :bleau_problem, foreign_key: "bleau_info_id", optional: true
   has_many :contribution_requests
   has_many :contributions
 
-  audited except: [ :has_line, :ascents, :ratings, :ratings_average, :popularity, :featured ], associated_with: :import
-  attr_accessor :import # used by audited associated_with: :import
   include CheckConflicts
 
   STEEPNESS_VALUES = %w[wall slab overhang roof traverse other]

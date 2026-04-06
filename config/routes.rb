@@ -1,39 +1,6 @@
 Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
-  mount MissionControl::Jobs::Engine, at: "/jobs"
-
   scope "/:locale", locale: /#{I18n.available_locales.join('|')}/ do
-    namespace :admin do
-      get "map", to: "maps#show"
-      resources :areas, param: :slug do
-        resources :problems, only: :index
-      end
-      resources :problems, except: :index
-      resources :boulders
-      resources :circuits
-      resources :imports do
-        get "apply", on: :member
-      end
-      resources :topos
-      resources :problem_imports
-      resources :bleau_problems do
-        member do
-          post :toggle_ignore
-        end
-      end
-      resources :lines
-      resources :pois
-      resources :poi_routes
-      resources :contribution_requests
-      resources :contributions
-      resources :audits
-      resources :redirects, only: :new
-
-      get "mapping", to: "mapping#dashboard"
-
-      root "areas#index"
-    end
-
     scope "articles" do
       scope "beginners-guide" do
         get "/", to: "articles#beginners_guide", as: :beginners_guide

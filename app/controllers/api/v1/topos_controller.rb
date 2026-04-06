@@ -1,10 +1,6 @@
 class Api::V1::ToposController < ActionController::Base
   def show
-    begin
-      raise "Topos#show is deprecated"
-    rescue => exception
-      Bugsnag.notify(exception)
-    end
+    Rails.logger.warn "Topos#show is deprecated"
 
     topo = Topo.find(params[:id])
 
@@ -16,11 +12,7 @@ class Api::V1::ToposController < ActionController::Base
   end
 
   def index
-    begin
-      raise "Topos#index is deprecated"
-    rescue => exception
-      Bugsnag.notify(exception)
-    end
+    Rails.logger.warn "Topos#index is deprecated"
 
     area = Area.find(params[:area_id])
 

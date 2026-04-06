@@ -1,0 +1,420 @@
+[
+  {
+    "id": 1,
+    "poi_type": "parking",
+    "name": "Parking Rocher Canon",
+    "short_name": "Rocher Canon",
+    "google_url": "https://goo.gl/maps/cHBDr9iCQwRj6kr78",
+    "location": {
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": 2,
+    "poi_type": "parking",
+    "name": "Parking du Carrefour de l'Épine",
+    "short_name": "Carrefour de l'Épine",
+    "google_url": "https://goo.gl/maps/uwWA32xkAwaH6E766",
+    "location": {
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": 3,
+    "poi_type": "parking",
+    "name": "Parking Allée des Vaches",
+    "short_name": "Allée des Vaches",
+    "google_url": "https://goo.gl/maps/xvbiKTsL1qdwe2cc6",
+    "location": {
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": 4,
+    "poi_type": "parking",
+    "name": "Parking Cabaret-Masson",
+    "short_name": "Cabaret-Masson",
+    "google_url": "https://goo.gl/maps/SSwTeWy6JXNDFQaS8",
+    "location": {
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": 5,
+    "poi_type": "parking",
+    "name": "Parking Mont Ussy",
+    "short_name": "Mont Ussy",
+    "google_url": "https://goo.gl/maps/N78XFaeM4LeKrfSK7",
+    "location": {
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": 6,
+    "poi_type": "parking",
+    "name": "Parking Karma",
+    "short_name": "Karma",
+    "google_url": "https://goo.gl/maps/GV2VDkPxnWk3n8m48",
+    "location": {
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": 7,
+    "poi_type": "parking",
+    "name": "Parking Bouligny",
+    "short_name": "Bouligny",
+    "google_url": "https://goo.gl/maps/Ms6QiFCarzRWRdSA9",
+    "location": {
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": 8,
+    "poi_type": "parking",
+    "name": "Parking Vert Galant",
+    "short_name": "Vert Galant",
+    "google_url": "https://goo.gl/maps/eo2LF9tR9XBKPw4DA",
+    "location": {
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": 9,
+    "poi_type": "parking",
+    "name": "Parking Restant du Long Rocher",
+    "short_name": "Restant du Long Rocher",
+    "google_url": "https://goo.gl/maps/EuPzcVjQ7HXVyrQx9",
+    "location": {
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": 10,
+    "poi_type": "parking",
+    "name": "Parking Petit Bois",
+    "short_name": "Petit Bois",
+    "google_url": "https://goo.gl/maps/F6thFWF4uh4xEGWK9",
+    "location": {
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": 11,
+    "poi_type": "parking",
+    "name": "Parking Beauvais Nainville",
+    "short_name": "Beauvais Nainville",
+    "google_url": "https://goo.gl/maps/XQo55sm66cC4qhVF6",
+    "location": {
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": 12,
+    "poi_type": "parking",
+    "name": "Parking Buthiers Piscine",
+    "short_name": "Buthiers Piscine",
+    "google_url": "https://goo.gl/maps/pM6Es7xbK45hTN5g8",
+    "location": {
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": 13,
+    "poi_type": "parking",
+    "name": "Parking Éléphant",
+    "short_name": "Éléphant",
+    "google_url": "https://goo.gl/maps/UYrz7DAxqSLdc5yeA",
+    "location": {
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": 14,
+    "poi_type": "parking",
+    "name": "Parking Robert Paragot",
+    "short_name": "Robert Paragot",
+    "google_url": "https://goo.gl/maps/T62eDcWEEmFsj5ho9",
+    "location": {
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": 15,
+    "poi_type": "parking",
+    "name": "Parking Isatis",
+    "short_name": "Isatis",
+    "google_url": "https://goo.gl/maps/GT36dbYpM65bnNqY8",
+    "location": {
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": 16,
+    "poi_type": "parking",
+    "name": "Parking Gorges de Franchard",
+    "short_name": "Gorges de Franchard",
+    "google_url": "https://goo.gl/maps/nhcV5UuM4ze1CyAS7",
+    "location": {
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": 17,
+    "poi_type": "parking",
+    "name": "Parking Raymond",
+    "short_name": "Raymond",
+    "google_url": "https://goo.gl/maps/o9QM5jeJTaDVgNYb7",
+    "location": {
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": 18,
+    "poi_type": "parking",
+    "name": "Parking Plaine de Chanfroy",
+    "short_name": "Plaine de Chanfroy",
+    "google_url": "https://goo.gl/maps/bWD8Ytdq7Et7tRHE9",
+    "location": {
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": 19,
+    "poi_type": "parking",
+    "name": "Parking Canche aux Merciers",
+    "short_name": "Canche aux Merciers",
+    "google_url": "https://goo.gl/maps/E8aRzMxw4P6KcTJ36",
+    "location": {
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": 20,
+    "poi_type": "parking",
+    "name": "Parking Drei Zinnen",
+    "short_name": "Drei Zinnen",
+    "google_url": "https://goo.gl/maps/HzH1o3Dtd1xW9ftb7",
+    "location": {
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": 21,
+    "poi_type": "parking",
+    "name": "Parking Bois Rond Auberge",
+    "short_name": "Bois Rond Auberge",
+    "google_url": "https://goo.gl/maps/k5UWi4nZJy3HwzyZ8",
+    "location": {
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": 22,
+    "poi_type": "parking",
+    "name": "Parking Gorge aux Châts",
+    "short_name": "Gorge aux Châts",
+    "google_url": "https://goo.gl/maps/uX92GwgkzmUb4rGv8",
+    "location": {
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": 23,
+    "poi_type": "parking",
+    "name": "Parking Croix Saint Jérôme",
+    "short_name": "Croix Saint Jérôme",
+    "google_url": "https://goo.gl/maps/xbpjJdayrUHCvdxX6",
+    "location": {
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": 24,
+    "poi_type": "parking",
+    "name": "Parking Noisy / Roche aux Sabots",
+    "short_name": "Noisy / Roche aux Sabots",
+    "google_url": "https://goo.gl/maps/S1AD8zrVEW8ENJiF6",
+    "location": {
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": 25,
+    "poi_type": "parking",
+    "name": "Parking Mée / Guichot / Diplodocus",
+    "short_name": "Mée / Guichot / Diplodocus",
+    "google_url": "https://goo.gl/maps/G2Wgib3dKdsmrgeK9",
+    "location": {
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": 26,
+    "poi_type": "parking",
+    "name": "Parking Cailleau",
+    "short_name": "Cailleau",
+    "google_url": "https://goo.gl/maps/dFYKJn7TjsSw4yje9",
+    "location": {
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": 27,
+    "poi_type": "train_station",
+    "name": "Gare de Bois-le-Roi",
+    "short_name": "Bois-le-Roi",
+    "google_url": "https://goo.gl/maps/L8dRCK4KSn7Hse2L6",
+    "location": {
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": 28,
+    "poi_type": "train_station",
+    "name": "Gare de Fontainebleau-Avon",
+    "short_name": "Fontainebleau-Avon",
+    "google_url": "https://goo.gl/maps/8WXXxun9PrRKPXMa7",
+    "location": {
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": 29,
+    "poi_type": "train_station",
+    "name": "Gare de Montigny-sur-Loing",
+    "short_name": "Montigny-sur-Loing",
+    "google_url": "https://goo.gl/maps/6iBHv6tavwzeB9Kw8",
+    "location": {
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": 30,
+    "poi_type": "train_station",
+    "name": "Gare de Nemours Saint-Pierre",
+    "short_name": "Nemours Saint-Pierre",
+    "google_url": "https://goo.gl/maps/xpyXrJBYyqPBXE5p9",
+    "location": {
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": 31,
+    "poi_type": "train_station",
+    "name": "Gare de Malesherbes",
+    "short_name": "Malesherbes",
+    "google_url": "https://goo.gl/maps/eaM9kG5Z4Mo7yqEn8",
+    "location": {
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": 32,
+    "poi_type": "parking",
+    "name": "Parking Reine Amélie",
+    "short_name": "Reine Amélie",
+    "google_url": "https://goo.gl/maps/trDFBjGvkPm6UWDu6",
+    "location": {
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": 33,
+    "poi_type": "parking",
+    "name": "Parking de la Feuillardière",
+    "short_name": "Feuillardière",
+    "google_url": "https://goo.gl/maps/LknDGWe7VnC5VcPi9",
+    "location": {
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": 34,
+    "poi_type": "parking",
+    "name": "Parking de la Faisanderie",
+    "short_name": "Faisanderie",
+    "google_url": "https://goo.gl/maps/emBvq1NsvkRWk4UJA",
+    "location": {
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": 35,
+    "poi_type": "parking",
+    "name": "Parking Mairie Saint-Pierre-lès-Nemours",
+    "short_name": "Mairie",
+    "google_url": "https://goo.gl/maps/LwhqG8AesYZKXwXR7",
+    "location": {
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": 36,
+    "poi_type": "parking",
+    "name": "Parking Mont Sarrasin",
+    "short_name": "Mont Sarrasin",
+    "google_url": "https://maps.app.goo.gl/e6MXZUZzg6TZjJ5R9",
+    "location": {
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": 37,
+    "poi_type": "parking",
+    "name": "Parking Beauvais Télégraphe",
+    "short_name": "Beauvais Télégraphe",
+    "google_url": "https://maps.app.goo.gl/ryk27YnErr7jpht68",
+    "location": {
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": 38,
+    "poi_type": "parking",
+    "name": "Parking de La Boulignère",
+    "short_name": "La Boulignère",
+    "google_url": "https://maps.app.goo.gl/1rqNkPxe8Uo4GzR38",
+    "location": {
+      "lat": null,
+      "lng": null
+    }
+  }
+]

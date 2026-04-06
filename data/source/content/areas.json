@@ -1,0 +1,3132 @@
+[
+  {
+    "id": 80,
+    "slug": "beauvais-telegraphe",
+    "name": "Beauvais Télégraphe",
+    "short_name": "Télégraphe",
+    "priority": 3,
+    "tags": [],
+    "description_fr": "Beauvais Télégraphe est un secteur qui mérite le détour pour ses circuits de qualités très bien entretenus. L'auberge du télégraphe est idéale pour aller se ressourcer en fin de séance.",
+    "description_en": "Beauvais Télégraphe is an area worth visiting for its high-quality, well-maintained circuits. The \"auberge\" is ideal for recharging after a session.",
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.50017111754,
+        "lng": 2.46925443565
+      },
+      "north_east": {
+        "lat": 48.5028671824,
+        "lng": 2.47138835107
+      }
+    },
+    "levels": {
+      "1": 0,
+      "2": 38,
+      "3": 7,
+      "4": 36,
+      "5": 15,
+      "6": 7,
+      "7": 6,
+      "8": 0
+    },
+    "problems_count": 109
+  },
+  {
+    "id": 81,
+    "slug": "beauvais-loutteville",
+    "name": "Beauvais Loutteville",
+    "short_name": "Loutteville",
+    "priority": 2,
+    "tags": [
+      "family_friendly"
+    ],
+    "description_fr": "Beauvais Louteville est un secteur tout proche du parking et des autres secteurs de Beauvais. Idéal en famille ou pour grimper des blocs jaune ou orange en suivant les bons chemins de promenade.",
+    "description_en": "Beauvais Louteville is an area very close to the parking and other areas of Beauvais. Ideal for families or climbing yellow or orange boulders while following the good walking paths.",
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.5026865609,
+        "lng": 2.46933683686
+      },
+      "north_east": {
+        "lat": 48.50389538106,
+        "lng": 2.47297182789
+      }
+    },
+    "levels": {
+      "1": 0,
+      "2": 30,
+      "3": 31,
+      "4": 21,
+      "5": 6,
+      "6": 4,
+      "7": 0,
+      "8": 0
+    },
+    "problems_count": 92
+  },
+  {
+    "id": 89,
+    "slug": "franchard-ermitage",
+    "name": "Franchard Ermitage",
+    "short_name": null,
+    "priority": 3,
+    "tags": [],
+    "description_fr": null,
+    "description_en": null,
+    "warning_fr": null,
+    "warning_en": null,
+    "published": false,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 0.0,
+        "lng": 0.0
+      },
+      "north_east": {
+        "lat": 0.0,
+        "lng": 0.0
+      }
+    },
+    "levels": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 1,
+      "8": 0
+    },
+    "problems_count": 1
+  },
+  {
+    "id": 90,
+    "slug": "franchard-point-de-vue",
+    "name": "Franchard Point de Vue",
+    "short_name": null,
+    "priority": 3,
+    "tags": [],
+    "description_fr": null,
+    "description_en": null,
+    "warning_fr": null,
+    "warning_en": null,
+    "published": false,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 0.0,
+        "lng": 0.0
+      },
+      "north_east": {
+        "lat": 0.0,
+        "lng": 0.0
+      }
+    },
+    "levels": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 1,
+      "8": 0
+    },
+    "problems_count": 1
+  },
+  {
+    "id": 13,
+    "slug": "canche-aux-merciers",
+    "name": "Canche aux Merciers",
+    "short_name": null,
+    "priority": 1,
+    "tags": [
+      "beginner_friendly",
+      "family_friendly"
+    ],
+    "description_fr": "La Canche aux Merciers est un secteur parfait pour les débutants avec ses 3 circuits (violet, jaune, orange) et ses blocs peu hauts.\r\n\r\nLe secteur est également idéal pour profiter d'une journée en famille ou entre amis.",
+    "description_en": "La Canche aux Merciers is a perfect area for beginners with its 3 easy circuits (violet, yellow, orange) and its low boulders.\r\n\r\nThe area is also ideal for a family or friends day out.",
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.39156003518,
+        "lng": 2.54651873169
+      },
+      "north_east": {
+        "lat": 48.39290849812,
+        "lng": 2.5499136297
+      }
+    },
+    "levels": {
+      "1": 2,
+      "2": 68,
+      "3": 52,
+      "4": 36,
+      "5": 45,
+      "6": 71,
+      "7": 50,
+      "8": 4
+    },
+    "problems_count": 328
+  },
+  {
+    "id": 88,
+    "slug": "95-2-ouest",
+    "name": "95.2 Ouest",
+    "short_name": "Ouest",
+    "priority": 2,
+    "tags": [
+      "beginner_friendly",
+      "dry_fast",
+      "family_friendly"
+    ],
+    "description_fr": null,
+    "description_en": null,
+    "warning_fr": null,
+    "warning_en": null,
+    "published": false,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 0.0,
+        "lng": 0.0
+      },
+      "north_east": {
+        "lat": 0.0,
+        "lng": 0.0
+      }
+    },
+    "levels": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0
+    },
+    "problems_count": 0
+  },
+  {
+    "id": 58,
+    "slug": "pignon-poteau",
+    "name": "Pignon Poteau",
+    "short_name": null,
+    "priority": 3,
+    "tags": [],
+    "description_fr": "Pignon Poteau est un petit secteur longeant le sentier des 25 bosses.\r\n\r\nIl n'est pas facile de se repérer dans le chaos de blocs, ce qui rebutera sans doute les débutants.\r\n\r\nÀ savoir : la fin du circuit orange (au delà du 21) est une série de sauts et de traversées.",
+    "description_en": "Pignon Poteau is a small area alongside the \"25 bosses\" trail.\r\n\r\nIt can be tricky to find your way around the boulder chaos, which makes the area not very suited for beginners.\r\n\r\nThe end of the orange circuit (beyond 21) is mostly jumps and traverses.",
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.38900278792,
+        "lng": 2.53111769391
+      },
+      "north_east": {
+        "lat": 48.39042122299,
+        "lng": 2.53344104426
+      }
+    },
+    "levels": {
+      "1": 4,
+      "2": 49,
+      "3": 28,
+      "4": 2,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0
+    },
+    "problems_count": 83
+  },
+  {
+    "id": 51,
+    "slug": "restant-long-rocher",
+    "name": "Restant du Long Rocher",
+    "short_name": "Long Rocher",
+    "priority": 1,
+    "tags": [],
+    "description_fr": null,
+    "description_en": null,
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.35346586116,
+        "lng": 2.73337709319
+      },
+      "north_east": {
+        "lat": 48.35425581247,
+        "lng": 2.73562331618
+      }
+    },
+    "levels": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 12,
+      "5": 23,
+      "6": 34,
+      "7": 25,
+      "8": 0
+    },
+    "problems_count": 94
+  },
+  {
+    "id": 79,
+    "slug": "coquibus-rumont",
+    "name": "Coquibus Rumont",
+    "short_name": "Coquibus",
+    "priority": 3,
+    "tags": [],
+    "description_fr": "Coquibus Rumont est principalement connu pour le bloc Big Island assis (9A) parmi les plus durs du monde. Il n'est pas très simple de se déplacer dans le secteur ce qui explique qu'il soit assez peu développé.",
+    "description_en": "Coquibus Rumont is mainly known for the \"Big Island assis\" boulder (9A), which is among the hardest in the world. It's not very easy to move around in the area, which explains why it's relatively undeveloped.",
+    "warning_fr": "Réserve biologique : évitez de pénétrer dans les sous-bois et tenez votre chien en laisse d’avril à juillet.",
+    "warning_en": "Biological Reserve: Please avoid entering the forest and keep your dog on a leash from April to July.",
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.40957299802,
+        "lng": 2.50521264088
+      },
+      "north_east": {
+        "lat": 48.4110569113,
+        "lng": 2.51118473683
+      }
+    },
+    "levels": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 3,
+      "6": 26,
+      "7": 34,
+      "8": 11
+    },
+    "problems_count": 75
+  },
+  {
+    "id": 53,
+    "slug": "mont-ussy",
+    "name": "Mont Ussy",
+    "short_name": null,
+    "priority": 2,
+    "tags": [
+      "family_friendly"
+    ],
+    "description_fr": null,
+    "description_en": null,
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.42062325834,
+        "lng": 2.69160498257
+      },
+      "north_east": {
+        "lat": 48.42167923754,
+        "lng": 2.69323673817
+      }
+    },
+    "levels": {
+      "1": 1,
+      "2": 27,
+      "3": 25,
+      "4": 33,
+      "5": 23,
+      "6": 28,
+      "7": 29,
+      "8": 1
+    },
+    "problems_count": 167
+  },
+  {
+    "id": 82,
+    "slug": "beauvais-roches-noires",
+    "name": "Beauvais Roches Noires",
+    "short_name": "Roches Noires",
+    "priority": 3,
+    "tags": [],
+    "description_fr": "Beauvais Roches Noires et un secteur plus éloigné du parking, plus difficile d'accès et avec des circuits d'apparences plus relevés et plus engagés.",
+    "description_en": "Beauvais Roches Noires is a more remote area from the parking area, more difficult to access and with circuits that appear more challenging and more engaging.",
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.50332475591,
+        "lng": 2.4715647227
+      },
+      "north_east": {
+        "lat": 48.50459415865,
+        "lng": 2.4741704487
+      }
+    },
+    "levels": {
+      "1": 0,
+      "2": 8,
+      "3": 15,
+      "4": 36,
+      "5": 33,
+      "6": 9,
+      "7": 1,
+      "8": 0
+    },
+    "problems_count": 102
+  },
+  {
+    "id": 83,
+    "slug": "beauvais-hameau",
+    "name": "Beauvais Hameau",
+    "short_name": "Hameau",
+    "priority": 2,
+    "tags": [],
+    "description_fr": "Beauvais Hameau est un grand secteurs très intéressant pour ses circuits de grandes qualité. Du circuit enfant vert au circuit extrêmement difficile noire, il y en a pour tout les niveaux !",
+    "description_en": "Beauvais Hameau is a large area that is very interesting for its high-quality circuits. From the easy green circuit for children to the extremely difficult black circuit, there is something for every level!",
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.4996020006,
+        "lng": 2.47243585902
+      },
+      "north_east": {
+        "lat": 48.50223124321,
+        "lng": 2.47644214819
+      }
+    },
+    "levels": {
+      "1": 32,
+      "2": 55,
+      "3": 58,
+      "4": 41,
+      "5": 81,
+      "6": 67,
+      "7": 19,
+      "8": 0
+    },
+    "problems_count": 353
+  },
+  {
+    "id": 72,
+    "slug": "calvaire",
+    "name": "Le Calvaire",
+    "short_name": "Calvaire",
+    "priority": 3,
+    "tags": [],
+    "description_fr": null,
+    "description_en": null,
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.42022284713,
+        "lng": 2.71081276204
+      },
+      "north_east": {
+        "lat": 48.4214953852,
+        "lng": 2.71465455286
+      }
+    },
+    "levels": {
+      "1": 20,
+      "2": 56,
+      "3": 35,
+      "4": 25,
+      "5": 23,
+      "6": 37,
+      "7": 32,
+      "8": 3
+    },
+    "problems_count": 231
+  },
+  {
+    "id": 77,
+    "slug": "buthiers-tennis",
+    "name": "Buthiers Tennis",
+    "short_name": "Tennis",
+    "priority": 3,
+    "tags": [],
+    "description_fr": null,
+    "description_en": null,
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.29453221676,
+        "lng": 2.43309324353
+      },
+      "north_east": {
+        "lat": 48.2954121182,
+        "lng": 2.43658291641
+      }
+    },
+    "levels": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 4,
+      "5": 25,
+      "6": 29,
+      "7": 28,
+      "8": 4
+    },
+    "problems_count": 90
+  },
+  {
+    "id": 78,
+    "slug": "buthiers-canard",
+    "name": "Buthiers Canard",
+    "short_name": "Canard",
+    "priority": 3,
+    "tags": [],
+    "description_fr": null,
+    "description_en": null,
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.29450407558,
+        "lng": 2.42816656505
+      },
+      "north_east": {
+        "lat": 48.2954132103,
+        "lng": 2.43142005927
+      }
+    },
+    "levels": {
+      "1": 0,
+      "2": 11,
+      "3": 24,
+      "4": 30,
+      "5": 18,
+      "6": 27,
+      "7": 32,
+      "8": 2
+    },
+    "problems_count": 144
+  },
+  {
+    "id": 66,
+    "slug": "petit-rempart",
+    "name": "Cuvier Petit Rempart",
+    "short_name": "Petit Rempart",
+    "priority": 3,
+    "tags": [],
+    "description_fr": null,
+    "description_en": null,
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.4448173858,
+        "lng": 2.65038482372
+      },
+      "north_east": {
+        "lat": 48.4462007793,
+        "lng": 2.65277042969
+      }
+    },
+    "levels": {
+      "1": 0,
+      "2": 0,
+      "3": 1,
+      "4": 6,
+      "5": 19,
+      "6": 35,
+      "7": 35,
+      "8": 2
+    },
+    "problems_count": 98
+  },
+  {
+    "id": 20,
+    "slug": "apremont-ouest",
+    "name": "Apremont Ouest",
+    "short_name": "Ouest",
+    "priority": 2,
+    "tags": [],
+    "description_fr": null,
+    "description_en": null,
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.43630005117,
+        "lng": 2.62532177303
+      },
+      "north_east": {
+        "lat": 48.43856003864,
+        "lng": 2.6275262502
+      }
+    },
+    "levels": {
+      "1": 0,
+      "2": 8,
+      "3": 26,
+      "4": 20,
+      "5": 44,
+      "6": 44,
+      "7": 66,
+      "8": 3
+    },
+    "problems_count": 211
+  },
+  {
+    "id": 22,
+    "slug": "rocher-des-souris",
+    "name": "Rocher des Souris",
+    "short_name": null,
+    "priority": 3,
+    "tags": [],
+    "description_fr": null,
+    "description_en": null,
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.38500121532,
+        "lng": 2.52194972439
+      },
+      "north_east": {
+        "lat": 48.38659811936,
+        "lng": 2.5242662333
+      }
+    },
+    "levels": {
+      "1": 0,
+      "2": 1,
+      "3": 5,
+      "4": 4,
+      "5": 9,
+      "6": 25,
+      "7": 30,
+      "8": 0
+    },
+    "problems_count": 74
+  },
+  {
+    "id": 25,
+    "slug": "roche-aux-oiseaux",
+    "name": "Roche aux Oiseaux",
+    "short_name": null,
+    "priority": 2,
+    "tags": [],
+    "description_fr": "La Roche aux Oiseaux est un petit secteur calme et agréable.",
+    "description_en": "La Roche aux Oiseaux is a small and quite nice area.",
+    "warning_fr": "Février 2022 : le circuit orange est complètement effacé.",
+    "warning_en": "February 2022: the orange circuit's paint is not visible anymore.",
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.37767785047,
+        "lng": 2.50590003993
+      },
+      "north_east": {
+        "lat": 48.3792426803,
+        "lng": 2.50803708996
+      }
+    },
+    "levels": {
+      "1": 0,
+      "2": 4,
+      "3": 24,
+      "4": 23,
+      "5": 32,
+      "6": 50,
+      "7": 34,
+      "8": 2
+    },
+    "problems_count": 169
+  },
+  {
+    "id": 67,
+    "slug": "reconnaissance",
+    "name": "La Reconnaissance",
+    "short_name": "Reconnaissance",
+    "priority": 3,
+    "tags": [],
+    "description_fr": null,
+    "description_en": null,
+    "warning_fr": "Il est difficile de se déplacer et de se repérer dans ce secteur.",
+    "warning_en": "It is difficult to move around and navigate in this area.",
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.44590591878,
+        "lng": 2.65340058117
+      },
+      "north_east": {
+        "lat": 48.44670955006,
+        "lng": 2.65505479697
+      }
+    },
+    "levels": {
+      "1": 0,
+      "2": 1,
+      "3": 4,
+      "4": 7,
+      "5": 33,
+      "6": 44,
+      "7": 36,
+      "8": 7
+    },
+    "problems_count": 132
+  },
+  {
+    "id": 18,
+    "slug": "diplodocus",
+    "name": "Diplodocus",
+    "short_name": null,
+    "priority": 1,
+    "tags": [
+      "beginner_friendly",
+      "family_friendly"
+    ],
+    "description_fr": "Diplodocus est un petit secteur qui convient très bien aux débutants, et aux sorties en famille.",
+    "description_en": "Diplodocus is a small area that is quite suited for beginners and for a day out with family or friends.",
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.37097732928,
+        "lng": 2.53173890558
+      },
+      "north_east": {
+        "lat": 48.3716737044,
+        "lng": 2.53301395929
+      }
+    },
+    "levels": {
+      "1": 2,
+      "2": 54,
+      "3": 41,
+      "4": 25,
+      "5": 6,
+      "6": 7,
+      "7": 10,
+      "8": 0
+    },
+    "problems_count": 145
+  },
+  {
+    "id": 1,
+    "slug": "rocher-canon",
+    "name": "Rocher Canon",
+    "short_name": "Canon",
+    "priority": 1,
+    "tags": [
+      "popular",
+      "beginner_friendly",
+      "family_friendly"
+    ],
+    "description_fr": "Rocher Canon est un des secteurs les plus faciles d'accès en train depuis Paris, ce qui le rend très fréquenté les week-ends.",
+    "description_en": "Rocher Canon is one of the easiest sectors to access by train from Paris, which makes it very busy on weekends.",
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.46070097269,
+        "lng": 2.66184519556
+      },
+      "north_east": {
+        "lat": 48.46338661727,
+        "lng": 2.66525074806
+      }
+    },
+    "levels": {
+      "1": 3,
+      "2": 95,
+      "3": 56,
+      "4": 77,
+      "5": 54,
+      "6": 85,
+      "7": 97,
+      "8": 15
+    },
+    "problems_count": 482
+  },
+  {
+    "id": 56,
+    "slug": "grande-montagne",
+    "name": "Grande Montagne",
+    "short_name": null,
+    "priority": 3,
+    "tags": [],
+    "description_fr": "Grande Montagne est un petit secteur longeant le sentier des 25 bosses.\r\n\r\nIl propose un circuit orange de 70 numéros qui s'étend sur une grande distance. Prévoyez donc de marcher entre chaque bloc.",
+    "description_en": "Grande Montagne is a small area alongside the \"25 bossses\" trail.\r\n\r\nIt offers an orange circuit with 70 problems that stretches over a long distance, which means you'll have to walk a lot between boulders.",
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.36899636989,
+        "lng": 2.53477937623
+      },
+      "north_east": {
+        "lat": 48.37135980309,
+        "lng": 2.53957632632
+      }
+    },
+    "levels": {
+      "1": 0,
+      "2": 8,
+      "3": 33,
+      "4": 25,
+      "5": 12,
+      "6": 17,
+      "7": 20,
+      "8": 1
+    },
+    "problems_count": 116
+  },
+  {
+    "id": 35,
+    "slug": "rocher-cathedrale",
+    "name": "Rocher de la Cathédrale",
+    "short_name": null,
+    "priority": 3,
+    "tags": [],
+    "description_fr": null,
+    "description_en": null,
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.36367302305,
+        "lng": 2.5331554178
+      },
+      "north_east": {
+        "lat": 48.36693256396,
+        "lng": 2.5364430953
+      }
+    },
+    "levels": {
+      "1": 0,
+      "2": 10,
+      "3": 19,
+      "4": 13,
+      "5": 3,
+      "6": 16,
+      "7": 11,
+      "8": 0
+    },
+    "problems_count": 72
+  },
+  {
+    "id": 26,
+    "slug": "drei-zinnen",
+    "name": "Drei Zinnen",
+    "short_name": null,
+    "priority": 1,
+    "tags": [
+      "beginner_friendly",
+      "dry_fast"
+    ],
+    "description_fr": "À savoir : on entend le bruit des voitures à cause de la proximité avec l'autoroute.",
+    "description_en": "Note: the cars from the nearby highway make quite some noise.",
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.39229139419,
+        "lng": 2.55664810504
+      },
+      "north_east": {
+        "lat": 48.39393983407,
+        "lng": 2.55953233013
+      }
+    },
+    "levels": {
+      "1": 0,
+      "2": 22,
+      "3": 38,
+      "4": 39,
+      "5": 24,
+      "6": 63,
+      "7": 55,
+      "8": 4
+    },
+    "problems_count": 245
+  },
+  {
+    "id": 27,
+    "slug": "jean-des-vignes",
+    "name": "Jean des Vignes",
+    "short_name": null,
+    "priority": 2,
+    "tags": [
+      "beginner_friendly",
+      "family_friendly"
+    ],
+    "description_fr": null,
+    "description_en": null,
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.38239735341,
+        "lng": 2.52282476111
+      },
+      "north_east": {
+        "lat": 48.38427947773,
+        "lng": 2.52438649986
+      }
+    },
+    "levels": {
+      "1": 0,
+      "2": 1,
+      "3": 15,
+      "4": 43,
+      "5": 20,
+      "6": 24,
+      "7": 16,
+      "8": 1
+    },
+    "problems_count": 120
+  },
+  {
+    "id": 28,
+    "slug": "la-segognole",
+    "name": "La Ségognole",
+    "short_name": null,
+    "priority": 1,
+    "tags": [
+      "beginner_friendly",
+      "family_friendly"
+    ],
+    "description_fr": "La Ségognole est un petit secteur assez dense, et convient très bien aux journées en famille ou entre amis.",
+    "description_en": "La Ségognole is a small but dense area, and is suited for a day out with family or friends.",
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.3796416665,
+        "lng": 2.50402660323
+      },
+      "north_east": {
+        "lat": 48.38037638684,
+        "lng": 2.50505888625
+      }
+    },
+    "levels": {
+      "1": 3,
+      "2": 28,
+      "3": 58,
+      "4": 19,
+      "5": 27,
+      "6": 13,
+      "7": 2,
+      "8": 0
+    },
+    "problems_count": 150
+  },
+  {
+    "id": 32,
+    "slug": "petit-bois",
+    "name": "Petit Bois",
+    "short_name": null,
+    "priority": 1,
+    "tags": [],
+    "description_fr": null,
+    "description_en": null,
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.26249527024,
+        "lng": 2.66989535537
+      },
+      "north_east": {
+        "lat": 48.26401956507,
+        "lng": 2.67253121479
+      }
+    },
+    "levels": {
+      "1": 0,
+      "2": 27,
+      "3": 29,
+      "4": 66,
+      "5": 42,
+      "6": 48,
+      "7": 23,
+      "8": 5
+    },
+    "problems_count": 240
+  },
+  {
+    "id": 42,
+    "slug": "dame-jouanne",
+    "name": "Dame Jouanne",
+    "short_name": null,
+    "priority": 2,
+    "tags": [],
+    "description_fr": "Dame Jouanne est un des tous premiers secteurs historiques de Fontainebleau. Il est notamment connu pour son bloc éponyme faisant 15 mètres de haut. ",
+    "description_en": "Dame Jouanne is a historic area in Font. It is famous for its 15-meter-high 'Dame Jouanne' boulder.",
+    "warning_fr": "Attention : les blocs sont en moyenne (très) hauts et ne conviennent pas aux débutants.\r\n\r\nÀ savoir : Il est difficile de se repérer dans le chaos rocheux, notamment avec les peintures qui sont pour la plupart effacées. Plusieurs zones sont également fermées à cause de l'érosion du sol.",
+    "warning_en": "Watch out: boulders are usually (very) high and are not suited for beginners.\r\n\r\nGood to know: the boulder chaos and the wiped out paint make it hard to find your way around. Some parts of the area are also closed because of soil erosion.",
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.30225398493,
+        "lng": 2.60061412344
+      },
+      "north_east": {
+        "lat": 48.30521805156,
+        "lng": 2.60617878254
+      }
+    },
+    "levels": {
+      "1": 4,
+      "2": 91,
+      "3": 103,
+      "4": 116,
+      "5": 70,
+      "6": 50,
+      "7": 73,
+      "8": 5
+    },
+    "problems_count": 512
+  },
+  {
+    "id": 55,
+    "slug": "justice-chambergeot",
+    "name": "Justice de Chambergeot",
+    "short_name": null,
+    "priority": 2,
+    "tags": [
+      "family_friendly"
+    ],
+    "description_fr": null,
+    "description_en": null,
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.39328571942,
+        "lng": 2.51419299411
+      },
+      "north_east": {
+        "lat": 48.3947894425,
+        "lng": 2.51612862849
+      }
+    },
+    "levels": {
+      "1": 9,
+      "2": 43,
+      "3": 22,
+      "4": 4,
+      "5": 3,
+      "6": 16,
+      "7": 17,
+      "8": 0
+    },
+    "problems_count": 114
+  },
+  {
+    "id": 75,
+    "slug": "rocher-greau",
+    "name": "Rocher Gréau",
+    "short_name": null,
+    "priority": 3,
+    "tags": [],
+    "description_fr": null,
+    "description_en": null,
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.26168465063,
+        "lng": 2.68464242562
+      },
+      "north_east": {
+        "lat": 48.26307675057,
+        "lng": 2.6863416281
+      }
+    },
+    "levels": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 2,
+      "5": 7,
+      "6": 36,
+      "7": 39,
+      "8": 14
+    },
+    "problems_count": 98
+  },
+  {
+    "id": 30,
+    "slug": "ja-martin",
+    "name": "J.A. Martin",
+    "short_name": null,
+    "priority": 1,
+    "tags": [
+      "beginner_friendly",
+      "family_friendly"
+    ],
+    "description_fr": null,
+    "description_en": null,
+    "warning_fr": "Juin 2022 : certaines peintures sont effacées, le topo ou l'appli sont vivement recommandés.",
+    "warning_en": "June 2022: some of the paint markings are faded, it is strongly recommended to use a guidebook or the Boolder app.",
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.36008856218,
+        "lng": 2.53266956019
+      },
+      "north_east": {
+        "lat": 48.36309173121,
+        "lng": 2.54037156044
+      }
+    },
+    "levels": {
+      "1": 3,
+      "2": 49,
+      "3": 87,
+      "4": 81,
+      "5": 69,
+      "6": 88,
+      "7": 57,
+      "8": 6
+    },
+    "problems_count": 440
+  },
+  {
+    "id": 39,
+    "slug": "franchard-raymond",
+    "name": "Franchard Raymond",
+    "short_name": "Raymond",
+    "priority": 3,
+    "tags": [],
+    "description_fr": "Le secteur est calme, mais certaines voies sont impraticables et il n'est pas facile de se repérer.",
+    "description_en": "The area is very quiet, but many problems aren't maintained enough, and it may be tricky to find your way around.",
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.40514888736,
+        "lng": 2.62657945512
+      },
+      "north_east": {
+        "lat": 48.40628956911,
+        "lng": 2.63091411408
+      }
+    },
+    "levels": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 2,
+      "5": 32,
+      "6": 24,
+      "7": 31,
+      "8": 1
+    },
+    "problems_count": 90
+  },
+  {
+    "id": 14,
+    "slug": "rocher-du-potala",
+    "name": "Rocher du Potala",
+    "short_name": null,
+    "priority": 1,
+    "tags": [
+      "beginner_friendly",
+      "family_friendly"
+    ],
+    "description_fr": "Le Rocher du Potala est un secteur idéal pour profiter d'une journée en famille ou entre amis.\r\n\r\nLes blocs sont en moyenne peu hauts et la réception au sol est généralement bonne, ce qui permet de grimper en confiance.",
+    "description_en": "Rocher du Potala is an ideal area for a family or friends day out.\r\n\r\nThe area is also ideal for beginners, with many low boulders and good landings.",
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.3668622941,
+        "lng": 2.53267684735
+      },
+      "north_east": {
+        "lat": 48.36845187103,
+        "lng": 2.53583927231
+      }
+    },
+    "levels": {
+      "1": 0,
+      "2": 39,
+      "3": 56,
+      "4": 57,
+      "5": 71,
+      "6": 79,
+      "7": 35,
+      "8": 6
+    },
+    "problems_count": 343
+  },
+  {
+    "id": 16,
+    "slug": "91-1",
+    "name": "91.1",
+    "short_name": null,
+    "priority": 1,
+    "tags": [
+      "beginner_friendly",
+      "dry_fast",
+      "family_friendly"
+    ],
+    "description_fr": "91.1 est un secteur populaire situé à côté de Cul de Chien et de La Roche aux Sabots.\r\n\r\nLe secteur sèche relativement vite après la pluie.",
+    "description_en": "91.1 is a popular area right next to Cul de Chien and La Roche aux Sabots.\r\n\r\nThe area dries pretty fast after the rain.",
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.37592648825,
+        "lng": 2.5163634071
+      },
+      "north_east": {
+        "lat": 48.37800882633,
+        "lng": 2.52118100144
+      }
+    },
+    "levels": {
+      "1": 0,
+      "2": 56,
+      "3": 65,
+      "4": 32,
+      "5": 48,
+      "6": 33,
+      "7": 22,
+      "8": 0
+    },
+    "problems_count": 256
+  },
+  {
+    "id": 17,
+    "slug": "rocher-guichot",
+    "name": "Rocher Guichot",
+    "short_name": null,
+    "priority": 1,
+    "tags": [
+      "beginner_friendly",
+      "family_friendly"
+    ],
+    "description_fr": "Rocher Guichot est un petit secteur agréable pour profiter d'une après-midi en famille ou entre amis.",
+    "description_en": "Rocher Guichot is a small area, although quite nice for an afternoon out with family or friends.",
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.36375285975,
+        "lng": 2.52449086789
+      },
+      "north_east": {
+        "lat": 48.36463922829,
+        "lng": 2.52616913834
+      }
+    },
+    "levels": {
+      "1": 1,
+      "2": 10,
+      "3": 18,
+      "4": 12,
+      "5": 25,
+      "6": 32,
+      "7": 20,
+      "8": 3
+    },
+    "problems_count": 121
+  },
+  {
+    "id": 19,
+    "slug": "rocher-des-potets",
+    "name": "Rocher des Potets",
+    "short_name": null,
+    "priority": 2,
+    "tags": [
+      "beginner_friendly",
+      "family_friendly"
+    ],
+    "description_fr": "Rocher des Potets est un tout petit secteur idéal pour les débutants et pour les journées en famille.",
+    "description_en": "Rocher des Potets is a tiny area that is quite suited for beginners and for a day out with family or friends.",
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.38220817991,
+        "lng": 2.52608026979
+      },
+      "north_east": {
+        "lat": 48.38336848988,
+        "lng": 2.5282243285
+      }
+    },
+    "levels": {
+      "1": 0,
+      "2": 34,
+      "3": 33,
+      "4": 12,
+      "5": 0,
+      "6": 3,
+      "7": 4,
+      "8": 0
+    },
+    "problems_count": 86
+  },
+  {
+    "id": 86,
+    "slug": "restant-long-rocher-sud",
+    "name": "Restant du Long Rocher Sud",
+    "short_name": "Long Rocher Sud",
+    "priority": 2,
+    "tags": [
+      "beginner_friendly",
+      "family_friendly"
+    ],
+    "description_fr": null,
+    "description_en": null,
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.35311531423,
+        "lng": 2.72987329048
+      },
+      "north_east": {
+        "lat": 48.3536248932,
+        "lng": 2.73263110261
+      }
+    },
+    "levels": {
+      "1": 1,
+      "2": 28,
+      "3": 26,
+      "4": 12,
+      "5": 8,
+      "6": 20,
+      "7": 11,
+      "8": 1
+    },
+    "problems_count": 107
+  },
+  {
+    "id": 24,
+    "slug": "rocher-saint-germain",
+    "name": "Rocher Saint-Germain Est",
+    "short_name": "Saint-Germain Est",
+    "priority": 1,
+    "tags": [
+      "beginner_friendly",
+      "family_friendly"
+    ],
+    "description_fr": null,
+    "description_en": null,
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.43881883818,
+        "lng": 2.68356889419
+      },
+      "north_east": {
+        "lat": 48.44075882418,
+        "lng": 2.68603317372
+      }
+    },
+    "levels": {
+      "1": 2,
+      "2": 34,
+      "3": 38,
+      "4": 29,
+      "5": 31,
+      "6": 40,
+      "7": 20,
+      "8": 5
+    },
+    "problems_count": 199
+  },
+  {
+    "id": 60,
+    "slug": "corne-biche",
+    "name": "Corne-Biche",
+    "short_name": null,
+    "priority": 3,
+    "tags": [],
+    "description_fr": "Corne-Biche est un secteur assez peu fréquenté, où il n'est pas facile de se déplacer et se repérer.",
+    "description_en": "Corne-Biche is a lesser-known area, and it can be sometimes tricky to find your way around.",
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.39738429909,
+        "lng": 2.58311348267
+      },
+      "north_east": {
+        "lat": 48.39903012556,
+        "lng": 2.5874771515
+      }
+    },
+    "levels": {
+      "1": 6,
+      "2": 56,
+      "3": 55,
+      "4": 29,
+      "5": 19,
+      "6": 17,
+      "7": 25,
+      "8": 3
+    },
+    "problems_count": 210
+  },
+  {
+    "id": 21,
+    "slug": "bois-rond",
+    "name": "Bois Rond",
+    "short_name": null,
+    "priority": 1,
+    "tags": [
+      "beginner_friendly"
+    ],
+    "description_fr": null,
+    "description_en": null,
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.38990503781,
+        "lng": 2.56098785522
+      },
+      "north_east": {
+        "lat": 48.39124180285,
+        "lng": 2.56325137311
+      }
+    },
+    "levels": {
+      "1": 0,
+      "2": 51,
+      "3": 47,
+      "4": 30,
+      "5": 38,
+      "6": 73,
+      "7": 34,
+      "8": 2
+    },
+    "problems_count": 275
+  },
+  {
+    "id": 6,
+    "slug": "cuvier-est",
+    "name": "Cuvier Est",
+    "short_name": "Est",
+    "priority": 2,
+    "tags": [],
+    "description_fr": "Cuvier Est est un petit secteur situé proche de Bas Cuvier.",
+    "description_en": "Cuvier Est is a small area, 5-10 min away from Cuvier.",
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.44573879035,
+        "lng": 2.63984395022
+      },
+      "north_east": {
+        "lat": 48.44702490408,
+        "lng": 2.64426112158
+      }
+    },
+    "levels": {
+      "1": 0,
+      "2": 0,
+      "3": 6,
+      "4": 22,
+      "5": 50,
+      "6": 59,
+      "7": 52,
+      "8": 2
+    },
+    "problems_count": 191
+  },
+  {
+    "id": 10,
+    "slug": "95-2",
+    "name": "95.2",
+    "short_name": null,
+    "priority": 1,
+    "tags": [
+      "popular",
+      "beginner_friendly",
+      "dry_fast",
+      "family_friendly"
+    ],
+    "description_fr": "95.2 est l'un des massifs de Fontainebleau qui sèche le plus vite.",
+    "description_en": "95.2 is one of the Fontainebleau massifs that dries the quickest.",
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.38464527675,
+        "lng": 2.52719897271
+      },
+      "north_east": {
+        "lat": 48.38652699056,
+        "lng": 2.53246329691
+      }
+    },
+    "levels": {
+      "1": 1,
+      "2": 24,
+      "3": 45,
+      "4": 66,
+      "5": 67,
+      "6": 48,
+      "7": 60,
+      "8": 3
+    },
+    "problems_count": 314
+  },
+  {
+    "id": 4,
+    "slug": "cuvier",
+    "name": "Cuvier",
+    "short_name": null,
+    "priority": 1,
+    "tags": [
+      "popular"
+    ],
+    "description_fr": "Bas Cuvier est un secteur mythique, parmi les plus connus de Fontainebleau.",
+    "description_en": "Bas Cuvier is one of the most famous areas in Fontainebleau.",
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.44640220042,
+        "lng": 2.63738594916
+      },
+      "north_east": {
+        "lat": 48.4479009016,
+        "lng": 2.63972684674
+      }
+    },
+    "levels": {
+      "1": 1,
+      "2": 15,
+      "3": 30,
+      "4": 32,
+      "5": 104,
+      "6": 138,
+      "7": 135,
+      "8": 10
+    },
+    "problems_count": 465
+  },
+  {
+    "id": 2,
+    "slug": "cul-de-chien",
+    "name": "Cul de Chien",
+    "short_name": null,
+    "priority": 1,
+    "tags": [
+      "popular",
+      "beginner_friendly",
+      "dry_fast",
+      "family_friendly"
+    ],
+    "description_fr": "Cul de Chien est connu pour ses magnifiques étendues de sable blanc, idéal pour profiter d'une journée en famille ou entre amis.\r\n\r\nLe secteur est parfait pour débuter, avec de nombreux blocs peu hauts et une bonne réception au sol. ",
+    "description_en": "Cul de Chien is known for its beautiful stretches of white sand, perfect for a day out with family or friends.\r\n\r\nThe area is ideal for beginners, with many low boulders and good landings.",
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.37489670364,
+        "lng": 2.5220932053
+      },
+      "north_east": {
+        "lat": 48.37912442506,
+        "lng": 2.52759039335
+      }
+    },
+    "levels": {
+      "1": 0,
+      "2": 43,
+      "3": 38,
+      "4": 59,
+      "5": 39,
+      "6": 36,
+      "7": 13,
+      "8": 5
+    },
+    "problems_count": 233
+  },
+  {
+    "id": 7,
+    "slug": "apremont",
+    "name": "Apremont",
+    "short_name": null,
+    "priority": 1,
+    "tags": [
+      "dry_fast"
+    ],
+    "description_fr": "Si vous cherchez un secteur adapté aux débutants, nous vous recommandons Apremont Butte aux Dames.",
+    "description_en": "If you are looking for an area suited for beginners, we recommend looking at Apremont Butte aux Dames.",
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.43569628801,
+        "lng": 2.62783426757
+      },
+      "north_east": {
+        "lat": 48.43786638936,
+        "lng": 2.62980267388
+      }
+    },
+    "levels": {
+      "1": 0,
+      "2": 2,
+      "3": 19,
+      "4": 36,
+      "5": 22,
+      "6": 17,
+      "7": 39,
+      "8": 2
+    },
+    "problems_count": 137
+  },
+  {
+    "id": 8,
+    "slug": "rocher-fin",
+    "name": "Rocher Fin",
+    "short_name": null,
+    "priority": 1,
+    "tags": [
+      "beginner_friendly",
+      "family_friendly"
+    ],
+    "description_fr": "Rocher Fin est un secteur magnifique, un peu moins fréquenté que d'autres en raison des 20 min de marche depuis le parking.",
+    "description_en": "Rocher Fin is a beautiful area, a little less crowded than others due to the 20 minute walk from the parking lot.",
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.37574170256,
+        "lng": 2.5309932872
+      },
+      "north_east": {
+        "lat": 48.37777537945,
+        "lng": 2.53651771628
+      }
+    },
+    "levels": {
+      "1": 0,
+      "2": 23,
+      "3": 36,
+      "4": 49,
+      "5": 47,
+      "6": 50,
+      "7": 38,
+      "8": 1
+    },
+    "problems_count": 244
+  },
+  {
+    "id": 73,
+    "slug": "mont-aigu",
+    "name": "Mont Aigu",
+    "short_name": null,
+    "priority": 3,
+    "tags": [],
+    "description_fr": null,
+    "description_en": null,
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.40066965065,
+        "lng": 2.6623970936
+      },
+      "north_east": {
+        "lat": 48.40285870482,
+        "lng": 2.66532546822
+      }
+    },
+    "levels": {
+      "1": 0,
+      "2": 37,
+      "3": 58,
+      "4": 55,
+      "5": 22,
+      "6": 52,
+      "7": 37,
+      "8": 0
+    },
+    "problems_count": 261
+  },
+  {
+    "id": 5,
+    "slug": "franchard-isatis",
+    "name": "Franchard Isatis",
+    "short_name": "Isatis",
+    "priority": 1,
+    "tags": [
+      "popular",
+      "beginner_friendly",
+      "family_friendly"
+    ],
+    "description_fr": "Franchard Isatis est un secteur très populaire, très fréquenté les week-ends.",
+    "description_en": "Franchard Isatis is a very popular area, and very crowded on week-ends.",
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.40821900911,
+        "lng": 2.59923856672
+      },
+      "north_east": {
+        "lat": 48.41021135151,
+        "lng": 2.60668437894
+      }
+    },
+    "levels": {
+      "1": 0,
+      "2": 57,
+      "3": 65,
+      "4": 75,
+      "5": 91,
+      "6": 141,
+      "7": 130,
+      "8": 9
+    },
+    "problems_count": 568
+  },
+  {
+    "id": 54,
+    "slug": "rocher-du-general",
+    "name": "Rocher du Général",
+    "short_name": null,
+    "priority": 2,
+    "tags": [
+      "beginner_friendly",
+      "family_friendly"
+    ],
+    "description_fr": "Rocher du Général est un petit secteur calme avec du charme, parfait pour profiter d'une journée en famille ou entre amis.",
+    "description_en": "Rocher du Général is a lovely and quiet area, quite suited for a day out with family or friends.",
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.37149272847,
+        "lng": 2.52811811231
+      },
+      "north_east": {
+        "lat": 48.3741673815,
+        "lng": 2.53013820554
+      }
+    },
+    "levels": {
+      "1": 2,
+      "2": 22,
+      "3": 19,
+      "4": 33,
+      "5": 17,
+      "6": 15,
+      "7": 10,
+      "8": 0
+    },
+    "problems_count": 118
+  },
+  {
+    "id": 9,
+    "slug": "elephant",
+    "name": "Éléphant",
+    "short_name": null,
+    "priority": 1,
+    "tags": [
+      "popular",
+      "family_friendly"
+    ],
+    "description_fr": "Éléphant est un secteur absolument magnifique, parfait pour un pique-nique en famille ou entre amis.",
+    "description_en": "Éléphant is an absolutely beautiful area, perfect for a family or friends picnic.",
+    "warning_fr": "Attention, les blocs sont en moyenne (très) hauts !\r\n\r\n2018 : le bloc de l'Éléphant est interdit à la grimpe à cause d'un risque d'éboulement.",
+    "warning_en": "Be careful, most problems are (very) high!\r\n\r\n2018: the famous Éléphant problem is forbidden because there is a chance it might collapse.",
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.292882059,
+        "lng": 2.59102262489
+      },
+      "north_east": {
+        "lat": 48.29517290522,
+        "lng": 2.5962640493
+      }
+    },
+    "levels": {
+      "1": 6,
+      "2": 40,
+      "3": 28,
+      "4": 40,
+      "5": 45,
+      "6": 47,
+      "7": 43,
+      "8": 5
+    },
+    "problems_count": 254
+  },
+  {
+    "id": 11,
+    "slug": "franchard-cuisiniere",
+    "name": "Franchard Cuisinière",
+    "short_name": "Cuisinière",
+    "priority": 1,
+    "tags": [
+      "popular",
+      "beginner_friendly",
+      "family_friendly"
+    ],
+    "description_fr": "Franchard Cuisinière est un secteur populaire, offrant une grande richesse de blocs pour tous les niveaux.",
+    "description_en": "Franchard Cuisinière is a popular area, offering a wide variety of problems for all levels.",
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.40962637245,
+        "lng": 2.60987969845
+      },
+      "north_east": {
+        "lat": 48.41068281244,
+        "lng": 2.61434651744
+      }
+    },
+    "levels": {
+      "1": 0,
+      "2": 17,
+      "3": 46,
+      "4": 59,
+      "5": 96,
+      "6": 102,
+      "7": 94,
+      "8": 10
+    },
+    "problems_count": 424
+  },
+  {
+    "id": 23,
+    "slug": "buthiers",
+    "name": "Buthiers Piscine",
+    "short_name": "Piscine",
+    "priority": 1,
+    "tags": [
+      "beginner_friendly",
+      "family_friendly"
+    ],
+    "description_fr": "Buthiers Piscine est un secteur situé juste à côté d'une base de loisirs, et convient très bien aux journées en famille.",
+    "description_en": "Buthiers Piscine is located right next to an outdoor activities center, and is suited for a day out with family or friends.",
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.29182877466,
+        "lng": 2.4343453283
+      },
+      "north_east": {
+        "lat": 48.29609189156,
+        "lng": 2.44187906351
+      }
+    },
+    "levels": {
+      "1": 7,
+      "2": 52,
+      "3": 31,
+      "4": 36,
+      "5": 59,
+      "6": 60,
+      "7": 45,
+      "8": 7
+    },
+    "problems_count": 297
+  },
+  {
+    "id": 12,
+    "slug": "roche-aux-sabots",
+    "name": "Roche aux Sabots",
+    "short_name": null,
+    "priority": 1,
+    "tags": [
+      "popular",
+      "beginner_friendly",
+      "family_friendly"
+    ],
+    "description_fr": "La Roche aux Sabots est un secteur très populaire et généralement assez fréquenté.",
+    "description_en": "La Roche aux Sabots is a popular area, and thus pretty crowded.",
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.37406800326,
+        "lng": 2.51342665371
+      },
+      "north_east": {
+        "lat": 48.37523633339,
+        "lng": 2.51445172485
+      }
+    },
+    "levels": {
+      "1": 0,
+      "2": 39,
+      "3": 34,
+      "4": 39,
+      "5": 37,
+      "6": 51,
+      "7": 54,
+      "8": 2
+    },
+    "problems_count": 256
+  },
+  {
+    "id": 15,
+    "slug": "gorge-aux-chats",
+    "name": "Gorge aux Châts",
+    "short_name": null,
+    "priority": 1,
+    "tags": [
+      "beginner_friendly",
+      "dry_fast"
+    ],
+    "description_fr": "À savoir : il n'y a pas de parking officiel, mais vous pouvez vous garer le long de la route.",
+    "description_en": "Note: there is no official parking, but you can park along the road.",
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.39873830592,
+        "lng": 2.51898043169
+      },
+      "north_east": {
+        "lat": 48.39965740358,
+        "lng": 2.52059343872
+      }
+    },
+    "levels": {
+      "1": 0,
+      "2": 12,
+      "3": 29,
+      "4": 26,
+      "5": 33,
+      "6": 67,
+      "7": 39,
+      "8": 5
+    },
+    "problems_count": 211
+  },
+  {
+    "id": 29,
+    "slug": "beauvais-nainville",
+    "name": "Beauvais Nainville",
+    "short_name": "Nainville",
+    "priority": 1,
+    "tags": [
+      "beginner_friendly",
+      "dry_fast",
+      "family_friendly"
+    ],
+    "description_fr": null,
+    "description_en": null,
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.50127018051,
+        "lng": 2.47542621667
+      },
+      "north_east": {
+        "lat": 48.50304966848,
+        "lng": 2.48156877419
+      }
+    },
+    "levels": {
+      "1": 1,
+      "2": 77,
+      "3": 81,
+      "4": 39,
+      "5": 45,
+      "6": 94,
+      "7": 48,
+      "8": 0
+    },
+    "problems_count": 385
+  },
+  {
+    "id": 31,
+    "slug": "cuisiniere-cretes-sud",
+    "name": "Franchard Cuisinière Crêtes Sud",
+    "short_name": "Cuisinière Crêtes Sud",
+    "priority": 2,
+    "tags": [],
+    "description_fr": "Franchard Cuisinière Crêtes Sud est un petit secteur accollé à Franchard Cuisinière et proposant un circuit noir connu pour sa difficulté.",
+    "description_en": "Franchard Cuisinière Crêtes Sud is a small area right next to Franchard Cuisinière offering an infamous black circuit.",
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.40742000317,
+        "lng": 2.60795675151
+      },
+      "north_east": {
+        "lat": 48.41064488426,
+        "lng": 2.61160522666
+      }
+    },
+    "levels": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 1,
+      "5": 4,
+      "6": 37,
+      "7": 44,
+      "8": 8
+    },
+    "problems_count": 95
+  },
+  {
+    "id": 33,
+    "slug": "rocher-demoiselles",
+    "name": "Rocher des Demoiselles",
+    "short_name": "Demoiselles",
+    "priority": 2,
+    "tags": [
+      "dry_fast"
+    ],
+    "description_fr": "L'accès n'est pas facile, comptez une quinzaine de minutes en suivant le sentier bleu depuis le parking.",
+    "description_en": "The walk from the parking takes more than 15 minutes and isn't straightforward. Follow the blue trail from the parking.",
+    "warning_fr": "Mai 2022 : le circuit orange est presque complètement effacé.",
+    "warning_en": "May 2022: the orange circuit's paint is barely visible.",
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.37877372077,
+        "lng": 2.66808167179
+      },
+      "north_east": {
+        "lat": 48.38021242247,
+        "lng": 2.67273103753
+      }
+    },
+    "levels": {
+      "1": 0,
+      "2": 4,
+      "3": 21,
+      "4": 18,
+      "5": 31,
+      "6": 87,
+      "7": 74,
+      "8": 5
+    },
+    "problems_count": 240
+  },
+  {
+    "id": 34,
+    "slug": "franchard-sablons",
+    "name": "Franchard Sablons",
+    "short_name": "Sablons",
+    "priority": 2,
+    "tags": [
+      "beginner_friendly",
+      "family_friendly"
+    ],
+    "description_fr": "Franchard Sablons est un petit secteur calme, situé tout proche du secteur Isatis.",
+    "description_en": "Franchard Sablons is a small and quiet area, located right next to Franchard Isatis.",
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.4072503827,
+        "lng": 2.59515930138
+      },
+      "north_east": {
+        "lat": 48.40935827556,
+        "lng": 2.59619409181
+      }
+    },
+    "levels": {
+      "1": 0,
+      "2": 41,
+      "3": 26,
+      "4": 46,
+      "5": 29,
+      "6": 26,
+      "7": 39,
+      "8": 3
+    },
+    "problems_count": 210
+  },
+  {
+    "id": 36,
+    "slug": "franchard-hautes-plaines",
+    "name": "Franchard Hautes Plaines",
+    "short_name": "Hautes Plaines",
+    "priority": 2,
+    "tags": [
+      "beginner_friendly"
+    ],
+    "description_fr": "Franchard Hautes Plaines est petit secteur calme, situé juste à côté du secteur Isatis.",
+    "description_en": "Franchard Hautes Plaines is a small and quiet area, located right next to Franchard Isatis.",
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.40723840371,
+        "lng": 2.59719103541
+      },
+      "north_east": {
+        "lat": 48.40900315211,
+        "lng": 2.60093102702
+      }
+    },
+    "levels": {
+      "1": 2,
+      "2": 43,
+      "3": 49,
+      "4": 14,
+      "5": 9,
+      "6": 27,
+      "7": 44,
+      "8": 1
+    },
+    "problems_count": 189
+  },
+  {
+    "id": 37,
+    "slug": "franchard-meyer",
+    "name": "Franchard Meyer",
+    "short_name": "Meyer",
+    "priority": 3,
+    "tags": [],
+    "description_fr": "Le secteur est calme, mais certaines voies sont impraticables et il n'est pas facile de se repérer.",
+    "description_en": "The area is very quiet, but many problems aren't maintained enough, and it may be tricky to find your way around.",
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.40712036585,
+        "lng": 2.61447640053
+      },
+      "north_east": {
+        "lat": 48.40790262212,
+        "lng": 2.61744204875
+      }
+    },
+    "levels": {
+      "1": 0,
+      "2": 0,
+      "3": 5,
+      "4": 15,
+      "5": 7,
+      "6": 20,
+      "7": 33,
+      "8": 7
+    },
+    "problems_count": 87
+  },
+  {
+    "id": 38,
+    "slug": "franchard-sablons-carriers",
+    "name": "Franchard Sablons Carriers",
+    "short_name": "Sablons Carriers",
+    "priority": 3,
+    "tags": [],
+    "description_fr": null,
+    "description_en": null,
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.40821044033,
+        "lng": 2.58611435054
+      },
+      "north_east": {
+        "lat": 48.40960744708,
+        "lng": 2.59065784481
+      }
+    },
+    "levels": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 3,
+      "5": 5,
+      "6": 10,
+      "7": 17,
+      "8": 6
+    },
+    "problems_count": 41
+  },
+  {
+    "id": 43,
+    "slug": "cuvier-ouest",
+    "name": "Cuvier Ouest",
+    "short_name": "Ouest",
+    "priority": 3,
+    "tags": [],
+    "description_fr": "Cuvier Ouest est un petit secteur situé à côté de Bas Cuvier.\r\n\r\nLe secteur est assez sauvage, il est assez difficile de se déplacer et de se repérer.",
+    "description_en": "Cuvier Ouest is a small area located right next to Bas Cuvier.\r\n\r\nThe area is pretty wild, it's not super easy to find your way around.",
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.44681017678,
+        "lng": 2.63414155195
+      },
+      "north_east": {
+        "lat": 48.4494148213,
+        "lng": 2.63735210521
+      }
+    },
+    "levels": {
+      "1": 0,
+      "2": 0,
+      "3": 1,
+      "4": 24,
+      "5": 24,
+      "6": 30,
+      "7": 37,
+      "8": 2
+    },
+    "problems_count": 118
+  },
+  {
+    "id": 44,
+    "slug": "cuvier-nord",
+    "name": "Cuvier Nord",
+    "short_name": "Nord",
+    "priority": 3,
+    "tags": [],
+    "description_fr": "Cuvier Nord est un petit secteur situé à côté de Bas Cuvier.",
+    "description_en": "Cuvier Nord is a small area located right next to Bas Cuvier.",
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.44691192865,
+        "lng": 2.6396121823
+      },
+      "north_east": {
+        "lat": 48.44907132101,
+        "lng": 2.64209624346
+      }
+    },
+    "levels": {
+      "1": 0,
+      "2": 2,
+      "3": 16,
+      "4": 14,
+      "5": 23,
+      "6": 33,
+      "7": 68,
+      "8": 2
+    },
+    "problems_count": 158
+  },
+  {
+    "id": 46,
+    "slug": "apremont-bizons",
+    "name": "Apremont Bizons",
+    "short_name": "Bizons",
+    "priority": 2,
+    "tags": [
+      "beginner_friendly",
+      "family_friendly"
+    ],
+    "description_fr": "Le secteur est dense et dégagé, il est beaucoup plus facile de se déplacer que dans le secteur historique d'Apremont.",
+    "description_en": "The area is dense and it's way easier to get around than the historic Apremont area.",
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.43375989034,
+        "lng": 2.62043570567
+      },
+      "north_east": {
+        "lat": 48.4366073912,
+        "lng": 2.62397523936
+      }
+    },
+    "levels": {
+      "1": 1,
+      "2": 52,
+      "3": 56,
+      "4": 60,
+      "5": 75,
+      "6": 102,
+      "7": 60,
+      "8": 2
+    },
+    "problems_count": 408
+  },
+  {
+    "id": 47,
+    "slug": "rocher-canon-ouest",
+    "name": "Rocher Canon Ouest",
+    "short_name": "Canon Ouest",
+    "priority": 3,
+    "tags": [],
+    "description_fr": "Rocher Canon Ouest est un tout petit secteur proche de Rocher Canon.",
+    "description_en": "Rocher Canon Ouest is a tiny area located right next to Rocher Canon.",
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.46104972317,
+        "lng": 2.65208631343
+      },
+      "north_east": {
+        "lat": 48.46293565468,
+        "lng": 2.65958927539
+      }
+    },
+    "levels": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 6,
+      "5": 14,
+      "6": 31,
+      "7": 35,
+      "8": 3
+    },
+    "problems_count": 89
+  },
+  {
+    "id": 48,
+    "slug": "apremont-butte-aux-dames",
+    "name": "Apremont Butte aux Dames",
+    "short_name": "Butte aux Dames",
+    "priority": 2,
+    "tags": [
+      "beginner_friendly",
+      "family_friendly"
+    ],
+    "description_fr": "Le secteur est dense et dégagé, il est beaucoup plus facile de se déplacer que dans le secteur historique d'Apremont.",
+    "description_en": "The area is dense and it's way easier to get around than the historic Apremont area.",
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.43782499691,
+        "lng": 2.62101982995
+      },
+      "north_east": {
+        "lat": 48.44041492051,
+        "lng": 2.62349596078
+      }
+    },
+    "levels": {
+      "1": 0,
+      "2": 49,
+      "3": 36,
+      "4": 54,
+      "5": 56,
+      "6": 68,
+      "7": 41,
+      "8": 1
+    },
+    "problems_count": 305
+  },
+  {
+    "id": 49,
+    "slug": "apremont-solitude",
+    "name": "Apremont Solitude",
+    "short_name": "Solitude",
+    "priority": 3,
+    "tags": [],
+    "description_fr": "Apremont Solitude est un petit secteur situé à l'Est d'Apremont Est.",
+    "description_en": "Apremont Solitude is a small area located East of Apremont Est.",
+    "warning_fr": "Octobre 2022 : La peinture du circuit rouge est très effacée, il est difficile de se repérer.",
+    "warning_en": "October 2022: the red circuit's paint is mostly washed out, which makes it hard to find your way around.",
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.43540604155,
+        "lng": 2.63289404142
+      },
+      "north_east": {
+        "lat": 48.43660539481,
+        "lng": 2.63512586864
+      }
+    },
+    "levels": {
+      "1": 0,
+      "2": 0,
+      "3": 7,
+      "4": 36,
+      "5": 15,
+      "6": 25,
+      "7": 25,
+      "8": 1
+    },
+    "problems_count": 109
+  },
+  {
+    "id": 40,
+    "slug": "cuvier-merveille",
+    "name": "Cuvier Merveille",
+    "short_name": "Merveille",
+    "priority": 2,
+    "tags": [],
+    "description_fr": "Cuvier Merveille est un micro-secteur, essentiellement constitué de l'imposant bloc de la Merveille.",
+    "description_en": "Cuvier Merveille is a tiny area, mainly consisting of the impressive 'Merveille' boulder.",
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.44408990203,
+        "lng": 2.65163334069
+      },
+      "north_east": {
+        "lat": 48.44450857875,
+        "lng": 2.65335313942
+      }
+    },
+    "levels": {
+      "1": 0,
+      "2": 1,
+      "3": 1,
+      "4": 0,
+      "5": 9,
+      "6": 14,
+      "7": 14,
+      "8": 2
+    },
+    "problems_count": 41
+  },
+  {
+    "id": 45,
+    "slug": "cuvier-bellevue",
+    "name": "Cuvier Bellevue",
+    "short_name": "Bellevue",
+    "priority": 3,
+    "tags": [],
+    "description_fr": "Secteur plutôt sauvage proche de Cuvier, connu pour quelques blocs difficiles mais qui regorge également de blocs faciles et adaptés aux débutants.",
+    "description_en": "A rather wild area close to Cuvier, known for some difficult boulders but also full of easy boulders suitable for beginners.",
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.44653007778,
+        "lng": 2.64202483711
+      },
+      "north_east": {
+        "lat": 48.44815464662,
+        "lng": 2.64440026101
+      }
+    },
+    "levels": {
+      "1": 3,
+      "2": 20,
+      "3": 32,
+      "4": 13,
+      "5": 19,
+      "6": 59,
+      "7": 64,
+      "8": 2
+    },
+    "problems_count": 212
+  },
+  {
+    "id": 41,
+    "slug": "maunoury",
+    "name": "Maunoury",
+    "short_name": null,
+    "priority": 2,
+    "tags": [],
+    "description_fr": "Le secteur est moins connu (et donc plus calme) que la Dame Jouanne situé juste à côté.",
+    "description_en": "The area is less known (and thus quieter) than Dame Jouanne located right next to it.",
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.30188261188,
+        "lng": 2.60695389345
+      },
+      "north_east": {
+        "lat": 48.30425697195,
+        "lng": 2.61054627984
+      }
+    },
+    "levels": {
+      "1": 1,
+      "2": 31,
+      "3": 58,
+      "4": 36,
+      "5": 30,
+      "6": 42,
+      "7": 74,
+      "8": 3
+    },
+    "problems_count": 275
+  },
+  {
+    "id": 52,
+    "slug": "rocher-bouligny",
+    "name": "Rocher de Bouligny",
+    "short_name": "Bouligny",
+    "priority": 2,
+    "tags": [],
+    "description_fr": null,
+    "description_en": null,
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.38428166244,
+        "lng": 2.68887402581
+      },
+      "north_east": {
+        "lat": 48.38609462584,
+        "lng": 2.69655078582
+      }
+    },
+    "levels": {
+      "1": 1,
+      "2": 8,
+      "3": 12,
+      "4": 21,
+      "5": 33,
+      "6": 45,
+      "7": 22,
+      "8": 8
+    },
+    "problems_count": 150
+  },
+  {
+    "id": 50,
+    "slug": "rocher-avon",
+    "name": "Rocher d'Avon",
+    "short_name": "Avon",
+    "priority": 1,
+    "tags": [
+      "beginner_friendly"
+    ],
+    "description_fr": null,
+    "description_en": null,
+    "warning_fr": "Septembre 2022 : le parking historique le long de la D606 n'est plus accessible.",
+    "warning_en": "September 2022: the historic parking lot along the D606 is no longer accessible.",
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.39259400192,
+        "lng": 2.72209563777
+      },
+      "north_east": {
+        "lat": 48.3940429094,
+        "lng": 2.72699721124
+      }
+    },
+    "levels": {
+      "1": 0,
+      "2": 7,
+      "3": 32,
+      "4": 24,
+      "5": 31,
+      "6": 38,
+      "7": 46,
+      "8": 3
+    },
+    "problems_count": 181
+  },
+  {
+    "id": 57,
+    "slug": "telegraphe",
+    "name": "Rocher du Télégraphe",
+    "short_name": "Télégraphe",
+    "priority": 3,
+    "tags": [],
+    "description_fr": "Bon à savoir : plusieurs circuits enfants sont présents à l'entrée du secteur.",
+    "description_en": "Note: there are several circuits for kids right at the entrance of the area.",
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.39445017031,
+        "lng": 2.54346571829
+      },
+      "north_east": {
+        "lat": 48.39691977718,
+        "lng": 2.54835404389
+      }
+    },
+    "levels": {
+      "1": 0,
+      "2": 0,
+      "3": 5,
+      "4": 25,
+      "5": 14,
+      "6": 47,
+      "7": 51,
+      "8": 1
+    },
+    "problems_count": 143
+  },
+  {
+    "id": 63,
+    "slug": "apremont-desert",
+    "name": "Apremont Désert",
+    "short_name": "Désert",
+    "priority": 3,
+    "tags": [],
+    "description_fr": "Grand secteur à l’est d’Apremont avec 4 beaux circuits accessibles pour débutants et initiés",
+    "description_en": "Large area to the east of Apremont with 4 beautiful circuits accessible for beginners and intermediates.",
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.43532995947,
+        "lng": 2.6427432327
+      },
+      "north_east": {
+        "lat": 48.43777258467,
+        "lng": 2.64891472698
+      }
+    },
+    "levels": {
+      "1": 0,
+      "2": 39,
+      "3": 65,
+      "4": 36,
+      "5": 10,
+      "6": 65,
+      "7": 80,
+      "8": 3
+    },
+    "problems_count": 298
+  },
+  {
+    "id": 76,
+    "slug": "roche-hercule",
+    "name": "Roche d'Hercule",
+    "short_name": "Hercule",
+    "priority": 3,
+    "tags": [],
+    "description_fr": "Secteur proche de Fontainebleau juste à côté du Mont Ussy, intéressant notamment pour l’imposant pilier de la roche d’Hercule et le superbe toit de Rince-Mi.",
+    "description_en": "Area close to Fontainebleau right next to Mont Ussy, particularly interesting for the imposing pillar of la roche d'Hercule and the superb roof of Rince-Mi.",
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.42098359989,
+        "lng": 2.69972987456
+      },
+      "north_east": {
+        "lat": 48.42227825627,
+        "lng": 2.70561562558
+      }
+    },
+    "levels": {
+      "1": 0,
+      "2": 0,
+      "3": 1,
+      "4": 1,
+      "5": 13,
+      "6": 46,
+      "7": 48,
+      "8": 1
+    },
+    "problems_count": 110
+  },
+  {
+    "id": 62,
+    "slug": "apremont-envers",
+    "name": "Apremont Envers",
+    "short_name": "Envers",
+    "priority": 2,
+    "tags": [
+      "family_friendly"
+    ],
+    "description_fr": "Apremont Envers est un secteur calme situé à côté d'Apremont.",
+    "description_en": "Apremont Envers is a quiet area located next to Apremont.",
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.43784038401,
+        "lng": 2.62910758596
+      },
+      "north_east": {
+        "lat": 48.43995320747,
+        "lng": 2.63522508742
+      }
+    },
+    "levels": {
+      "1": 2,
+      "2": 37,
+      "3": 12,
+      "4": 15,
+      "5": 51,
+      "6": 50,
+      "7": 66,
+      "8": 9
+    },
+    "problems_count": 242
+  },
+  {
+    "id": 68,
+    "slug": "restant-long-rocher-nord",
+    "name": "Restant du Long Rocher Nord",
+    "short_name": "Long Rocher Nord",
+    "priority": 2,
+    "tags": [],
+    "description_fr": "Restant du Long Rocher Nord est un petit secteur proche de Restant du Long Rocher.",
+    "description_en": "Restant du Long Rocher Nord is a small area located right next to Restant du Long Rocher.",
+    "warning_fr": null,
+    "warning_en": null,
+    "published": false,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.35682669656,
+        "lng": 2.73094573205
+      },
+      "north_east": {
+        "lat": 48.35837863479,
+        "lng": 2.73390959914
+      }
+    },
+    "levels": {
+      "1": 0,
+      "2": 10,
+      "3": 13,
+      "4": 15,
+      "5": 2,
+      "6": 10,
+      "7": 16,
+      "8": 1
+    },
+    "problems_count": 67
+  },
+  {
+    "id": 84,
+    "slug": "puiselet-mont-sarrasin",
+    "name": "Puiselet Mont Sarrasin",
+    "short_name": "Mont Sarrasin",
+    "priority": 3,
+    "tags": [],
+    "description_fr": "Situé proche de Nemours, Puiselet Mont Sarrasin est un grand secteur connu pour quelques beaux classiques ainsi que ses circuits (parfois hauts et engagés cependant !)",
+    "description_en": "Located near Nemours, Puiselet Mont Sarrasin is a large area known for some beautiful classics as well as its circuits (although sometimes high and challenging!)",
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.26813169195,
+        "lng": 2.64478069057
+      },
+      "north_east": {
+        "lat": 48.26986331484,
+        "lng": 2.65040405061
+      }
+    },
+    "levels": {
+      "1": 8,
+      "2": 40,
+      "3": 67,
+      "4": 27,
+      "5": 49,
+      "6": 37,
+      "7": 32,
+      "8": 0
+    },
+    "problems_count": 260
+  },
+  {
+    "id": 59,
+    "slug": "gros-sablons",
+    "name": "Gros Sablons",
+    "short_name": null,
+    "priority": 2,
+    "tags": [
+      "dry_fast"
+    ],
+    "description_fr": "Gros Sablons s'étend sur une grande distance, prévoyez donc de marcher entre les blocs.",
+    "description_en": "Gros Sablons stretches over a long distance, which means you'll have to walk between boulders.",
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.38305452748,
+        "lng": 2.53614529934
+      },
+      "north_east": {
+        "lat": 48.38666370213,
+        "lng": 2.54318006303
+      }
+    },
+    "levels": {
+      "1": 0,
+      "2": 15,
+      "3": 52,
+      "4": 38,
+      "5": 39,
+      "6": 25,
+      "7": 23,
+      "8": 4
+    },
+    "problems_count": 196
+  },
+  {
+    "id": 85,
+    "slug": "long-boyau",
+    "name": "Long Boyau",
+    "short_name": null,
+    "priority": 3,
+    "tags": [],
+    "description_fr": null,
+    "description_en": null,
+    "warning_fr": null,
+    "warning_en": null,
+    "published": false,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.3994980346,
+        "lng": 2.65817306868
+      },
+      "north_east": {
+        "lat": 48.40069004795,
+        "lng": 2.66085796024
+      }
+    },
+    "levels": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 2,
+      "6": 6,
+      "7": 14,
+      "8": 0
+    },
+    "problems_count": 22
+  },
+  {
+    "id": 64,
+    "slug": "cuvier-rempart",
+    "name": "Cuvier Rempart",
+    "short_name": "Rempart",
+    "priority": 2,
+    "tags": [],
+    "description_fr": "Cuvier Rempart est un secteur historique proposant plus de 500 voies, essentiellement dans les niveaux 5 à 7.",
+    "description_en": "Cuvier Rempart is a historical area offering more than 500 problems, mostly graded between 5 and 7.",
+    "warning_fr": "Attention : le circuit jaune ne convient pas du tout aux débutants.",
+    "warning_en": "Watch out: the yellow circuit isn't suited for beginners.",
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.44467402422,
+        "lng": 2.64486806872
+      },
+      "north_east": {
+        "lat": 48.4460189628,
+        "lng": 2.64971343228
+      }
+    },
+    "levels": {
+      "1": 0,
+      "2": 6,
+      "3": 20,
+      "4": 38,
+      "5": 121,
+      "6": 172,
+      "7": 142,
+      "8": 34
+    },
+    "problems_count": 533
+  },
+  {
+    "id": 61,
+    "slug": "rocher-de-la-reine",
+    "name": "Rocher de la Reine",
+    "short_name": null,
+    "priority": 2,
+    "tags": [
+      "dry_fast",
+      "family_friendly"
+    ],
+    "description_fr": "Rocher de la Reine est un joli secteur, idéal pour profiter d'une journée en famille ou entre amis.",
+    "description_en": "Rocher de la Reine is a lovely area, quite suited for a day out with family or friends.",
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.391639174,
+        "lng": 2.56067797122
+      },
+      "north_east": {
+        "lat": 48.3930773769,
+        "lng": 2.56449222531
+      }
+    },
+    "levels": {
+      "1": 1,
+      "2": 45,
+      "3": 22,
+      "4": 43,
+      "5": 16,
+      "6": 68,
+      "7": 49,
+      "8": 3
+    },
+    "problems_count": 247
+  },
+  {
+    "id": 71,
+    "slug": "gros-sablons-nord",
+    "name": "Gros Sablons Nord",
+    "short_name": null,
+    "priority": 3,
+    "tags": [],
+    "description_fr": "Gros Sablons Nord est situé juste à côté de Gros Sablons.",
+    "description_en": "Gros Sablons Nord is located right next to Gros Sablons.",
+    "warning_fr": null,
+    "warning_en": null,
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.3870613659,
+        "lng": 2.53387313302
+      },
+      "north_east": {
+        "lat": 48.38871318608,
+        "lng": 2.53668742971
+      }
+    },
+    "levels": {
+      "1": 0,
+      "2": 19,
+      "3": 17,
+      "4": 44,
+      "5": 15,
+      "6": 13,
+      "7": 11,
+      "8": 0
+    },
+    "problems_count": 119
+  },
+  {
+    "id": 69,
+    "slug": "apremont-est",
+    "name": "Apremont Est",
+    "short_name": "Est",
+    "priority": 2,
+    "tags": [],
+    "description_fr": null,
+    "description_en": null,
+    "warning_fr": "À savoir : il est assez difficile de se déplacer et se repérer, le secteur étant situé dans un vrai chaos rocheux.",
+    "warning_en": "Careful: it can be quite tricky to find your way around because of the boulder chaos.",
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.43495955356,
+        "lng": 2.62918844786
+      },
+      "north_east": {
+        "lat": 48.43642493182,
+        "lng": 2.63259797493
+      }
+    },
+    "levels": {
+      "1": 1,
+      "2": 39,
+      "3": 58,
+      "4": 47,
+      "5": 76,
+      "6": 51,
+      "7": 56,
+      "8": 3
+    },
+    "problems_count": 331
+  },
+  {
+    "id": 70,
+    "slug": "rocher-avon-est",
+    "name": "Rocher d'Avon Est",
+    "short_name": "Avon Est",
+    "priority": 2,
+    "tags": [],
+    "description_fr": null,
+    "description_en": null,
+    "warning_fr": "Septembre 2022 : le parking historique le long de la D606 n'est plus accessible.",
+    "warning_en": "September 2022: the historic parking lot along the D606 is no longer accessible.",
+    "published": true,
+    "cluster_id": null,
+    "bounds": {
+      "south_west": {
+        "lat": 48.39227635193,
+        "lng": 2.72898372229
+      },
+      "north_east": {
+        "lat": 48.39297563551,
+        "lng": 2.7314258736
+      }
+    },
+    "levels": {
+      "1": 0,
+      "2": 0,
+      "3": 2,
+      "4": 5,
+      "5": 13,
+      "6": 11,
+      "7": 5,
+      "8": 0
+    },
+    "problems_count": 36
+  }
+]

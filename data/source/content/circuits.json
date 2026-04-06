@@ -1,0 +1,1698 @@
+[
+  {
+    "id": 110,
+    "color": "orange",
+    "average_grade": "2c",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 80,
+    "color": "yellow",
+    "average_grade": "1c",
+    "beginner_friendly": true,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 68,
+    "color": "red",
+    "average_grade": "6a",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 53,
+    "color": "purple",
+    "average_grade": "2a",
+    "beginner_friendly": true,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 10,
+    "color": "orange",
+    "average_grade": "2c",
+    "beginner_friendly": true,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 54,
+    "color": "yellow",
+    "average_grade": "2b",
+    "beginner_friendly": true,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 61,
+    "color": "yellow",
+    "average_grade": "2b",
+    "beginner_friendly": true,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 62,
+    "color": "yellow",
+    "average_grade": "2b",
+    "beginner_friendly": true,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 69,
+    "color": "yellow",
+    "average_grade": "2b",
+    "beginner_friendly": true,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 72,
+    "color": "yellow",
+    "average_grade": "2c",
+    "beginner_friendly": true,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 90,
+    "color": "yellow",
+    "average_grade": "2b",
+    "beginner_friendly": true,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 97,
+    "color": "yellow",
+    "average_grade": "2b",
+    "beginner_friendly": true,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 103,
+    "color": "yellow",
+    "average_grade": "2b",
+    "beginner_friendly": true,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 1,
+    "color": "yellow",
+    "average_grade": "2c",
+    "beginner_friendly": true,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 24,
+    "color": "yellow",
+    "average_grade": "2c",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 30,
+    "color": "yellow",
+    "average_grade": "2c",
+    "beginner_friendly": true,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 85,
+    "color": "yellow",
+    "average_grade": "2c",
+    "beginner_friendly": true,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 94,
+    "color": "yellow",
+    "average_grade": "2c",
+    "beginner_friendly": true,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 49,
+    "color": "yellow",
+    "average_grade": "2c",
+    "beginner_friendly": true,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 81,
+    "color": "orange",
+    "average_grade": "2c",
+    "beginner_friendly": true,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 14,
+    "color": "orange",
+    "average_grade": "3a",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 41,
+    "color": "yellow",
+    "average_grade": "3a",
+    "beginner_friendly": true,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 45,
+    "color": "orange",
+    "average_grade": "3a",
+    "beginner_friendly": true,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 37,
+    "color": "orange",
+    "average_grade": "3b",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 38,
+    "color": "blue",
+    "average_grade": "4b",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 39,
+    "color": "red",
+    "average_grade": "5a",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 40,
+    "color": "white",
+    "average_grade": "6a",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 58,
+    "color": "orange",
+    "average_grade": "3a",
+    "beginner_friendly": true,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 66,
+    "color": "orange",
+    "average_grade": "3a",
+    "beginner_friendly": true,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 63,
+    "color": "orange",
+    "average_grade": "3a",
+    "beginner_friendly": true,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 64,
+    "color": "orange",
+    "average_grade": "3b",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 65,
+    "color": "red",
+    "average_grade": "5b",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 99,
+    "color": "blue",
+    "average_grade": "4b",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 100,
+    "color": "red",
+    "average_grade": "5c",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 101,
+    "color": "black",
+    "average_grade": "6b",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 102,
+    "color": "white",
+    "average_grade": "6c",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 104,
+    "color": "orange",
+    "average_grade": "3a",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 105,
+    "color": "orange",
+    "average_grade": "3b",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 106,
+    "color": "skyblue",
+    "average_grade": "4b",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 108,
+    "color": "red",
+    "average_grade": "5c",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 107,
+    "color": "blue",
+    "average_grade": "4c",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 2,
+    "color": "orange",
+    "average_grade": "3b",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 50,
+    "color": "orange",
+    "average_grade": "3a",
+    "beginner_friendly": true,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 51,
+    "color": "blue",
+    "average_grade": "4b",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 52,
+    "color": "red",
+    "average_grade": "5c",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 46,
+    "color": "orange",
+    "average_grade": "3b",
+    "beginner_friendly": true,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 47,
+    "color": "blue",
+    "average_grade": "4b",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 48,
+    "color": "red",
+    "average_grade": "6a",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 74,
+    "color": "orange",
+    "average_grade": "3b",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 75,
+    "color": "red",
+    "average_grade": "5b",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 77,
+    "color": "orange",
+    "average_grade": "3b",
+    "beginner_friendly": true,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 78,
+    "color": "blue",
+    "average_grade": "4c",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 79,
+    "color": "red",
+    "average_grade": "6a",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 89,
+    "color": "orange",
+    "average_grade": "3b",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 20,
+    "color": "orange",
+    "average_grade": "3b",
+    "beginner_friendly": true,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 21,
+    "color": "blue",
+    "average_grade": "4b",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 22,
+    "color": "red",
+    "average_grade": "5b",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 23,
+    "color": "white",
+    "average_grade": "6a",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 31,
+    "color": "orange",
+    "average_grade": "3c",
+    "beginner_friendly": true,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 32,
+    "color": "blue",
+    "average_grade": "4b",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 33,
+    "color": "red",
+    "average_grade": "5c",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 55,
+    "color": "orange",
+    "average_grade": "3b",
+    "beginner_friendly": true,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 56,
+    "color": "blue",
+    "average_grade": "4b",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 57,
+    "color": "red",
+    "average_grade": "5c",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 70,
+    "color": "orange",
+    "average_grade": "3b",
+    "beginner_friendly": true,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 71,
+    "color": "blue",
+    "average_grade": "4b",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 73,
+    "color": "orange",
+    "average_grade": "3b",
+    "beginner_friendly": true,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 86,
+    "color": "orange",
+    "average_grade": "3b",
+    "beginner_friendly": true,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 87,
+    "color": "blue",
+    "average_grade": "4c",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 88,
+    "color": "red",
+    "average_grade": "6a",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 91,
+    "color": "orange",
+    "average_grade": "3b",
+    "beginner_friendly": true,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 43,
+    "color": "red",
+    "average_grade": "5a",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 44,
+    "color": "white",
+    "average_grade": "5c",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 12,
+    "color": "blue",
+    "average_grade": "4a",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 11,
+    "color": "red",
+    "average_grade": "5b",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 34,
+    "color": "yellow",
+    "average_grade": "2a",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 35,
+    "color": "blue",
+    "average_grade": "4b",
+    "beginner_friendly": false,
+    "dangerous": true,
+    "risk": 3
+  },
+  {
+    "id": 36,
+    "color": "black",
+    "average_grade": "6a",
+    "beginner_friendly": false,
+    "dangerous": true,
+    "risk": 3
+  },
+  {
+    "id": 67,
+    "color": "blue",
+    "average_grade": "4c",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 25,
+    "color": "blue",
+    "average_grade": "4a",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 5,
+    "color": "blue",
+    "average_grade": "4a",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 3,
+    "color": "skyblue",
+    "average_grade": "4c",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 4,
+    "color": "red",
+    "average_grade": "6a",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 6,
+    "color": "white",
+    "average_grade": "7a",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 59,
+    "color": "blue",
+    "average_grade": "4b",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 60,
+    "color": "red",
+    "average_grade": "5c",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 111,
+    "color": "blue",
+    "average_grade": "4b",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 112,
+    "color": "red",
+    "average_grade": "5c",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 82,
+    "color": "blue",
+    "average_grade": "4b",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 13,
+    "color": "blue",
+    "average_grade": "5a",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 83,
+    "color": "red",
+    "average_grade": "5b",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 15,
+    "color": "red",
+    "average_grade": "5c",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 18,
+    "color": "black",
+    "average_grade": "6a",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 19,
+    "color": "white",
+    "average_grade": "6c",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 84,
+    "color": "black",
+    "average_grade": "6a",
+    "beginner_friendly": false,
+    "dangerous": true,
+    "risk": 3
+  },
+  {
+    "id": 109,
+    "color": "black",
+    "average_grade": "6c",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 123,
+    "color": "red",
+    "average_grade": "5b",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": null
+  },
+  {
+    "id": 173,
+    "color": "blue",
+    "average_grade": "4c",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 162,
+    "color": "orange",
+    "average_grade": "3c",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": null
+  },
+  {
+    "id": 164,
+    "color": "yellow",
+    "average_grade": "2b",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": null
+  },
+  {
+    "id": 165,
+    "color": "orange",
+    "average_grade": "2c",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": null
+  },
+  {
+    "id": 171,
+    "color": "orange",
+    "average_grade": "3a",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 172,
+    "color": "orange",
+    "average_grade": "3a",
+    "beginner_friendly": true,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 151,
+    "color": "yellow",
+    "average_grade": "2a",
+    "beginner_friendly": true,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 186,
+    "color": "orange",
+    "average_grade": "3c",
+    "beginner_friendly": true,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 93,
+    "color": "blue",
+    "average_grade": "4c",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 178,
+    "color": "yellow",
+    "average_grade": "2b",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": null
+  },
+  {
+    "id": 181,
+    "color": "blue",
+    "average_grade": "4b",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": null
+  },
+  {
+    "id": 180,
+    "color": "orange",
+    "average_grade": "3b",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": null
+  },
+  {
+    "id": 179,
+    "color": "orange",
+    "average_grade": "3a",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": null
+  },
+  {
+    "id": 160,
+    "color": "yellow",
+    "average_grade": "2a",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 191,
+    "color": "yellow",
+    "average_grade": "2b",
+    "beginner_friendly": true,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 128,
+    "color": "orange",
+    "average_grade": "2c",
+    "beginner_friendly": false,
+    "dangerous": true,
+    "risk": 3
+  },
+  {
+    "id": 120,
+    "color": "yellow",
+    "average_grade": "2b",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 119,
+    "color": "yellow",
+    "average_grade": "2c",
+    "beginner_friendly": true,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 127,
+    "color": "yellow",
+    "average_grade": "2b",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 196,
+    "color": "blue",
+    "average_grade": "4b",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 194,
+    "color": "yellow",
+    "average_grade": "2a",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 163,
+    "color": "blue",
+    "average_grade": "4b",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 140,
+    "color": "yellow",
+    "average_grade": "2b",
+    "beginner_friendly": true,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 155,
+    "color": "yellow",
+    "average_grade": "2b",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 158,
+    "color": "yellow",
+    "average_grade": "2b",
+    "beginner_friendly": true,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 170,
+    "color": "yellow",
+    "average_grade": "2a",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 124,
+    "color": "orange",
+    "average_grade": "2c",
+    "beginner_friendly": false,
+    "dangerous": true,
+    "risk": 3
+  },
+  {
+    "id": 174,
+    "color": "yellow",
+    "average_grade": "2c",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 129,
+    "color": "purple",
+    "average_grade": "3b",
+    "beginner_friendly": false,
+    "dangerous": true,
+    "risk": 3
+  },
+  {
+    "id": 130,
+    "color": "blue",
+    "average_grade": "4a",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 132,
+    "color": "red",
+    "average_grade": "4c",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 131,
+    "color": "red",
+    "average_grade": "5a",
+    "beginner_friendly": false,
+    "dangerous": true,
+    "risk": 3
+  },
+  {
+    "id": 133,
+    "color": "white",
+    "average_grade": "6a",
+    "beginner_friendly": false,
+    "dangerous": true,
+    "risk": 3
+  },
+  {
+    "id": 134,
+    "color": "black",
+    "average_grade": "7a",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 161,
+    "color": "orange",
+    "average_grade": "3a",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 166,
+    "color": "orange",
+    "average_grade": "3a",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 167,
+    "color": "orange",
+    "average_grade": "3b",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 168,
+    "color": "blue",
+    "average_grade": "4c",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 192,
+    "color": "blue",
+    "average_grade": "4c",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 169,
+    "color": "black",
+    "average_grade": "5c",
+    "beginner_friendly": false,
+    "dangerous": true,
+    "risk": 3
+  },
+  {
+    "id": 182,
+    "color": "red",
+    "average_grade": "3a",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 29,
+    "color": "green",
+    "average_grade": "3a",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 141,
+    "color": "orange",
+    "average_grade": "3b",
+    "beginner_friendly": true,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 142,
+    "color": "blue",
+    "average_grade": "4b",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 143,
+    "color": "black",
+    "average_grade": "5c",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 114,
+    "color": "orange",
+    "average_grade": "3b",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 115,
+    "color": "orange",
+    "average_grade": "3c",
+    "beginner_friendly": true,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 116,
+    "color": "blue",
+    "average_grade": "4b",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 117,
+    "color": "red",
+    "average_grade": "5b",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 118,
+    "color": "orange",
+    "average_grade": "3b",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 137,
+    "color": "orange",
+    "average_grade": "3b",
+    "beginner_friendly": true,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 138,
+    "color": "blue",
+    "average_grade": "4a",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 139,
+    "color": "red",
+    "average_grade": "5a",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 144,
+    "color": "orange",
+    "average_grade": "3b",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 27,
+    "color": "red",
+    "average_grade": "5c",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 148,
+    "color": "white",
+    "average_grade": "6c",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 150,
+    "color": "orange",
+    "average_grade": "3b",
+    "beginner_friendly": true,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 92,
+    "color": "blue",
+    "average_grade": "4b",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 95,
+    "color": "orange",
+    "average_grade": "3b",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 96,
+    "color": "red",
+    "average_grade": "5b",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 183,
+    "color": "yellow",
+    "average_grade": "4a",
+    "beginner_friendly": false,
+    "dangerous": true,
+    "risk": 3
+  },
+  {
+    "id": 184,
+    "color": "black",
+    "average_grade": "5b",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 152,
+    "color": "orange",
+    "average_grade": "3c",
+    "beginner_friendly": true,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 153,
+    "color": "orange",
+    "average_grade": "3b",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 154,
+    "color": "red",
+    "average_grade": "5a",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 42,
+    "color": "orange",
+    "average_grade": "3c",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 125,
+    "color": "blue",
+    "average_grade": "3c",
+    "beginner_friendly": false,
+    "dangerous": true,
+    "risk": 3
+  },
+  {
+    "id": 126,
+    "color": "red",
+    "average_grade": "5c",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 156,
+    "color": "orange",
+    "average_grade": "3b",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 157,
+    "color": "red",
+    "average_grade": "6b",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 121,
+    "color": "orange",
+    "average_grade": "3c",
+    "beginner_friendly": true,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 136,
+    "color": "blue",
+    "average_grade": "4a",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 122,
+    "color": "red",
+    "average_grade": "4b",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 113,
+    "color": "black",
+    "average_grade": "6c",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 145,
+    "color": "blue",
+    "average_grade": "4b",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 146,
+    "color": "red",
+    "average_grade": "4b",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 175,
+    "color": "blue",
+    "average_grade": "4b",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 135,
+    "color": "blue",
+    "average_grade": "4c",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 159,
+    "color": "blue",
+    "average_grade": "4c",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 28,
+    "color": "salmon",
+    "average_grade": "4c",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 177,
+    "color": "red",
+    "average_grade": "5a",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 26,
+    "color": "skyblue",
+    "average_grade": "5b",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 176,
+    "color": "yellow",
+    "average_grade": "2c",
+    "beginner_friendly": true,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 195,
+    "color": "orange",
+    "average_grade": "3a",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 197,
+    "color": "yellow",
+    "average_grade": "2b",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 198,
+    "color": "orange",
+    "average_grade": "3b",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 199,
+    "color": "blue",
+    "average_grade": "4b",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 200,
+    "color": "purple",
+    "average_grade": "2a",
+    "beginner_friendly": true,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 201,
+    "color": "yellow",
+    "average_grade": "2b",
+    "beginner_friendly": true,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 202,
+    "color": "yellow",
+    "average_grade": "2b",
+    "beginner_friendly": true,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 203,
+    "color": "blue",
+    "average_grade": "4b",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": 2
+  },
+  {
+    "id": 204,
+    "color": "red",
+    "average_grade": "5c",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": null
+  },
+  {
+    "id": 205,
+    "color": "orange",
+    "average_grade": "3b",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": null
+  },
+  {
+    "id": 206,
+    "color": "blue",
+    "average_grade": "4b",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": null
+  },
+  {
+    "id": 207,
+    "color": "black",
+    "average_grade": "6a",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": null
+  },
+  {
+    "id": 209,
+    "color": "blue",
+    "average_grade": "4b",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": null
+  },
+  {
+    "id": 210,
+    "color": "black",
+    "average_grade": "7a",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": null
+  },
+  {
+    "id": 211,
+    "color": "yellow",
+    "average_grade": "2c",
+    "beginner_friendly": true,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 212,
+    "color": "yellow",
+    "average_grade": "2c",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": null
+  },
+  {
+    "id": 213,
+    "color": "orange",
+    "average_grade": "3c",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": null
+  },
+  {
+    "id": 214,
+    "color": "orange",
+    "average_grade": "3b",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": null
+  },
+  {
+    "id": 215,
+    "color": "blue",
+    "average_grade": "4b",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": null
+  },
+  {
+    "id": 216,
+    "color": "red",
+    "average_grade": "5b",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": null
+  },
+  {
+    "id": 218,
+    "color": "orange",
+    "average_grade": "3a",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": null
+  },
+  {
+    "id": 219,
+    "color": "blue",
+    "average_grade": "5a",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": null
+  },
+  {
+    "id": 220,
+    "color": "red",
+    "average_grade": "5b",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": null
+  },
+  {
+    "id": 221,
+    "color": "black",
+    "average_grade": "6a",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": null
+  },
+  {
+    "id": 224,
+    "color": "orange",
+    "average_grade": "3a",
+    "beginner_friendly": false,
+    "dangerous": true,
+    "risk": 3
+  },
+  {
+    "id": 98,
+    "color": "orange",
+    "average_grade": "3a",
+    "beginner_friendly": true,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 225,
+    "color": "blue",
+    "average_grade": "4c",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": null
+  },
+  {
+    "id": 227,
+    "color": "yellow",
+    "average_grade": "2b",
+    "beginner_friendly": false,
+    "dangerous": false,
+    "risk": null
+  },
+  {
+    "id": 226,
+    "color": "black",
+    "average_grade": "5c",
+    "beginner_friendly": false,
+    "dangerous": true,
+    "risk": 3
+  },
+  {
+    "id": 222,
+    "color": "green",
+    "average_grade": "1b",
+    "beginner_friendly": true,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 217,
+    "color": "yellow",
+    "average_grade": "2c",
+    "beginner_friendly": true,
+    "dangerous": false,
+    "risk": 1
+  },
+  {
+    "id": 208,
+    "color": "yellow",
+    "average_grade": "2b",
+    "beginner_friendly": true,
+    "dangerous": false,
+    "risk": 1
+  }
+]

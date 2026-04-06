@@ -65,6 +65,34 @@ We use it to edit GeoJSON files.
 - Restart Josm
 - In the menu bar (on the left), click on `Fast Drawing mode` and then type `Q` to enter the options dialog. Click on `Draw closed polygons only`, choose `3` for `Starting Epsilon` and `Simplify with initial epsilon` for `Enter key mode`
 
+## Static Site Build
+
+The public site is being migrated to a static, file-backed architecture. Source
+data lives under `data/source/` (see `data/source/README.md` for the layout).
+
+### Prerequisites
+
+Ensure source data files are in place:
+
+```bash
+mkdir -p data/source/geojson data/source/content data/source/media/topos data/source/media/area-covers
+```
+
+### Build
+
+```bash
+ruby scripts/static/build.rb
+```
+
+This generates a deployable `dist/` directory containing all static HTML, JSON,
+and media assets.
+
+### Deploy
+
+```bash
+rsync -av dist/ <static-host>
+```
+
 ## Contribute
 
 Want to help us improve the app for thousands of climbers? Great!

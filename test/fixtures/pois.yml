@@ -1,15 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
-  subtitle: MyString
-  description: MyString
-  location: MyString
-  route: MyString
+  name: Parking Isatis
+  short_name: P. Isatis
+  google_url: https://maps.google.com/123
+  poi_type: parking
 
 two:
-  title: MyString
-  subtitle: MyString
-  description: MyString
-  location: MyString
-  route: MyString
+  name: Gare de Bois-le-Roi
+  short_name: Bois-le-Roi
+  google_url: https://maps.google.com/456
+  poi_type: train_station

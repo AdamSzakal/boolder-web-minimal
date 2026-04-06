@@ -1,20 +1,17 @@
 import { Controller } from "@hotwired/stimulus";
 
-function debouncePromise(fn, time) {
+function debounce(fn, time) {
   let timerId;
   return function (...args) {
     if (timerId) clearTimeout(timerId);
-    return new Promise(resolve => {
-      timerId = setTimeout(() => resolve(fn(...args)), time);
-    });
+    timerId = setTimeout(() => fn(...args), time);
   };
 }
 
-const debouncedFetch = debouncePromise((query, params = {}) => {
-  if (!query) return Promise.resolve(null);
-  const searchParams = new URLSearchParams({ query, ...params });
-  return fetch(`/search?${searchParams.toString()}`).then(res => res.json());
-}, 400);
+function normalize(str) {
+  if (!str) return "";
+  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^0-9a-zA-Z]/g, "").toLowerCase();
+}
 
 const colorMapping = {
   yellow: "#FFCC02",
@@ -64,7 +61,14 @@ export default class extends Controller {
     this.locale = this.hasLocaleValue ? this.localeValue : "en";
     this.showUnpublished = this.showUnpublishedValue;
     this._activeDescendant = '';
-    this.updatingResults = false;
+    this.index = null;
+    this.debouncedSearch = debounce(() => this.performSearch(), 200);
+
+    // Preload the static search index
+    fetch("/assets/search-index.json")
+      .then(res => res.json())
+      .then(data => { this.index = data; })
+      .catch(() => { /* search will be unavailable */ });
   }
 
   get activeDescendant() {
@@ -91,26 +95,33 @@ export default class extends Controller {
     }
   }
 
-  async performSearch() {
+  performSearch() {
     const query = this.searchInputTarget.value.trim();
-
-    this.searchResultsTarget.classList.add('!text-gray-400', 'grayscale', 'filter');
-
-    if (query.length) {
-      this.searchIconTarget.classList.add("hidden");
-      this.spinnerIconTarget.classList.remove("hidden");
-      this.clearButtonTarget.classList.remove("hidden");
-    }
-
-    const results = await debouncedFetch(query, 
-      this.showUnpublished ? { show_unpublished: true } : {});
-
-    this.searchResultsTarget.classList.remove('!text-gray-400', 'grayscale', 'filter');
 
     if (query.length === 0) {
       this.clearResults();
       return;
     }
+
+    if (!this.index) return;
+
+    this.searchIconTarget.classList.add("hidden");
+    this.spinnerIconTarget.classList.remove("hidden");
+    this.clearButtonTarget.classList.remove("hidden");
+
+    const normalizedQuery = normalize(query);
+
+    const areaResults = this.index.areas
+      .filter(record => record.normalized_name.includes(normalizedQuery))
+      .map(record => ({ ...record, type: "Area" }));
+
+    const problemResults = this.index.problems
+      .filter(record => record.normalized_name && record.normalized_name.includes(normalizedQuery))
+      .sort((a, b) => (b.popularity || 0) - (a.popularity || 0))
+      .slice(0, 20)
+      .map(record => ({ ...record, type: "Problem" }));
+
+    const results = [...areaResults, ...problemResults];
 
     this.searchIconTarget.classList.remove("hidden");
     this.spinnerIconTarget.classList.add("hidden");
@@ -126,7 +137,7 @@ export default class extends Controller {
     results.forEach((item) => {
       const li = document.createElement("li");
       li.className = "select-none px-4 py-2";
-      li.id = `option-${item.id}`;
+      li.id = `option-${item.type}-${item.id}`;
       li.role = "option";
       li.tabIndex = "-1";
       li.setAttribute('aria-selected', 'false');
@@ -175,10 +186,9 @@ export default class extends Controller {
             <span style="background: ${bgColor(item.circuit_color)}; color: ${textColor(item.circuit_color)}" class="rounded-full h-6 w-6 leading-6 inline-flex justify-center flex-shrink-0">
               ${item.circuit_number || "&nbsp;"}
             </span>
-            <span class="ml-2">${item.name}</span>
-            <span class="ml-2 text-gray-400">${item.grade}</span>
+            <span class="ml-2">${item.name || ""}</span>
+            <span class="ml-2 text-gray-400">${item.grade || ""}</span>
           </div>
-          <span class="ml-2 text-gray-400 flex-shrink-0">${item.area_name}</span>
         </div>
       `;
     } else {
@@ -199,18 +209,13 @@ export default class extends Controller {
       return {
         id: item.id,
         name: item.name,
-        south_west_lat: item.bounds.south_west.lat,
-        south_west_lon: item.bounds.south_west.lng,
-        north_east_lat: item.bounds.north_east.lat,
-        north_east_lon: item.bounds.north_east.lng,
+        slug: item.slug
       };
     } else {
       return {
         id: item.id,
         name: item.name,
-        grade: item.grade,
-        lat: item.geolocation.lat,
-        lon: item.geolocation.lng
+        grade: item.grade
       };
     }
   }

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="<%= locale %>">
+  <head>
+    <link rel="icon" href="/icon.png" type="image/png">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/icon.png">
+    <title>Boolder</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/tailwind.css">
+    <script>
+      let locale = "<%= locale %>";
+      window.addEventListener('gotoproblem', function(event) {
+        window.location = `/${locale}/fontainebleau/${event.detail.slug || 'search'}/${event.detail.id}`;
+      });
+      window.addEventListener('gotoarea', function(event) {
+        window.location = `/${locale}/fontainebleau/${event.detail.slug}`;
+      });
+    </script>
+  </head>
+  <body class="bg-white dark:bg-gray-900">
+    <div class="bg-gray-100 dark:bg-gray-800">
+      <nav class="bg-white dark:bg-gray-900 shadow dark:shadow-gray-700/50">
+        <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
+          <div class="flex justify-between h-16">
+            <div class="flex px-2 lg:px-0">
+              <div class="flex-shrink-0 flex items-center">
+                <a href="/<%= locale %>">
+                  <img src="/images/logo.svg" class="h-8 w-auto" alt="Boolder">
+                </a>
+              </div>
+              <div class="ml-6 flex space-x-8">
+                <a href="/<%= locale %>/fontainebleau" class="flex items-center px-1 pt-1 font-medium text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100">
+                  <%= locale == "fr" ? "Secteurs" : "Areas" %>
+                </a>
+                <a href="/<%= locale %>/fontainebleau/boulders" class="flex items-center px-1 pt-1 font-medium text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100">
+                  <%= locale == "fr" ? "Voies" : "Boulders" %>
+                </a>
+                <a href="/<%= locale %>/map" class="flex items-center px-1 pt-1 font-medium text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100">
+                  <%= locale == "fr" ? "Carte" : "Map" %>
+                </a>
+                <button type="button" data-action="click->search#openModal" class="px-1 pt-1 font-medium text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100" aria-label="Search">
+                  <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <%= content %>
+
+      <div class="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
+        <div class="max-w-7xl mx-auto py-3 px-4 sm:px-6 lg:px-8 flex justify-center">
+          <a href="/<%= locale %>/projects" class="flex items-center space-x-1.5 text-base text-gray-400 dark:text-gray-500 hover:text-gray-900 dark:hover:text-gray-100">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+            </svg>
+            <span><%= locale == "fr" ? "Ma liste de projets" : "My project list" %></span>
+          </a>
+        </div>
+      </div>
+
+      <footer class="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
+        <div class="max-w-7xl mx-auto py-4 px-4 overflow-hidden sm:px-6 lg:px-8">
+          <div class="flex justify-between">
+            <nav class="flex flex-wrap justify-center" aria-label="Footer">
+              <div class="px-4 py-2">
+                <a href="/<%= locale %>" class="text-base text-gray-400 dark:text-gray-500 hover:text-gray-900 dark:hover:text-gray-100">
+                  Boolder
+                </a>
+              </div>
+            </nav>
+            <nav class="flex flex-wrap justify-center" aria-label="Footer">
+              <%- if locale == "en" -%>
+                <a href="<%= (defined?(current_path) && current_path ? current_path : "").to_s.sub("/en", "/fr") %>" class="py-2 text-base text-gray-400 dark:text-gray-500 hover:text-gray-900 dark:hover:text-gray-100">
+                  Français
+                </a>
+              <%- else -%>
+                <a href="<%= (defined?(current_path) && current_path ? current_path : "").to_s.sub("/fr", "/en") %>" class="py-2 text-base text-gray-400 dark:text-gray-500 hover:text-gray-900 dark:hover:text-gray-100">
+                  English
+                </a>
+              <%- end -%>
+            </nav>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

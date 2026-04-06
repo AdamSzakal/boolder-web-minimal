@@ -55,22 +55,6 @@ Rails.application.configure do
   config.active_job.queue_adapter = :solid_queue
   config.solid_queue.connects_to = { database: { writing: :queue } }
 
-  # Ignore bad email addresses and do not raise email delivery errors.
-  # Set this to true and configure the email server for immediate delivery to raise delivery errors.
-  config.action_mailer.raise_delivery_errors = true
-
-  # Set host to be used by links generated in mailer templates.
-  config.action_mailer.default_url_options = { host: "www.boolder.com", protocol: "https" }
-
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    address: "email-smtp.eu-north-1.amazonaws.com",
-    port: "587",
-    authentication: :plain,
-    user_name: Rails.application.credentials.dig(:amazon_smtp, :username),
-    password: Rails.application.credentials.dig(:amazon_smtp, :password)
-  }
-
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
   config.i18n.fallbacks = [ I18n.default_locale ]

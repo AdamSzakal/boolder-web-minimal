@@ -6,8 +6,6 @@ class Topo < ApplicationRecord
   has_many :lines, dependent: :destroy
   has_many :problems, through: :lines
 
-  audited
-
   scope :published, -> { where(published: true) }
 
   validates :photo, presence: true
