@@ -23,6 +23,7 @@ def main
 
   # Build areas_by_id lookup for circuit navigation links
   areas_by_id = catalog.areas.each_with_object({}) { |a, h| h[a["id"]] = a }
+  mapbox_token = "pk.eyJ1Ijoibm1vbmRvbGxvdCIsImEiOiJjbHJvb3JnNHgxaTV0MnJvY2FreDA1bWszIn0.Piovbm5BZRpyAPk8OaUiMA"
 
   # Clean dist
   FileUtils.rm_rf(DIST)
@@ -59,7 +60,8 @@ def main
       "popular_problems" => payload["popular_problems"],
       "circuits" => payload["circuits"],
       "poi_routes" => payload["poi_routes"],
-      "media_manifest" => media_manifest
+      "media_manifest" => media_manifest,
+      "mapbox_token" => mapbox_token
     ))
   end
 
@@ -166,7 +168,6 @@ def main
   puts "Rendering map pages..."
   map_data = map_builder.build
   map_data_json = JSON.generate(map_data)
-  mapbox_token = "pk.eyJ1Ijoibm1vbmRvbGxvdCIsImEiOiJjbHJvb3JnNHgxaTV0MnJvY2FreDA1bWszIn0.Piovbm5BZRpyAPk8OaUiMA"
 
   # Main map page
   write_page("en/map/index.html", renderer.render_standalone("map",
