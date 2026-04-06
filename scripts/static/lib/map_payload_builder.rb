@@ -2,12 +2,13 @@ module Static
   class MapPayloadBuilder
     def initialize(catalog)
       @catalog = catalog
+      @areas_by_id = catalog.areas.each_with_object({}) { |a, h| h[a["id"]] = a }
     end
 
     def build
       {
         "areas" => build_area_bounds,
-        "problems" => build_problem_features
+        "problemLookup" => build_problem_lookup
       }
     end
 
@@ -24,21 +25,21 @@ module Static
       result
     end
 
-    def build_problem_features
-      @catalog.problems.map do |p|
-        {
-          "id" => p["id"],
-          "area_id" => p["area_id"],
+    # Lookup keyed by problem ID for map popup links
+    def build_problem_lookup
+      result = {}
+      @catalog.problems.each do |p|
+        area = @areas_by_id[p["area_id"]]
+        next unless area
+
+        slug = [p["id"], p["name"]&.downcase&.gsub(/[^a-z0-9]+/, "-")&.gsub(/-$/, "")].compact.join("-")
+        result[p["id"].to_s] = {
+          "url" => "/en/fontainebleau/#{area["slug"]}/#{slug}",
           "name" => p["name"],
-          "grade" => p["grade"],
-          "steepness" => p["steepness"],
-          "location" => p["location"],
-          "circuit_color" => p["circuit_color"],
-          "circuit_number" => p["circuit_number"],
-          "featured" => p["featured"],
-          "popularity" => p["popularity"]
+          "grade" => p["grade"]
         }
       end
+      result
     end
   end
 end

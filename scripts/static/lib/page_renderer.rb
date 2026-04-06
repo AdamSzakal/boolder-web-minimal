@@ -13,6 +13,12 @@ module Static
       wrap_in_layout(content, locals)
     end
 
+    # Render a standalone template (no layout wrapping) — used for pages with their own full HTML
+    def render_standalone(template_name, locals = {})
+      template_path = @template_root.join("#{template_name}.html.erb")
+      ERB.new(template_path.read, trim_mode: "-").result_with_hash(locals)
+    end
+
     private
 
     def wrap_in_layout(content, locals)

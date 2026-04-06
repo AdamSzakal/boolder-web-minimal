@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full m-0">
+  <head>
+    <link rel="icon" href="/icon.png" type="image/png">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/icon.png">
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= page_title %> — Boolder</title>
+
+    <link rel="stylesheet" href="/assets/tailwind.css">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v3.11.0/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.11.0/mapbox-gl.js"></script>
+    <style>
+      #map { position: absolute; top: 0; bottom: 0; width: 100%; }
+      .mapboxgl-popup-content {
+        font-family: "Inter var", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        font-size: 0.875rem;
+      }
+      .mapboxgl-popup-content a {
+        font-weight: 500;
+        color: rgba(5, 150, 105, 1);
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+
+  <body class="bg-white h-full m-0">
+    <div class="bg-gray-100 flex flex-col h-full">
+      <div class="flex-initial">
+        <!-- Map nav -->
+        <nav class="bg-white shadow">
+          <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
+            <div class="flex justify-between h-16">
+              <div class="flex px-2 lg:px-0">
+                <div class="flex-shrink-0 flex items-center">
+                  <a href="/en/fontainebleau">
+                    <img src="/images/logo.svg" class="h-8 w-auto" alt="Boolder" />
+                  </a>
+                </div>
+              </div>
+              <!-- Inline search trigger -->
+              <div class="flex flex-1 items-center justify-center">
+                <div class="px-2">
+                  <div class="w-full max-w-lg">
+                    <div class="relative">
+                      <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                        <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                          <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd" />
+                        </svg>
+                      </div>
+                      <input id="map-search-input" class="block w-full rounded-md border border-gray-300 bg-white py-2 pl-10 pr-3 leading-5 placeholder-gray-500 focus:border-emerald-500 focus:placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-emerald-500 sm:text-sm" placeholder="Search..." type="search">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+
+      <!-- Map container -->
+      <div class="h-screen w-full relative" id="map-container">
+        <div id="map"></div>
+
+        <!-- Filters button -->
+        <div class="absolute inset-x-0 bottom-0 z-10 pb-8 text-center">
+          <button id="filterBtn" type="button" class="inline-flex items-center rounded-lg border border-gray-300 bg-white px-4 py-2 text-base font-normal text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2">
+            <span id="filterCounter" class="hidden inline-flex justify-center items-center mr-2 w-4 h-4 text-xs font-semibold text-emerald-800 bg-emerald-300 rounded-full">1</span>
+            <svg id="filterIcon" xmlns="http://www.w3.org/2000/svg" class="-ml-1 mr-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+            </svg>
+            <span>Filters</span>
+          </button>
+        </div>
+
+        <!-- Filters modal -->
+        <div id="filterModal" class="relative z-20 hidden" role="dialog">
+          <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+          <div class="fixed inset-0 z-20 overflow-y-auto">
+            <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+              <div class="relative transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 w-full sm:max-w-lg sm:p-6">
+                <div class="absolute top-0 right-0 pt-4 pr-4">
+                  <button id="filterCloseBtn" type="button" class="rounded-md bg-white text-gray-400 hover:text-gray-500">
+                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                </div>
+                <div>
+                  <div class="mt-3 text-center sm:mt-0">
+                    <h3 class="text-lg font-medium leading-6 text-gray-900 mb-4">Level</h3>
+                  </div>
+                  <fieldset>
+                    <div class="relative -space-y-px rounded-md bg-white">
+                      <label class="rounded-tl-md rounded-tr-md relative border p-4 flex cursor-pointer md:pl-4 md:pr-6 grid grid-cols-2">
+                        <span class="flex items-center text-sm">
+                          <input type="radio" name="gradeRadio" value="beginner" class="h-4 w-4 text-emerald-600 border-gray-300 focus:ring-emerald-500">
+                          <span class="ml-3 font-medium">Beginner</span>
+                        </span>
+                        <span class="ml-6 pl-1 text-sm md:ml-0 md:pl-0 text-right text-gray-400">1a &rarr; 3c+</span>
+                      </label>
+                      <% (4..7).each do |level| %>
+                        <label class="relative border p-4 flex cursor-pointer md:pl-4 md:pr-6 grid grid-cols-2">
+                          <span class="flex items-center text-sm">
+                            <input type="radio" name="gradeRadio" value="level<%= level %>" class="h-4 w-4 text-emerald-600 border-gray-300 focus:ring-emerald-500">
+                            <span class="ml-3 font-medium">Level <%= level %></span>
+                          </span>
+                        </label>
+                      <% end %>
+                      <label class="rounded-bl-md rounded-br-md relative border p-4 flex cursor-pointer md:pl-4 md:pr-6 grid grid-cols-2">
+                        <span class="flex items-center text-sm">
+                          <input type="radio" name="gradeRadio" value="custom" class="h-4 w-4 text-emerald-600 border-gray-300 focus:ring-emerald-500">
+                          <span class="ml-3 font-medium">Custom</span>
+                        </span>
+                      </label>
+                    </div>
+                  </fieldset>
+                  <div id="customGradePicker" class="hidden grid grid-cols-2 gap-8 my-4">
+                    <div>
+                      <label for="gradeMin" class="block text-sm font-medium text-gray-700">Min</label>
+                      <select id="gradeMin" class="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-emerald-500 focus:outline-none focus:ring-emerald-500 sm:text-sm">
+                        <% %w[1a 1b 1c 2a 2b 2c 3a 3b 3c 4a 4b 4c 5a 5b 5c 6a 6b 6c 7a 7b 7c 8a 8b 8c 9a].each do |g| %>
+                          <option<%= g == "4a" ? " selected" : "" %>><%= g %></option>
+                        <% end %>
+                      </select>
+                    </div>
+                    <div>
+                      <label for="gradeMax" class="block text-sm font-medium text-gray-700">Max</label>
+                      <select id="gradeMax" class="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-emerald-500 focus:outline-none focus:ring-emerald-500 sm:text-sm">
+                        <% %w[1a 1b 1c 2a 2b 2c 3a 3b 3c 4a 4b 4c 5a 5b 5c 6a 6b 6c 7a 7b 7c 8a 8b 8c 9a].each do |g| %>
+                          <option<%= g == "5a" ? " selected" : "" %>><%= g %></option>
+                        <% end %>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
+                  <button id="applyFiltersBtn" type="button" class="inline-flex w-full justify-center rounded-md border border-transparent bg-emerald-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-emerald-700 sm:ml-3 sm:w-auto sm:text-sm">Apply filters</button>
+                  <button id="clearFiltersBtn" type="button" class="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:text-gray-500 sm:mt-0 sm:w-auto sm:text-sm">Clear filters</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      (function() {
+        const mapData = <%= map_data_json %>;
+        const boundsData = <%= bounds_json %>;
+        const problemData = <%= problem_json %>;
+
+        const allGrades = ["1a","1a+","1b","1b+","1c","1c+","2a","2a+","2b","2b+","2c","2c+","3a","3a+","3b","3b+","3c","3c+","4a","4a+","4b","4b+","4c","4c+","5a","5a+","5b","5b+","5c","5c+","6a","6a+","6b","6b+","6c","6c+","7a","7a+","7b","7b+","7c","7c+","8a","8a+","8b","8b+","8c","8c+","9a","9a+","9b","9b+","9c","9c+"];
+
+        mapboxgl.accessToken = '<%= mapbox_token %>';
+
+        const map = new mapboxgl.Map({
+          container: 'map',
+          hash: true,
+          style: 'mapbox://styles/nmondollot/cl95n147u003k15qry7pvfmq2',
+          bounds: [[2.4806787, 48.2868427],[2.7698927, 48.473906]],
+          padding: 5,
+        });
+
+        map.addControl(new mapboxgl.ScaleControl({ maxWidth: 100, unit: 'metric' }));
+        map.addControl(new mapboxgl.NavigationControl());
+        map.addControl(new mapboxgl.GeolocateControl({
+          positionOptions: { enableHighAccuracy: true },
+          trackUserLocation: true,
+          showUserHeading: true
+        }));
+
+        let pendingPopup = null;
+        map.on('moveend', () => {
+          if (pendingPopup) { pendingPopup.addTo(map); pendingPopup = null; }
+        });
+
+        map.on('load', () => {
+          // Add problems layer (vector tiles from Mapbox)
+          map.addSource('problems', {
+            type: 'vector',
+            url: 'mapbox://nmondollot.4xsv235p',
+            promoteId: 'id'
+          });
+
+          map.addLayer({
+            id: 'problems',
+            type: 'circle',
+            source: 'problems',
+            'source-layer': 'problems-ayes3a',
+            minzoom: 15,
+            layout: {
+              visibility: 'visible',
+              'circle-sort-key': ["case", ["has", "circuitId"], 2, 1]
+            },
+            paint: {
+              'circle-radius': ["interpolate", ["linear"], ["zoom"], 15, 2, 18, 4, 22, ["case", ["has", "circuitNumber"], 16, 10]],
+              'circle-color': [
+                "match", ["get", "circuitColor"],
+                "yellow", "#FFCC02", "purple", "#D783FF", "orange", "#FF9500",
+                "green", "#77C344", "blue", "#017AFF", "skyblue", "#5AC7FA",
+                "salmon", "#FDAF8A", "red", "#FF3B2F", "black", "#000000",
+                "white", "#FFFFFF", "#878A8D"
+              ],
+              'circle-opacity': ["interpolate", ["linear"], ["zoom"], 14.5, 0, 15, 1]
+            },
+            filter: ["match", ["geometry-type"], ["Point"], true, false],
+          }, "areas");
+
+          map.addLayer({
+            id: 'problems-texts',
+            type: 'symbol',
+            source: 'problems',
+            'source-layer': 'problems-ayes3a',
+            minzoom: 19,
+            layout: {
+              visibility: 'visible',
+              'text-allow-overlap': true,
+              'text-field': ["to-string", ["get", "circuitNumber"]],
+              'text-size': ["interpolate", ["linear"], ["zoom"], 19, 10, 22, 20],
+            },
+            paint: {
+              'text-color': ["case", ["match", ["get", "circuitColor"], ["", "white"], true, false], "#333", "#fff"]
+            },
+            filter: ["match", ["geometry-type"], ["Point"], true, false],
+          });
+
+          // Center on area or problem if provided
+          if (boundsData) {
+            const cam = map.cameraForBounds(
+              [[boundsData.southWest.lng, boundsData.southWest.lat], [boundsData.northEast.lng, boundsData.northEast.lat]],
+              { padding: { top: 20, bottom: 100, left: 20, right: 20 } }
+            );
+            cam.zoom = Math.max(15, cam.zoom);
+            cam.speed = 2;
+            map.flyTo(cam);
+          }
+
+          if (problemData) {
+            map.flyTo({ center: [problemData.lng, problemData.lat], zoom: 20, speed: 2 });
+            const info = mapData.problemLookup[problemData.id];
+            if (info) {
+              pendingPopup = new mapboxgl.Popup({ closeButton: false, focusAfterOpen: false, offset: [0, -8] })
+                .setLngLat([problemData.lng, problemData.lat])
+                .setHTML('<a href="' + info.url + '">' + (info.name || '') + '</a><span class="text-gray-400 ml-1">' + (info.grade || '') + '</span>');
+            }
+          }
+        });
+
+        // Problem click → popup with direct link
+        map.on('mouseenter', 'problems', () => { map.getCanvas().style.cursor = 'pointer'; });
+        map.on('mouseleave', 'problems', () => { map.getCanvas().style.cursor = ''; });
+
+        map.on('click', 'problems', (e) => {
+          const props = e.features[0].properties;
+          const coords = e.features[0].geometry.coordinates.slice();
+          const info = mapData.problemLookup[props.id];
+
+          let html;
+          if (info) {
+            html = '<a href="' + info.url + '">' + (info.name || '') + '</a><span class="text-gray-400 ml-1">' + (info.grade || '') + '</span>';
+          } else {
+            html = (props.name || '') + '<span class="text-gray-400 ml-1">' + (props.grade || '') + '</span>';
+          }
+
+          new mapboxgl.Popup({ closeButton: false, focusAfterOpen: false, offset: [0, -8] })
+            .setLngLat(coords)
+            .setHTML(html)
+            .addTo(map);
+        });
+
+        // Area click → zoom in
+        function flyToBounds(bounds) {
+          const cam = map.cameraForBounds(bounds, { padding: { top: 20, bottom: 100, left: 20, right: 20 } });
+          cam.zoom = Math.max(15, cam.zoom);
+          cam.speed = 2;
+          map.flyTo(cam);
+        }
+
+        ['areas', 'areas-hulls'].forEach(layer => {
+          map.on('mouseenter', layer, () => { if (map.getZoom() < 15) map.getCanvas().style.cursor = 'pointer'; });
+          map.on('mouseleave', layer, () => { if (map.getZoom() < 15) map.getCanvas().style.cursor = ''; });
+          map.on('click', layer, (e) => {
+            if (map.getZoom() < 15) {
+              const p = e.features[0].properties;
+              flyToBounds([[p.southWestLon, p.southWestLat], [p.northEastLon, p.northEastLat]]);
+            }
+          });
+        });
+
+        // POI click
+        map.on('mouseenter', 'pois', () => { if (map.getZoom() >= 12) map.getCanvas().style.cursor = 'pointer'; });
+        map.on('mouseleave', 'pois', () => { if (map.getZoom() >= 12) map.getCanvas().style.cursor = ''; });
+        map.on('click', 'pois', (e) => {
+          if (map.getZoom() >= 12) {
+            const coords = e.features[0].geometry.coordinates.slice();
+            new mapboxgl.Popup({ closeButton: false, focusAfterOpen: false, offset: [0, -8] })
+              .setLngLat(coords)
+              .setHTML('<a href="' + e.features[0].properties.googleUrl + '" target="_blank">See on Google</a>')
+              .addTo(map);
+          }
+        });
+
+        // Cluster click
+        map.on('mouseenter', 'clusters', () => { if (map.getZoom() <= 12) map.getCanvas().style.cursor = 'pointer'; });
+        map.on('mouseleave', 'clusters', () => { if (map.getZoom() <= 12) map.getCanvas().style.cursor = ''; });
+        map.on('click', 'clusters', (e) => {
+          if (map.getZoom() <= 12) {
+            const p = e.features[0].properties;
+            flyToBounds([[p.southWestLon, p.southWestLat], [p.northEastLon, p.northEastLat]]);
+          }
+        });
+
+        // --- Filters ---
+        let selectedGradeRadio = null;
+        const filterModal = document.getElementById('filterModal');
+        const filterBtn = document.getElementById('filterBtn');
+        const filterCounter = document.getElementById('filterCounter');
+        const filterIconEl = document.getElementById('filterIcon');
+        const customPicker = document.getElementById('customGradePicker');
+
+        filterBtn.addEventListener('click', () => filterModal.classList.remove('hidden'));
+        document.getElementById('filterCloseBtn').addEventListener('click', () => filterModal.classList.add('hidden'));
+
+        document.querySelectorAll('input[name="gradeRadio"]').forEach(radio => {
+          radio.addEventListener('change', (e) => {
+            selectedGradeRadio = e.target.value;
+            customPicker.classList.toggle('hidden', selectedGradeRadio !== 'custom');
+          });
+        });
+
+        document.getElementById('applyFiltersBtn').addEventListener('click', () => {
+          filterModal.classList.add('hidden');
+          filterCounter.classList.remove('hidden');
+          filterIconEl.classList.add('hidden');
+
+          let grades;
+          const gradeRanges = {
+            beginner: allGrades.slice(0, 18),
+            level4: allGrades.slice(18, 24),
+            level5: allGrades.slice(24, 30),
+            level6: allGrades.slice(30, 36),
+            level7: allGrades.slice(36, 42),
+            level8: allGrades.slice(42, 48),
+          };
+
+          if (selectedGradeRadio === 'custom') {
+            const min = document.getElementById('gradeMin').value;
+            const max = document.getElementById('gradeMax').value;
+            grades = allGrades.slice(allGrades.indexOf(min), allGrades.indexOf(max) + 2);
+          } else {
+            grades = gradeRanges[selectedGradeRadio] || allGrades;
+          }
+
+          applyLayerFilter('problems', grades);
+          applyLayerFilter('problems-texts', grades);
+        });
+
+        document.getElementById('clearFiltersBtn').addEventListener('click', () => {
+          filterModal.classList.add('hidden');
+          filterCounter.classList.add('hidden');
+          filterIconEl.classList.remove('hidden');
+          selectedGradeRadio = null;
+          document.querySelectorAll('input[name="gradeRadio"]').forEach(r => r.checked = false);
+          customPicker.classList.add('hidden');
+          applyLayerFilter('problems', allGrades);
+          applyLayerFilter('problems-texts', allGrades);
+        });
+
+        function applyLayerFilter(layer, grades) {
+          map.setFilter(layer, ['match', ['get', 'grade'], grades, true, false]);
+        }
+
+        // Custom grade range sync
+        document.getElementById('gradeMin').addEventListener('change', () => {
+          const iMin = allGrades.indexOf(document.getElementById('gradeMin').value);
+          const iMax = allGrades.indexOf(document.getElementById('gradeMax').value);
+          document.getElementById('gradeMax').value = allGrades[Math.max(iMin, iMax)];
+        });
+        document.getElementById('gradeMax').addEventListener('change', () => {
+          const iMin = allGrades.indexOf(document.getElementById('gradeMin').value);
+          const iMax = allGrades.indexOf(document.getElementById('gradeMax').value);
+          document.getElementById('gradeMin').value = allGrades[Math.min(iMin, iMax)];
+        });
+
+        // URL cleanup on map move
+        map.on('movestart', () => {
+          history.replaceState({}, '', '/en/map');
+        });
+      })();
+    </script>
+  </body>
+</html>

@@ -152,6 +152,36 @@ def main
     "problems" => popular_problems
   ))
 
+  # Map pages
+  puts "Rendering map pages..."
+  map_data = map_builder.build
+  map_data_json = JSON.generate(map_data)
+  mapbox_token = ENV.fetch("MAPBOX_ACCESS_TOKEN") { abort "Set MAPBOX_ACCESS_TOKEN env var before building" }
+
+  # Main map page
+  write_page("en/map/index.html", renderer.render_standalone("map",
+    "page_title" => "Map",
+    "map_data_json" => map_data_json,
+    "bounds_json" => "null",
+    "problem_json" => "null",
+    "mapbox_token" => mapbox_token
+  ))
+
+  # Map pages per area (deep link with bounds)
+  published_areas.each do |area|
+    bounds = {
+      "southWest" => { "lat" => area["south_west_lat"], "lng" => area["south_west_lng"] },
+      "northEast" => { "lat" => area["north_east_lat"], "lng" => area["north_east_lng"] }
+    }
+    write_page("en/map/#{area["slug"]}/index.html", renderer.render_standalone("map",
+      "page_title" => "Map — #{area["name"]}",
+      "map_data_json" => map_data_json,
+      "bounds_json" => JSON.generate(bounds),
+      "problem_json" => "null",
+      "mapbox_token" => mapbox_token
+    ))
+  end
+
   # --- JSON assets ---
 
   puts "Writing search index..."
