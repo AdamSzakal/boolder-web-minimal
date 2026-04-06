@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: boolder
+    runtime: docker
+    plan: free
+    envVars:
+      - key: RAILS_MASTER_KEY
+        sync: false  # paste value manually in the Render dashboard
+      - key: SOLID_QUEUE_IN_PUMA
+        value: "true"
+      - key: RAILS_LOG_TO_STDOUT
+        value: "enabled"
+      - key: DATABASE_URL
+        fromDatabase:
+          name: boolder-db
+          property: connectionString
+    healthCheckPath: /up
+
+databases:
+  - name: boolder-db
+    plan: free
+    databaseName: boolder_production
+    postgresMajorVersion: 16

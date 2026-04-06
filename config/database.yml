@@ -19,30 +19,20 @@ test:
   database: boolder-test
 
 production:
+  # Render.com provides a single DATABASE_URL; all four connections share it.
+  # The URL must use the postgis:// scheme for the activerecord-postgis-adapter.
   primary:
     <<: *default
-    database: boolder-production
-    username: boolder
-    password: <%= ENV["POSTGRES_PASSWORD"] %>
-    host: <%= ENV["DB_HOST"] %>
+    url: <%= ENV["DATABASE_URL"]&.sub("postgres://", "postgis://") %>
   cache:
     <<: *default
-    database: boolder-cache
+    url: <%= ENV["DATABASE_URL"]&.sub("postgres://", "postgis://") %>
     migrations_paths: db/cache_migrate
-    username: boolder
-    password: <%= ENV["POSTGRES_PASSWORD"] %>
-    host: <%= ENV["DB_HOST"] %>
   queue:
     <<: *default
-    database: boolder-queue
+    url: <%= ENV["DATABASE_URL"]&.sub("postgres://", "postgis://") %>
     migrations_paths: db/queue_migrate
-    username: boolder
-    password: <%= ENV["POSTGRES_PASSWORD"] %>
-    host: <%= ENV["DB_HOST"] %>
   cable:
     <<: *default
-    database: boolder-cable
+    url: <%= ENV["DATABASE_URL"]&.sub("postgres://", "postgis://") %>
     migrations_paths: db/cable_migrate
-    username: boolder
-    password: <%= ENV["POSTGRES_PASSWORD"] %>
-    host: <%= ENV["DB_HOST"] %>
