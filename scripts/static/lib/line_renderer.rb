@@ -27,14 +27,40 @@ module Static
       start_x = (coords.first["x"] * IMG_WIDTH).round(1)
       start_y = (coords.first["y"] * IMG_HEIGHT).round(1)
 
+      # Unique ID for this topo's animation (avoids collisions when multiple topos on a page)
+      uid = "topo-#{line["id"] || object_id}"
+
       <<~HTML
         <div class="relative inline-block w-full">
           <img src="#{escape(topo_url)}" alt="Topo photo" class="w-full rounded-lg" loading="lazy" />
           <svg class="absolute inset-0 w-full h-full" viewBox="0 0 #{IMG_WIDTH} #{IMG_HEIGHT}" preserveAspectRatio="none">
-            <path d="#{path_d}" fill="none" stroke="#{hex}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.9" />
-            <circle cx="#{start_x}" cy="#{start_y}" r="8" fill="#{hex}" opacity="0.9" />
-            #{circuit_number_label(start_x, start_y, circuit_number, hex) if circuit_number}
+            <style>
+              @keyframes #{uid}-draw {
+                from { stroke-dashoffset: var(--path-length); }
+                to   { stroke-dashoffset: 0; }
+              }
+              @keyframes #{uid}-fade-in {
+                from { opacity: 0; }
+                to   { opacity: 0.9; }
+              }
+              ##{uid}-path {
+                animation: #{uid}-draw 1.2s ease-out forwards;
+              }
+              ##{uid}-dot, ##{uid}-label {
+                opacity: 0;
+                animation: #{uid}-fade-in 0.3s ease-out 1.1s forwards;
+              }
+            </style>
+            <path id="#{uid}-path" d="#{path_d}" fill="none" stroke="#{hex}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.9" />
+            <circle id="#{uid}-dot" cx="#{start_x}" cy="#{start_y}" r="8" fill="#{hex}" />
+            #{circuit_number_label(start_x, start_y, circuit_number, hex, uid) if circuit_number}
           </svg>
+          <script>
+            (function() {
+              var p = document.getElementById('#{uid}-path');
+              if (p) { var l = p.getTotalLength(); p.style.setProperty('--path-length', l); p.style.strokeDasharray = l; p.style.strokeDashoffset = l; }
+            })();
+          </script>
         </div>
       HTML
     end
@@ -77,8 +103,9 @@ module Static
       parts.join(" ")
     end
 
-    def self.circuit_number_label(x, y, number, hex)
-      %(<text x="#{x}" y="#{y}" text-anchor="middle" dominant-baseline="central" fill="white" font-size="9" font-weight="bold">#{escape(number.to_s)}</text>)
+    def self.circuit_number_label(x, y, number, hex, uid = nil)
+      id_attr = uid ? %( id="#{uid}-label") : ""
+      %(<text#{id_attr} x="#{x}" y="#{y}" text-anchor="middle" dominant-baseline="central" fill="white" font-size="9" font-weight="bold">#{escape(number.to_s)}</text>)
     end
 
     def self.escape(str)
