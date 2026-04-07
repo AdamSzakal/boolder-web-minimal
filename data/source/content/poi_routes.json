@@ -3,749 +3,840 @@
     "id": 1,
     "area_id": 1,
     "poi_id": 1,
-    "distance": 100,
+    "distance_in_minutes": 2,
     "transport": "walking"
   },
   {
     "id": 2,
     "area_id": 2,
     "poi_id": 24,
-    "distance": 1100,
+    "distance_in_minutes": 15,
     "transport": "walking"
   },
   {
     "id": 3,
     "area_id": 4,
     "poi_id": 2,
-    "distance": 100,
+    "distance_in_minutes": 2,
     "transport": "walking"
   },
   {
     "id": 4,
     "area_id": 5,
     "poi_id": 15,
-    "distance": 100,
+    "distance_in_minutes": 2,
     "transport": "walking"
   },
   {
     "id": 5,
     "area_id": 6,
     "poi_id": 2,
-    "distance": 500,
+    "distance_in_minutes": 10,
     "transport": "walking"
   },
   {
     "id": 6,
     "area_id": 7,
     "poi_id": 3,
-    "distance": 900,
+    "distance_in_minutes": 15,
     "transport": "walking"
   },
   {
     "id": 7,
     "area_id": 8,
     "poi_id": 25,
-    "distance": 1800,
+    "distance_in_minutes": 25,
     "transport": "walking"
   },
   {
     "id": 8,
     "area_id": 9,
     "poi_id": 13,
-    "distance": 300,
+    "distance_in_minutes": 5,
     "transport": "walking"
   },
   {
     "id": 9,
     "area_id": 10,
     "poi_id": 23,
-    "distance": 1000,
+    "distance_in_minutes": 15,
     "transport": "walking"
   },
   {
     "id": 10,
     "area_id": 11,
     "poi_id": 15,
-    "distance": 1000,
+    "distance_in_minutes": 15,
     "transport": "walking"
   },
   {
     "id": 11,
     "area_id": 12,
     "poi_id": 24,
-    "distance": 500,
+    "distance_in_minutes": 10,
     "transport": "walking"
   },
   {
     "id": 12,
     "area_id": 13,
     "poi_id": 19,
-    "distance": 300,
+    "distance_in_minutes": 5,
     "transport": "walking"
   },
   {
     "id": 13,
     "area_id": 14,
     "poi_id": 25,
-    "distance": 800,
-    "transport": "walking"
-  },
-  {
-    "id": 14,
-    "area_id": 15,
-    "poi_id": 22,
-    "distance": 200,
+    "distance_in_minutes": 10,
     "transport": "walking"
   },
   {
     "id": 15,
     "area_id": 16,
     "poi_id": 24,
-    "distance": 900,
+    "distance_in_minutes": 15,
     "transport": "walking"
   },
   {
     "id": 16,
     "area_id": 17,
     "poi_id": 25,
-    "distance": 50,
+    "distance_in_minutes": 2,
     "transport": "walking"
   },
   {
     "id": 17,
     "area_id": 18,
     "poi_id": 25,
-    "distance": 1000,
+    "distance_in_minutes": 15,
     "transport": "walking"
   },
   {
     "id": 18,
     "area_id": 19,
     "poi_id": 23,
-    "distance": 1100,
+    "distance_in_minutes": 15,
     "transport": "walking"
   },
   {
     "id": 19,
     "area_id": 20,
     "poi_id": 3,
-    "distance": 500,
+    "distance_in_minutes": 10,
     "transport": "walking"
   },
   {
     "id": 20,
     "area_id": 21,
     "poi_id": 21,
-    "distance": 400,
+    "distance_in_minutes": 5,
     "transport": "walking"
   },
   {
     "id": 21,
     "area_id": 22,
     "poi_id": 23,
-    "distance": 600,
+    "distance_in_minutes": 10,
     "transport": "walking"
   },
   {
     "id": 22,
     "area_id": 23,
     "poi_id": 12,
-    "distance": 100,
+    "distance_in_minutes": 2,
     "transport": "walking"
   },
   {
     "id": 23,
     "area_id": 24,
     "poi_id": 4,
-    "distance": 300,
+    "distance_in_minutes": 5,
     "transport": "walking"
   },
   {
     "id": 24,
     "area_id": 25,
     "poi_id": 24,
-    "distance": 800,
+    "distance_in_minutes": 10,
     "transport": "walking"
   },
   {
     "id": 25,
     "area_id": 26,
     "poi_id": 20,
-    "distance": 200,
+    "distance_in_minutes": 5,
     "transport": "walking"
   },
   {
     "id": 26,
     "area_id": 27,
     "poi_id": 23,
-    "distance": 1100,
+    "distance_in_minutes": 15,
     "transport": "walking"
   },
   {
     "id": 27,
     "area_id": 28,
     "poi_id": 24,
-    "distance": 1300,
+    "distance_in_minutes": 20,
     "transport": "walking"
   },
   {
     "id": 28,
     "area_id": 29,
     "poi_id": 11,
-    "distance": 100,
+    "distance_in_minutes": 2,
     "transport": "walking"
   },
   {
     "id": 29,
     "area_id": 30,
     "poi_id": 26,
-    "distance": 100,
+    "distance_in_minutes": 2,
     "transport": "walking"
   },
   {
     "id": 30,
     "area_id": 31,
     "poi_id": 15,
-    "distance": 800,
+    "distance_in_minutes": 10,
     "transport": "walking"
   },
   {
     "id": 31,
     "area_id": 32,
     "poi_id": 10,
-    "distance": 100,
+    "distance_in_minutes": 2,
     "transport": "walking"
   },
   {
     "id": 32,
     "area_id": 33,
     "poi_id": 8,
-    "distance": 1000,
+    "distance_in_minutes": 15,
     "transport": "walking"
   },
   {
     "id": 33,
     "area_id": 34,
     "poi_id": 15,
-    "distance": 200,
+    "distance_in_minutes": 5,
     "transport": "walking"
   },
   {
     "id": 34,
     "area_id": 35,
     "poi_id": 25,
-    "distance": 700,
+    "distance_in_minutes": 10,
     "transport": "walking"
   },
   {
     "id": 35,
     "area_id": 36,
     "poi_id": 15,
-    "distance": 200,
+    "distance_in_minutes": 5,
     "transport": "walking"
   },
   {
     "id": 36,
     "area_id": 37,
     "poi_id": 15,
-    "distance": 1500,
+    "distance_in_minutes": 20,
     "transport": "walking"
   },
   {
     "id": 37,
     "area_id": 38,
     "poi_id": 15,
-    "distance": 1000,
+    "distance_in_minutes": 15,
     "transport": "walking"
   },
   {
     "id": 38,
     "area_id": 40,
     "poi_id": 2,
-    "distance": 1100,
+    "distance_in_minutes": 15,
     "transport": "walking"
   },
   {
     "id": 39,
     "area_id": 41,
     "poi_id": 14,
-    "distance": 900,
+    "distance_in_minutes": 15,
     "transport": "walking"
   },
   {
     "id": 40,
     "area_id": 42,
     "poi_id": 14,
-    "distance": 300,
+    "distance_in_minutes": 5,
     "transport": "walking"
   },
   {
     "id": 41,
     "area_id": 43,
     "poi_id": 2,
-    "distance": 200,
+    "distance_in_minutes": 5,
     "transport": "walking"
   },
   {
     "id": 42,
     "area_id": 44,
     "poi_id": 2,
-    "distance": 200,
+    "distance_in_minutes": 5,
     "transport": "walking"
   },
   {
     "id": 43,
     "area_id": 46,
     "poi_id": 3,
-    "distance": 600,
+    "distance_in_minutes": 10,
     "transport": "walking"
   },
   {
     "id": 44,
     "area_id": 47,
     "poi_id": 1,
-    "distance": 800,
+    "distance_in_minutes": 10,
     "transport": "walking"
   },
   {
     "id": 45,
     "area_id": 48,
     "poi_id": 3,
-    "distance": 400,
+    "distance_in_minutes": 5,
     "transport": "walking"
   },
   {
     "id": 46,
     "area_id": 49,
     "poi_id": 3,
-    "distance": 1300,
+    "distance_in_minutes": 20,
     "transport": "walking"
   },
   {
     "id": 47,
     "area_id": 50,
     "poi_id": 6,
-    "distance": 800,
+    "distance_in_minutes": 10,
     "transport": "walking"
   },
   {
     "id": 48,
     "area_id": 51,
     "poi_id": 9,
-    "distance": 450,
+    "distance_in_minutes": 10,
     "transport": "walking"
   },
   {
     "id": 49,
     "area_id": 52,
     "poi_id": 7,
-    "distance": 300,
+    "distance_in_minutes": 5,
     "transport": "walking"
   },
   {
     "id": 50,
     "area_id": 53,
     "poi_id": 5,
-    "distance": 400,
+    "distance_in_minutes": 5,
     "transport": "walking"
   },
   {
     "id": 51,
     "area_id": 54,
     "poi_id": 25,
-    "distance": 1200,
+    "distance_in_minutes": 15,
     "transport": "walking"
   },
   {
     "id": 52,
     "area_id": 55,
     "poi_id": 23,
-    "distance": 800,
+    "distance_in_minutes": 10,
     "transport": "walking"
   },
   {
     "id": 53,
     "area_id": 59,
     "poi_id": 23,
-    "distance": 1600,
+    "distance_in_minutes": 20,
     "transport": "walking"
   },
   {
     "id": 54,
     "area_id": 60,
     "poi_id": 18,
-    "distance": 1500,
+    "distance_in_minutes": 20,
     "transport": "walking"
   },
   {
     "id": 55,
     "area_id": 61,
     "poi_id": 20,
-    "distance": 600,
+    "distance_in_minutes": 10,
     "transport": "walking"
   },
   {
     "id": 56,
     "area_id": 62,
     "poi_id": 3,
-    "distance": 500,
+    "distance_in_minutes": 10,
     "transport": "walking"
   },
   {
     "id": 57,
     "area_id": 64,
     "poi_id": 2,
-    "distance": 600,
+    "distance_in_minutes": 10,
     "transport": "walking"
   },
   {
     "id": 58,
     "area_id": 68,
     "poi_id": 9,
-    "distance": 500,
+    "distance_in_minutes": 10,
     "transport": "walking"
   },
   {
     "id": 59,
     "area_id": 69,
     "poi_id": 3,
-    "distance": 1000,
+    "distance_in_minutes": 15,
     "transport": "walking"
   },
   {
     "id": 60,
     "area_id": 70,
     "poi_id": 6,
-    "distance": 1300,
+    "distance_in_minutes": 20,
     "transport": "walking"
   },
   {
     "id": 61,
     "area_id": 71,
     "poi_id": 23,
-    "distance": 1600,
+    "distance_in_minutes": 20,
     "transport": "walking"
   },
   {
     "id": 62,
     "area_id": 1,
     "poi_id": 27,
-    "distance": 2700,
+    "distance_in_minutes": 15,
     "transport": "bike"
   },
   {
     "id": 63,
     "area_id": 1,
     "poi_id": 27,
-    "distance": 2700,
+    "distance_in_minutes": 35,
     "transport": "walking"
   },
   {
     "id": 64,
     "area_id": 24,
     "poi_id": 27,
-    "distance": 4600,
+    "distance_in_minutes": 20,
     "transport": "bike"
   },
   {
     "id": 65,
     "area_id": 50,
     "poi_id": 28,
-    "distance": 3200,
+    "distance_in_minutes": 15,
     "transport": "bike"
   },
   {
     "id": 66,
     "area_id": 53,
     "poi_id": 28,
-    "distance": 2000,
+    "distance_in_minutes": 10,
     "transport": "bike"
   },
   {
     "id": 67,
     "area_id": 52,
     "poi_id": 28,
-    "distance": 6600,
+    "distance_in_minutes": 30,
     "transport": "bike"
   },
   {
     "id": 68,
     "area_id": 33,
     "poi_id": 28,
-    "distance": 8500,
+    "distance_in_minutes": 35,
     "transport": "bike"
   },
   {
     "id": 69,
     "area_id": 51,
     "poi_id": 29,
-    "distance": 4500,
+    "distance_in_minutes": 20,
     "transport": "bike"
   },
   {
     "id": 70,
     "area_id": 68,
     "poi_id": 29,
-    "distance": 4500,
+    "distance_in_minutes": 20,
     "transport": "bike"
   },
   {
     "id": 71,
     "area_id": 32,
     "poi_id": 30,
-    "distance": 1800,
+    "distance_in_minutes": 10,
     "transport": "bike"
   },
   {
     "id": 72,
     "area_id": 23,
     "poi_id": 31,
-    "distance": 3000,
+    "distance_in_minutes": 15,
     "transport": "bike"
   },
   {
     "id": 73,
     "area_id": 72,
     "poi_id": 32,
-    "distance": 900,
+    "distance_in_minutes": 15,
     "transport": "walking"
   },
   {
     "id": 74,
     "area_id": 72,
     "poi_id": 28,
-    "distance": 1800,
+    "distance_in_minutes": 10,
     "transport": "bike"
   },
   {
     "id": 75,
     "area_id": 72,
     "poi_id": 28,
-    "distance": 1800,
+    "distance_in_minutes": 25,
     "transport": "walking"
   },
   {
     "id": 76,
     "area_id": 57,
     "poi_id": 33,
-    "distance": 700,
+    "distance_in_minutes": 10,
     "transport": "walking"
   },
   {
     "id": 77,
     "area_id": 73,
     "poi_id": 34,
-    "distance": 1300,
+    "distance_in_minutes": 20,
     "transport": "walking"
   },
   {
     "id": 78,
     "area_id": 73,
     "poi_id": 28,
-    "distance": 5800,
+    "distance_in_minutes": 25,
     "transport": "bike"
   },
   {
     "id": 79,
     "area_id": 75,
     "poi_id": 35,
-    "distance": 10,
+    "distance_in_minutes": 2,
     "transport": "walking"
   },
   {
     "id": 80,
     "area_id": 75,
     "poi_id": 30,
-    "distance": 800,
+    "distance_in_minutes": 10,
     "transport": "walking"
   },
   {
     "id": 81,
     "area_id": 75,
     "poi_id": 30,
-    "distance": 800,
+    "distance_in_minutes": 5,
     "transport": "bike"
   },
   {
     "id": 82,
     "area_id": 76,
     "poi_id": 5,
-    "distance": 20,
+    "distance_in_minutes": 2,
     "transport": "walking"
   },
   {
     "id": 83,
     "area_id": 76,
     "poi_id": 28,
-    "distance": 3000,
+    "distance_in_minutes": 15,
     "transport": "bike"
   },
   {
     "id": 84,
     "area_id": 45,
     "poi_id": 2,
-    "distance": 600,
+    "distance_in_minutes": 10,
     "transport": "walking"
   },
   {
     "id": 85,
     "area_id": 63,
     "poi_id": 2,
-    "distance": 1200,
+    "distance_in_minutes": 15,
     "transport": "walking"
   },
   {
     "id": 86,
     "area_id": 63,
     "poi_id": 3,
-    "distance": 1400,
+    "distance_in_minutes": 20,
     "transport": "walking"
   },
   {
     "id": 87,
     "area_id": 78,
     "poi_id": 31,
-    "distance": 2700,
+    "distance_in_minutes": 15,
     "transport": "bike"
   },
   {
     "id": 88,
     "area_id": 77,
     "poi_id": 31,
-    "distance": 2800,
+    "distance_in_minutes": 15,
     "transport": "bike"
   },
   {
     "id": 89,
     "area_id": 78,
     "poi_id": 12,
-    "distance": 500,
+    "distance_in_minutes": 10,
     "transport": "walking"
   },
   {
     "id": 90,
     "area_id": 77,
     "poi_id": 12,
-    "distance": 125,
+    "distance_in_minutes": 2,
     "transport": "walking"
   },
   {
     "id": 91,
     "area_id": 84,
     "poi_id": 30,
-    "distance": 3600,
+    "distance_in_minutes": 15,
     "transport": "bike"
   },
   {
     "id": 92,
     "area_id": 84,
     "poi_id": 36,
-    "distance": 350,
+    "distance_in_minutes": 5,
     "transport": "walking"
   },
   {
     "id": 93,
     "area_id": 86,
     "poi_id": 29,
-    "distance": 4300,
+    "distance_in_minutes": 20,
     "transport": "bike"
   },
   {
     "id": 94,
     "area_id": 86,
     "poi_id": 9,
-    "distance": 200,
+    "distance_in_minutes": 5,
     "transport": "walking"
   },
   {
     "id": 95,
     "area_id": 88,
     "poi_id": 23,
-    "distance": 900,
+    "distance_in_minutes": 15,
     "transport": "walking"
   },
   {
     "id": 96,
     "area_id": 81,
     "poi_id": 37,
-    "distance": 150,
+    "distance_in_minutes": 2,
     "transport": "walking"
   },
   {
     "id": 97,
     "area_id": 83,
     "poi_id": 11,
-    "distance": 500,
+    "distance_in_minutes": 10,
     "transport": "walking"
   },
   {
     "id": 98,
     "area_id": 83,
     "poi_id": 37,
-    "distance": 300,
+    "distance_in_minutes": 5,
     "transport": "walking"
   },
   {
     "id": 99,
     "area_id": 80,
     "poi_id": 37,
-    "distance": 100,
+    "distance_in_minutes": 2,
     "transport": "walking"
   },
   {
     "id": 100,
     "area_id": 82,
     "poi_id": 37,
-    "distance": 500,
+    "distance_in_minutes": 10,
     "transport": "walking"
   },
   {
     "id": 101,
     "area_id": 82,
     "poi_id": 11,
-    "distance": 400,
+    "distance_in_minutes": 5,
     "transport": "walking"
   },
   {
     "id": 102,
     "area_id": 79,
     "poi_id": 38,
-    "distance": 900,
+    "distance_in_minutes": 15,
     "transport": "walking"
   },
   {
     "id": 103,
     "area_id": 39,
     "poi_id": 17,
-    "distance": 800,
+    "distance_in_minutes": 10,
     "transport": "walking"
   },
   {
     "id": 104,
     "area_id": 56,
     "poi_id": 25,
-    "distance": 900,
+    "distance_in_minutes": 15,
     "transport": "walking"
   },
   {
     "id": 105,
     "area_id": 58,
     "poi_id": 23,
-    "distance": 1200,
+    "distance_in_minutes": 15,
     "transport": "walking"
   },
   {
     "id": 106,
     "area_id": 66,
     "poi_id": 2,
-    "distance": 1100,
+    "distance_in_minutes": 15,
     "transport": "walking"
   },
   {
     "id": 107,
     "area_id": 67,
     "poi_id": 2,
-    "distance": 1500,
+    "distance_in_minutes": 20,
+    "transport": "walking"
+  },
+  {
+    "id": 108,
+    "area_id": 91,
+    "poi_id": 39,
+    "distance_in_minutes": 25,
+    "transport": "walking"
+  },
+  {
+    "id": 109,
+    "area_id": 99,
+    "poi_id": 3,
+    "distance_in_minutes": 15,
+    "transport": "walking"
+  },
+  {
+    "id": 110,
+    "area_id": 94,
+    "poi_id": 40,
+    "distance_in_minutes": 15,
+    "transport": "walking"
+  },
+  {
+    "id": 111,
+    "area_id": 95,
+    "poi_id": 40,
+    "distance_in_minutes": 20,
+    "transport": "walking"
+  },
+  {
+    "id": 112,
+    "area_id": 96,
+    "poi_id": 5,
+    "distance_in_minutes": 2,
+    "transport": "walking"
+  },
+  {
+    "id": 113,
+    "area_id": 96,
+    "poi_id": 28,
+    "distance_in_minutes": 10,
+    "transport": "bike"
+  },
+  {
+    "id": 145,
+    "area_id": 92,
+    "poi_id": 41,
+    "distance_in_minutes": 10,
+    "transport": "walking"
+  },
+  {
+    "id": 146,
+    "area_id": 92,
+    "poi_id": 30,
+    "distance_in_minutes": 10,
+    "transport": "bike"
+  },
+  {
+    "id": 178,
+    "area_id": 101,
+    "poi_id": 74,
+    "distance_in_minutes": 10,
+    "transport": "walking"
+  },
+  {
+    "id": 179,
+    "area_id": 101,
+    "poi_id": 30,
+    "distance_in_minutes": 15,
+    "transport": "bike"
+  },
+  {
+    "id": 211,
+    "area_id": 94,
+    "poi_id": 40,
+    "distance_in_minutes": 5,
+    "transport": "bike"
+  },
+  {
+    "id": 212,
+    "area_id": 95,
+    "poi_id": 40,
+    "distance_in_minutes": 5,
+    "transport": "bike"
+  },
+  {
+    "id": 244,
+    "area_id": 107,
+    "poi_id": 3,
+    "distance_in_minutes": 10,
+    "transport": "walking"
+  },
+  {
+    "id": 245,
+    "area_id": 113,
+    "poi_id": 21,
+    "distance_in_minutes": 5,
     "transport": "walking"
   }
 ]

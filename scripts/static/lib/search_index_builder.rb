@@ -18,6 +18,7 @@ module Static
           area = @areas_by_id[p["area_id"]]
           slug = [p["id"], p["name"]&.downcase&.gsub(/[^a-z0-9]+/, "-")&.gsub(/-$/, "")].compact.join("-")
           {
+            "id" => p["id"],
             "name" => p["name"],
             "n" => normalize(p["name"]),
             "grade" => p["grade"],

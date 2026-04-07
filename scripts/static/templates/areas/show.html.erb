@@ -202,15 +202,11 @@
             <div>
               <h2 class="text-2xl font-bold mt-8 mb-4 pt-4 px-4 sm:px-0">Access</h2>
               <ul class="pt-2 px-4 sm:px-0">
-                <%- poi_routes.sort_by { |r| r["distance"] || 0 }.each do |route| -%>
+                <%- poi_routes.sort_by { |r| r["distance_in_minutes"] || 0 }.each do |route| -%>
                   <%
                     poi = route["poi"]
                     next unless poi
-                    minutes = if route["transport"] == "bike"
-                      [route["distance"].to_i / 240, 2].max
-                    else
-                      [route["distance"].to_i / 80, 2].max
-                    end
+                    minutes = [route["distance_in_minutes"].to_i, 1].max
                     transport_icon = route["transport"] == "bike" ? "🚲" : "🚶"
                     poi_icon = poi["poi_type"] == "train_station" ? "🚉" : "🅿️"
                   %>

@@ -6,8 +6,8 @@
     "short_name": "Rocher Canon",
     "google_url": "https://goo.gl/maps/cHBDr9iCQwRj6kr78",
     "location": {
-      "lat": null,
-      "lng": null
+      "lat": 48.4634157,
+      "lng": 2.6653728
     }
   },
   {
@@ -17,8 +17,8 @@
     "short_name": "Carrefour de l'Épine",
     "google_url": "https://goo.gl/maps/uwWA32xkAwaH6E766",
     "location": {
-      "lat": null,
-      "lng": null
+      "lat": 48.4459636,
+      "lng": 2.6376434
     }
   },
   {
@@ -28,8 +28,8 @@
     "short_name": "Allée des Vaches",
     "google_url": "https://goo.gl/maps/xvbiKTsL1qdwe2cc6",
     "location": {
-      "lat": null,
-      "lng": null
+      "lat": 48.4409741,
+      "lng": 2.6243162
     }
   },
   {
@@ -39,8 +39,8 @@
     "short_name": "Cabaret-Masson",
     "google_url": "https://goo.gl/maps/SSwTeWy6JXNDFQaS8",
     "location": {
-      "lat": null,
-      "lng": null
+      "lat": 48.4407731,
+      "lng": 2.689274
     }
   },
   {
@@ -50,19 +50,19 @@
     "short_name": "Mont Ussy",
     "google_url": "https://goo.gl/maps/N78XFaeM4LeKrfSK7",
     "location": {
-      "lat": null,
-      "lng": null
+      "lat": 48.4210575,
+      "lng": 2.6989165
     }
   },
   {
     "id": 6,
     "poi_type": "parking",
-    "name": "Parking Karma",
-    "short_name": "Karma",
-    "google_url": "https://goo.gl/maps/GV2VDkPxnWk3n8m48",
+    "name": "Parking Avon",
+    "short_name": "Avon",
+    "google_url": "https://maps.app.goo.gl/CtvgLs3CR6Eb8BaD9",
     "location": {
-      "lat": null,
-      "lng": null
+      "lat": 48.3956551,
+      "lng": 2.7276
     }
   },
   {
@@ -72,8 +72,8 @@
     "short_name": "Bouligny",
     "google_url": "https://goo.gl/maps/Ms6QiFCarzRWRdSA9",
     "location": {
-      "lat": null,
-      "lng": null
+      "lat": 48.3841775,
+      "lng": 2.6881018
     }
   },
   {
@@ -83,8 +83,8 @@
     "short_name": "Vert Galant",
     "google_url": "https://goo.gl/maps/eo2LF9tR9XBKPw4DA",
     "location": {
-      "lat": null,
-      "lng": null
+      "lat": 48.3773598,
+      "lng": 2.6799291
     }
   },
   {
@@ -94,8 +94,8 @@
     "short_name": "Restant du Long Rocher",
     "google_url": "https://goo.gl/maps/EuPzcVjQ7HXVyrQx9",
     "location": {
-      "lat": null,
-      "lng": null
+      "lat": 48.35421,
+      "lng": 2.7275813
     }
   },
   {
@@ -105,8 +105,8 @@
     "short_name": "Petit Bois",
     "google_url": "https://goo.gl/maps/F6thFWF4uh4xEGWK9",
     "location": {
-      "lat": null,
-      "lng": null
+      "lat": 48.2641885,
+      "lng": 2.6712254
     }
   },
   {
@@ -114,10 +114,10 @@
     "poi_type": "parking",
     "name": "Parking Beauvais Nainville",
     "short_name": "Beauvais Nainville",
-    "google_url": "https://goo.gl/maps/XQo55sm66cC4qhVF6",
+    "google_url": "https://maps.app.goo.gl/HMG9u6GzVVSVcsLt9",
     "location": {
-      "lat": null,
-      "lng": null
+      "lat": 48.5033688,
+      "lng": 2.4801743
     }
   },
   {
@@ -127,8 +127,8 @@
     "short_name": "Buthiers Piscine",
     "google_url": "https://goo.gl/maps/pM6Es7xbK45hTN5g8",
     "location": {
-      "lat": null,
-      "lng": null
+      "lat": 48.2939492,
+      "lng": 2.4354914
     }
   },
   {
@@ -138,8 +138,8 @@
     "short_name": "Éléphant",
     "google_url": "https://goo.gl/maps/UYrz7DAxqSLdc5yeA",
     "location": {
-      "lat": null,
-      "lng": null
+      "lat": 48.2930337,
+      "lng": 2.5970918
     }
   },
   {
@@ -149,8 +149,8 @@
     "short_name": "Robert Paragot",
     "google_url": "https://goo.gl/maps/T62eDcWEEmFsj5ho9",
     "location": {
-      "lat": null,
-      "lng": null
+      "lat": 48.3034401,
+      "lng": 2.5989479
     }
   },
   {
@@ -158,10 +158,10 @@
     "poi_type": "parking",
     "name": "Parking Isatis",
     "short_name": "Isatis",
-    "google_url": "https://goo.gl/maps/GT36dbYpM65bnNqY8",
+    "google_url": "https://maps.app.goo.gl/Z1RzBjsZbmeYDYw18",
     "location": {
-      "lat": null,
-      "lng": null
+      "lat": 48.4111158,
+      "lng": 2.5984798
     }
   },
   {
@@ -171,8 +171,8 @@
     "short_name": "Gorges de Franchard",
     "google_url": "https://goo.gl/maps/nhcV5UuM4ze1CyAS7",
     "location": {
-      "lat": null,
-      "lng": null
+      "lat": 48.4085261,
+      "lng": 2.6363915
     }
   },
   {
@@ -182,8 +182,8 @@
     "short_name": "Raymond",
     "google_url": "https://goo.gl/maps/o9QM5jeJTaDVgNYb7",
     "location": {
-      "lat": null,
-      "lng": null
+      "lat": 48.4040997,
+      "lng": 2.638253
     }
   },
   {
@@ -193,8 +193,8 @@
     "short_name": "Plaine de Chanfroy",
     "google_url": "https://goo.gl/maps/bWD8Ytdq7Et7tRHE9",
     "location": {
-      "lat": null,
-      "lng": null
+      "lat": 48.3994662,
+      "lng": 2.5657314
     }
   },
   {
@@ -202,10 +202,10 @@
     "poi_type": "parking",
     "name": "Parking Canche aux Merciers",
     "short_name": "Canche aux Merciers",
-    "google_url": "https://goo.gl/maps/E8aRzMxw4P6KcTJ36",
+    "google_url": "https://maps.app.goo.gl/KRjHCV7bHrJbc2qSA",
     "location": {
-      "lat": null,
-      "lng": null
+      "lat": 48.3904741,
+      "lng": 2.5530553
     }
   },
   {
@@ -213,10 +213,10 @@
     "poi_type": "parking",
     "name": "Parking Drei Zinnen",
     "short_name": "Drei Zinnen",
-    "google_url": "https://goo.gl/maps/HzH1o3Dtd1xW9ftb7",
+    "google_url": "https://maps.app.goo.gl/SRTZj3ZjMdHZWiTn7",
     "location": {
-      "lat": null,
-      "lng": null
+      "lat": 48.3924262,
+      "lng": 2.5558407
     }
   },
   {
@@ -226,8 +226,8 @@
     "short_name": "Bois Rond Auberge",
     "google_url": "https://goo.gl/maps/k5UWi4nZJy3HwzyZ8",
     "location": {
-      "lat": null,
-      "lng": null
+      "lat": 48.3872769,
+      "lng": 2.5631779
     }
   },
   {
@@ -237,8 +237,8 @@
     "short_name": "Gorge aux Châts",
     "google_url": "https://goo.gl/maps/uX92GwgkzmUb4rGv8",
     "location": {
-      "lat": null,
-      "lng": null
+      "lat": 48.399606,
+      "lng": 2.516953
     }
   },
   {
@@ -248,8 +248,8 @@
     "short_name": "Croix Saint Jérôme",
     "google_url": "https://goo.gl/maps/xbpjJdayrUHCvdxX6",
     "location": {
-      "lat": null,
-      "lng": null
+      "lat": 48.3878765,
+      "lng": 2.5191973
     }
   },
   {
@@ -259,8 +259,8 @@
     "short_name": "Noisy / Roche aux Sabots",
     "google_url": "https://goo.gl/maps/S1AD8zrVEW8ENJiF6",
     "location": {
-      "lat": null,
-      "lng": null
+      "lat": 48.3730342,
+      "lng": 2.511041
     }
   },
   {
@@ -270,8 +270,8 @@
     "short_name": "Mée / Guichot / Diplodocus",
     "google_url": "https://goo.gl/maps/G2Wgib3dKdsmrgeK9",
     "location": {
-      "lat": null,
-      "lng": null
+      "lat": 48.3637574,
+      "lng": 2.5267857
     }
   },
   {
@@ -281,8 +281,8 @@
     "short_name": "Cailleau",
     "google_url": "https://goo.gl/maps/dFYKJn7TjsSw4yje9",
     "location": {
-      "lat": null,
-      "lng": null
+      "lat": 48.3593662,
+      "lng": 2.5345132
     }
   },
   {
@@ -292,8 +292,8 @@
     "short_name": "Bois-le-Roi",
     "google_url": "https://goo.gl/maps/L8dRCK4KSn7Hse2L6",
     "location": {
-      "lat": null,
-      "lng": null
+      "lat": 48.4755886,
+      "lng": 2.6919213
     }
   },
   {
@@ -303,8 +303,8 @@
     "short_name": "Fontainebleau-Avon",
     "google_url": "https://goo.gl/maps/8WXXxun9PrRKPXMa7",
     "location": {
-      "lat": null,
-      "lng": null
+      "lat": 48.4163134,
+      "lng": 2.7266264
     }
   },
   {
@@ -314,8 +314,8 @@
     "short_name": "Montigny-sur-Loing",
     "google_url": "https://goo.gl/maps/6iBHv6tavwzeB9Kw8",
     "location": {
-      "lat": null,
-      "lng": null
+      "lat": 48.3364668,
+      "lng": 2.7385434
     }
   },
   {
@@ -325,8 +325,8 @@
     "short_name": "Nemours Saint-Pierre",
     "google_url": "https://goo.gl/maps/xpyXrJBYyqPBXE5p9",
     "location": {
-      "lat": null,
-      "lng": null
+      "lat": 48.2678425,
+      "lng": 2.6855618
     }
   },
   {
@@ -336,8 +336,8 @@
     "short_name": "Malesherbes",
     "google_url": "https://goo.gl/maps/eaM9kG5Z4Mo7yqEn8",
     "location": {
-      "lat": null,
-      "lng": null
+      "lat": 48.2934161,
+      "lng": 2.4011967
     }
   },
   {
@@ -347,8 +347,8 @@
     "short_name": "Reine Amélie",
     "google_url": "https://goo.gl/maps/trDFBjGvkPm6UWDu6",
     "location": {
-      "lat": null,
-      "lng": null
+      "lat": 48.4194545,
+      "lng": 2.7253342
     }
   },
   {
@@ -358,8 +358,8 @@
     "short_name": "Feuillardière",
     "google_url": "https://goo.gl/maps/LknDGWe7VnC5VcPi9",
     "location": {
-      "lat": null,
-      "lng": null
+      "lat": 48.4013218,
+      "lng": 2.5462559
     }
   },
   {
@@ -369,8 +369,8 @@
     "short_name": "Faisanderie",
     "google_url": "https://goo.gl/maps/emBvq1NsvkRWk4UJA",
     "location": {
-      "lat": null,
-      "lng": null
+      "lat": 48.404787,
+      "lng": 2.6779067
     }
   },
   {
@@ -380,8 +380,8 @@
     "short_name": "Mairie",
     "google_url": "https://goo.gl/maps/LwhqG8AesYZKXwXR7",
     "location": {
-      "lat": null,
-      "lng": null
+      "lat": 48.2632752,
+      "lng": 2.6847732
     }
   },
   {
@@ -391,8 +391,8 @@
     "short_name": "Mont Sarrasin",
     "google_url": "https://maps.app.goo.gl/e6MXZUZzg6TZjJ5R9",
     "location": {
-      "lat": null,
-      "lng": null
+      "lat": 48.2662624,
+      "lng": 2.6515433
     }
   },
   {
@@ -402,8 +402,8 @@
     "short_name": "Beauvais Télégraphe",
     "google_url": "https://maps.app.goo.gl/ryk27YnErr7jpht68",
     "location": {
-      "lat": null,
-      "lng": null
+      "lat": 48.5028458,
+      "lng": 2.4683812
     }
   },
   {
@@ -413,8 +413,52 @@
     "short_name": "La Boulignère",
     "google_url": "https://maps.app.goo.gl/1rqNkPxe8Uo4GzR38",
     "location": {
-      "lat": null,
-      "lng": null
+      "lat": 48.4053372,
+      "lng": 2.5083656
+    }
+  },
+  {
+    "id": 39,
+    "poi_type": "parking",
+    "name": "Parking ZA du Chenet",
+    "short_name": "ZA du Chenet",
+    "google_url": "https://maps.app.goo.gl/Ck8mEyReyvvwGJqS9",
+    "location": {
+      "lat": 48.3973818,
+      "lng": 2.4218127
+    }
+  },
+  {
+    "id": 40,
+    "poi_type": "train_station",
+    "name": "Gare Le Guichet",
+    "short_name": "Le Guichet",
+    "google_url": "https://maps.app.goo.gl/vx9xsZbVx6SER8uH7",
+    "location": {
+      "lat": 48.7049177,
+      "lng": 2.1913916
+    }
+  },
+  {
+    "id": 41,
+    "poi_type": "parking",
+    "name": "Parking Musée de Préhistoire",
+    "short_name": "Musée de Préhistoire",
+    "google_url": "https://maps.app.goo.gl/kADKnaJDhMzJmAvH7",
+    "location": {
+      "lat": 48.2607985,
+      "lng": 2.7149407
+    }
+  },
+  {
+    "id": 74,
+    "poi_type": "parking",
+    "name": "Parking Mairie Darvault",
+    "short_name": "Mairie Darvault",
+    "google_url": "https://maps.app.goo.gl/RtszZT4fwzzApPkV9",
+    "location": {
+      "lat": 48.2706955,
+      "lng": 2.7345918
     }
   }
 ]

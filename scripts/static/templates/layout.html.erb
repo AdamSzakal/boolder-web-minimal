@@ -10,6 +10,45 @@
     <title><%= [page_title, "Boolder"].compact.join(" — ") %></title>
 
     <link rel="stylesheet" href="/assets/tailwind.css">
+
+    <!-- Project list localStorage API (in head so page scripts can use it) -->
+    <script>
+    var BoolderProjects = (function() {
+      var KEY = 'boolder_projects';
+
+      function getIds() {
+        try {
+          return JSON.parse(localStorage.getItem(KEY)) || [];
+        } catch(e) { return []; }
+      }
+
+      function saveIds(ids) {
+        localStorage.setItem(KEY, JSON.stringify(ids));
+      }
+
+      return {
+        list: getIds,
+        has: function(id) { return getIds().indexOf(id) !== -1; },
+        add: function(id) {
+          var ids = getIds();
+          if (ids.indexOf(id) === -1) { ids.push(id); saveIds(ids); }
+        },
+        remove: function(id) {
+          saveIds(getIds().filter(function(x) { return x !== id; }));
+        },
+        toggle: function(id) {
+          if (this.has(id)) { this.remove(id); return false; }
+          else { this.add(id); return true; }
+        },
+        addAll: function(newIds) {
+          var ids = getIds();
+          newIds.forEach(function(id) { if (ids.indexOf(id) === -1) ids.push(id); });
+          saveIds(ids);
+        },
+        clear: function() { localStorage.removeItem(KEY); }
+      };
+    })();
+    </script>
   </head>
 
   <body class="bg-white dark:bg-gray-900">
@@ -271,5 +310,6 @@
       });
     })();
     </script>
+
   </body>
 </html>

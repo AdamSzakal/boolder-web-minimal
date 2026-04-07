@@ -1,18 +1,191 @@
-<div class="max-w-3xl mx-auto pt-6 pb-12 px-4 sm:px-6 lg:px-8"
-  data-controller="project-list"
-  data-project-list-locale-value="en">
-  <div>
-    <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-100">My project list</h1>
-    <p class="text-gray-500 dark:text-gray-400 mt-1">
-      Projects are stored locally on your device.
-    </p>
+<%
+  color_hex = { "yellow" => "#FFCC02", "purple" => "#D783FF", "orange" => "#FF9500", "green" => "#77C344", "blue" => "#017AFF", "skyblue" => "#5AC7FA", "salmon" => "#FDAF8A", "red" => "#FF3B2F", "black" => "#000000", "white" => "#FFFFFF" }
+%>
+
+<div class="max-w-3xl mx-auto pt-6 pb-12 px-4 sm:px-6 lg:px-8">
+  <!-- Header: shown when viewing own list -->
+  <div id="ownHeader">
+    <div class="flex justify-between items-center">
+      <div>
+        <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-100">My projects</h1>
+        <p class="text-gray-500 dark:text-gray-400 mt-1">Stored locally on your device.</p>
+      </div>
+      <button id="shareBtn" type="button" class="hidden inline-flex items-center space-x-2 px-4 py-2 rounded-lg bg-emerald-600 text-white hover:bg-emerald-500 text-sm font-medium">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+        </svg>
+        <span>Share</span>
+      </button>
+    </div>
+    <div id="shareNotice" class="hidden mt-3 px-4 py-2 rounded-lg bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 text-sm">
+      Link copied to clipboard!
+    </div>
   </div>
 
-  <div class="mt-8 text-center text-gray-400 dark:text-gray-500" data-project-list-target="emptyState">
-    <p>Your project list is empty. Add problems from their detail pages.</p>
+  <!-- Header: shown when viewing a shared list -->
+  <div id="sharedHeader" class="hidden">
+    <h1 id="sharedTitle" class="text-3xl font-bold text-gray-900 dark:text-gray-100"></h1>
+    <p class="text-gray-500 dark:text-gray-400 mt-1">Shared project list.</p>
+    <div class="flex space-x-3 mt-3">
+      <button id="saveAllBtn" type="button" class="inline-flex items-center space-x-2 px-4 py-2 rounded-lg bg-emerald-600 text-white hover:bg-emerald-500 text-sm font-medium">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+        </svg>
+        <span>Save all to my list</span>
+      </button>
+      <a href="/en/projects" class="inline-flex items-center px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 text-sm font-medium">
+        View my list
+      </a>
+    </div>
+    <div id="savedNotice" class="hidden mt-3 px-4 py-2 rounded-lg bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 text-sm">
+      Saved to your project list!
+    </div>
   </div>
 
-  <ul class="mt-6 divide-y divide-gray-100 dark:divide-gray-700" data-project-list-target="problemList">
-    <!-- Populated by project_list_controller.js from localStorage -->
-  </ul>
+  <!-- Empty state -->
+  <div id="emptyState" class="hidden mt-12 text-center text-gray-400 dark:text-gray-500">
+    <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto h-12 w-12 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
+    </svg>
+    <p>Your project list is empty.</p>
+    <p class="mt-1 text-sm">Add problems from their detail pages.</p>
+  </div>
+
+  <!-- Problem list -->
+  <ul id="problemList" class="mt-6 divide-y divide-gray-200 dark:divide-gray-700"></ul>
 </div>
+
+<script>
+(function() {
+  var colorHex = <%= color_hex.to_json %>;
+  var isShared = false;
+  var sharedIds = [];
+  var sharedName = '';
+  var index = null;
+
+  // Parse URL fragment: #n=Name&p=1,2,3
+  function parseFragment() {
+    var hash = window.location.hash.slice(1);
+    if (!hash) return;
+    var params = {};
+    hash.split('&').forEach(function(part) {
+      var kv = part.split('=');
+      if (kv.length === 2) params[kv[0]] = decodeURIComponent(kv[1]);
+    });
+    if (params.p) {
+      isShared = true;
+      sharedIds = params.p.split(',').map(Number).filter(Boolean);
+      sharedName = params.n || 'Shared projects';
+    }
+  }
+
+  function ensureIndex(cb) {
+    if (index) return cb();
+    fetch('/assets/search-index.json').then(function(r) { return r.json(); }).then(function(data) {
+      // Build lookup by ID
+      index = {};
+      data.problems.forEach(function(p) { index[p.id] = p; });
+      cb();
+    });
+  }
+
+  function esc(s) { return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+  function renderList(ids, editable) {
+    var list = document.getElementById('problemList');
+    var empty = document.getElementById('emptyState');
+
+    if (ids.length === 0) {
+      list.innerHTML = '';
+      empty.classList.remove('hidden');
+      return;
+    }
+    empty.classList.add('hidden');
+
+    list.innerHTML = ids.map(function(id) {
+      var p = index[id];
+      if (!p) return ''; // ID not found in index
+
+      var circle = '';
+      if (p.cc) {
+        var bg = colorHex[p.cc] || '#999';
+        var fg = p.cc === 'white' ? '#333' : '#FFF';
+        circle = '<span class="inline-flex items-center justify-center w-5 h-5 rounded-full text-xs font-bold mr-2 flex-shrink-0" style="background:' + bg + ';color:' + fg + ';">' + (p.cn || '') + '</span>';
+      }
+
+      var removeBtn = editable
+        ? '<button type="button" class="remove-btn ml-2 text-gray-400 dark:text-gray-500 hover:text-red-500 flex-shrink-0" data-id="' + id + '" title="Remove">' +
+          '<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>' +
+          '</button>'
+        : '';
+
+      return '<li class="py-3 flex items-center justify-between">' +
+        '<a href="' + esc(p.url) + '" class="flex items-center min-w-0 flex-1 hover:text-emerald-600 dark:hover:text-emerald-400">' +
+          circle +
+          '<span class="truncate text-gray-900 dark:text-gray-100">' + esc(p.name) + '</span>' +
+          '<span class="ml-2 text-gray-400 dark:text-gray-500 flex-shrink-0">' + esc(p.grade) + '</span>' +
+          '<span class="ml-3 text-xs text-gray-400 dark:text-gray-500 truncate hidden sm:inline">' + esc(p.area) + '</span>' +
+        '</a>' +
+        removeBtn +
+      '</li>';
+    }).join('');
+
+    // Wire up remove buttons
+    if (editable) {
+      list.querySelectorAll('.remove-btn').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          var removeId = parseInt(btn.getAttribute('data-id'), 10);
+          BoolderProjects.remove(removeId);
+          renderList(BoolderProjects.list(), true);
+          updateShareBtn();
+        });
+      });
+    }
+  }
+
+  function updateShareBtn() {
+    var btn = document.getElementById('shareBtn');
+    var ids = BoolderProjects.list();
+    if (ids.length > 0) btn.classList.remove('hidden');
+    else btn.classList.add('hidden');
+  }
+
+  function buildShareUrl(ids) {
+    var base = window.location.origin + '/en/projects';
+    return base + '#n=My+projects&p=' + ids.join(',');
+  }
+
+  parseFragment();
+
+  if (isShared) {
+    // Shared list view
+    document.getElementById('ownHeader').classList.add('hidden');
+    document.getElementById('sharedHeader').classList.remove('hidden');
+    document.getElementById('sharedTitle').textContent = sharedName;
+
+    ensureIndex(function() { renderList(sharedIds, false); });
+
+    document.getElementById('saveAllBtn').addEventListener('click', function() {
+      BoolderProjects.addAll(sharedIds);
+      document.getElementById('savedNotice').classList.remove('hidden');
+    });
+  } else {
+    // Own list view
+    ensureIndex(function() {
+      renderList(BoolderProjects.list(), true);
+      updateShareBtn();
+    });
+
+    document.getElementById('shareBtn').addEventListener('click', function() {
+      var ids = BoolderProjects.list();
+      var url = buildShareUrl(ids);
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(url);
+      }
+      document.getElementById('shareNotice').classList.remove('hidden');
+      setTimeout(function() { document.getElementById('shareNotice').classList.add('hidden'); }, 3000);
+    });
+  }
+})();
+</script>

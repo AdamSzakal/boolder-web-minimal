@@ -1,1 +1,97 @@
-[]
+[
+  {
+    "id": 1,
+    "name": "Trois Pignons",
+    "main_area_id": 2
+  },
+  {
+    "id": 2,
+    "name": "Franchard",
+    "main_area_id": 5
+  },
+  {
+    "id": 3,
+    "name": "Apremont",
+    "main_area_id": 7
+  },
+  {
+    "id": 4,
+    "name": "Cuvier",
+    "main_area_id": 4
+  },
+  {
+    "id": 5,
+    "name": "Larchant",
+    "main_area_id": 9
+  },
+  {
+    "id": 6,
+    "name": "Buthiers",
+    "main_area_id": 23
+  },
+  {
+    "id": 7,
+    "name": "Beauvais",
+    "main_area_id": 29
+  },
+  {
+    "id": 8,
+    "name": "Nemours",
+    "main_area_id": 32
+  },
+  {
+    "id": 9,
+    "name": "Restant du Long Rocher",
+    "main_area_id": 51
+  },
+  {
+    "id": 10,
+    "name": "Orsay",
+    "main_area_id": 94
+  },
+  {
+    "id": 11,
+    "name": "Rocher Canon",
+    "main_area_id": 1
+  },
+  {
+    "id": 12,
+    "name": "Rocher Saint Germain",
+    "main_area_id": 24
+  },
+  {
+    "id": 13,
+    "name": "Mont Ussy / Calvaire",
+    "main_area_id": 72
+  },
+  {
+    "id": 14,
+    "name": "Corne Biche",
+    "main_area_id": 60
+  },
+  {
+    "id": 15,
+    "name": "Mont Aigu",
+    "main_area_id": 73
+  },
+  {
+    "id": 16,
+    "name": "Rocher d'Avon",
+    "main_area_id": 50
+  },
+  {
+    "id": 17,
+    "name": "Bouligny",
+    "main_area_id": 52
+  },
+  {
+    "id": 18,
+    "name": "Demoiselles",
+    "main_area_id": 53
+  },
+  {
+    "id": 19,
+    "name": "Haute Pierre",
+    "main_area_id": 91
+  }
+]

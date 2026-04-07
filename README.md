@@ -7,19 +7,19 @@ This project is a lightweight, database-free rebuild of the public-facing parts 
 ## Based on
 
 - [boolder-org/boolder](https://github.com/boolder-org/boolder) — the original Rails application powering boolder.com
-- [boolder-org/boolder-data](https://github.com/boolder-org/boolder-data) — the open dataset of 17,000+ bouldering problems in Fontainebleau
+- [boolder-org/boolder-data](https://github.com/boolder-org/boolder-data) — the open dataset of 19,000+ bouldering problems in Fontainebleau
 
 Topo photos are served from the Boolder CDN (`assets.boolder.com`). Map tiles are hosted on Mapbox using the original Boolder tileset and style.
 
 ## What's included
 
-- **Area pages** — 80+ climbing areas with descriptions, circuits, popular problems, and access info
-- **Problem pages** — 16,000+ individual boulder problems with topo photos and SVG line overlays
-- **Circuit pages** — 200+ color-coded circuits with sorted problem lists
+- **Area pages** — 90 climbing areas with descriptions, circuits, popular problems, and access info
+- **Problem pages** — 19,000+ individual boulder problems with topo photos and SVG line overlays
+- **Circuit pages** — 270+ color-coded circuits with sorted problem lists
 - **Interactive map** — Mapbox GL JS with area/problem deep links and grade filtering
 - **Search** — client-side search over areas and problems (accent-insensitive)
 - **Boulders browser** — filterable/sortable list by grade, steepness, and popularity
-- **Project lists** — local-only (localStorage) problem bookmarks
+- **Project lists** — problem bookmarks stored in localStorage, shareable via URL
 
 ## Stack
 
@@ -34,6 +34,7 @@ Topo photos are served from the Boolder CDN (`assets.boolder.com`). Map tiles ar
 ### Prerequisites
 
 - Ruby 3.3+ (`brew install rbenv && rbenv install 3.3.5`)
+- `sqlite3` gem (`gem install sqlite3`) — only needed for data import
 
 ### Build
 
@@ -59,13 +60,24 @@ rsync -av dist/ <your-static-host>
 
 ## Refreshing the data
 
-Source data lives under `data/source/` as JSON files. To re-export from a Boolder database:
+Source data lives under `data/source/content/` as JSON files, imported from the [boolder-data](https://github.com/boolder-org/boolder-data) SQLite database. This is the canonical open dataset maintained by the Boolder project.
+
+To update to the latest data:
 
 ```bash
-bin/rails static:export
+# Clone or pull the data repo (one-time setup)
+git clone https://github.com/boolder-org/boolder-data.git ../boolder-data
+
+# Import into source JSON
+ruby scripts/static/import_from_boolder_data.rb ../boolder-data/boolder.db
+
+# Rebuild the site
+ruby scripts/static/build.rb
 ```
 
-See `data/source/README.md` for the file layout.
+The import script converts the SQLite tables into the JSON format expected by the build, deriving slugs for URLs and resolving circuit-area relationships.
+
+A legacy `bin/rails static:export` rake task also exists for exporting from the original Rails database, but the boolder-data import is preferred as it has more complete and up-to-date data.
 
 ## Project structure
 
