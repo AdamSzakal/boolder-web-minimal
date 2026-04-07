@@ -54,9 +54,18 @@ Then open http://localhost:4173/en/fontainebleau
 
 ### Deploy
 
+The site is deployed on [Netlify](https://www.netlify.com). Netlify serves the pre-built `dist/` directory directly — there is no server-side build step.
+
+To deploy, just push to `main`:
+
 ```bash
-rsync -av dist/ <your-static-host>
+ruby scripts/static/build.rb   # rebuild dist/ locally after any changes
+git add dist/
+git commit -m "rebuild static site"
+git push
 ```
+
+Netlify will automatically pick up the new `dist/` contents. Deploys are skipped when `dist/` hasn't changed.
 
 ## Refreshing the data
 
@@ -87,5 +96,5 @@ scripts/static/build.rb  — single entry point that generates dist/
 scripts/static/lib/       — build modules (catalog, read models, renderer, search, media, map)
 scripts/static/templates/ — ERB page templates
 test/static/              — tests for build modules
-dist/                     — generated output (gitignored)
+dist/                     — generated output (committed, deployed by Netlify)
 ```
