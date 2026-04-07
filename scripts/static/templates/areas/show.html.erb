@@ -161,6 +161,9 @@
                 </svg>
               </span>
             </div>
+            <%
+              steepness_labels = { "wall" => "Wall", "slab" => "Slab", "overhang" => "Overhang", "roof" => "Roof", "traverse" => "Traverse", "other" => "Other" }
+            %>
             <ul role="list">
               <%- popular_problems.each do |problem| -%>
                 <%
@@ -168,21 +171,25 @@
                 %>
                 <li class="px-4 sm:-mx-2 sm:px-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg">
                   <a href="/en/fontainebleau/<%= area["slug"] %>/<%= problem_slug %>">
-                    <div class="flex justify-between py-2">
+                    <div class="py-2">
                       <div>
-                        <%- if problem["circuit_color"] && problem["circuit_number"] -%>
+                        <span><%= problem["name"] %></span>
+                        <span class="ml-1 text-gray-500 dark:text-gray-400"><%= problem["grade"] %></span>
+                      </div>
+                      <div class="flex flex-wrap items-center gap-1.5 text-xs text-gray-500 dark:text-gray-400 mt-1">
+                        <%- if problem["popularity"].to_i > 0 -%>
+                          <span class="inline-flex items-center gap-1 rounded-full bg-gray-200 dark:bg-gray-700 px-2 py-0.5">&#9733; <%= problem["popularity"] %></span>
+                        <%- end -%>
+                        <%- if problem["steepness"] -%>
+                          <span class="inline-flex items-center rounded-full bg-gray-200 dark:bg-gray-700 px-2 py-0.5"><%= steepness_labels[problem["steepness"]] || problem["steepness"] %></span>
+                        <%- end -%>
+                        <%- if problem["circuit_color"] -%>
                           <%
                             c_hex = color_hex[problem["circuit_color"]] || "#999"
                             c_text = problem["circuit_color"] == "white" ? "#000" : "#FFF"
                           %>
-                          <span class="inline-flex items-center justify-center w-6 h-6 rounded-full text-xs font-bold" style="background-color: <%= c_hex %>; color: <%= c_text %>;"><%= problem["circuit_number"] %></span>
-                        <%- else -%>
-                          <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-gray-200 dark:bg-gray-700 text-xs">&nbsp;</span>
+                          <span class="inline-flex items-center rounded-full px-2 py-0.5" style="background-color: <%= c_hex %>; color: <%= c_text %>;"><%= problem["circuit_color"].capitalize %><%= " #{problem["circuit_number"]}" if problem["circuit_number"] %></span>
                         <%- end -%>
-                        <span class="ml-2"><%= problem["name"] %></span>
-                      </div>
-                      <div class="text-gray-500 dark:text-gray-400">
-                        <%= problem["grade"] %>
                       </div>
                     </div>
                   </a>
