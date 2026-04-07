@@ -13,117 +13,178 @@
     <link href="https://api.mapbox.com/mapbox-gl-js/v3.11.0/mapbox-gl.css" rel="stylesheet">
     <script src="https://api.mapbox.com/mapbox-gl-js/v3.11.0/mapbox-gl.js"></script>
 
+    <style>
+      :root {
+        color-scheme: dark light;
+        --bg:          #0b0d0b;
+        --surface:     #141614;
+        --surface-hover:#1c1e1c;
+        --border:      #2a2c2a;
+        --text:        #fafaf8;
+        --text-secondary: #8a8a8a;
+        --text-tertiary:  #5a5a5a;
+        --accent:      #34d399;
+        --accent-hover:#6ee7b7;
+      }
+      html.light {
+        --bg:          #fafaf8;
+        --surface:     #ffffff;
+        --surface-hover:#f0f0ee;
+        --border:      #e5e5e5;
+        --text:        #1a1a1a;
+        --text-secondary: #6b6b6b;
+        --text-tertiary:  #9a9a9a;
+        --accent:      #059669;
+        --accent-hover:#047857;
+      }
+      body { background: var(--bg); color: var(--text); }
+      /* Utility overrides using CSS vars */
+      .t-bg         { background: var(--bg); }
+      .t-surface    { background: var(--surface); }
+      .t-surface-hover:hover { background: var(--surface-hover); }
+      .t-border     { border-color: var(--border); }
+      .t-text       { color: var(--text); }
+      .t-text-sec   { color: var(--text-secondary); }
+      .t-text-tri   { color: var(--text-tertiary); }
+      .t-accent     { color: var(--accent); }
+      .t-accent-hover:hover { color: var(--accent-hover); }
+      .t-accent-bg  { background: var(--accent); }
+      .t-badge      { background: var(--surface-hover); color: var(--text-secondary); }
+      /* Form controls */
+      .t-select     { background: var(--surface); color: var(--text); border-color: var(--border); }
+      .t-select:focus { border-color: var(--accent); outline: none; ring: 1px var(--accent); }
+      .t-input      { background: transparent; color: var(--text); }
+      .t-input::placeholder { color: var(--text-tertiary); }
+    </style>
+
+    <script>
+      // Theme: persist preference, default to dark
+      (function() {
+        var pref = localStorage.getItem('theme');
+        if (pref === 'light') document.documentElement.classList.add('light');
+      })();
+    </script>
+
     <script>
       let locale = "en";
       window.addEventListener('gotoproblem', function(event) {
-        // Static: look up problem URL from search index
-        if (event.detail.url) {
-          window.location = event.detail.url;
-        }
+        if (event.detail.url) { window.location = event.detail.url; }
       });
       window.addEventListener('gotoarea', function(event) {
-        if (event.detail.url) {
-          window.location = event.detail.url;
-        }
+        if (event.detail.url) { window.location = event.detail.url; }
       });
     </script>
   </head>
 
-  <body class="bg-white dark:bg-gray-900">
-    <div class="bg-gray-100 dark:bg-gray-800">
-
-      <!-- Nav -->
-      <nav class="bg-white dark:bg-gray-900 shadow dark:shadow-gray-700/50">
-        <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
-          <div class="flex justify-between h-16">
-            <div class="flex px-2 lg:px-0">
-              <div class="flex-shrink-0 flex items-center">
-                <a href="/en/fontainebleau">
-                  <img src="/images/logo.svg" class="h-8 w-auto" alt="Boolder" />
-                </a>
-              </div>
-              <div class="ml-6 flex space-x-8">
-                <a href="/en/fontainebleau" class="flex items-center px-1 pt-1 font-medium text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100">Areas</a>
-                <a href="/en/fontainebleau/boulders" class="flex items-center px-1 pt-1 font-medium text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100">Boulders</a>
-                <a href="/en/map" class="flex items-center px-1 pt-1 font-medium text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100">Map</a>
-                <button type="button" onclick="document.getElementById('searchModal').classList.remove('hidden')" class="px-1 pt-1 font-medium text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100" aria-label="Open search">
-                  <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
-                  </svg>
-                </button>
-              </div>
-            </div>
+  <body>
+    <!-- Nav -->
+    <nav class="t-surface" style="border-bottom: 1px solid var(--border);">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16">
+          <div class="flex items-center space-x-8">
+            <a href="/en/fontainebleau" class="flex-shrink-0">
+              <img src="/images/logo.svg" class="h-8 w-auto" alt="Boolder" />
+            </a>
+            <a href="/en/fontainebleau" class="font-medium t-text-sec t-accent-hover">Areas</a>
+            <a href="/en/fontainebleau/boulders" class="font-medium t-text-sec t-accent-hover">Boulders</a>
+            <a href="/en/map" class="font-medium t-text-sec t-accent-hover">Map</a>
           </div>
-        </div>
-      </nav>
-
-      <!-- Search modal (hidden by default) -->
-      <div id="searchModal" class="fixed inset-0 z-50 hidden overflow-y-auto" role="dialog" aria-modal="true" data-controller="search">
-        <div class="flex justify-center pt-4 px-1 pb-20 text-center sm:block sm:p-0">
-          <div class="fixed inset-0 transition-opacity" aria-hidden="true" onclick="document.getElementById('searchModal').classList.add('hidden')">
-            <div class="absolute inset-0 bg-gray-600 sm:bg-gray-400 opacity-75 sm:opacity-50"></div>
-          </div>
-          <div class="inline-block align-bottom bg-white dark:bg-gray-900 rounded-lg text-left overflow-hidden shadow-xl transform transition-all w-full max-w-md sm:max-w-lg sm:align-middle sm:my-8 sm:w-full sm:rounded-xl sm:shadow-2xl">
-            <div class="relative">
-              <svg class="pointer-events-none absolute left-4 top-3.5 h-5 w-5 text-emerald-700" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd" />
+          <div class="flex items-center space-x-4">
+            <button type="button" onclick="document.getElementById('searchModal').classList.remove('hidden')" class="t-text-sec t-accent-hover" aria-label="Search">
+              <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
               </svg>
-              <div class="flex items-center">
-                <input
-                  type="text"
-                  data-search-target="searchInput"
-                  data-action="input->search#performSearch keydown->search#handleKeydown"
-                  class="h-12 w-full border-0 bg-transparent pl-11 pr-4 text-gray-900 dark:text-gray-100 placeholder:text-gray-500 focus:ring-0"
-                  placeholder="Search..."
-                  role="combobox"
-                  aria-expanded="false"
-                  aria-controls="options"
-                  autocorrect="off"
-                  autocomplete="off"
-                  spellcheck="false"
-                >
-                <button data-search-target="clearButton" data-action="click->search#clearSearch" type="button" class="hidden h-12 w-20 flex items-center justify-center text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100" aria-label="Clear search">
-                  &#10005;
-                </button>
-                <button data-action="click->search#closeModal" type="button" class="h-12 px-4 inline-flex justify-center items-center border-l border-l-gray-300 dark:border-l-gray-600 font-medium bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-700">
-                  Cancel
-                </button>
-              </div>
-            </div>
-            <ul class="bg-gray-100 dark:bg-gray-800 cursor-pointer sm:max-h-80 scroll-pb-2 scroll-pt-11 space-y-2 overflow-y-auto border-t border-gray-200 dark:border-gray-700 pb-2 hidden" data-search-target="searchDropdown" role="listbox" id="options">
-              <li>
-                <ul class="mt-2 text-gray-800" data-search-target="searchResults"></ul>
-              </li>
-            </ul>
+            </button>
+            <!-- Theme toggle -->
+            <button id="themeToggle" type="button" class="t-text-sec t-accent-hover" aria-label="Toggle theme">
+              <svg id="themeIconSun" class="h-5 w-5 hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+              </svg>
+              <svg id="themeIconMoon" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+              </svg>
+            </button>
           </div>
         </div>
       </div>
+    </nav>
 
-      <!-- Content -->
-      <%= content %>
-
-      <!-- Footer -->
-      <div class="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
-        <div class="max-w-7xl mx-auto py-3 px-4 sm:px-6 lg:px-8 flex justify-center">
-          <a href="/en/projects" class="flex items-center space-x-1.5 text-base text-gray-400 dark:text-gray-500 hover:text-gray-900 dark:hover:text-gray-100">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+    <!-- Search modal -->
+    <div id="searchModal" class="fixed inset-0 z-50 hidden overflow-y-auto" role="dialog" aria-modal="true" data-controller="search">
+      <div class="flex justify-center pt-4 px-1 pb-20 text-center sm:block sm:p-0">
+        <div class="fixed inset-0 transition-opacity" aria-hidden="true" onclick="document.getElementById('searchModal').classList.add('hidden')">
+          <div class="absolute inset-0 bg-black opacity-60"></div>
+        </div>
+        <div class="inline-block align-bottom t-surface rounded-lg text-left overflow-hidden shadow-2xl transform transition-all w-full max-w-md sm:max-w-lg sm:align-middle sm:my-8 sm:rounded-xl">
+          <div class="relative">
+            <svg class="pointer-events-none absolute left-4 top-3.5 h-5 w-5 t-accent" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd" />
             </svg>
-            <span>My projects</span>
-          </a>
+            <div class="flex items-center">
+              <input
+                type="text"
+                data-search-target="searchInput"
+                data-action="input->search#performSearch keydown->search#handleKeydown"
+                class="h-12 w-full border-0 t-input pl-11 pr-4 focus:ring-0"
+                placeholder="Search..."
+                role="combobox"
+                aria-expanded="false"
+                aria-controls="options"
+                autocorrect="off"
+                autocomplete="off"
+                spellcheck="false"
+              >
+              <button data-search-target="clearButton" data-action="click->search#clearSearch" type="button" class="hidden h-12 w-20 flex items-center justify-center t-text-sec" aria-label="Clear">&#10005;</button>
+              <button data-action="click->search#closeModal" type="button" class="h-12 px-4 inline-flex justify-center items-center t-text-sec t-surface font-medium" style="border-left: 1px solid var(--border);">Cancel</button>
+            </div>
+          </div>
+          <ul class="t-surface cursor-pointer sm:max-h-80 overflow-y-auto pb-2 hidden" style="border-top: 1px solid var(--border);" data-search-target="searchDropdown" role="listbox" id="options">
+            <li><ul class="mt-2" data-search-target="searchResults"></ul></li>
+          </ul>
         </div>
       </div>
-      <footer class="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
-        <div class="max-w-7xl mx-auto py-4 px-4 overflow-hidden sm:px-6 lg:px-8">
-          <div class="flex justify-center">
-            <nav class="flex flex-wrap justify-center" aria-label="Footer">
-              <div class="px-4 py-2">
-                <a href="https://www.boolder.com" class="text-base text-gray-400 dark:text-gray-500 hover:text-gray-900 dark:hover:text-gray-100">Boolder</a>
-              </div>
-            </nav>
-          </div>
-        </div>
-      </footer>
     </div>
+
+    <!-- Content -->
+    <%= content %>
+
+    <!-- Footer -->
+    <div class="t-surface" style="border-top: 1px solid var(--border);">
+      <div class="max-w-7xl mx-auto py-3 px-4 sm:px-6 lg:px-8 flex justify-center">
+        <a href="/en/projects" class="flex items-center space-x-1.5 text-base t-text-tri t-accent-hover">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+          </svg>
+          <span>My projects</span>
+        </a>
+      </div>
+    </div>
+    <footer class="t-surface" style="border-top: 1px solid var(--border);">
+      <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-center">
+          <a href="https://www.boolder.com" class="text-base t-text-tri t-accent-hover">Boolder</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Theme toggle logic
+      (function() {
+        var btn = document.getElementById('themeToggle');
+        var sun = document.getElementById('themeIconSun');
+        var moon = document.getElementById('themeIconMoon');
+        function update() {
+          var isLight = document.documentElement.classList.contains('light');
+          sun.classList.toggle('hidden', !isLight);
+          moon.classList.toggle('hidden', isLight);
+        }
+        btn.addEventListener('click', function() {
+          document.documentElement.classList.toggle('light');
+          localStorage.setItem('theme', document.documentElement.classList.contains('light') ? 'light' : 'dark');
+          update();
+        });
+        update();
+      })();
+    </script>
   </body>
 </html>

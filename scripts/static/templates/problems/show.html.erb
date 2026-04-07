@@ -11,32 +11,32 @@
     <div class="col-span-2">
       <!-- Breadcrumbs -->
       <div class="px-4 sm:px-0">
-        <div class="flex items-center space-x-1 text-sm font-medium text-gray-500 dark:text-gray-400">
-          <div><a href="/en/fontainebleau" class="hover:text-gray-700 dark:hover:text-gray-300">Fontainebleau</a></div>
+        <div class="flex items-center space-x-1 text-sm font-medium t-text-sec">
+          <div><a href="/en/fontainebleau" class="t-accent-hover">Fontainebleau</a></div>
           <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
           </svg>
-          <div><a href="/en/fontainebleau/<%= area["slug"] %>" class="hover:text-gray-700 dark:hover:text-gray-300"><%= area["name"] %></a></div>
+          <div><a href="/en/fontainebleau/<%= area["slug"] %>" class="t-accent-hover"><%= area["name"] %></a></div>
         </div>
 
         <!-- Title + grade -->
         <div class="flex justify-between items-center w-full mt-2">
-          <h1 class="text-4xl font-bold text-gray-900 dark:text-gray-100"><%= problem["name"] %></h1>
-          <div class="text-gray-400 dark:text-gray-500 text-4xl font-bold"><%= problem["grade"] %></div>
+          <h1 class="text-4xl font-bold"><%= problem["name"] %></h1>
+          <div class="t-text-tri text-4xl font-bold"><%= problem["grade"] %></div>
         </div>
 
         <!-- Metadata badges -->
         <div class="flex flex-wrap items-center gap-2 mt-3">
           <%- if problem["sit_start"] -%>
-            <span class="inline-flex items-center rounded-full bg-amber-100 dark:bg-amber-900/40 text-amber-800 dark:text-amber-200 px-2.5 py-0.5 text-sm font-medium">Sit start</span>
+            <span class="inline-flex items-center rounded-full t-badge px-2.5 py-0.5 text-sm font-medium">Sit start</span>
           <%- end -%>
 
           <%- if problem["popularity"].to_i > 0 -%>
-            <span class="inline-flex items-center gap-1 rounded-full bg-gray-200 dark:bg-gray-700 px-2.5 py-0.5 text-sm text-gray-600 dark:text-gray-300">&#9733; <%= problem["popularity"] %></span>
+            <span class="inline-flex items-center gap-1 rounded-full t-badge px-2.5 py-0.5 text-sm">&#9733; <%= problem["popularity"] %></span>
           <%- end -%>
 
           <%- if problem["steepness"] -%>
-            <span class="inline-flex items-center rounded-full bg-gray-200 dark:bg-gray-700 px-2.5 py-0.5 text-sm text-gray-600 dark:text-gray-300"><%= steepness_labels[problem["steepness"]] || problem["steepness"] %></span>
+            <span class="inline-flex items-center rounded-full t-badge px-2.5 py-0.5 text-sm"><%= steepness_labels[problem["steepness"]] || problem["steepness"] %></span>
           <%- end -%>
 
           <%- if problem["circuit_color"] -%>
@@ -50,7 +50,7 @@
           <%- end -%>
 
           <%- if problem["featured"] -%>
-            <span class="inline-flex items-center gap-1 rounded-full bg-red-100 dark:bg-red-900/40 text-red-600 dark:text-red-300 px-2.5 py-0.5 text-sm font-medium">
+            <span class="inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-sm font-medium text-red-400" style="background: var(--surface-hover);">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
               </svg>
@@ -65,9 +65,9 @@
         <%- if topo_html.to_s.strip.length > 0 -%>
           <%= topo_html %>
         <%- else -%>
-          <div class="w-full aspect-w-4 aspect-h-3 bg-gray-300 dark:bg-gray-700 sm:rounded-lg">
+          <div class="w-full aspect-w-4 aspect-h-3 sm:rounded-lg" style="background: var(--surface-hover);">
             <div class="flex flex-wrap justify-center content-center">
-              <span class="text-gray-400 dark:text-gray-500 text-sm">No photo</span>
+              <span class="t-text-tri text-sm">No photo</span>
             </div>
           </div>
         <%- end -%>
@@ -84,7 +84,7 @@
                 prev_area_slug = prev_area ? prev_area["slug"] : area["slug"]
               %>
               <a href="/en/fontainebleau/<%= prev_area_slug %>/<%= prev_slug %>">
-                <div class="flex items-center space-x-2 text-emerald-600">
+                <div class="flex items-center space-x-2 t-accent">
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18" />
                   </svg>
@@ -101,7 +101,7 @@
                 next_area_slug = next_area ? next_area["slug"] : area["slug"]
               %>
               <a href="/en/fontainebleau/<%= next_area_slug %>/<%= next_slug %>">
-                <div class="flex items-center space-x-2 text-emerald-600">
+                <div class="flex items-center space-x-2 t-accent">
                   <div>Next</div>
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -123,7 +123,7 @@
         </div>
 
         <a href="/en/map/<%= area["slug"] %>?pid=<%= problem["id"] %>" rel="nofollow">
-          <div class="flex items-center space-x-2 text-emerald-600 mt-2">
+          <div class="flex items-center space-x-2 t-accent mt-2">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -134,7 +134,7 @@
 
         <%- if circuit -%>
           <a href="/en/fontainebleau/circuits/<%= circuit["id"] %>" rel="nofollow">
-            <div class="flex items-center space-x-2 text-emerald-600 mt-2">
+            <div class="flex items-center space-x-2 t-accent mt-2">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
@@ -145,7 +145,7 @@
 
         <%- if problem["bleau_info_id"].to_s.strip.length > 0 -%>
           <a href="https://bleau.info/a/<%= problem["bleau_info_id"] %>.html" rel="nofollow" target="_blank">
-            <div class="flex items-center space-x-2 text-emerald-600 mt-2">
+            <div class="flex items-center space-x-2 t-accent mt-2">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
               </svg>
@@ -175,10 +175,10 @@
                     %>
                     <span class="inline-flex items-center justify-center w-6 h-6 rounded-full text-xs font-bold" style="background-color: <%= vc_hex %>; color: <%= vc_text %>;"><%= variant["circuit_number"] %></span>
                   <%- else -%>
-                    <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-gray-200 dark:bg-gray-700 text-xs">&nbsp;</span>
+                    <span class="inline-flex items-center justify-center w-6 h-6 rounded-full t-badge text-xs">&nbsp;</span>
                   <%- end -%>
                   <span class="ml-2 font-medium"><%= variant["name"] %></span>
-                  <span class="ml-2 text-gray-400 dark:text-gray-500"><%= variant["grade"] %></span>
+                  <span class="ml-2 t-text-tri"><%= variant["grade"] %></span>
                 </a>
               </li>
             <%- end -%>
@@ -197,10 +197,10 @@
                 ac_active = circuit && circuit["id"] == ac["id"]
               %>
               <li class="py-1">
-                <a href="/en/fontainebleau/circuits/<%= ac["id"] %>" class="flex items-center space-x-2 <%= ac_active ? 'font-semibold text-gray-900 dark:text-gray-100' : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100' %>">
+                <a href="/en/fontainebleau/circuits/<%= ac["id"] %>" class="flex items-center space-x-2 <%= ac_active ? 'font-semibold' : 't-text-sec t-accent-hover' %>">
                   <span class="inline-block w-3.5 h-3.5 rounded-full flex-shrink-0" style="background-color: <%= ac_hex %>;"></span>
                   <span><%= ac["color"].capitalize %></span>
-                  <span class="text-gray-400 dark:text-gray-500 text-sm"><%= ac["average_grade"] %></span>
+                  <span class="t-text-tri text-sm"><%= ac["average_grade"] %></span>
                   <%- if ac["beginner_friendly"] -%>
                     <span class="text-emerald-500" title="Beginner friendly">
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">

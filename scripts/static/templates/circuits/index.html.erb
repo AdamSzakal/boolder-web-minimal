@@ -4,8 +4,8 @@
 
 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mb-8">
   <div class="px-4 sm:px-0 pt-6">
-    <div class="flex items-center space-x-1 text-sm font-medium text-gray-500 dark:text-gray-400">
-      <div><a href="/en/fontainebleau" class="hover:text-gray-700 dark:hover:text-gray-300">Fontainebleau</a></div>
+    <div class="flex items-center space-x-1 text-sm font-medium t-text-sec">
+      <div><a href="/en/fontainebleau" class="t-accent-hover">Fontainebleau</a></div>
     </div>
   </div>
 
@@ -16,13 +16,13 @@
         <ul role="list">
           <%- circuits.each do |circuit| -%>
             <% hex = color_hex[circuit["color"]] || "#999" %>
-            <li class="px-4 sm:-mx-2 sm:px-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg">
+            <li class="px-4 sm:-mx-2 sm:px-2 t-surface-hover rounded-lg">
               <a href="/en/fontainebleau/circuits/<%= circuit["id"] %>" class="flex justify-between items-center">
                 <div class="flex justify-between py-2">
                   <div>
                     <span class="inline-block w-4 h-4 rounded-full" style="background-color: <%= hex %>;"></span>
                     <span class="ml-2">Circuit <%= circuit["color"].capitalize %></span>
-                    <span class="ml-2 text-gray-400 dark:text-gray-500"><%= circuit["main_area_name"] %></span>
+                    <span class="ml-2 t-text-tri"><%= circuit["main_area_name"] %></span>
                   </div>
                 </div>
                 <span class="flex">
@@ -40,7 +40,7 @@
                       </svg>
                     </span>
                   <%- end -%>
-                  <span class="text-gray-500 dark:text-gray-400"><%= circuit["average_grade"] %></span>
+                  <span class="t-text-sec"><%= circuit["average_grade"] %></span>
                 </span>
               </a>
             </li>

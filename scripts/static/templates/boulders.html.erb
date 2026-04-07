@@ -1,7 +1,7 @@
 <div class="max-w-7xl mx-auto pt-6 sm:px-6 lg:px-8">
   <div class="px-4 sm:px-0">
-    <div class="flex items-center space-x-1 text-sm font-medium text-gray-500 dark:text-gray-400">
-      <div><a href="/en/fontainebleau" class="hover:text-gray-700 dark:hover:text-gray-300">Fontainebleau</a></div>
+    <div class="flex items-center space-x-1 text-sm font-medium t-text-sec">
+      <div><a href="/en/fontainebleau" class="t-accent-hover">Fontainebleau</a></div>
     </div>
   </div>
 </div>
@@ -13,8 +13,8 @@
       <!-- Filters -->
       <div class="px-4 sm:px-0 space-y-4" id="boulders-filters">
         <div>
-          <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Grade</label>
-          <select id="filter-grade" class="mt-1 block w-full md:w-1/3 rounded-md border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 dark:text-gray-100 py-2 pl-3 pr-10 text-base focus:border-emerald-500 focus:outline-none focus:ring-emerald-500 sm:text-sm">
+          <label class="block text-sm font-medium t-text-sec">Grade</label>
+          <select id="filter-grade" class="mt-1 block w-full md:w-1/3 rounded-md t-select py-2 pl-3 pr-10 text-base focus:outline-none sm:text-sm" style="border: 1px solid var(--border);">
             <option value="">All</option>
             <option value="beginner">Beginner (1–3)</option>
             <option value="level4">Level 4</option>
@@ -26,8 +26,8 @@
         </div>
 
         <div>
-          <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Steepness</label>
-          <select id="filter-steepness" class="mt-1 block w-full md:w-1/3 rounded-md border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 dark:text-gray-100 py-2 pl-3 pr-10 text-base focus:border-emerald-500 focus:outline-none focus:ring-emerald-500 sm:text-sm">
+          <label class="block text-sm font-medium t-text-sec">Steepness</label>
+          <select id="filter-steepness" class="mt-1 block w-full md:w-1/3 rounded-md t-select py-2 pl-3 pr-10 text-base focus:outline-none sm:text-sm" style="border: 1px solid var(--border);">
             <option value="">All</option>
             <option value="wall">Wall</option>
             <option value="slab">Slab</option>
@@ -38,20 +38,20 @@
         </div>
 
         <div>
-          <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Circuit</label>
-          <select id="filter-circuit" class="mt-1 block w-full md:w-1/2 rounded-md border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 dark:text-gray-100 py-2 pl-3 pr-10 text-base focus:border-emerald-500 focus:outline-none focus:ring-emerald-500 sm:text-sm">
+          <label class="block text-sm font-medium t-text-sec">Circuit</label>
+          <select id="filter-circuit" class="mt-1 block w-full md:w-1/2 rounded-md t-select py-2 pl-3 pr-10 text-base focus:outline-none sm:text-sm" style="border: 1px solid var(--border);">
             <option value="">All</option>
           </select>
         </div>
 
         <div>
-          <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Sort by</label>
+          <label class="block text-sm font-medium t-text-sec">Sort by</label>
           <div class="flex items-center space-x-2 mt-1">
-            <select id="filter-sort" class="block w-full md:w-1/3 rounded-md border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 dark:text-gray-100 py-2 pl-3 pr-10 text-base focus:border-emerald-500 focus:outline-none focus:ring-emerald-500 sm:text-sm">
+            <select id="filter-sort" class="block w-full md:w-1/3 rounded-md t-select py-2 pl-3 pr-10 text-base focus:outline-none sm:text-sm" style="border: 1px solid var(--border);">
               <option value="popularity">Popularity</option>
               <option value="grade">Grade</option>
             </select>
-            <button id="filter-direction" type="button" class="inline-flex items-center p-2 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400" title="Toggle sort direction">
+            <button id="filter-direction" type="button" class="inline-flex items-center p-2 rounded-md t-surface t-surface-hover t-text-sec" style="border: 1px solid var(--border);" title="Toggle sort direction">
               <svg id="dir-desc-icon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M3 4h13M3 8h9m-9 4h9m5-4v12m0 0l-4-4m4 4l4-4" />
               </svg>
@@ -63,7 +63,7 @@
         </div>
       </div>
 
-      <div id="results-count" class="px-4 sm:px-0 pt-4 text-sm text-gray-500 dark:text-gray-400"></div>
+      <div id="results-count" class="px-4 sm:px-0 pt-4 text-sm t-text-sec"></div>
 
       <ul role="list" id="boulders-list"></ul>
     </div>
@@ -179,14 +179,14 @@
         ? '<span class="inline-flex items-center rounded-full px-2 py-0.5" style="background-color: ' + cHex + '; color: ' + cText + ';">' + capitalize(p.circuit_color) + (p.circuit_number ? ' ' + p.circuit_number : '') + '</span>'
         : '';
 
-      return '<li class="px-4 sm:-mx-2 sm:px-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg">' +
+      return '<li class="px-4 sm:-mx-2 sm:px-2 t-surface-hover rounded-lg">' +
         '<a href="' + p.url + '">' +
           '<div class="py-2">' +
-            '<div><span>' + esc(p.name) + '</span> <span class="ml-1 text-gray-500 dark:text-gray-400">' + (p.grade || '') + '</span></div>' +
-            '<div class="flex flex-wrap items-center gap-1.5 text-xs text-gray-500 dark:text-gray-400 mt-1">' +
-              (p.popularity > 0 ? '<span class="inline-flex items-center gap-1 rounded-full bg-gray-200 dark:bg-gray-700 px-2 py-0.5">\u2605 ' + p.popularity + '</span>' : '') +
-              '<span class="inline-flex items-center rounded-full bg-gray-200 dark:bg-gray-700 px-2 py-0.5">' + (steepnessLabels[p.steepness] || p.steepness) + '</span>' +
-              '<span class="inline-flex items-center rounded-full bg-gray-200 dark:bg-gray-700 px-2 py-0.5">' + esc(p.area_name) + '</span>' +
+            '<div><span>' + esc(p.name) + '</span> <span class="ml-1 t-text-sec">' + (p.grade || '') + '</span></div>' +
+            '<div class="flex flex-wrap items-center gap-1.5 text-xs t-text-sec mt-1">' +
+              (p.popularity > 0 ? '<span class="inline-flex items-center gap-1 rounded-full t-badge px-2 py-0.5">\u2605 ' + p.popularity + '</span>' : '') +
+              '<span class="inline-flex items-center rounded-full t-badge px-2 py-0.5">' + (steepnessLabels[p.steepness] || p.steepness) + '</span>' +
+              '<span class="inline-flex items-center rounded-full t-badge px-2 py-0.5">' + esc(p.area_name) + '</span>' +
               circuitBadge +
             '</div>' +
           '</div>' +
