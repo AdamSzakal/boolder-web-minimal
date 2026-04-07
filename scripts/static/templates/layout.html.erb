@@ -10,21 +10,6 @@
     <title><%= [page_title, "Boolder"].compact.join(" — ") %></title>
 
     <link rel="stylesheet" href="/assets/tailwind.css">
-
-    <script>
-      let locale = "en";
-      window.addEventListener('gotoproblem', function(event) {
-        // Static: look up problem URL from search index
-        if (event.detail.url) {
-          window.location = event.detail.url;
-        }
-      });
-      window.addEventListener('gotoarea', function(event) {
-        if (event.detail.url) {
-          window.location = event.detail.url;
-        }
-      });
-    </script>
   </head>
 
   <body class="bg-white dark:bg-gray-900">
@@ -44,7 +29,7 @@
                 <a href="/en/fontainebleau" class="flex items-center px-1 pt-1 font-medium text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100">Areas</a>
                 <a href="/en/fontainebleau/boulders" class="flex items-center px-1 pt-1 font-medium text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100">Boulders</a>
                 <a href="/en/map" class="flex items-center px-1 pt-1 font-medium text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100">Map</a>
-                <button type="button" onclick="document.getElementById('searchModal').classList.remove('hidden')" class="px-1 pt-1 font-medium text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100" aria-label="Open search">
+                <button type="button" id="searchOpenBtn" class="px-1 pt-1 font-medium text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100" aria-label="Open search">
                   <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                     <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
                   </svg>
@@ -55,10 +40,10 @@
         </div>
       </nav>
 
-      <!-- Search modal (hidden by default) -->
-      <div id="searchModal" class="fixed inset-0 z-50 hidden overflow-y-auto" role="dialog" aria-modal="true" data-controller="search">
+      <!-- Search modal -->
+      <div id="searchModal" class="fixed inset-0 z-50 hidden overflow-y-auto" role="dialog" aria-modal="true">
         <div class="flex justify-center pt-4 px-1 pb-20 text-center sm:block sm:p-0">
-          <div class="fixed inset-0 transition-opacity" aria-hidden="true" onclick="document.getElementById('searchModal').classList.add('hidden')">
+          <div id="searchBackdrop" class="fixed inset-0 transition-opacity" aria-hidden="true">
             <div class="absolute inset-0 bg-gray-600 sm:bg-gray-400 opacity-75 sm:opacity-50"></div>
           </div>
           <div class="inline-block align-bottom bg-white dark:bg-gray-900 rounded-lg text-left overflow-hidden shadow-xl transform transition-all w-full max-w-md sm:max-w-lg sm:align-middle sm:my-8 sm:w-full sm:rounded-xl sm:shadow-2xl">
@@ -69,29 +54,20 @@
               <div class="flex items-center">
                 <input
                   type="text"
-                  data-search-target="searchInput"
-                  data-action="input->search#performSearch keydown->search#handleKeydown"
-                  class="h-12 w-full border-0 bg-transparent pl-11 pr-4 text-gray-900 dark:text-gray-100 placeholder:text-gray-500 focus:ring-0"
-                  placeholder="Search..."
-                  role="combobox"
-                  aria-expanded="false"
-                  aria-controls="options"
+                  id="searchInput"
+                  class="h-12 w-full border-0 bg-transparent pl-11 pr-4 text-gray-900 dark:text-gray-100 placeholder:text-gray-500 focus:ring-0 focus:outline-none"
+                  placeholder="Search areas and boulders..."
                   autocorrect="off"
                   autocomplete="off"
                   spellcheck="false"
                 >
-                <button data-search-target="clearButton" data-action="click->search#clearSearch" type="button" class="hidden h-12 w-20 flex items-center justify-center text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100" aria-label="Clear search">
-                  &#10005;
-                </button>
-                <button data-action="click->search#closeModal" type="button" class="h-12 px-4 inline-flex justify-center items-center border-l border-l-gray-300 dark:border-l-gray-600 font-medium bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-700">
+                <button id="searchClearBtn" type="button" class="hidden h-12 w-12 flex items-center justify-center text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100" aria-label="Clear">&#10005;</button>
+                <button id="searchCancelBtn" type="button" class="h-12 px-4 inline-flex justify-center items-center border-l border-l-gray-300 dark:border-l-gray-600 font-medium bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-700">
                   Cancel
                 </button>
               </div>
             </div>
-            <ul class="bg-gray-100 dark:bg-gray-800 cursor-pointer sm:max-h-80 scroll-pb-2 scroll-pt-11 space-y-2 overflow-y-auto border-t border-gray-200 dark:border-gray-700 pb-2 hidden" data-search-target="searchDropdown" role="listbox" id="options">
-              <li>
-                <ul class="mt-2 text-gray-800" data-search-target="searchResults"></ul>
-              </li>
+            <ul id="searchResults" class="bg-gray-100 dark:bg-gray-800 cursor-pointer max-h-80 overflow-y-auto border-t border-gray-200 dark:border-gray-700 pb-2 hidden">
             </ul>
           </div>
         </div>
@@ -123,5 +99,176 @@
         </div>
       </footer>
     </div>
+
+    <script>
+    (function() {
+      var modal = document.getElementById('searchModal');
+      var input = document.getElementById('searchInput');
+      var results = document.getElementById('searchResults');
+      var clearBtn = document.getElementById('searchClearBtn');
+      var cancelBtn = document.getElementById('searchCancelBtn');
+      var backdrop = document.getElementById('searchBackdrop');
+      var openBtn = document.getElementById('searchOpenBtn');
+      var index = null;
+      var activeIdx = -1;
+
+      var colorHex = {yellow:"#FFCC02",purple:"#D783FF",orange:"#FF9500",green:"#77C344",blue:"#017AFF",skyblue:"#5AC7FA",salmon:"#FDAF8A",red:"#FF3B2F",black:"#000000",white:"#FFFFFF"};
+
+      // Lazy-load search index
+      function ensureIndex(cb) {
+        if (index) return cb();
+        fetch('/assets/search-index.json').then(function(r) { return r.json(); }).then(function(data) {
+          index = data;
+          cb();
+        });
+      }
+
+      function normalize(str) {
+        if (!str) return '';
+        return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
+      }
+
+      function openModal() {
+        modal.classList.remove('hidden');
+        input.value = '';
+        results.classList.add('hidden');
+        results.innerHTML = '';
+        clearBtn.classList.add('hidden');
+        activeIdx = -1;
+        input.focus();
+        ensureIndex(function() {});
+      }
+
+      function closeModal() {
+        modal.classList.add('hidden');
+        input.value = '';
+        results.classList.add('hidden');
+        results.innerHTML = '';
+        activeIdx = -1;
+      }
+
+      function search() {
+        var q = normalize(input.value.trim());
+        if (!q || !index) {
+          results.classList.add('hidden');
+          results.innerHTML = '';
+          clearBtn.classList.add('hidden');
+          activeIdx = -1;
+          return;
+        }
+        clearBtn.classList.remove('hidden');
+
+        // Fuzzy: split query into tokens, all must match
+        var tokens = q.match(/[a-z0-9]+/g) || [q];
+
+        var areaHits = index.areas.filter(function(a) {
+          return tokens.every(function(t) { return a.n.indexOf(t) !== -1; });
+        });
+
+        var problemHits = index.problems.filter(function(p) {
+          return tokens.every(function(t) { return p.n.indexOf(t) !== -1; });
+        });
+        problemHits.sort(function(a, b) { return (b.pop || 0) - (a.pop || 0); });
+        problemHits = problemHits.slice(0, 20);
+
+        var items = [];
+        areaHits.forEach(function(a) { items.push({type:'area', name:a.name, url:a.url}); });
+        problemHits.forEach(function(p) {
+          items.push({type:'problem', name:p.name, grade:p.grade, area:p.area, cc:p.cc, cn:p.cn, url:p.url});
+        });
+
+        if (items.length === 0) {
+          results.classList.add('hidden');
+          results.innerHTML = '';
+          activeIdx = -1;
+          return;
+        }
+
+        results.innerHTML = items.map(function(item, i) {
+          if (item.type === 'area') {
+            return '<li class="px-4 py-2 hover:bg-emerald-50 dark:hover:bg-gray-700" data-url="' + esc(item.url) + '" data-i="' + i + '">' +
+              '<span class="font-medium">' + esc(item.name) + '</span>' +
+              '<span class="ml-2 text-xs text-gray-400">Area</span>' +
+            '</li>';
+          }
+          var bg = colorHex[item.cc] || 'rgb(80%,80%,80%)';
+          var fg = item.cc === 'white' ? '#333' : '#FFF';
+          var circle = item.cc
+            ? '<span class="inline-flex items-center justify-center w-5 h-5 rounded-full text-xs font-bold mr-2" style="background:' + bg + ';color:' + fg + ';">' + (item.cn || '') + '</span>'
+            : '';
+          return '<li class="px-4 py-2 hover:bg-emerald-50 dark:hover:bg-gray-700" data-url="' + esc(item.url) + '" data-i="' + i + '">' +
+            '<div class="flex justify-between items-center">' +
+              '<div class="flex items-center">' + circle +
+                '<span>' + esc(item.name) + '</span>' +
+                '<span class="ml-2 text-gray-400">' + (item.grade || '') + '</span>' +
+              '</div>' +
+              '<span class="text-xs text-gray-400">' + esc(item.area) + '</span>' +
+            '</div>' +
+          '</li>';
+        }).join('');
+
+        results.classList.remove('hidden');
+        activeIdx = -1;
+      }
+
+      function setActive(i) {
+        var lis = results.querySelectorAll('li');
+        lis.forEach(function(li) { li.classList.remove('bg-emerald-100', 'dark:bg-gray-600'); });
+        activeIdx = i;
+        if (activeIdx >= 0 && activeIdx < lis.length) {
+          lis[activeIdx].classList.add('bg-emerald-100', 'dark:bg-gray-600');
+          lis[activeIdx].scrollIntoView({block:'nearest'});
+        }
+      }
+
+      function esc(s) { return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+      // Events
+      openBtn.addEventListener('click', openModal);
+      backdrop.addEventListener('click', closeModal);
+      cancelBtn.addEventListener('click', closeModal);
+      clearBtn.addEventListener('click', function() {
+        input.value = '';
+        input.focus();
+        results.classList.add('hidden');
+        results.innerHTML = '';
+        clearBtn.classList.add('hidden');
+        activeIdx = -1;
+      });
+
+      input.addEventListener('input', search);
+
+      input.addEventListener('keydown', function(e) {
+        var lis = results.querySelectorAll('li');
+        if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          setActive(Math.min(activeIdx + 1, lis.length - 1));
+        } else if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          setActive(Math.max(activeIdx - 1, 0));
+        } else if (e.key === 'Enter' && activeIdx >= 0 && activeIdx < lis.length) {
+          e.preventDefault();
+          window.location = lis[activeIdx].getAttribute('data-url');
+        } else if (e.key === 'Escape') {
+          closeModal();
+        }
+      });
+
+      results.addEventListener('click', function(e) {
+        var li = e.target.closest('li');
+        if (li && li.getAttribute('data-url')) {
+          window.location = li.getAttribute('data-url');
+        }
+      });
+
+      // Keyboard shortcut: "/" to open search
+      document.addEventListener('keydown', function(e) {
+        if (e.key === '/' && !modal.classList.contains('hidden') === false && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA' && document.activeElement.tagName !== 'SELECT') {
+          e.preventDefault();
+          openModal();
+        }
+      });
+    })();
+    </script>
   </body>
 </html>
