@@ -57,6 +57,10 @@ def main
     payload = read_models.area_page(area["slug"])
     next unless payload
 
+    # Pick a topo photo for the area header
+    cover_topo_id = read_models.area_cover_topo_id(area["id"])
+    cover_image_url = cover_topo_id ? media_manifest.topo_url(cover_topo_id) : nil
+
     write_page("en/fontainebleau/#{area["slug"]}/index.html", renderer.render("areas/show",
       "page_title" => area["name"],
       "area" => payload["area"],
@@ -64,7 +68,7 @@ def main
       "circuits" => payload["circuits"],
       "poi_routes" => payload["poi_routes"],
       "media_manifest" => media_manifest,
-      "mapbox_token" => mapbox_token
+      "cover_image_url" => cover_image_url
     ))
   end
 

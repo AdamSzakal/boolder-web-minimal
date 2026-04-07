@@ -37,6 +37,18 @@ module Static
       }
     end
 
+    # Find a representative topo ID for an area (most popular problem with a topo)
+    def area_cover_topo_id(area_id)
+      problems = (@problems_by_area[area_id] || [])
+        .sort_by { |p| -(p["popularity"] || 0) }
+
+      problems.each do |p|
+        line = @lines_by_problem_id[p["id"]]
+        return line["topo_id"] if line
+      end
+      nil
+    end
+
     def problem_page(problem_id)
       problem = @problems_by_id[problem_id]
       return nil unless problem

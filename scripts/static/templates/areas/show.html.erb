@@ -13,45 +13,20 @@
 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
   <div class="lg:grid lg:grid-cols-2 lg:gap-16">
     <div class="col-span-1">
-      <div class="relative overflow-hidden sm:rounded-lg" style="height: 280px;">
-        <div id="area-map" class="absolute inset-0"></div>
-        <div class="absolute inset-0 pointer-events-none flex items-center justify-center">
+      <div class="aspect-w-16 aspect-h-9 relative overflow-hidden sm:rounded-lg">
+        <%- if cover_image_url -%>
+          <img src="<%= cover_image_url %>" alt="<%= area["name"] %>" class="w-full h-full object-cover" loading="lazy" />
+        <%- else -%>
+          <div class="bg-gradient-to-br from-emerald-600 to-emerald-800 w-full h-full"></div>
+        <%- end -%>
+        <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.1) 100%);"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
           <h1 class="text-4xl sm:text-4xl font-bold text-white uppercase px-4" style="text-shadow: 0px 0px 20px rgba(0,0,0,0.8)"><%= area["name"] %></h1>
         </div>
       </div>
     </div>
   </div>
 </div>
-<script>
-(function() {
-  mapboxgl.accessToken = '<%= mapbox_token %>';
-  var map = new mapboxgl.Map({
-    container: 'area-map',
-    style: 'mapbox://styles/nmondollot/cl95n147u003k15qry7pvfmq2',
-    bounds: [[<%= area["south_west_lng"] %>, <%= area["south_west_lat"] %>], [<%= area["north_east_lng"] %>, <%= area["north_east_lat"] %>]],
-    padding: 20,
-    interactive: false,
-    attributionControl: false
-  });
-  map.on('load', function() {
-    map.addSource('problems', { type: 'vector', url: 'mapbox://nmondollot.4xsv235p', promoteId: 'id' });
-    map.addLayer({
-      id: 'problems', type: 'circle', source: 'problems', 'source-layer': 'problems-ayes3a',
-      paint: {
-        'circle-radius': 3,
-        'circle-color': [
-          "match", ["get", "circuitColor"],
-          "yellow", "#FFCC02", "purple", "#D783FF", "orange", "#FF9500",
-          "green", "#77C344", "blue", "#017AFF", "skyblue", "#5AC7FA",
-          "salmon", "#FDAF8A", "red", "#FF3B2F", "black", "#000000",
-          "white", "#FFFFFF", "#878A8D"
-        ]
-      },
-      filter: ["match", ["geometry-type"], ["Point"], true, false],
-    }, "areas");
-  });
-})();
-</script>
 
 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mb-8">
   <div class="lg:grid lg:grid-cols-2 lg:gap-16">
