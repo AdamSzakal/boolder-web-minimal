@@ -1,6 +1,7 @@
 [build]
   publish = "dist"
-  command = "ruby scripts/static/build.rb"
+  # dist/ is pre-built locally via `ruby scripts/static/build.rb` and committed
+  ignore = "git diff --quiet $CACHED_COMMIT HEAD -- dist/"
 
 # Redirect root to /en/
 [[redirects]]
