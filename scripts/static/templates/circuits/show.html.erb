@@ -6,12 +6,12 @@
 
 <div class="max-w-7xl mx-auto pt-6 sm:px-6 lg:px-8">
   <div class="px-4 sm:px-0">
-    <div class="flex items-center space-x-1 text-sm font-medium t-text-sec">
-      <div><a href="/en/fontainebleau" class="t-accent-hover">Fontainebleau</a></div>
+    <div class="flex items-center space-x-1 text-sm font-medium text-gray-500 dark:text-gray-400">
+      <div><a href="/en/fontainebleau" class="hover:text-gray-700 dark:hover:text-gray-300">Fontainebleau</a></div>
       <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
       </svg>
-      <div><a href="/en/fontainebleau/<%= area["slug"] %>" class="t-accent-hover"><%= area["name"] %></a></div>
+      <div><a href="/en/fontainebleau/<%= area["slug"] %>" class="hover:text-gray-700 dark:hover:text-gray-300"><%= area["name"] %></a></div>
     </div>
   </div>
 </div>
@@ -52,14 +52,14 @@
               problem_slug = [problem["id"], problem["name"]&.downcase&.gsub(/[^a-z0-9]+/, "-")&.gsub(/-$/, "")].compact.join("-")
               area_slug = problem["_area_slug"] || area["slug"]
             %>
-            <li class="px-4 sm:-mx-2 sm:px-2 t-surface-hover rounded-lg">
+            <li class="px-4 sm:-mx-2 sm:px-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg">
               <a href="/en/fontainebleau/<%= area_slug %>/<%= problem_slug %>">
                 <div class="flex justify-between py-2">
                   <div>
                     <%- if problem["circuit_number"] -%>
                       <span class="inline-flex items-center justify-center w-6 h-6 rounded-full text-xs font-bold" style="background-color: <%= hex %>; color: <%= text_col %>;"><%= problem["circuit_number"] %></span>
                     <%- else -%>
-                      <span class="inline-flex items-center justify-center w-6 h-6 rounded-full t-badge text-xs">&nbsp;</span>
+                      <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-gray-200 dark:bg-gray-700 text-xs">&nbsp;</span>
                     <%- end -%>
                     <span class="ml-2"><%= problem["name"] %></span>
                   </div>
@@ -72,7 +72,7 @@
                           </svg>
                         </div>
                       <%- end -%>
-                      <div class="t-text-sec">
+                      <div class="text-gray-500 dark:text-gray-400">
                         <%= problem["grade"] %>
                       </div>
                     </div>

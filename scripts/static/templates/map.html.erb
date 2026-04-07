@@ -13,46 +13,6 @@
     <link href="https://api.mapbox.com/mapbox-gl-js/v3.11.0/mapbox-gl.css" rel="stylesheet">
     <script src="https://api.mapbox.com/mapbox-gl-js/v3.11.0/mapbox-gl.js"></script>
     <style>
-      :root {
-        color-scheme: dark light;
-        --bg:          #0b0d0b;
-        --surface:     #141614;
-        --surface-hover:#1c1e1c;
-        --border:      #2a2c2a;
-        --text:        #fafaf8;
-        --text-secondary: #8a8a8a;
-        --text-tertiary:  #5a5a5a;
-        --accent:      #34d399;
-        --accent-hover:#6ee7b7;
-      }
-      html.light {
-        --bg:          #fafaf8;
-        --surface:     #ffffff;
-        --surface-hover:#f0f0ee;
-        --border:      #e5e5e5;
-        --text:        #1a1a1a;
-        --text-secondary: #6b6b6b;
-        --text-tertiary:  #9a9a9a;
-        --accent:      #059669;
-        --accent-hover:#047857;
-      }
-      body { background: var(--bg); color: var(--text); }
-      .t-bg         { background: var(--bg); }
-      .t-surface    { background: var(--surface); }
-      .t-surface-hover:hover { background: var(--surface-hover); }
-      .t-border     { border-color: var(--border); }
-      .t-text       { color: var(--text); }
-      .t-text-sec   { color: var(--text-secondary); }
-      .t-text-tri   { color: var(--text-tertiary); }
-      .t-accent     { color: var(--accent); }
-      .t-accent-hover:hover { color: var(--accent-hover); }
-      .t-accent-bg  { background: var(--accent); }
-      .t-badge      { background: var(--surface-hover); color: var(--text-secondary); }
-      .t-select     { background: var(--surface); color: var(--text); border-color: var(--border); }
-      .t-select:focus { border-color: var(--accent); outline: none; }
-      .t-input      { background: transparent; color: var(--text); }
-      .t-input::placeholder { color: var(--text-tertiary); }
-
       #map { position: absolute; top: 0; bottom: 0; width: 100%; }
       .mapboxgl-popup-content {
         font-family: "Inter var", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -60,24 +20,17 @@
       }
       .mapboxgl-popup-content a {
         font-weight: 500;
-        color: var(--accent);
+        color: rgba(5, 150, 105, 1);
         text-decoration: underline;
       }
     </style>
-    <script>
-      // Theme: persist preference, default to dark
-      (function() {
-        var pref = localStorage.getItem('theme');
-        if (pref === 'light') document.documentElement.classList.add('light');
-      })();
-    </script>
   </head>
 
-  <body class="h-full m-0">
-    <div class="flex flex-col h-full">
+  <body class="bg-white h-full m-0">
+    <div class="bg-gray-100 flex flex-col h-full">
       <div class="flex-initial">
         <!-- Map nav -->
-        <nav class="t-surface shadow" style="border-bottom: 1px solid var(--border);">
+        <nav class="bg-white shadow">
           <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
             <div class="flex justify-between h-16">
               <div class="flex px-2 lg:px-0">
@@ -93,11 +46,11 @@
                   <div class="w-full max-w-lg">
                     <div class="relative">
                       <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                        <svg class="h-5 w-5 t-text-tri" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                        <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                           <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd" />
                         </svg>
                       </div>
-                      <input id="map-search-input" class="block w-full rounded-md t-input py-2 pl-10 pr-3 leading-5 focus:outline-none sm:text-sm" style="border: 1px solid var(--border);" placeholder="Search..." type="search">
+                      <input id="map-search-input" class="block w-full rounded-md border border-gray-300 bg-white py-2 pl-10 pr-3 leading-5 placeholder-gray-500 focus:border-emerald-500 focus:placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-emerald-500 sm:text-sm" placeholder="Search..." type="search">
                     </div>
                   </div>
                 </div>
@@ -113,7 +66,7 @@
 
         <!-- Filters button -->
         <div class="absolute inset-x-0 bottom-0 z-10 pb-8 text-center">
-          <button id="filterBtn" type="button" class="inline-flex items-center rounded-lg t-surface t-surface-hover px-4 py-2 text-base font-normal shadow-sm focus:outline-none" style="border: 1px solid var(--border);">
+          <button id="filterBtn" type="button" class="inline-flex items-center rounded-lg border border-gray-300 bg-white px-4 py-2 text-base font-normal text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2">
             <span id="filterCounter" class="hidden inline-flex justify-center items-center mr-2 w-4 h-4 text-xs font-semibold text-emerald-800 bg-emerald-300 rounded-full">1</span>
             <svg id="filterIcon" xmlns="http://www.w3.org/2000/svg" class="-ml-1 mr-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
               <path stroke-linecap="round" stroke-linejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
@@ -124,12 +77,12 @@
 
         <!-- Filters modal -->
         <div id="filterModal" class="relative z-20 hidden" role="dialog">
-          <div class="fixed inset-0 bg-black bg-opacity-60 transition-opacity"></div>
+          <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
           <div class="fixed inset-0 z-20 overflow-y-auto">
             <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-              <div class="relative transform overflow-hidden rounded-lg t-surface px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 w-full sm:max-w-lg sm:p-6">
+              <div class="relative transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 w-full sm:max-w-lg sm:p-6">
                 <div class="absolute top-0 right-0 pt-4 pr-4">
-                  <button id="filterCloseBtn" type="button" class="rounded-md t-text-tri t-accent-hover">
+                  <button id="filterCloseBtn" type="button" class="rounded-md bg-white text-gray-400 hover:text-gray-500">
                     <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                     </svg>
@@ -137,28 +90,28 @@
                 </div>
                 <div>
                   <div class="mt-3 text-center sm:mt-0">
-                    <h3 class="text-lg font-medium leading-6 mb-4">Level</h3>
+                    <h3 class="text-lg font-medium leading-6 text-gray-900 mb-4">Level</h3>
                   </div>
                   <fieldset>
-                    <div class="relative -space-y-px rounded-md" style="border: 1px solid var(--border);">
-                      <label class="rounded-tl-md rounded-tr-md relative p-4 flex cursor-pointer md:pl-4 md:pr-6 grid grid-cols-2" style="border-bottom: 1px solid var(--border);">
+                    <div class="relative -space-y-px rounded-md bg-white">
+                      <label class="rounded-tl-md rounded-tr-md relative border p-4 flex cursor-pointer md:pl-4 md:pr-6 grid grid-cols-2">
                         <span class="flex items-center text-sm">
-                          <input type="radio" name="gradeRadio" value="beginner" class="h-4 w-4 text-emerald-600 focus:ring-emerald-500" style="border-color: var(--border);">
+                          <input type="radio" name="gradeRadio" value="beginner" class="h-4 w-4 text-emerald-600 border-gray-300 focus:ring-emerald-500">
                           <span class="ml-3 font-medium">Beginner</span>
                         </span>
-                        <span class="ml-6 pl-1 text-sm md:ml-0 md:pl-0 text-right t-text-tri">1a &rarr; 3c+</span>
+                        <span class="ml-6 pl-1 text-sm md:ml-0 md:pl-0 text-right text-gray-400">1a &rarr; 3c+</span>
                       </label>
                       <% (4..7).each do |level| %>
-                        <label class="relative p-4 flex cursor-pointer md:pl-4 md:pr-6 grid grid-cols-2" style="border-bottom: 1px solid var(--border);">
+                        <label class="relative border p-4 flex cursor-pointer md:pl-4 md:pr-6 grid grid-cols-2">
                           <span class="flex items-center text-sm">
-                            <input type="radio" name="gradeRadio" value="level<%= level %>" class="h-4 w-4 text-emerald-600 focus:ring-emerald-500" style="border-color: var(--border);">
+                            <input type="radio" name="gradeRadio" value="level<%= level %>" class="h-4 w-4 text-emerald-600 border-gray-300 focus:ring-emerald-500">
                             <span class="ml-3 font-medium">Level <%= level %></span>
                           </span>
                         </label>
                       <% end %>
-                      <label class="rounded-bl-md rounded-br-md relative p-4 flex cursor-pointer md:pl-4 md:pr-6 grid grid-cols-2">
+                      <label class="rounded-bl-md rounded-br-md relative border p-4 flex cursor-pointer md:pl-4 md:pr-6 grid grid-cols-2">
                         <span class="flex items-center text-sm">
-                          <input type="radio" name="gradeRadio" value="custom" class="h-4 w-4 text-emerald-600 focus:ring-emerald-500" style="border-color: var(--border);">
+                          <input type="radio" name="gradeRadio" value="custom" class="h-4 w-4 text-emerald-600 border-gray-300 focus:ring-emerald-500">
                           <span class="ml-3 font-medium">Custom</span>
                         </span>
                       </label>
@@ -166,16 +119,16 @@
                   </fieldset>
                   <div id="customGradePicker" class="hidden grid grid-cols-2 gap-8 my-4">
                     <div>
-                      <label for="gradeMin" class="block text-sm font-medium t-text-sec">Min</label>
-                      <select id="gradeMin" class="mt-1 block w-full rounded-md t-select py-2 pl-3 pr-10 text-base focus:outline-none sm:text-sm" style="border: 1px solid var(--border);">
+                      <label for="gradeMin" class="block text-sm font-medium text-gray-700">Min</label>
+                      <select id="gradeMin" class="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-emerald-500 focus:outline-none focus:ring-emerald-500 sm:text-sm">
                         <% %w[1a 1b 1c 2a 2b 2c 3a 3b 3c 4a 4b 4c 5a 5b 5c 6a 6b 6c 7a 7b 7c 8a 8b 8c 9a].each do |g| %>
                           <option<%= g == "4a" ? " selected" : "" %>><%= g %></option>
                         <% end %>
                       </select>
                     </div>
                     <div>
-                      <label for="gradeMax" class="block text-sm font-medium t-text-sec">Max</label>
-                      <select id="gradeMax" class="mt-1 block w-full rounded-md t-select py-2 pl-3 pr-10 text-base focus:outline-none sm:text-sm" style="border: 1px solid var(--border);">
+                      <label for="gradeMax" class="block text-sm font-medium text-gray-700">Max</label>
+                      <select id="gradeMax" class="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-emerald-500 focus:outline-none focus:ring-emerald-500 sm:text-sm">
                         <% %w[1a 1b 1c 2a 2b 2c 3a 3b 3c 4a 4b 4c 5a 5b 5c 6a 6b 6c 7a 7b 7c 8a 8b 8c 9a].each do |g| %>
                           <option<%= g == "5a" ? " selected" : "" %>><%= g %></option>
                         <% end %>
@@ -184,8 +137,8 @@
                   </div>
                 </div>
                 <div class="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
-                  <button id="applyFiltersBtn" type="button" class="inline-flex w-full justify-center rounded-md border border-transparent t-accent-bg px-4 py-2 text-base font-medium text-white shadow-sm sm:ml-3 sm:w-auto sm:text-sm">Apply filters</button>
-                  <button id="clearFiltersBtn" type="button" class="mt-3 inline-flex w-full justify-center rounded-md t-surface t-text-sec px-4 py-2 text-base font-medium shadow-sm sm:mt-0 sm:w-auto sm:text-sm" style="border: 1px solid var(--border);">Clear filters</button>
+                  <button id="applyFiltersBtn" type="button" class="inline-flex w-full justify-center rounded-md border border-transparent bg-emerald-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-emerald-700 sm:ml-3 sm:w-auto sm:text-sm">Apply filters</button>
+                  <button id="clearFiltersBtn" type="button" class="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:text-gray-500 sm:mt-0 sm:w-auto sm:text-sm">Clear filters</button>
                 </div>
               </div>
             </div>
@@ -292,7 +245,7 @@
             if (info) {
               pendingPopup = new mapboxgl.Popup({ closeButton: false, focusAfterOpen: false, offset: [0, -8] })
                 .setLngLat([problemData.lng, problemData.lat])
-                .setHTML('<a href="' + info.url + '">' + (info.name || '') + '</a><span class="t-text-sec ml-1">' + (info.grade || '') + '</span>');
+                .setHTML('<a href="' + info.url + '">' + (info.name || '') + '</a><span class="text-gray-400 ml-1">' + (info.grade || '') + '</span>');
             }
           }
         });
@@ -308,9 +261,9 @@
 
           let html;
           if (info) {
-            html = '<a href="' + info.url + '">' + (info.name || '') + '</a><span class="t-text-sec ml-1">' + (info.grade || '') + '</span>';
+            html = '<a href="' + info.url + '">' + (info.name || '') + '</a><span class="text-gray-400 ml-1">' + (info.grade || '') + '</span>';
           } else {
-            html = (props.name || '') + '<span class="t-text-sec ml-1">' + (props.grade || '') + '</span>';
+            html = (props.name || '') + '<span class="text-gray-400 ml-1">' + (props.grade || '') + '</span>';
           }
 
           new mapboxgl.Popup({ closeButton: false, focusAfterOpen: false, offset: [0, -8] })

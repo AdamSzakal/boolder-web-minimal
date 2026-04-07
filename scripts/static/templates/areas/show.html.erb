@@ -4,8 +4,8 @@
   color_hex = { "yellow" => "#FFCC02", "purple" => "#D783FF", "orange" => "#FF9500", "green" => "#77C344", "blue" => "#017AFF", "skyblue" => "#5AC7FA", "salmon" => "#FDAF8A", "red" => "#FF3B2F", "black" => "#000000", "white" => "#FFFFFF" }
 %>
 
-<div class="max-w-7xl mx-auto pt-5 mt-1 px-4 sm:px-6 lg:px-8 hidden sm:block mb-4">
-  <a href="/en/fontainebleau" class="text-sm font-medium t-text-sec t-accent-hover flex items-center space-x-1">
+<div class="max-w-7xl mx-auto pt-5 mt-1 px-4 sm:px-6 lg:px-8 bg-gray-100 dark:bg-gray-800 hidden sm:block mb-4">
+  <a href="/en/fontainebleau" class="text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 flex items-center space-x-1">
     <div>Fontainebleau</div>
   </a>
 </div>
@@ -57,20 +57,20 @@
   <div class="lg:grid lg:grid-cols-2 lg:gap-16">
     <div class="col-span-1">
       <div>
-        <div class="overflow-hidden t-surface shadow sm:rounded-md sm:mt-4">
-          <ul role="list" class="divide-y" style="border-color: var(--border);">
+        <div class="overflow-hidden bg-white dark:bg-gray-900 shadow sm:rounded-md sm:mt-4">
+          <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700">
             <li>
               <div class="block">
                 <div class="flex items-center px-4 py-3 sm:px-6">
                   <div class="flex min-w-0 flex-1 items-center">
                     <div class="flex justify-between w-full pr-2">
-                      <div class="t-text-sec">
+                      <div class="text-gray-700 dark:text-gray-300">
                         <%= area["problems_count"] %> problems
                       </div>
                       <div class="flex space-x-1">
                         <%- 1.upto(8) do |level| -%>
                           <%- count = area["level#{level}_count"] || 0 -%>
-                          <span class="inline-block w-5 h-5 rounded text-center text-xs leading-5 font-medium <%= count >= 20 ? 't-accent-bg text-white' : 't-badge' %>">
+                          <span class="inline-block w-5 h-5 rounded text-center text-xs leading-5 font-medium <%= count >= 20 ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900 dark:text-emerald-200' : 'bg-gray-100 text-gray-400 dark:bg-gray-800 dark:text-gray-600' %>">
                             <%= level %>
                           </span>
                         <%- end -%>
@@ -89,7 +89,7 @@
               <div class="pt-4 pb-2 flex flex-wrap">
                 <%- tag_labels = { "popular" => "Popular", "beginner_friendly" => "Beginner friendly", "family_friendly" => "Family friendly", "dry_fast" => "Dries fast" } -%>
                 <%- area["tags"].each do |tag| -%>
-                  <span class="mt-2 mr-2 px-2.5 py-0.5 rounded-full border t-badge font-light text-sm" style="border-color: var(--border);">
+                  <span class="mt-2 mr-2 px-2.5 py-0.5 rounded-full border border-gray-700 dark:border-gray-500 text-gray-700 dark:text-gray-300 bg-gray-50 dark:bg-gray-800 font-light text-sm">
                     <%= tag_labels[tag] || tag %>
                   </span>
                 <%- end -%>
@@ -98,7 +98,7 @@
 
             <%- if description.to_s.strip.length > 0 -%>
               <div class="pt-4">
-                <div class="prose text-justify" style="color: var(--text);">
+                <div class="prose dark:prose-invert text-justify">
                   <%- description.split(/\r?\n\r?\n/).each do |para| -%>
                     <p><%= para.strip %></p>
                   <%- end -%>
@@ -108,14 +108,14 @@
 
             <%- if warning.to_s.strip.length > 0 -%>
               <div class="pt-4">
-                <div class="rounded-md p-4" style="background: var(--surface-hover);">
+                <div class="rounded-md bg-yellow-50 dark:bg-yellow-900/30 p-4">
                   <div class="flex">
                     <div class="flex-shrink-0">
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
                       </svg>
                     </div>
-                    <div class="ml-3 text-sm t-text-sec">
+                    <div class="ml-3 text-sm text-yellow-700 dark:text-yellow-200">
                       <%- warning.split(/\r?\n\r?\n/).each do |para| -%>
                         <p><%= para.strip %></p>
                       <%- end -%>
@@ -126,7 +126,7 @@
             <%- end -%>
 
             <a href="/en/map/<%= area["slug"] %>">
-              <div class="flex items-center space-x-2 t-accent mt-6">
+              <div class="flex items-center space-x-2 text-emerald-600 mt-6">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
@@ -145,7 +145,7 @@
                     hex = color_hex[circuit["color"]] || "#999"
                     text_col = circuit["color"] == "white" ? "#000" : "#FFF"
                   %>
-                  <li class="px-4 sm:-mx-2 sm:px-2 t-surface-hover rounded-lg">
+                  <li class="px-4 sm:-mx-2 sm:px-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg">
                     <a href="/en/fontainebleau/circuits/<%= circuit["id"] %>" class="flex justify-between items-center">
                       <div class="flex justify-between py-2">
                         <div>
@@ -168,7 +168,7 @@
                             </svg>
                           </span>
                         <%- end -%>
-                        <span class="t-text-sec"><%= circuit["average_grade"] %></span>
+                        <span class="text-gray-500 dark:text-gray-400"><%= circuit["average_grade"] %></span>
                       </span>
                     </a>
                   </li>
@@ -191,7 +191,7 @@
                 <%
                   problem_slug = [problem["id"], problem["name"]&.downcase&.gsub(/[^a-z0-9]+/, "-")&.gsub(/-$/, "")].compact.join("-")
                 %>
-                <li class="px-4 sm:-mx-2 sm:px-2 t-surface-hover rounded-lg">
+                <li class="px-4 sm:-mx-2 sm:px-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg">
                   <a href="/en/fontainebleau/<%= area["slug"] %>/<%= problem_slug %>">
                     <div class="flex justify-between py-2">
                       <div>
@@ -202,11 +202,11 @@
                           %>
                           <span class="inline-flex items-center justify-center w-6 h-6 rounded-full text-xs font-bold" style="background-color: <%= c_hex %>; color: <%= c_text %>;"><%= problem["circuit_number"] %></span>
                         <%- else -%>
-                          <span class="inline-flex items-center justify-center w-6 h-6 rounded-full t-badge text-xs">&nbsp;</span>
+                          <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-gray-200 dark:bg-gray-700 text-xs">&nbsp;</span>
                         <%- end -%>
                         <span class="ml-2"><%= problem["name"] %></span>
                       </div>
-                      <div class="t-text-sec">
+                      <div class="text-gray-500 dark:text-gray-400">
                         <%= problem["grade"] %>
                       </div>
                     </div>
@@ -232,7 +232,7 @@
                     transport_icon = route["transport"] == "bike" ? "🚲" : "🚶"
                     poi_icon = poi["poi_type"] == "train_station" ? "🚉" : "🅿️"
                   %>
-                  <li class="flex justify-between t-text-sec mb-4">
+                  <li class="flex justify-between text-gray-700 dark:text-gray-300 mb-4">
                     <a href="<%= poi["google_url"] %>" target="_blank" class="flex space-x-1 items-center">
                       <span><%= poi_icon %></span>
                       <span><%= poi["short_name"] %></span>
