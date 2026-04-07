@@ -142,29 +142,34 @@ def main
     ))
   end
 
-  # Boulders page — embed all problems with popularity >= 1 as JSON for client-side filtering
-  boulders_problems = catalog.problems
-    .select { |p| p["popularity"].to_i >= 1 }
-    .map do |p|
-      p_area = areas_by_id[p["area_id"]]
-      slug = [p["id"], p["name"]&.downcase&.gsub(/[^a-z0-9]+/, "-")&.gsub(/-$/, "")].compact.join("-")
-      {
-        "id" => p["id"],
-        "name" => p["name"],
-        "grade" => p["grade"],
-        "steepness" => p["steepness"],
-        "popularity" => p["popularity"],
-        "circuit_color" => p["circuit_color"],
-        "circuit_number" => p["circuit_number"],
-        "area_slug" => p_area ? p_area["slug"] : "",
-        "area_name" => p_area ? p_area["name"] : "",
-        "url" => "/en/fontainebleau/#{p_area ? p_area["slug"] : ""}/#{slug}"
-      }
-    end
+  # Boulders page — embed all problems as JSON for client-side filtering (including circuit browsing)
+  boulders_problems = catalog.problems.map do |p|
+    p_area = areas_by_id[p["area_id"]]
+    slug = [p["id"], p["name"]&.downcase&.gsub(/[^a-z0-9]+/, "-")&.gsub(/-$/, "")].compact.join("-")
+    {
+      "id" => p["id"],
+      "name" => p["name"],
+      "grade" => p["grade"],
+      "steepness" => p["steepness"],
+      "popularity" => p["popularity"] || 0,
+      "circuit_id" => p["circuit_id"],
+      "circuit_color" => p["circuit_color"],
+      "circuit_number" => p["circuit_number"],
+      "area_slug" => p_area ? p_area["slug"] : "",
+      "area_name" => p_area ? p_area["name"] : "",
+      "url" => "/en/fontainebleau/#{p_area ? p_area["slug"] : ""}/#{slug}"
+    }
+  end
+
+  # Circuits for the filter dropdown, sorted by area name then color
+  boulders_circuits = catalog.circuits
+    .sort_by { |c| [c["main_area_name"].to_s.downcase, c["color"]] }
+    .map { |c| { "id" => c["id"], "color" => c["color"], "area_name" => c["main_area_name"] } }
 
   write_page("en/fontainebleau/boulders/index.html", renderer.render("boulders",
     "page_title" => "Boulders",
-    "problems_json" => JSON.generate(boulders_problems)
+    "problems_json" => JSON.generate(boulders_problems),
+    "circuits_json" => JSON.generate(boulders_circuits)
   ))
 
   # Map pages
