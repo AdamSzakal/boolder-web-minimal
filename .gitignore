@@ -46,3 +46,9 @@ yarn-debug.log*
 
 # Static build output
 /dist
+
+# dev-stuff
+.claude/
+config/credentials.yml.enc.bak
+docs/
+plan.md
