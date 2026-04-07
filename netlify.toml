@@ -1,0 +1,28 @@
+[build]
+  publish = "dist"
+  command = "ruby scripts/static/build.rb"
+
+# Redirect root to /en/
+[[redirects]]
+  from = "/"
+  to = "/en/"
+  status = 301
+
+# Pretty URLs: /en/fontainebleau/area-slug -> /en/fontainebleau/area-slug/index.html
+# Netlify handles this automatically for index.html files
+
+# SPA-style fallback for map routes
+[[redirects]]
+  from = "/en/map/*"
+  to = "/en/map/index.html"
+  status = 200
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
