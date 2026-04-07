@@ -213,10 +213,11 @@
 
       function setActive(i) {
         var lis = results.querySelectorAll('li');
-        lis.forEach(function(li) { li.classList.remove('bg-emerald-100', 'dark:bg-gray-600'); });
+        lis.forEach(function(li) { li.style.backgroundColor = ''; });
         activeIdx = i;
         if (activeIdx >= 0 && activeIdx < lis.length) {
-          lis[activeIdx].classList.add('bg-emerald-100', 'dark:bg-gray-600');
+          var isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          lis[activeIdx].style.backgroundColor = isDark ? '#374151' : '#d1fae5';
           lis[activeIdx].scrollIntoView({block:'nearest'});
         }
       }
