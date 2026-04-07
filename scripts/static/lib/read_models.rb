@@ -74,7 +74,8 @@ module Static
         "variants" => variants,
         "circuit" => circuit,
         "circuit_previous" => circuit_previous,
-        "circuit_next" => circuit_next
+        "circuit_next" => circuit_next,
+        "area_circuits" => circuits_for(problem["area_id"])
       }
     end
 

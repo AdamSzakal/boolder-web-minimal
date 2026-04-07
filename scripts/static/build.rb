@@ -110,6 +110,7 @@ def main
       "circuit_previous" => payload["circuit_previous"],
       "circuit_next" => payload["circuit_next"],
       "variants" => payload["variants"],
+      "area_circuits" => payload["area_circuits"],
       "_areas_by_id" => areas_by_id
     ))
   end
