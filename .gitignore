@@ -52,3 +52,6 @@ yarn-debug.log*
 config/credentials.yml.enc.bak
 docs/
 plan.md
+
+# Local Netlify folder
+.netlify
