@@ -1,7 +1,11 @@
 [build]
   publish = "dist"
-  # dist/ is pre-built locally via `ruby scripts/static/build.rb` and committed
+  command = "echo 'Serving pre-built dist/'"
   ignore = "git diff --quiet $CACHED_COMMIT HEAD -- dist/"
+
+[build.environment]
+  # Prevent Netlify from running bundle install for the Rails Gemfile
+  BUNDLE_GEMFILE = "/dev/null"
 
 # Redirect root to /en/
 [[redirects]]
