@@ -25,18 +25,23 @@ module Static
       result
     end
 
-    # Lookup keyed by problem ID for map popup links
+    # Lookup keyed by problem ID for map popup links and client-side filtering
     def build_problem_lookup
       result = {}
       @catalog.problems.each do |p|
         area = @areas_by_id[p["area_id"]]
         next unless area
 
+        loc = p["location"] || {}
         slug = [p["id"], p["name"]&.downcase&.gsub(/[^a-z0-9]+/, "-")&.gsub(/-$/, "")].compact.join("-")
         result[p["id"].to_s] = {
           "url" => "/en/fontainebleau/#{area["slug"]}/#{slug}",
           "name" => p["name"],
-          "grade" => p["grade"]
+          "grade" => p["grade"],
+          "steepness" => p["steepness"],
+          "circuitId" => p["circuit_id"],
+          "lat" => loc["lat"],
+          "lng" => loc["lng"]
         }
       end
       result

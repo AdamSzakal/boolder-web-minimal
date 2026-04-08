@@ -159,6 +159,7 @@ def main
   boulders_problems = catalog.problems.map do |p|
     p_area = areas_by_id[p["area_id"]]
     slug = [p["id"], p["name"]&.downcase&.gsub(/[^a-z0-9]+/, "-")&.gsub(/-$/, "")].compact.join("-")
+    loc = p["location"] || {}
     {
       "id" => p["id"],
       "name" => p["name"],
@@ -170,6 +171,8 @@ def main
       "circuit_number" => p["circuit_number"],
       "area_slug" => p_area ? p_area["slug"] : "",
       "area_name" => p_area ? p_area["name"] : "",
+      "lat" => loc["lat"],
+      "lng" => loc["lng"],
       "url" => "/en/fontainebleau/#{p_area ? p_area["slug"] : ""}/#{slug}"
     }
   end
@@ -191,10 +194,13 @@ def main
   map_data = map_builder.build
   map_data_json = JSON.generate(map_data)
 
+  circuits_json = JSON.generate(boulders_circuits)
+
   # Main map page
   write_page("en/map/index.html", renderer.render_standalone("map",
     "page_title" => "Map",
     "map_data_json" => map_data_json,
+    "circuits_json" => circuits_json,
     "bounds_json" => "null",
     "problem_json" => "null",
     "mapbox_token" => mapbox_token
@@ -209,6 +215,7 @@ def main
     write_page("en/map/#{area["slug"]}/index.html", renderer.render_standalone("map",
       "page_title" => "Map — #{area["name"]}",
       "map_data_json" => map_data_json,
+      "circuits_json" => circuits_json,
       "bounds_json" => JSON.generate(bounds),
       "problem_json" => "null",
       "mapbox_token" => mapbox_token
