@@ -1,12 +1,3 @@
-[build]
-  publish = "dist"
-  command = "echo 'Serving pre-built dist/'"
-  ignore = "git diff --quiet $CACHED_COMMIT HEAD -- dist/"
-
-[build.environment]
-  # Prevent Netlify from running bundle install for the Rails Gemfile
-  BUNDLE_GEMFILE = "Gemfile.netlify"
-
 # Redirect root to /en/
 [[redirects]]
   from = "/"
