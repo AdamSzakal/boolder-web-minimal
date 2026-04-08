@@ -1,0 +1,2 @@
+# Empty Gemfile for Netlify - prevents bundle install of Rails dependencies
+source "https://rubygems.org"

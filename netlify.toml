@@ -5,7 +5,7 @@
 
 [build.environment]
   # Prevent Netlify from running bundle install for the Rails Gemfile
-  BUNDLE_GEMFILE = "/dev/null"
+  BUNDLE_GEMFILE = "Gemfile.netlify"
 
 # Redirect root to /en/
 [[redirects]]
