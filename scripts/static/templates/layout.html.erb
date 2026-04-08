@@ -10,6 +10,50 @@
     <title><%= [page_title, "Boolder"].compact.join(" — ") %></title>
 
     <link rel="stylesheet" href="/assets/tailwind.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      /* Oxocarbon color scheme + IBM Plex Sans */
+      body { font-family: 'IBM Plex Sans', sans-serif; font-size: 14px; }
+
+      /* Light mode overrides */
+      .bg-gray-100 { background-color: #f2f4f8 !important; }
+      .bg-gray-50 { background-color: #f2f4f8 !important; }
+      .text-gray-900 { color: #161616 !important; }
+      .text-gray-700 { color: #262626 !important; }
+      .text-gray-500 { color: #525252 !important; }
+      .text-gray-400 { color: #697077 !important; }
+      .border-gray-200 { border-color: #dde1e6 !important; }
+      .border-gray-300 { border-color: #dde1e6 !important; }
+      .bg-emerald-600 { background-color: #be95ff !important; }
+      .hover\:bg-emerald-500:hover { background-color: #a56eff !important; }
+      .text-emerald-700 { color: #be95ff !important; }
+      .bg-emerald-50 { background-color: rgba(190, 149, 255, 0.1) !important; }
+      .text-emerald-300 { color: #be95ff !important; }
+      .hover\:text-emerald-600:hover { color: #be95ff !important; }
+      .text-emerald-600 { color: #be95ff !important; }
+
+      /* Dark mode overrides */
+      @media (prefers-color-scheme: dark) {
+        .dark\:bg-gray-900 { background-color: #161616 !important; }
+        .dark\:bg-gray-800 { background-color: #262626 !important; }
+        .dark\:bg-gray-700 { background-color: #393939 !important; }
+        .dark\:text-gray-100 { color: #f2f4f8 !important; }
+        .dark\:text-gray-300 { color: #dde1e6 !important; }
+        .dark\:text-gray-400 { color: #697077 !important; }
+        .dark\:text-gray-500 { color: #525252 !important; }
+        .dark\:border-gray-600 { border-color: #393939 !important; }
+        .dark\:border-gray-700 { border-color: #393939 !important; }
+        .dark\:shadow-gray-700\/50 { --tw-shadow-color: rgba(57,57,57,0.5) !important; }
+        .dark\:hover\:text-gray-100:hover { color: #f2f4f8 !important; }
+        .dark\:hover\:bg-gray-700:hover { background-color: #393939 !important; }
+        .dark\:hover\:bg-gray-800:hover { background-color: #262626 !important; }
+        .dark\:hover\:text-emerald-400:hover { color: #be95ff !important; }
+        .dark\:bg-emerald-900\/30 { background-color: rgba(190, 149, 255, 0.15) !important; }
+        .dark\:text-emerald-300 { color: #be95ff !important; }
+      }
+    </style>
 
     <!-- Project list localStorage API (in head so page scripts can use it) -->
     <script>
@@ -57,23 +101,20 @@
       <!-- Nav -->
       <nav class="bg-white dark:bg-gray-900 shadow dark:shadow-gray-700/50">
         <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
-          <div class="flex justify-between h-16">
-            <div class="flex px-2 lg:px-0">
-              <div class="flex-shrink-0 flex items-center">
-                <a href="/en/fontainebleau">
-                  <img src="/images/logo.svg" class="h-8 w-auto" alt="Boolder" />
-                </a>
-              </div>
-              <div class="ml-6 flex space-x-8">
-                <a href="/en/fontainebleau" class="flex items-center px-1 pt-1 font-medium text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100">Areas</a>
-                <a href="/en/fontainebleau/boulders" class="flex items-center px-1 pt-1 font-medium text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100">Boulders</a>
-                <a href="/en/map" class="flex items-center px-1 pt-1 font-medium text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100">Map</a>
-                <button type="button" id="searchOpenBtn" class="px-1 pt-1 font-medium text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100" aria-label="Open search">
-                  <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
-                  </svg>
-                </button>
-              </div>
+          <div class="flex justify-between h-12">
+            <div class="flex items-center px-2 lg:px-0 space-x-4">
+              <a href="/en/fontainebleau" class="text-xl flex-shrink-0" aria-label="Boolder">🍷</a>
+              <a href="/en/fontainebleau" class="text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100">Areas</a>
+              <a href="/en/fontainebleau/boulders" class="text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100">Boulders</a>
+              <a href="/en/map" class="text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100">Map</a>
+              <a href="/en/projects" class="text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100">Ticks</a>
+            </div>
+            <div class="flex items-center pr-2 lg:pr-0">
+              <button type="button" id="searchOpenBtn" class="p-1 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100" aria-label="Open search">
+                <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                </svg>
+              </button>
             </div>
           </div>
         </div>
@@ -115,17 +156,6 @@
       <!-- Content -->
       <%= content %>
 
-      <!-- Footer -->
-      <div class="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
-        <div class="max-w-7xl mx-auto py-3 px-4 sm:px-6 lg:px-8 flex justify-center">
-          <a href="/en/projects" class="flex items-center space-x-1.5 text-base text-gray-400 dark:text-gray-500 hover:text-gray-900 dark:hover:text-gray-100">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-            </svg>
-            <span>My projects</span>
-          </a>
-        </div>
-      </div>
       <footer class="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
         <div class="max-w-7xl mx-auto py-4 px-4 overflow-hidden sm:px-6 lg:px-8">
           <div class="flex justify-center">

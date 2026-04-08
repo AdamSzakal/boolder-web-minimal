@@ -7,15 +7,23 @@
   <div id="ownHeader">
     <div class="flex justify-between items-center">
       <div>
-        <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-100">My projects</h1>
+        <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-100">Ticks</h1>
         <p class="text-gray-500 dark:text-gray-400 mt-1">Stored locally on your device.</p>
       </div>
-      <button id="shareBtn" type="button" class="hidden inline-flex items-center space-x-2 px-4 py-2 rounded-lg bg-emerald-600 text-white hover:bg-emerald-500 text-sm font-medium">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
-        </svg>
-        <span>Share</span>
-      </button>
+      <div class="flex flex-wrap gap-2">
+        <button id="copyNotesBtn" type="button" class="hidden inline-flex items-center space-x-2 px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 text-sm font-medium">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+          </svg>
+          <span>Copy to notes</span>
+        </button>
+        <button id="shareBtn" type="button" class="hidden inline-flex items-center space-x-2 px-4 py-2 rounded-lg bg-emerald-600 text-white hover:bg-emerald-500 text-sm font-medium">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+          </svg>
+          <span>Share</span>
+        </button>
+      </div>
     </div>
     <div id="shareNotice" class="hidden mt-3 px-4 py-2 rounded-lg bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 text-sm">
       Link copied to clipboard!
@@ -145,15 +153,18 @@
   }
 
   function updateShareBtn() {
-    var btn = document.getElementById('shareBtn');
     var ids = BoolderProjects.list();
-    if (ids.length > 0) btn.classList.remove('hidden');
-    else btn.classList.add('hidden');
+    var show = ids.length > 0;
+    ['shareBtn', 'copyNotesBtn'].forEach(function(id) {
+      var el = document.getElementById(id);
+      if (show) el.classList.remove('hidden');
+      else el.classList.add('hidden');
+    });
   }
 
   function buildShareUrl(ids) {
     var base = window.location.origin + '/en/projects';
-    return base + '#n=My+projects&p=' + ids.join(',');
+    return base + '#n=Ticks&p=' + ids.join(',');
   }
 
   parseFragment();
@@ -185,6 +196,38 @@
       }
       document.getElementById('shareNotice').classList.remove('hidden');
       setTimeout(function() { document.getElementById('shareNotice').classList.add('hidden'); }, 3000);
+    });
+
+    document.getElementById('copyNotesBtn').addEventListener('click', function() {
+      var ids = BoolderProjects.list();
+      var origin = window.location.origin;
+      // Build HTML checklist with linked boulder names (renders as checklist in iOS Notes)
+      var items = ids.map(function(id) {
+        var p = index[id];
+        if (!p) return '';
+        return '<li><input type="checkbox">' +
+          '<a href="' + origin + esc(p.url) + '">' + esc(p.name) + '</a> ' +
+          esc(p.grade) + ' — ' + esc(p.area) + '</li>';
+      }).filter(Boolean);
+      var html = '<b>Ticks</b><ul>' + items.join('') + '</ul>';
+      var plain = 'Ticks\n' + ids.map(function(id) {
+        var p = index[id];
+        if (!p) return '';
+        return p.name + ' ' + p.grade + ' — ' + p.area + ' (' + origin + p.url + ')';
+      }).filter(Boolean).join('\n');
+
+      navigator.clipboard.write([
+        new ClipboardItem({
+          'text/html': new Blob([html], { type: 'text/html' }),
+          'text/plain': new Blob([plain], { type: 'text/plain' })
+        })
+      ]);
+      document.getElementById('shareNotice').textContent = 'Copied to clipboard!';
+      document.getElementById('shareNotice').classList.remove('hidden');
+      setTimeout(function() {
+        document.getElementById('shareNotice').classList.add('hidden');
+        document.getElementById('shareNotice').textContent = 'Link copied to clipboard!';
+      }, 3000);
     });
   }
 })();

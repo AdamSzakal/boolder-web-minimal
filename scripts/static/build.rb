@@ -4,6 +4,17 @@ require "json"
 require "fileutils"
 require "erb"
 
+# Load .env file if present (keys not already in ENV)
+env_file = File.expand_path("../../.env", __dir__)
+if File.exist?(env_file)
+  File.foreach(env_file) do |line|
+    line.strip!
+    next if line.empty? || line.start_with?("#")
+    key, value = line.split("=", 2)
+    ENV[key] ||= value if key && value && !value.empty?
+  end
+end
+
 # Load all lib modules
 Dir[File.expand_path("lib/**/*.rb", __dir__)].sort.each { |f| require f }
 
@@ -44,7 +55,7 @@ def main
 
   # Projects page
   write_page("en/projects/index.html", renderer.render("projects",
-    "page_title" => "My Projects"
+    "page_title" => "Ticks"
   ))
 
   # Area pages
@@ -165,7 +176,8 @@ def main
 
   # Circuits for the filter dropdown, sorted by area name then color
   boulders_circuits = catalog.circuits
-    .sort_by { |c| [c["main_area_name"].to_s.downcase, c["color"]] }
+    .select { |c| c["main_area_name"] }
+    .sort_by { |c| [c["main_area_name"].downcase, c["color"]] }
     .map { |c| { "id" => c["id"], "color" => c["color"], "area_name" => c["main_area_name"] } }
 
   write_page("en/fontainebleau/boulders/index.html", renderer.render("boulders",
