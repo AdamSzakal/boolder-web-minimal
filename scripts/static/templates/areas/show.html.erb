@@ -3,52 +3,50 @@
   warning = area["warning_en"]
 %>
 
-<div class="max-w-7xl mx-auto pt-5 mt-1 px-4 sm:px-6 lg:px-8 bg-gray-100 dark:bg-gray-800 hidden sm:block mb-4">
-  <a href="/en/fontainebleau" class="text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 flex items-center space-x-1">
+<div class="container pt-6 hidden" style="padding-top:1.25rem;margin-top:0.25rem;background:var(--bg-secondary);">
+  <a href="/en/fontainebleau" class="breadcrumb" style="display:inline-flex;">
     <div>Fontainebleau</div>
   </a>
 </div>
 
-<div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-  <div class="lg:grid lg:grid-cols-2 lg:gap-16">
-    <div class="col-span-1">
-      <div class="aspect-w-16 aspect-h-9 relative overflow-hidden sm:rounded-lg">
+<div class="container">
+  <div class="two-col">
+    <div>
+      <div class="cover-image">
         <%- if cover_image_url -%>
-          <img src="<%= cover_image_url %>" alt="<%= area["name"] %>" class="w-full h-full object-cover" loading="lazy" />
+          <img src="<%= cover_image_url %>" alt="<%= area["name"] %>" loading="lazy" />
         <%- else -%>
-          <div class="bg-gradient-to-br from-emerald-600 to-emerald-800 w-full h-full"></div>
+          <div class="cover-image-placeholder"></div>
         <%- end -%>
-        <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.1) 100%);"></div>
-        <div class="absolute inset-0 flex items-center justify-center">
-          <h1 class="text-4xl sm:text-4xl font-bold text-white uppercase px-4" style="text-shadow: 0px 0px 20px rgba(0,0,0,0.8)"><%= area["name"] %></h1>
+        <div class="cover-image-overlay"></div>
+        <div class="cover-image-title">
+          <h1><%= area["name"] %></h1>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mb-8">
-  <div class="lg:grid lg:grid-cols-2 lg:gap-16">
-    <div class="col-span-1">
+<div class="container mb-8">
+  <div class="two-col">
+    <div>
       <div>
-        <div class="overflow-hidden bg-white dark:bg-gray-900 shadow sm:rounded-md sm:mt-4">
-          <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700">
+        <div class="card" style="margin-top:1rem;">
+          <ul role="list" class="divide-y">
             <li>
-              <div class="block">
-                <div class="flex items-center px-4 py-3 sm:px-6">
-                  <div class="flex min-w-0 flex-1 items-center">
-                    <div class="flex justify-between w-full pr-2">
-                      <div class="text-gray-700 dark:text-gray-300">
-                        <%= area["problems_count"] %> problems
-                      </div>
-                      <div class="flex space-x-1">
-                        <%- 1.upto(8) do |level| -%>
-                          <%- count = area["level#{level}_count"] || 0 -%>
-                          <span class="inline-block w-5 h-5 rounded text-center text-xs leading-5 font-medium <%= count >= 20 ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900 dark:text-emerald-200' : 'bg-gray-100 text-gray-400 dark:bg-gray-800 dark:text-gray-600' %>">
-                            <%= level %>
-                          </span>
-                        <%- end -%>
-                      </div>
+              <div style="display:flex;align-items:center;padding:0.75rem 1rem;">
+                <div style="display:flex;min-width:0;flex:1;align-items:center;">
+                  <div style="display:flex;justify-content:space-between;width:100%;padding-right:0.5rem;">
+                    <div class="text-muted">
+                      <%= area["problems_count"] %> problems
+                    </div>
+                    <div style="display:flex;gap:0.25rem;">
+                      <%- 1.upto(8) do |level| -%>
+                        <%- count = area["level#{level}_count"] || 0 -%>
+                        <span class="grade-cell <%= count >= 20 ? 'grade-cell--active' : 'grade-cell--inactive' %>">
+                          <%= level %>
+                        </span>
+                      <%- end -%>
                     </div>
                   </div>
                 </div>
@@ -58,21 +56,19 @@
         </div>
 
         <div class="pt-2">
-          <div class="px-4 sm:px-0 pt-2">
+          <div class="inner pt-2">
             <%- if area["tags"] && area["tags"].any? -%>
               <div class="pt-4 pb-2 flex flex-wrap">
                 <%- tag_labels = { "popular" => "Popular", "beginner_friendly" => "Beginner friendly", "family_friendly" => "Family friendly", "dry_fast" => "Dries fast" } -%>
                 <%- area["tags"].each do |tag| -%>
-                  <span class="mt-2 mr-2 px-2.5 py-0.5 rounded-full border border-gray-700 dark:border-gray-500 text-gray-700 dark:text-gray-300 bg-gray-50 dark:bg-gray-800 font-light text-sm">
-                    <%= tag_labels[tag] || tag %>
-                  </span>
+                  <span class="badge--tag"><%= tag_labels[tag] || tag %></span>
                 <%- end -%>
               </div>
             <%- end -%>
 
             <%- if description.to_s.strip.length > 0 -%>
               <div class="pt-4">
-                <div class="prose dark:prose-invert text-justify">
+                <div class="prose">
                   <%- description.split(/\r?\n\r?\n/).each do |para| -%>
                     <p><%= para.strip %></p>
                   <%- end -%>
@@ -82,18 +78,16 @@
 
             <%- if warning.to_s.strip.length > 0 -%>
               <div class="pt-4">
-                <div class="rounded-md bg-yellow-50 dark:bg-yellow-900/30 p-4">
-                  <div class="flex">
-                    <div class="flex-shrink-0">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
-                      </svg>
-                    </div>
-                    <div class="ml-3 text-sm text-yellow-700 dark:text-yellow-200">
-                      <%- warning.split(/\r?\n\r?\n/).each do |para| -%>
-                        <p><%= para.strip %></p>
-                      <%- end -%>
-                    </div>
+                <div class="warning-box">
+                  <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+                    </svg>
+                  </div>
+                  <div class="warning-box-text">
+                    <%- warning.split(/\r?\n\r?\n/).each do |para| -%>
+                      <p><%= para.strip %></p>
+                    <%- end -%>
                   </div>
                 </div>
               </div>
@@ -104,7 +98,7 @@
 
           <%- if circuits && circuits.any? -%>
             <div>
-              <h2 class="text-2xl font-bold mt-8 mb-4 px-4 sm:px-0">Circuits</h2>
+              <h2 class="section-title mt-8 mb-4 inner">Circuits</h2>
               <ul role="list">
                 <%- circuits.each do |circuit| -%>
                   <%= render_partial("circuit_list_item", "circuit" => circuit) %>
@@ -114,8 +108,8 @@
           <%- end -%>
 
           <div>
-            <div class="flex items-center space-x-2 text-2xl font-bold mt-8 mb-4 pt-4 px-4 sm:px-0">
-              <h2>Popular problems</h2>
+            <div class="flex items-center space-x-2 mt-8 mb-4 pt-4 inner">
+              <h2 class="section-title">Popular problems</h2>
               <span class="text-red-400"><%= Static::ViewHelpers::ICON_HEART %></span>
             </div>
             <ul role="list">
@@ -127,8 +121,8 @@
 
           <%- if poi_routes && poi_routes.any? -%>
             <div>
-              <h2 class="text-2xl font-bold mt-8 mb-4 pt-4 px-4 sm:px-0">Access</h2>
-              <ul class="pt-2 px-4 sm:px-0">
+              <h2 class="section-title mt-8 mb-4 pt-4 inner">Access</h2>
+              <ul class="pt-2 inner">
                 <%- poi_routes.sort_by { |r| r["distance_in_minutes"] || 0 }.each do |route| -%>
                   <%
                     poi = route["poi"]
@@ -137,12 +131,12 @@
                     transport_icon = route["transport"] == "bike" ? "🚲" : "🚶"
                     poi_icon = poi["poi_type"] == "train_station" ? "🚉" : "🅿️"
                   %>
-                  <li class="flex justify-between text-gray-700 dark:text-gray-300 mb-4">
-                    <a href="<%= poi["google_url"] %>" target="_blank" class="flex space-x-1 items-center">
+                  <li class="poi-item">
+                    <a href="<%= poi["google_url"] %>" target="_blank" class="poi-link">
                       <span><%= poi_icon %></span>
                       <span><%= poi["short_name"] %></span>
                     </a>
-                    <span class="flex space-x-1 items-center">
+                    <span class="poi-link">
                       <span><%= transport_icon %></span>
                       <span><%= minutes %> min</span>
                     </span>

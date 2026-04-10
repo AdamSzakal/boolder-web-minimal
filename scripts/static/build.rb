@@ -234,8 +234,8 @@ def main
 
   puts "Copying static assets..."
 
-  # Tailwind CSS
-  copy_if_exists(ROOT.join("app/assets/builds/tailwind.css"), DIST.join("assets/tailwind.css"))
+  # Stylesheet
+  copy_if_exists(ROOT.join("scripts/static/assets/styles.css"), DIST.join("assets/styles.css"))
 
   # Images
   copy_dir_if_exists(ROOT.join("app/assets/images"), DIST.join("images"))

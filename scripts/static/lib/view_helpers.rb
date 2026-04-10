@@ -38,61 +38,59 @@ module Static
 
       case size
       when :sm
-        # Pill with label text — used in problem metadata rows
         label = color.capitalize
         label += " #{number}" if number
-        %(<span class="inline-flex items-center rounded-full px-2 py-0.5 text-sm font-medium" style="background-color: #{hex}; color: #{text};">#{label}</span>)
+        %(<span class="badge badge--circuit" style="background-color: #{hex}; color: #{text};">#{label}</span>)
       when :dot
-        # Small numbered circle — used in circuit problem lists and variants
         content = number || "&nbsp;"
-        %(<span class="inline-flex items-center justify-center w-6 h-6 rounded-full text-xs font-bold" style="background-color: #{hex}; color: #{text};">#{content}</span>)
+        %(<span class="badge--circuit-dot" style="background-color: #{hex}; color: #{text};">#{content}</span>)
       end
     end
 
     # Gray pill badge (popularity, steepness, area name, distance, etc.)
     def self.metadata_badge(content, icon: nil)
       inner = icon ? "#{icon} #{content}" : content
-      %(<span class="inline-flex items-center gap-1 rounded-full bg-gray-200 dark:bg-gray-700 px-2 py-0.5">#{inner}</span>)
+      %(<span class="badge badge--meta">#{inner}</span>)
     end
 
     # Breadcrumb separator chevron
-    BREADCRUMB_SEP = %(<svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>).freeze
+    BREADCRUMB_SEP = %(<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>).freeze
 
     # Build breadcrumb HTML from an array of [label, url] pairs
     def self.breadcrumb(*links)
-      parts = links.map { |label, url| %(<div><a href="#{url}" class="hover:text-gray-700 dark:hover:text-gray-300">#{label}</a></div>) }
-      %(<div class="flex items-center space-x-1 text-sm font-medium text-gray-500 dark:text-gray-400">#{parts.join(BREADCRUMB_SEP)}</div>)
+      parts = links.map { |label, url| %(<div><a href="#{url}">#{label}</a></div>) }
+      %(<div class="breadcrumb">#{parts.join(BREADCRUMB_SEP)}</div>)
     end
 
     # SVG icons referenced in multiple templates
-    ICON_DANGER = %(<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>).freeze
+    ICON_DANGER = %(<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>).freeze
 
-    ICON_BEGINNER = %(<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>).freeze
+    ICON_BEGINNER = %(<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>).freeze
 
-    ICON_HEART = %(<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z"/></svg>).freeze
+    ICON_HEART = %(<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z"/></svg>).freeze
 
-    ICON_MAP_PIN = %(<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>).freeze
+    ICON_MAP_PIN = %(<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>).freeze
 
-    ICON_EXTERNAL = %(<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>).freeze
+    ICON_EXTERNAL = %(<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>).freeze
 
-    ICON_CIRCUIT = %(<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>).freeze
+    ICON_CIRCUIT = %(<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>).freeze
 
-    # Action link (icon + label, emerald colored)
+    # Action link (icon + label)
     def self.action_link(href, icon, label, rel: nil, target: nil)
       attrs = %( href="#{href}")
       attrs += %( rel="#{rel}") if rel
       attrs += %( target="#{target}") if target
-      %(<a#{attrs}><div class="flex items-center space-x-2 text-emerald-600 mt-2">#{icon}<div>#{label}</div></div></a>)
+      %(<a#{attrs} class="action-link">#{icon}<div>#{label}</div></a>)
     end
 
     # Circuit status icons (danger + beginner badges)
     def self.circuit_status_icons(circuit, icon_size: :lg)
       parts = []
       if circuit["dangerous"]
-        parts << %(<span class="flex text-red-500 mr-2" title="Dangerous">#{ICON_DANGER}</span>)
+        parts << %(<span class="flex icon-danger mr-2" title="Dangerous">#{ICON_DANGER}</span>)
       end
       if circuit["beginner_friendly"]
-        parts << %(<span class="flex text-emerald-500 mr-2" title="Beginner friendly">#{ICON_BEGINNER}</span>)
+        parts << %(<span class="flex icon-success mr-2" title="Beginner friendly">#{ICON_BEGINNER}</span>)
       end
       parts.join
     end

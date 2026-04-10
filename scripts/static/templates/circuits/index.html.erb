@@ -1,12 +1,14 @@
-<div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mb-8">
-  <div class="px-4 sm:px-0 pt-6">
+<div class="container pt-6">
+  <div class="inner">
     <%= Static::ViewHelpers.breadcrumb(["Fontainebleau", "/en/fontainebleau"]) %>
   </div>
+</div>
 
-  <div class="lg:grid lg:grid-cols-2 lg:gap-16">
-    <div class="col-span-1">
+<div class="container mb-8">
+  <div class="two-col">
+    <div>
       <div>
-        <h1 class="text-3xl font-bold mb-4 mt-2 px-4 sm:px-0">Circuits</h1>
+        <h1 class="page-title mb-4 mt-2 inner">Circuits</h1>
         <ul role="list">
           <%- circuits.each do |circuit| -%>
             <%= render_partial("circuit_list_item", "circuit" => circuit, "show_area" => true) %>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="h-full m-0">
+<html lang="en" style="height:100%;margin:0;">
   <head>
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
@@ -9,99 +9,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= page_title %> — Boolder</title>
 
-    <link rel="stylesheet" href="/assets/tailwind.css">
+    <link rel="stylesheet" href="/assets/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://api.mapbox.com/mapbox-gl-js/v3.11.0/mapbox-gl.css" rel="stylesheet">
     <script src="https://api.mapbox.com/mapbox-gl-js/v3.11.0/mapbox-gl.js"></script>
-    <style>
-      body { font-family: 'IBM Plex Sans', sans-serif; font-size: 14px; }
-      .logo-emoji { transition: transform 0.2s ease; display: inline-block; }
-      .logo-emoji:hover { transform: rotate(20deg); }
-      @media (prefers-color-scheme: dark) { .logo-emoji { filter: hue-rotate(-69deg); } }
-      #map { position: absolute; top: 0; bottom: 0; width: 100%; }
-      .mapboxgl-popup-content {
-        font-family: 'IBM Plex Sans', sans-serif;
-        font-size: 0.875rem;
-      }
-      .mapboxgl-popup-content a {
-        font-weight: 500;
-        color: #be95ff;
-        text-decoration: underline;
-      }
-
-      /* Oxocarbon light */
-      .bg-gray-100 { background-color: #f2f4f8 !important; }
-      .text-gray-900 { color: #161616 !important; }
-      .text-gray-700 { color: #262626 !important; }
-      .text-gray-500 { color: #525252 !important; }
-      .text-gray-400 { color: #697077 !important; }
-      .border-gray-300 { border-color: #dde1e6 !important; }
-      .bg-emerald-600 { background-color: #be95ff !important; }
-      .hover\:bg-emerald-500:hover { background-color: #a56eff !important; }
-      .text-emerald-800 { color: #be95ff !important; }
-      .bg-emerald-300 { background-color: rgba(190, 149, 255, 0.3) !important; }
-      .focus\:ring-emerald-500:focus { --tw-ring-color: #be95ff !important; }
-
-      /* Oxocarbon dark */
-      @media (prefers-color-scheme: dark) {
-        .dark\:bg-gray-900 { background-color: #161616 !important; }
-        .dark\:bg-gray-800 { background-color: #262626 !important; }
-        .dark\:bg-gray-800\/90 { background-color: rgba(38, 38, 38, 0.9) !important; }
-        .dark\:text-gray-100 { color: #f2f4f8 !important; }
-        .dark\:text-gray-200 { color: #dde1e6 !important; }
-        .dark\:text-gray-300 { color: #dde1e6 !important; }
-        .dark\:text-gray-400 { color: #697077 !important; }
-        .dark\:text-gray-500 { color: #525252 !important; }
-        .dark\:text-gray-700 { color: #262626 !important; }
-        .dark\:border-gray-600 { border-color: #393939 !important; }
-        .dark\:border-gray-700 { border-color: #393939 !important; }
-        .dark\:shadow-gray-700\/50 { --tw-shadow-color: rgba(57,57,57,0.5) !important; }
-        .dark\:hover\:text-gray-100:hover { color: #f2f4f8 !important; }
-        .dark\:hover\:text-gray-300:hover { color: #dde1e6 !important; }
-      }
-    </style>
   </head>
 
-  <body class="bg-white h-full m-0">
-    <div class="bg-gray-100 flex flex-col h-full">
-      <div class="flex-initial">
-        <nav class="bg-white dark:bg-gray-900 shadow dark:shadow-gray-700/50">
-          <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
-            <div class="flex justify-between h-12">
-              <div class="flex items-center px-2 lg:px-0 space-x-4">
-                <a href="/en/fontainebleau" class="text-xl flex-shrink-0 logo-emoji" aria-label="Boolder">🍷</a>
-                <a href="/en/fontainebleau" class="text-sm font-normal text-gray-900 dark:text-gray-100">Areas</a>
-                <a href="/en/fontainebleau/boulders" class="text-sm font-normal text-gray-900 dark:text-gray-100">Boulders</a>
-                <a href="/en/map" class="text-sm font-normal text-gray-900 dark:text-gray-100">Map</a>
-                <a href="/en/projects" class="text-sm font-normal text-gray-900 dark:text-gray-100">Ticks</a>
-              </div>
+  <body style="height:100%;margin:0;">
+    <div class="map-layout" style="background:var(--bg-secondary);">
+      <div class="map-layout-nav">
+        <nav class="nav">
+          <div class="nav-inner">
+            <div class="nav-links">
+              <a href="/en/fontainebleau" class="logo-emoji" aria-label="Boolder">🍷</a>
+              <a href="/en/fontainebleau" class="nav-link">Areas</a>
+              <a href="/en/fontainebleau/boulders" class="nav-link">Boulders</a>
+              <a href="/en/map" class="nav-link">Map</a>
+              <a href="/en/projects" class="nav-link">Ticks</a>
             </div>
           </div>
         </nav>
       </div>
 
       <!-- Map container -->
-      <div class="h-screen w-full relative" id="map-container">
+      <div class="map-viewport" id="map-container">
         <div id="map"></div>
 
         <!-- Match count pill (shown when filters are active) -->
-        <div id="matchCount" class="hidden absolute inset-x-0 bottom-0 z-10 pb-20 flex justify-center pointer-events-none">
-          <span class="rounded-full bg-white/90 dark:bg-gray-800/90 text-gray-700 dark:text-gray-200 text-sm font-medium px-3 py-1 shadow"></span>
+        <div id="matchCount" class="match-count hidden">
+          <span></span>
         </div>
 
         <!-- Bottom buttons -->
-        <div class="absolute inset-x-0 bottom-0 z-10 pb-8 flex justify-center gap-2">
-          <button id="filterBtn" type="button" class="inline-flex items-center rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-4 py-2 text-base font-normal text-gray-700 dark:text-gray-200 shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2">
-            <span id="filterCounter" class="hidden inline-flex justify-center items-center mr-2 w-4 h-4 text-xs font-semibold text-emerald-800 bg-emerald-300 rounded-full">1</span>
-            <svg id="filterIcon" xmlns="http://www.w3.org/2000/svg" class="-ml-1 mr-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+        <div class="map-controls">
+          <button id="filterBtn" type="button" class="map-btn">
+            <span id="filterCounter" class="filter-counter hidden">1</span>
+            <svg id="filterIcon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
               <path stroke-linecap="round" stroke-linejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
             </svg>
             <span>Filters</span>
           </button>
-          <button id="findClosestBtn" type="button" class="inline-flex items-center rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-4 py-2 text-base font-normal text-gray-700 dark:text-gray-200 shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2">
-            <svg xmlns="http://www.w3.org/2000/svg" class="-ml-1 mr-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <button id="findClosestBtn" type="button" class="map-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
               <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
             </svg>
@@ -110,61 +61,59 @@
         </div>
 
         <!-- Filters modal -->
-        <div id="filterModal" class="relative z-20 hidden" role="dialog">
-          <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
-          <div class="fixed inset-0 z-20 overflow-y-auto">
-            <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-              <div class="relative transform overflow-hidden rounded-lg bg-white dark:bg-gray-900 px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 w-full sm:max-w-lg sm:p-6">
-                <div class="absolute top-0 right-0 pt-4 pr-4">
-                  <button id="filterCloseBtn" type="button" class="rounded-md bg-white dark:bg-gray-900 text-gray-400 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-300">
-                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+        <div id="filterModal" class="hidden" style="position:relative;z-index:20;" role="dialog">
+          <div class="modal-backdrop"></div>
+          <div class="modal-container">
+            <div class="modal-center">
+              <div class="modal-panel">
+                <div class="modal-close">
+                  <button id="filterCloseBtn" type="button">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width:1.5rem;height:1.5rem;">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                   </button>
                 </div>
-                <div class="space-y-6">
+                <div style="display:flex;flex-direction:column;gap:1.5rem;">
                   <!-- Grade filter -->
                   <div>
-                    <div class="mt-3 text-center sm:mt-0">
-                      <h3 class="text-lg font-medium leading-6 text-gray-900 dark:text-gray-100 mb-4">Grade</h3>
-                    </div>
+                    <div class="modal-title">Grade</div>
                     <fieldset>
-                      <div class="relative -space-y-px rounded-md bg-white dark:bg-gray-800">
-                        <label class="rounded-tl-md rounded-tr-md relative border dark:border-gray-700 p-4 flex cursor-pointer md:pl-4 md:pr-6 grid grid-cols-2">
+                      <div class="radio-group">
+                        <label class="radio-option">
                           <span class="flex items-center text-sm">
-                            <input type="radio" name="gradeRadio" value="beginner" class="h-4 w-4 text-emerald-600 border-gray-300 dark:border-gray-600 focus:ring-emerald-500">
-                            <span class="ml-3 font-medium text-gray-900 dark:text-gray-100">Beginner</span>
+                            <input type="radio" name="gradeRadio" value="beginner">
+                            <span class="ml-3 font-medium">Beginner</span>
                           </span>
-                          <span class="ml-6 pl-1 text-sm md:ml-0 md:pl-0 text-right text-gray-400 dark:text-gray-500">1a &rarr; 3c+</span>
+                          <span class="text-sm text-faint" style="text-align:right;margin-left:1.5rem;">1a &rarr; 3c+</span>
                         </label>
                         <% (4..7).each do |level| %>
-                          <label class="relative border dark:border-gray-700 p-4 flex cursor-pointer md:pl-4 md:pr-6 grid grid-cols-2">
+                          <label class="radio-option">
                             <span class="flex items-center text-sm">
-                              <input type="radio" name="gradeRadio" value="level<%= level %>" class="h-4 w-4 text-emerald-600 border-gray-300 dark:border-gray-600 focus:ring-emerald-500">
-                              <span class="ml-3 font-medium text-gray-900 dark:text-gray-100">Level <%= level %></span>
+                              <input type="radio" name="gradeRadio" value="level<%= level %>">
+                              <span class="ml-3 font-medium">Level <%= level %></span>
                             </span>
                           </label>
                         <% end %>
-                        <label class="rounded-bl-md rounded-br-md relative border dark:border-gray-700 p-4 flex cursor-pointer md:pl-4 md:pr-6 grid grid-cols-2">
+                        <label class="radio-option">
                           <span class="flex items-center text-sm">
-                            <input type="radio" name="gradeRadio" value="custom" class="h-4 w-4 text-emerald-600 border-gray-300 dark:border-gray-600 focus:ring-emerald-500">
-                            <span class="ml-3 font-medium text-gray-900 dark:text-gray-100">Custom</span>
+                            <input type="radio" name="gradeRadio" value="custom">
+                            <span class="ml-3 font-medium">Custom</span>
                           </span>
                         </label>
                       </div>
                     </fieldset>
-                    <div id="customGradePicker" class="hidden grid grid-cols-2 gap-8 my-4">
+                    <div id="customGradePicker" class="grade-picker hidden">
                       <div>
-                        <label for="gradeMin" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Min</label>
-                        <select id="gradeMin" class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 dark:text-gray-100 py-2 pl-3 pr-10 text-base focus:border-emerald-500 focus:outline-none focus:ring-emerald-500 sm:text-sm">
+                        <label for="gradeMin" class="filter-label">Min</label>
+                        <select id="gradeMin" class="filter-select">
                           <% %w[1a 1b 1c 2a 2b 2c 3a 3b 3c 4a 4b 4c 5a 5b 5c 6a 6b 6c 7a 7b 7c 8a 8b 8c 9a].each do |g| %>
                             <option<%= g == "4a" ? " selected" : "" %>><%= g %></option>
                           <% end %>
                         </select>
                       </div>
                       <div>
-                        <label for="gradeMax" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Max</label>
-                        <select id="gradeMax" class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 dark:text-gray-100 py-2 pl-3 pr-10 text-base focus:border-emerald-500 focus:outline-none focus:ring-emerald-500 sm:text-sm">
+                        <label for="gradeMax" class="filter-label">Max</label>
+                        <select id="gradeMax" class="filter-select">
                           <% %w[1a 1b 1c 2a 2b 2c 3a 3b 3c 4a 4b 4c 5a 5b 5c 6a 6b 6c 7a 7b 7c 8a 8b 8c 9a].each do |g| %>
                             <option<%= g == "5a" ? " selected" : "" %>><%= g %></option>
                           <% end %>
@@ -175,8 +124,8 @@
 
                   <!-- Steepness filter -->
                   <div>
-                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Steepness</label>
-                    <select id="filter-steepness" class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 dark:text-gray-100 py-2 pl-3 pr-10 text-base focus:border-emerald-500 focus:outline-none focus:ring-emerald-500 sm:text-sm">
+                    <label class="filter-label">Steepness</label>
+                    <select id="filter-steepness" class="filter-select">
                       <option value="">All</option>
                       <option value="wall">Wall</option>
                       <option value="slab">Slab</option>
@@ -188,15 +137,15 @@
 
                   <!-- Circuit filter -->
                   <div>
-                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Circuit</label>
-                    <select id="filter-circuit" class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 dark:text-gray-100 py-2 pl-3 pr-10 text-base focus:border-emerald-500 focus:outline-none focus:ring-emerald-500 sm:text-sm">
+                    <label class="filter-label">Circuit</label>
+                    <select id="filter-circuit" class="filter-select">
                       <option value="">All</option>
                     </select>
                   </div>
                 </div>
-                <div class="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
-                  <button id="applyFiltersBtn" type="button" class="inline-flex w-full justify-center rounded-md border border-transparent bg-emerald-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-emerald-700 sm:ml-3 sm:w-auto sm:text-sm">Apply filters</button>
-                  <button id="clearFiltersBtn" type="button" class="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-4 py-2 text-base font-medium text-gray-700 dark:text-gray-300 shadow-sm hover:text-gray-500 dark:hover:text-gray-100 sm:mt-0 sm:w-auto sm:text-sm">Clear filters</button>
+                <div class="modal-actions">
+                  <button id="applyFiltersBtn" type="button" class="btn btn--primary">Apply filters</button>
+                  <button id="clearFiltersBtn" type="button" class="btn btn--outline">Clear filters</button>
                 </div>
               </div>
             </div>
@@ -225,7 +174,6 @@
         });
 
         map.addControl(new mapboxgl.ScaleControl({ maxWidth: 100, unit: 'metric' }));
-        // Hide zoom/compass controls on touch devices — pinch-to-zoom is more natural
         if (!('ontouchstart' in window)) {
           map.addControl(new mapboxgl.NavigationControl());
         }
@@ -241,7 +189,6 @@
         });
 
         map.on('load', () => {
-          // Add problems layer (vector tiles from Mapbox)
           map.addSource('problems', {
             type: 'vector',
             url: 'mapbox://nmondollot.4xsv235p',
@@ -290,7 +237,6 @@
             filter: ["match", ["geometry-type"], ["Point"], true, false],
           });
 
-          // Center on area or problem if provided
           if (boundsData) {
             const cam = map.cameraForBounds(
               [[boundsData.southWest.lng, boundsData.southWest.lat], [boundsData.northEast.lng, boundsData.northEast.lat]],
@@ -307,12 +253,11 @@
             if (info) {
               pendingPopup = new mapboxgl.Popup({ closeButton: false, focusAfterOpen: false, offset: [0, -8] })
                 .setLngLat([problemData.lng, problemData.lat])
-                .setHTML('<a href="' + info.url + '">' + (info.name || '') + '</a><span class="text-gray-400 ml-1">' + (info.grade || '') + '</span>');
+                .setHTML('<a href="' + info.url + '">' + (info.name || '') + '</a><span class="map-popup-grade">' + (info.grade || '') + '</span>');
             }
           }
         });
 
-        // Problem click → popup with direct link
         map.on('mouseenter', 'problems', () => { map.getCanvas().style.cursor = 'pointer'; });
         map.on('mouseleave', 'problems', () => { map.getCanvas().style.cursor = ''; });
 
@@ -323,9 +268,9 @@
 
           let html;
           if (info) {
-            html = '<a href="' + info.url + '">' + (info.name || '') + '</a><span class="text-gray-400 ml-1">' + (info.grade || '') + '</span>';
+            html = '<a href="' + info.url + '">' + (info.name || '') + '</a><span class="map-popup-grade">' + (info.grade || '') + '</span>';
           } else {
-            html = (props.name || '') + '<span class="text-gray-400 ml-1">' + (props.grade || '') + '</span>';
+            html = (props.name || '') + '<span class="map-popup-grade">' + (props.grade || '') + '</span>';
           }
 
           new mapboxgl.Popup({ closeButton: false, focusAfterOpen: false, offset: [0, -8] })
@@ -334,7 +279,6 @@
             .addTo(map);
         });
 
-        // Area click → zoom in
         function flyToBounds(bounds) {
           const cam = map.cameraForBounds(bounds, { padding: { top: 20, bottom: 100, left: 20, right: 20 } });
           cam.zoom = Math.max(15, cam.zoom);
@@ -353,7 +297,6 @@
           });
         });
 
-        // POI click
         map.on('mouseenter', 'pois', () => { if (map.getZoom() >= 12) map.getCanvas().style.cursor = 'pointer'; });
         map.on('mouseleave', 'pois', () => { if (map.getZoom() >= 12) map.getCanvas().style.cursor = ''; });
         map.on('click', 'pois', (e) => {
@@ -366,7 +309,6 @@
           }
         });
 
-        // Cluster click
         map.on('mouseenter', 'clusters', () => { if (map.getZoom() <= 12) map.getCanvas().style.cursor = 'pointer'; });
         map.on('mouseleave', 'clusters', () => { if (map.getZoom() <= 12) map.getCanvas().style.cursor = ''; });
         map.on('click', 'clusters', (e) => {
@@ -386,7 +328,6 @@
         const steepnessEl = document.getElementById('filter-steepness');
         const circuitEl = document.getElementById('filter-circuit');
 
-        // Populate circuit dropdown
         function capitalize(s) { return s ? s.charAt(0).toUpperCase() + s.slice(1) : ''; }
         allCircuits.forEach(c => {
           const opt = document.createElement('option');
@@ -407,8 +348,6 @@
 
         function buildFilter() {
           const conditions = [];
-
-          // Grade filter
           let grades;
           const gradeRanges = {
             beginner: allGrades.slice(0, 18),
@@ -428,15 +367,8 @@
           }
           if (grades) conditions.push(['match', ['get', 'grade'], grades, true, false]);
 
-          // Steepness filter
-          if (steepnessEl.value) {
-            conditions.push(['==', ['get', 'steepness'], steepnessEl.value]);
-          }
-
-          // Circuit filter
-          if (circuitEl.value) {
-            conditions.push(['==', ['get', 'circuitId'], parseInt(circuitEl.value)]);
-          }
+          if (steepnessEl.value) conditions.push(['==', ['get', 'steepness'], steepnessEl.value]);
+          if (circuitEl.value) conditions.push(['==', ['get', 'circuitId'], parseInt(circuitEl.value)]);
 
           if (conditions.length === 0) return null;
           if (conditions.length === 1) return conditions[0];
@@ -451,7 +383,6 @@
           return n;
         }
 
-        // Check if a problem from the lookup matches the current filter state
         function matchesFilters(p, gradeSet, steepness, circuitId) {
           if (gradeSet && !gradeSet.has(p.grade)) return false;
           if (steepness && p.steepness !== steepness) return false;
@@ -459,7 +390,6 @@
           return true;
         }
 
-        // Resolve current filter criteria into a gradeSet/steepness/circuitId tuple
         function currentFilterCriteria() {
           const gradeRanges = {
             beginner: allGrades.slice(0, 18),
@@ -484,7 +414,6 @@
           };
         }
 
-        // Count matching problems and compute their bounding box
         function countAndBound(criteria) {
           let minLat = 90, maxLat = -90, minLng = 180, maxLng = -180;
           let count = 0;
@@ -523,10 +452,8 @@
 
           if (n > 0) {
             const result = countAndBound(currentFilterCriteria());
-            // Show match count pill
             matchCountEl.querySelector('span').textContent = result.count.toLocaleString() + ' boulders';
             matchCountEl.classList.remove('hidden');
-            // Zoom to fit
             if (result.bounds) {
               map.fitBounds(result.bounds, {
                 padding: { top: 40, bottom: 100, left: 40, right: 40 },
@@ -554,12 +481,10 @@
           applyAllFilters();
         });
 
-        // Reset form state on page load (browsers may restore values on back-navigation)
         steepnessEl.value = '';
         circuitEl.value = '';
         document.querySelectorAll('input[name="gradeRadio"]').forEach(r => r.checked = false);
 
-        // Custom grade range sync
         document.getElementById('gradeMin').addEventListener('change', () => {
           const iMin = allGrades.indexOf(document.getElementById('gradeMin').value);
           const iMax = allGrades.indexOf(document.getElementById('gradeMax').value);
@@ -571,7 +496,7 @@
           document.getElementById('gradeMin').value = allGrades[Math.min(iMin, iMax)];
         });
 
-        // --- Find closest (respects active filters) ---
+        // --- Find closest ---
         document.getElementById('findClosestBtn').addEventListener('click', () => {
           const btn = document.getElementById('findClosestBtn');
           btn.disabled = true;
@@ -599,7 +524,7 @@
               map.flyTo({ center: [p.lng, p.lat], zoom: 20, speed: 2 });
               pendingPopup = new mapboxgl.Popup({ closeButton: false, focusAfterOpen: false, offset: [0, -8] })
                 .setLngLat([p.lng, p.lat])
-                .setHTML('<a href="' + p.url + '">' + (p.name || '') + '</a><span class="text-gray-400 ml-1">' + (p.grade || '') + '</span>');
+                .setHTML('<a href="' + p.url + '">' + (p.name || '') + '</a><span class="map-popup-grade">' + (p.grade || '') + '</span>');
             }
           }, () => {
             btn.disabled = false;
@@ -607,7 +532,6 @@
           });
         });
 
-        // URL cleanup on map move
         map.on('movestart', () => {
           history.replaceState({}, '', '/en/map');
         });

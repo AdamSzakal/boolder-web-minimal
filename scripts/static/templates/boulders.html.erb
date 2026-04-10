@@ -1,18 +1,18 @@
-<div class="max-w-7xl mx-auto pt-6 sm:px-6 lg:px-8">
-  <div class="px-4 sm:px-0">
+<div class="container pt-6">
+  <div class="inner">
     <%= Static::ViewHelpers.breadcrumb(["Fontainebleau", "/en/fontainebleau"]) %>
   </div>
 </div>
 
-<div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mb-8">
-  <h1 class="text-3xl font-bold mt-2 mb-4 px-4 sm:px-0">Boulders</h1>
-  <div class="lg:grid lg:grid-cols-2 lg:gap-16 mt-4">
-    <div class="col-span-1">
+<div class="container mb-8">
+  <h1 class="page-title mt-2 mb-4 inner">Boulders</h1>
+  <div class="two-col mt-4">
+    <div>
       <!-- Filters -->
-      <div class="px-4 sm:px-0 space-y-4" id="boulders-filters">
+      <div class="inner" style="display:flex;flex-direction:column;gap:1rem;" id="boulders-filters">
         <div>
-          <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Grade</label>
-          <select id="filter-grade" class="mt-1 block w-full md:w-1/3 rounded-md border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 dark:text-gray-100 py-2 pl-3 pr-10 text-base focus:border-emerald-500 focus:outline-none focus:ring-emerald-500 sm:text-sm">
+          <label class="filter-label">Grade</label>
+          <select id="filter-grade" class="filter-select filter-select--narrow">
             <option value="">All</option>
             <option value="beginner">Beginner (1–3)</option>
             <option value="level4">Level 4</option>
@@ -24,8 +24,8 @@
         </div>
 
         <div>
-          <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Steepness</label>
-          <select id="filter-steepness" class="mt-1 block w-full md:w-1/3 rounded-md border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 dark:text-gray-100 py-2 pl-3 pr-10 text-base focus:border-emerald-500 focus:outline-none focus:ring-emerald-500 sm:text-sm">
+          <label class="filter-label">Steepness</label>
+          <select id="filter-steepness" class="filter-select filter-select--narrow">
             <option value="">All</option>
             <option value="wall">Wall</option>
             <option value="slab">Slab</option>
@@ -36,25 +36,25 @@
         </div>
 
         <div>
-          <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Circuit</label>
-          <select id="filter-circuit" class="mt-1 block w-full md:w-1/2 rounded-md border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 dark:text-gray-100 py-2 pl-3 pr-10 text-base focus:border-emerald-500 focus:outline-none focus:ring-emerald-500 sm:text-sm">
+          <label class="filter-label">Circuit</label>
+          <select id="filter-circuit" class="filter-select filter-select--medium">
             <option value="">All</option>
           </select>
         </div>
 
         <div>
-          <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Sort by</label>
+          <label class="filter-label">Sort by</label>
           <div class="flex items-center space-x-2 mt-1">
-            <select id="filter-sort" class="block w-full md:w-1/3 rounded-md border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 dark:text-gray-100 py-2 pl-3 pr-10 text-base focus:border-emerald-500 focus:outline-none focus:ring-emerald-500 sm:text-sm">
+            <select id="filter-sort" class="filter-select filter-select--narrow">
               <option value="popularity">Popularity</option>
               <option value="grade">Grade</option>
               <option value="distance">Distance</option>
             </select>
-            <button id="filter-direction" type="button" class="inline-flex items-center p-2 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400" title="Toggle sort direction">
-              <svg id="dir-desc-icon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <button id="filter-direction" type="button" class="sort-dir-btn" title="Toggle sort direction">
+              <svg id="dir-desc-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M3 4h13M3 8h9m-9 4h9m5-4v12m0 0l-4-4m4 4l4-4" />
               </svg>
-              <svg id="dir-asc-icon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <svg id="dir-asc-icon" xmlns="http://www.w3.org/2000/svg" class="hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M3 4h13M3 8h9m-9 4h6m4 0l4-4m0 0l4 4m-4-4v12" />
               </svg>
             </button>
@@ -62,7 +62,7 @@
         </div>
       </div>
 
-      <div id="results-count" class="px-4 sm:px-0 pt-4 text-sm text-gray-500 dark:text-gray-400"></div>
+      <div id="results-count" class="inner pt-4 text-sm text-muted"></div>
 
       <ul role="list" id="boulders-list"></ul>
     </div>
@@ -74,7 +74,6 @@
   var allProblems = <%= problems_json %>;
   var allCircuits = <%= circuits_json %>;
 
-  // Shared constants from ViewHelpers (single source of truth)
   var colorHex = window.BOOLDER_COLOR_HEX;
   var steepnessLabels = window.BOOLDER_STEEPNESS_LABELS;
 
@@ -89,7 +88,6 @@
     level8: new Set(allGrades.slice(42)),
   };
 
-  // Populate circuit dropdown
   var circuitEl = document.getElementById('filter-circuit');
   allCircuits.forEach(function(c) {
     var opt = document.createElement('option');
@@ -118,7 +116,6 @@
     return parseFloat(p.circuit_number) || 9999;
   }
 
-  // Haversine distance in km
   function distKm(lat1, lng1, lat2, lng2) {
     var R = 6371;
     var dLat = (lat2 - lat1) * Math.PI / 180;
@@ -137,7 +134,6 @@
 
     var filtered = allProblems;
 
-    // When browsing a circuit, show all problems in it; otherwise only popular ones
     if (circuitFilter) {
       filtered = filtered.filter(function(p) { return p.circuit_id === parseInt(circuitFilter); });
     } else {
@@ -153,7 +149,6 @@
       filtered = filtered.filter(function(p) { return p.steepness === steepnessFilter; });
     }
 
-    // Sort: circuit order when a circuit is selected, otherwise by chosen sort
     if (circuitFilter) {
       filtered.sort(function(a, b) {
         var cmp = circuitSortKey(a) - circuitSortKey(b);
@@ -178,29 +173,27 @@
       });
     }
 
-    // Limit display to 200
     var display = filtered.slice(0, 200);
-
     countEl.textContent = filtered.length + ' problems' + (filtered.length > 200 ? ' (showing first 200)' : '');
 
     listEl.innerHTML = display.map(function(p) {
       var cHex = colorHex[p.circuit_color] || '';
       var cText = p.circuit_color === 'white' ? '#000' : '#FFF';
       var circuitBadge = p.circuit_color
-        ? '<span class="inline-flex items-center rounded-full px-2 py-0.5" style="background-color: ' + cHex + '; color: ' + cText + ';">' + capitalize(p.circuit_color) + (p.circuit_number ? ' ' + p.circuit_number : '') + '</span>'
+        ? '<span class="badge badge--circuit" style="background-color:' + cHex + ';color:' + cText + ';">' + capitalize(p.circuit_color) + (p.circuit_number ? ' ' + p.circuit_number : '') + '</span>'
         : '';
       var distBadge = (sortBy === 'distance' && p._dist != null)
-        ? '<span class="inline-flex items-center rounded-full bg-gray-200 dark:bg-gray-700 px-2 py-0.5">' + (p._dist < 1 ? Math.round(p._dist * 1000) + ' m' : p._dist.toFixed(1) + ' km') + '</span>'
+        ? '<span class="badge badge--meta">' + (p._dist < 1 ? Math.round(p._dist * 1000) + ' m' : p._dist.toFixed(1) + ' km') + '</span>'
         : '';
 
-      return '<li class="px-4 sm:-mx-2 sm:px-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg">' +
+      return '<li class="list-item">' +
         '<a href="' + p.url + '">' +
-          '<div class="py-2">' +
-            '<div><span>' + esc(p.name) + '</span> <span class="ml-1 text-gray-500 dark:text-gray-400">' + (p.grade || '') + '</span></div>' +
-            '<div class="flex flex-wrap items-center gap-1.5 text-xs text-gray-500 dark:text-gray-400 mt-1">' +
-              (p.popularity > 0 ? '<span class="inline-flex items-center gap-1 rounded-full bg-gray-200 dark:bg-gray-700 px-2 py-0.5">\u2605 ' + p.popularity + '</span>' : '') +
-              '<span class="inline-flex items-center rounded-full bg-gray-200 dark:bg-gray-700 px-2 py-0.5">' + (steepnessLabels[p.steepness] || p.steepness) + '</span>' +
-              '<span class="inline-flex items-center rounded-full bg-gray-200 dark:bg-gray-700 px-2 py-0.5">' + esc(p.area_name) + '</span>' +
+          '<div class="list-item-inner">' +
+            '<div><span>' + esc(p.name) + '</span> <span class="problem-grade-inline">' + (p.grade || '') + '</span></div>' +
+            '<div class="meta-row">' +
+              (p.popularity > 0 ? '<span class="badge badge--meta">\u2605 ' + p.popularity + '</span>' : '') +
+              '<span class="badge badge--meta">' + (steepnessLabels[p.steepness] || p.steepness) + '</span>' +
+              '<span class="badge badge--meta">' + esc(p.area_name) + '</span>' +
               circuitBadge +
               distBadge +
             '</div>' +
@@ -216,7 +209,6 @@
   gradeEl.addEventListener('change', applyFilters);
   steepnessEl.addEventListener('change', applyFilters);
   circuitEl.addEventListener('change', function() {
-    // When a circuit is selected, auto-switch sort to ascending (circuit order reads naturally 1->N)
     if (circuitEl.value) {
       direction = 'asc';
       descIcon.classList.add('hidden');
@@ -226,7 +218,6 @@
   });
   sortEl.addEventListener('change', function() {
     if (sortEl.value === 'distance' && userLat === null) {
-      // Request location, then re-render once we have it
       navigator.geolocation.getCurrentPosition(
         function(pos) { userLat = pos.coords.latitude; userLng = pos.coords.longitude; applyFilters(); },
         function() { sortEl.value = 'popularity'; applyFilters(); }
@@ -242,7 +233,6 @@
     applyFilters();
   });
 
-  // Initial render
   applyFilters();
 })();
 </script>

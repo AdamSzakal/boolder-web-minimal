@@ -2,14 +2,14 @@
   slug = Static::ViewHelpers.problem_slug(problem)
   url = "/en/fontainebleau/#{area_slug}/#{slug}"
 %>
-<li class="px-4 sm:-mx-2 sm:px-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg">
+<li class="list-item">
   <a href="<%= url %>">
-    <div class="py-2">
+    <div class="list-item-inner">
       <div>
         <span><%= problem["name"] %></span>
-        <span class="ml-1 text-gray-500 dark:text-gray-400"><%= problem["grade"] %></span>
+        <span class="problem-grade-inline"><%= problem["grade"] %></span>
       </div>
-      <div class="flex flex-wrap items-center gap-1.5 text-xs text-gray-500 dark:text-gray-400 mt-1">
+      <div class="meta-row">
         <%- if problem["popularity"].to_i > 0 -%>
           <%= Static::ViewHelpers.metadata_badge(problem["popularity"], icon: "&#9733;") %>
         <%- end -%>
