@@ -15,6 +15,9 @@ class SteepnessesController < ApplicationController
     @grade_level = params[:grade_level].in?(GRADE_LEVELS) ? params[:grade_level] : nil
     @direction = params[:direction] == "asc" ? :asc : :desc
 
+    @areas = Area.where(published: true).order(:name)
+    @area_id = params[:area_id].present? ? params[:area_id].to_i : nil
+
     @circuits = Circuit.all.select { |c| c.problems.any? }.sort_by { |c| [c.main_area&.name.to_s, c.average_grade] }
     @circuit_id = params[:circuit_id].present? ? params[:circuit_id].to_i : nil
 
@@ -27,6 +30,7 @@ class SteepnessesController < ApplicationController
 
     @problems = @problems.where(steepness: @steepness) if @steepness.present?
     @problems = @problems.where(grade: GRADE_RANGES[@grade_level]) if @grade_level.present?
+    @problems = @problems.where(area_id: @area_id) if @area_id.present?
     @problems = @problems.where(circuit_id: @circuit_id) if @circuit_id.present?
 
     @problems = case @sort

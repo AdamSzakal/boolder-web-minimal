@@ -339,6 +339,7 @@ en:
           circuit_order: Circuit order
         ascending: Ascending
         descending: Descending
+        area_label: Area
         circuit_label: Circuit
         all: All
         popularity: Popularity

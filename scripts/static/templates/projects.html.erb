@@ -3,7 +3,7 @@
   <div id="ownHeader">
     <div class="projects-header">
       <div>
-        <h1 class="page-title">Ticks</h1>
+        <h1 class="page-title">Projects</h1>
         <p class="projects-subtitle">Stored locally on your device.</p>
       </div>
       <div class="btn-group">
@@ -157,7 +157,7 @@
 
   function buildShareUrl(ids) {
     var base = window.location.origin + '/en/projects';
-    return base + '#n=Ticks&p=' + ids.join(',');
+    return base + '#n=Projects&p=' + ids.join(',');
   }
 
   parseFragment();
@@ -199,8 +199,8 @@
           '<a href="' + origin + esc(p.url) + '">' + esc(p.name) + '</a> ' +
           esc(p.grade) + ' — ' + esc(p.area) + '</li>';
       }).filter(Boolean);
-      var html = '<b>Ticks</b><ul>' + items.join('') + '</ul>';
-      var plain = 'Ticks\n' + ids.map(function(id) {
+      var html = '<b>Projects</b><ul>' + items.join('') + '</ul>';
+      var plain = 'Projects\n' + ids.map(function(id) {
         var p = index[id];
         if (!p) return '';
         return p.name + ' ' + p.grade + ' — ' + p.area + ' (' + origin + p.url + ')';

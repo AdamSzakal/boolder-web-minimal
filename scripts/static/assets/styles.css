@@ -159,27 +159,6 @@ hr { border: none; border-top: 1px solid var(--divider); margin: 0; }
   .container-narrow { padding-left: 2rem; padding-right: 2rem; }
 }
 
-.two-col {
-  display: block;
-}
-@media (min-width: 1024px) {
-  .two-col { display: grid; grid-template-columns: repeat(2, 1fr); gap: 4rem; }
-}
-
-.two-col-md {
-  display: block;
-}
-@media (min-width: 768px) {
-  .two-col-md { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
-}
-
-.three-col-md {
-  display: block;
-}
-@media (min-width: 768px) {
-  .three-col-md { display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; }
-}
-
 .inner { padding-left: 1rem; padding-right: 1rem; }
 @media (min-width: 640px) { .inner { padding-left: 0; padding-right: 0; } }
 
@@ -888,7 +867,7 @@ hr { border: none; border-top: 1px solid var(--divider); margin: 0; }
 }
 
 /* --- Sort controls and results --- */
-.sort-row { display: flex; align-items: center; gap: 0.5rem; margin-top: 0.25rem; }
+.sort-row { display: flex; align-items: center; gap: 0.5rem; }
 .results-count { padding-top: 1rem; font-size: 0.875rem; color: var(--text-muted); }
 
 /* --- Radio option labels (map filters) --- */

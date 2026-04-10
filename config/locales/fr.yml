@@ -339,6 +339,7 @@ fr:
           circuit_order: Ordre du circuit
         ascending: Croissant
         descending: Décroissant
+        area_label: Secteur
         circuit_label: Circuit
         all: Tous
         popularity: Popularité
