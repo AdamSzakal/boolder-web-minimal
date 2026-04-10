@@ -3,35 +3,35 @@
   text_col = Static::ViewHelpers.circuit_text_color(circuit["color"])
 %>
 
-<div class="container pt-6">
+<div class="container" style="padding-top:1.5rem;">
   <div class="inner">
     <%= Static::ViewHelpers.breadcrumb(["Fontainebleau", "/en/fontainebleau"], [area["name"], "/en/fontainebleau/#{area["slug"]}"]) %>
   </div>
 </div>
 
-<div class="container pb-8">
-  <div class="two-col-md mb-4">
+<div class="container" style="padding-bottom:2rem;">
+  <div class="two-col-md">
     <div>
       <div>
-        <h1 class="page-title mb-4 mt-2 inner">
+        <h1 class="page-title inner">
           Circuit <%= circuit["color"].capitalize %>
         </h1>
 
         <%- if circuit["beginner_friendly"] -%>
-          <span class="flex mb-2 inner">
-            <span class="icon-success mr-2"><%= Static::ViewHelpers::ICON_BEGINNER %></span>
+          <span class="circuit-alert inner">
+            <span class="icon-success"><%= Static::ViewHelpers::ICON_BEGINNER %></span>
             <span class="icon-success">Beginner friendly</span>
           </span>
         <%- end -%>
 
         <%- if circuit["dangerous"] -%>
-          <span class="flex mb-2 inner">
-            <span class="icon-danger mr-2"><%= Static::ViewHelpers::ICON_DANGER %></span>
+          <span class="circuit-alert inner">
+            <span class="icon-danger"><%= Static::ViewHelpers::ICON_DANGER %></span>
             <span class="icon-danger">Dangerous</span>
           </span>
         <%- end -%>
 
-        <ul role="list" class="pt-2">
+        <ul role="list" style="padding-top:0.5rem;">
           <%- problems.each do |problem| -%>
             <%
               problem_slug = Static::ViewHelpers.problem_slug(problem)
@@ -39,22 +39,20 @@
             %>
             <li class="list-item">
               <a href="/en/fontainebleau/<%= area_slug %>/<%= problem_slug %>">
-                <div class="flex justify-between py-2">
+                <div class="circuit-problem-row">
                   <div>
                     <%- if problem["circuit_number"] -%>
                       <%= Static::ViewHelpers.circuit_badge(circuit["color"], problem["circuit_number"], size: :dot) %>
                     <%- else -%>
                       <span class="badge--empty-dot">&nbsp;</span>
                     <%- end -%>
-                    <span class="ml-2"><%= problem["name"] %></span>
+                    <span class="circuit-problem-name"><%= problem["name"] %></span>
                   </div>
-                  <div>
-                    <div class="flex space-x-2">
-                      <%- if problem["featured"] -%>
-                        <div class="text-red-400"><%= Static::ViewHelpers::ICON_HEART %></div>
-                      <%- end -%>
-                      <div class="text-muted"><%= problem["grade"] %></div>
-                    </div>
+                  <div class="circuit-problem-right">
+                    <%- if problem["featured"] -%>
+                      <div class="icon-heart"><%= Static::ViewHelpers::ICON_HEART %></div>
+                    <%- end -%>
+                    <div class="circuit-list-grade"><%= problem["grade"] %></div>
                   </div>
                 </div>
               </a>

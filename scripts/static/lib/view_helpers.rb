@@ -87,10 +87,10 @@ module Static
     def self.circuit_status_icons(circuit, icon_size: :lg)
       parts = []
       if circuit["dangerous"]
-        parts << %(<span class="flex icon-danger mr-2" title="Dangerous">#{ICON_DANGER}</span>)
+        parts << %(<span class="circuit-status-icon circuit-status-icon--danger" title="Dangerous">#{ICON_DANGER}</span>)
       end
       if circuit["beginner_friendly"]
-        parts << %(<span class="flex icon-success mr-2" title="Beginner friendly">#{ICON_BEGINNER}</span>)
+        parts << %(<span class="circuit-status-icon circuit-status-icon--beginner" title="Beginner friendly">#{ICON_BEGINNER}</span>)
       end
       parts.join
     end

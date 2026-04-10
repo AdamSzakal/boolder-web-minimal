@@ -2,19 +2,19 @@
   hex = Static::ViewHelpers.circuit_hex(circuit["color"])
 %>
 <li class="list-item">
-  <a href="/en/fontainebleau/circuits/<%= circuit["id"] %>" class="flex justify-between items-center">
+  <a href="/en/fontainebleau/circuits/<%= circuit["id"] %>" class="circuit-list-link">
     <div class="list-item-inner">
       <div>
         <span class="circuit-dot" style="background-color: <%= hex %>;"></span>
-        <span class="ml-2">Circuit <%= circuit["color"].capitalize %></span>
+        <span class="circuit-list-name">Circuit <%= circuit["color"].capitalize %></span>
         <%- if defined?(show_area) && show_area && circuit["main_area_name"] -%>
-          <span class="ml-2 text-faint"><%= circuit["main_area_name"] %></span>
+          <span class="circuit-list-area"><%= circuit["main_area_name"] %></span>
         <%- end -%>
       </div>
     </div>
-    <span class="flex">
+    <span class="circuit-list-right">
       <%= Static::ViewHelpers.circuit_status_icons(circuit) %>
-      <span class="text-muted"><%= circuit["average_grade"] %></span>
+      <span class="circuit-list-grade"><%= circuit["average_grade"] %></span>
     </span>
   </a>
 </li>

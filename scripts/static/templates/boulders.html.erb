@@ -1,12 +1,12 @@
-<div class="container pt-6">
+<div class="container" style="padding-top:1.5rem;">
   <div class="inner">
     <%= Static::ViewHelpers.breadcrumb(["Fontainebleau", "/en/fontainebleau"]) %>
   </div>
 </div>
 
-<div class="container mb-8">
-  <h1 class="page-title mt-2 mb-4 inner">Boulders</h1>
-  <div class="two-col mt-4">
+<div class="container" style="margin-bottom:2rem;">
+  <h1 class="page-title inner">Boulders</h1>
+  <div class="two-col" style="margin-top:1rem;">
     <div>
       <!-- Filters -->
       <div class="inner" style="display:flex;flex-direction:column;gap:1rem;" id="boulders-filters">
@@ -44,7 +44,7 @@
 
         <div>
           <label class="filter-label">Sort by</label>
-          <div class="flex items-center space-x-2 mt-1">
+          <div class="sort-row">
             <select id="filter-sort" class="filter-select filter-select--narrow">
               <option value="popularity">Popularity</option>
               <option value="grade">Grade</option>
@@ -62,7 +62,7 @@
         </div>
       </div>
 
-      <div id="results-count" class="inner pt-4 text-sm text-muted"></div>
+      <div id="results-count" class="inner results-count"></div>
 
       <ul role="list" id="boulders-list"></ul>
     </div>

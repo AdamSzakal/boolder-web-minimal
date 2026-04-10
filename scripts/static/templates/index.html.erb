@@ -1,14 +1,14 @@
-<div class="container mt-8">
-  <h1 class="page-title mt-8 mb-4 inner">Fontainebleau</h1>
+<div class="container" style="margin-top:2rem;">
+  <h1 class="page-title inner" style="margin-top:2rem;">Fontainebleau</h1>
 </div>
 
-<div class="container pb-8">
-  <div class="two-col mb-4">
+<div class="container" style="padding-bottom:2rem;">
+  <div class="two-col">
     <div>
-      <h2 class="section-title py-4 inner">Areas</h2>
+      <h2 class="section-title inner">Areas</h2>
 
       <div class="area-list-card">
-        <ul role="list" class="divide-y">
+        <ul role="list" class="area-list">
           <%- areas.each do |area| -%>
             <li>
               <a href="/en/fontainebleau/<%= area["slug"] %>" class="area-list-item">

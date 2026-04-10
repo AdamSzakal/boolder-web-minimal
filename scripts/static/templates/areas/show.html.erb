@@ -3,7 +3,7 @@
   warning = area["warning_en"]
 %>
 
-<div class="container pt-6 hidden" style="padding-top:1.25rem;margin-top:0.25rem;background:var(--bg-secondary);">
+<div class="container hidden" style="padding-top:1.25rem;margin-top:0.25rem;background:var(--bg-secondary);">
   <a href="/en/fontainebleau" class="breadcrumb" style="display:inline-flex;">
     <div>Fontainebleau</div>
   </a>
@@ -27,17 +27,17 @@
   </div>
 </div>
 
-<div class="container mb-8">
+<div class="container" style="margin-bottom:2rem;">
   <div class="two-col">
     <div>
       <div>
         <div class="card" style="margin-top:1rem;">
-          <ul role="list" class="divide-y">
+          <ul role="list" class="area-stats-list">
             <li>
               <div style="display:flex;align-items:center;padding:0.75rem 1rem;">
                 <div style="display:flex;min-width:0;flex:1;align-items:center;">
                   <div style="display:flex;justify-content:space-between;width:100%;padding-right:0.5rem;">
-                    <div class="text-muted">
+                    <div style="color:var(--text-muted);">
                       <%= area["problems_count"] %> problems
                     </div>
                     <div style="display:flex;gap:0.25rem;">
@@ -55,10 +55,10 @@
           </ul>
         </div>
 
-        <div class="pt-2">
-          <div class="inner pt-2">
+        <div style="padding-top:0.5rem;">
+          <div class="inner" style="padding-top:0.5rem;">
             <%- if area["tags"] && area["tags"].any? -%>
-              <div class="pt-4 pb-2 flex flex-wrap">
+              <div class="tags-row">
                 <%- tag_labels = { "popular" => "Popular", "beginner_friendly" => "Beginner friendly", "family_friendly" => "Family friendly", "dry_fast" => "Dries fast" } -%>
                 <%- area["tags"].each do |tag| -%>
                   <span class="badge--tag"><%= tag_labels[tag] || tag %></span>
@@ -67,7 +67,7 @@
             <%- end -%>
 
             <%- if description.to_s.strip.length > 0 -%>
-              <div class="pt-4">
+              <div style="padding-top:1rem;">
                 <div class="prose">
                   <%- description.split(/\r?\n\r?\n/).each do |para| -%>
                     <p><%= para.strip %></p>
@@ -77,7 +77,7 @@
             <%- end -%>
 
             <%- if warning.to_s.strip.length > 0 -%>
-              <div class="pt-4">
+              <div style="padding-top:1rem;">
                 <div class="warning-box">
                   <div>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -98,7 +98,7 @@
 
           <%- if circuits && circuits.any? -%>
             <div>
-              <h2 class="section-title mt-8 mb-4 inner">Circuits</h2>
+              <h2 class="section-title inner">Circuits</h2>
               <ul role="list">
                 <%- circuits.each do |circuit| -%>
                   <%= render_partial("circuit_list_item", "circuit" => circuit) %>
@@ -108,9 +108,9 @@
           <%- end -%>
 
           <div>
-            <div class="flex items-center space-x-2 mt-8 mb-4 pt-4 inner">
-              <h2 class="section-title">Popular problems</h2>
-              <span class="text-red-400"><%= Static::ViewHelpers::ICON_HEART %></span>
+            <div class="popular-header section-title inner">
+              <h2 class="section-title" style="margin:0;padding:0;">Popular problems</h2>
+              <span class="icon-heart"><%= Static::ViewHelpers::ICON_HEART %></span>
             </div>
             <ul role="list">
               <%- popular_problems.each do |problem| -%>
@@ -121,8 +121,8 @@
 
           <%- if poi_routes && poi_routes.any? -%>
             <div>
-              <h2 class="section-title mt-8 mb-4 pt-4 inner">Access</h2>
-              <ul class="pt-2 inner">
+              <h2 class="section-title inner">Access</h2>
+              <ul class="inner" style="padding-top:0.5rem;">
                 <%- poi_routes.sort_by { |r| r["distance_in_minutes"] || 0 }.each do |route| -%>
                   <%
                     poi = route["poi"]

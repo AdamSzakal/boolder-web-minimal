@@ -80,24 +80,24 @@
                     <fieldset>
                       <div class="radio-group">
                         <label class="radio-option">
-                          <span class="flex items-center text-sm">
+                          <span class="radio-option-label">
                             <input type="radio" name="gradeRadio" value="beginner">
-                            <span class="ml-3 font-medium">Beginner</span>
+                            <span class="radio-option-text">Beginner</span>
                           </span>
-                          <span class="text-sm text-faint" style="text-align:right;margin-left:1.5rem;">1a &rarr; 3c+</span>
+                          <span class="radio-option-hint">1a &rarr; 3c+</span>
                         </label>
                         <% (4..7).each do |level| %>
                           <label class="radio-option">
-                            <span class="flex items-center text-sm">
+                            <span class="radio-option-label">
                               <input type="radio" name="gradeRadio" value="level<%= level %>">
-                              <span class="ml-3 font-medium">Level <%= level %></span>
+                              <span class="radio-option-text">Level <%= level %></span>
                             </span>
                           </label>
                         <% end %>
                         <label class="radio-option">
-                          <span class="flex items-center text-sm">
+                          <span class="radio-option-label">
                             <input type="radio" name="gradeRadio" value="custom">
-                            <span class="ml-3 font-medium">Custom</span>
+                            <span class="radio-option-text">Custom</span>
                           </span>
                         </label>
                       </div>
