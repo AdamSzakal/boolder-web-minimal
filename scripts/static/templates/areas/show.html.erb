@@ -1,7 +1,6 @@
 <%
   description = area["description_en"]
   warning = area["warning_en"]
-  color_hex = { "yellow" => "#FFCC02", "purple" => "#D783FF", "orange" => "#FF9500", "green" => "#77C344", "blue" => "#017AFF", "skyblue" => "#5AC7FA", "salmon" => "#FDAF8A", "red" => "#FF3B2F", "black" => "#000000", "white" => "#FFFFFF" }
 %>
 
 <div class="max-w-7xl mx-auto pt-5 mt-1 px-4 sm:px-6 lg:px-8 bg-gray-100 dark:bg-gray-800 hidden sm:block mb-4">
@@ -100,15 +99,7 @@
               </div>
             <%- end -%>
 
-            <a href="/en/map/<%= area["slug"] %>">
-              <div class="flex items-center space-x-2 text-emerald-600 mt-6">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
-                </svg>
-                <div>See on map</div>
-              </div>
-            </a>
+            <%= Static::ViewHelpers.action_link("/en/map/#{area["slug"]}", Static::ViewHelpers::ICON_MAP_PIN, "See on map") %>
           </div>
 
           <%- if circuits && circuits.any? -%>
@@ -116,37 +107,7 @@
               <h2 class="text-2xl font-bold mt-8 mb-4 px-4 sm:px-0">Circuits</h2>
               <ul role="list">
                 <%- circuits.each do |circuit| -%>
-                  <%
-                    hex = color_hex[circuit["color"]] || "#999"
-                    text_col = circuit["color"] == "white" ? "#000" : "#FFF"
-                  %>
-                  <li class="px-4 sm:-mx-2 sm:px-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg">
-                    <a href="/en/fontainebleau/circuits/<%= circuit["id"] %>" class="flex justify-between items-center">
-                      <div class="flex justify-between py-2">
-                        <div>
-                          <span class="inline-block w-4 h-4 rounded-full" style="background-color: <%= hex %>;"></span>
-                          <span class="ml-2">Circuit <%= circuit["color"].capitalize %></span>
-                        </div>
-                      </div>
-                      <span class="flex">
-                        <%- if circuit["dangerous"] -%>
-                          <span class="flex text-red-500 mr-2" title="Dangerous">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                              <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
-                            </svg>
-                          </span>
-                        <%- end -%>
-                        <%- if circuit["beginner_friendly"] -%>
-                          <span class="flex text-emerald-500 mr-2" title="Beginner friendly">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                              <path stroke-linecap="round" stroke-linejoin="round" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                            </svg>
-                          </span>
-                        <%- end -%>
-                        <span class="text-gray-500 dark:text-gray-400"><%= circuit["average_grade"] %></span>
-                      </span>
-                    </a>
-                  </li>
+                  <%= render_partial("circuit_list_item", "circuit" => circuit) %>
                 <%- end -%>
               </ul>
             </div>
@@ -155,45 +116,11 @@
           <div>
             <div class="flex items-center space-x-2 text-2xl font-bold mt-8 mb-4 pt-4 px-4 sm:px-0">
               <h2>Popular problems</h2>
-              <span class="text-red-400">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
-                </svg>
-              </span>
+              <span class="text-red-400"><%= Static::ViewHelpers::ICON_HEART %></span>
             </div>
-            <%
-              steepness_labels = { "wall" => "Wall", "slab" => "Slab", "overhang" => "Overhang", "roof" => "Roof", "traverse" => "Traverse", "other" => "Other" }
-            %>
             <ul role="list">
               <%- popular_problems.each do |problem| -%>
-                <%
-                  problem_slug = [problem["id"], problem["name"]&.downcase&.gsub(/[^a-z0-9]+/, "-")&.gsub(/-$/, "")].compact.join("-")
-                %>
-                <li class="px-4 sm:-mx-2 sm:px-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg">
-                  <a href="/en/fontainebleau/<%= area["slug"] %>/<%= problem_slug %>">
-                    <div class="py-2">
-                      <div>
-                        <span><%= problem["name"] %></span>
-                        <span class="ml-1 text-gray-500 dark:text-gray-400"><%= problem["grade"] %></span>
-                      </div>
-                      <div class="flex flex-wrap items-center gap-1.5 text-xs text-gray-500 dark:text-gray-400 mt-1">
-                        <%- if problem["popularity"].to_i > 0 -%>
-                          <span class="inline-flex items-center gap-1 rounded-full bg-gray-200 dark:bg-gray-700 px-2 py-0.5">&#9733; <%= problem["popularity"] %></span>
-                        <%- end -%>
-                        <%- if problem["steepness"] -%>
-                          <span class="inline-flex items-center rounded-full bg-gray-200 dark:bg-gray-700 px-2 py-0.5"><%= steepness_labels[problem["steepness"]] || problem["steepness"] %></span>
-                        <%- end -%>
-                        <%- if problem["circuit_color"] -%>
-                          <%
-                            c_hex = color_hex[problem["circuit_color"]] || "#999"
-                            c_text = problem["circuit_color"] == "white" ? "#000" : "#FFF"
-                          %>
-                          <span class="inline-flex items-center rounded-full px-2 py-0.5" style="background-color: <%= c_hex %>; color: <%= c_text %>;"><%= problem["circuit_color"].capitalize %><%= " #{problem["circuit_number"]}" if problem["circuit_number"] %></span>
-                        <%- end -%>
-                      </div>
-                    </div>
-                  </a>
-                </li>
+                <%= render_partial("problem_list_item", "problem" => problem, "area_slug" => area["slug"]) %>
               <%- end -%>
             </ul>
           </div>

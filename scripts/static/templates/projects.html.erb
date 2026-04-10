@@ -1,7 +1,3 @@
-<%
-  color_hex = { "yellow" => "#FFCC02", "purple" => "#D783FF", "orange" => "#FF9500", "green" => "#77C344", "blue" => "#017AFF", "skyblue" => "#5AC7FA", "salmon" => "#FDAF8A", "red" => "#FF3B2F", "black" => "#000000", "white" => "#FFFFFF" }
-%>
-
 <div class="max-w-3xl mx-auto pt-6 pb-12 px-4 sm:px-6 lg:px-8">
   <!-- Header: shown when viewing own list -->
   <div id="ownHeader">
@@ -65,7 +61,7 @@
 
 <script>
 (function() {
-  var colorHex = <%= color_hex.to_json %>;
+  var colorHex = window.BOOLDER_COLOR_HEX;
   var isShared = false;
   var sharedIds = [];
   var sharedName = '';

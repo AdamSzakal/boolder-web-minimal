@@ -1,0 +1,20 @@
+<%
+  hex = Static::ViewHelpers.circuit_hex(circuit["color"])
+%>
+<li class="px-4 sm:-mx-2 sm:px-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg">
+  <a href="/en/fontainebleau/circuits/<%= circuit["id"] %>" class="flex justify-between items-center">
+    <div class="flex justify-between py-2">
+      <div>
+        <span class="inline-block w-4 h-4 rounded-full" style="background-color: <%= hex %>;"></span>
+        <span class="ml-2">Circuit <%= circuit["color"].capitalize %></span>
+        <%- if defined?(show_area) && show_area && circuit["main_area_name"] -%>
+          <span class="ml-2 text-gray-400 dark:text-gray-500"><%= circuit["main_area_name"] %></span>
+        <%- end -%>
+      </div>
+    </div>
+    <span class="flex">
+      <%= Static::ViewHelpers.circuit_status_icons(circuit) %>
+      <span class="text-gray-500 dark:text-gray-400"><%= circuit["average_grade"] %></span>
+    </span>
+  </a>
+</li>

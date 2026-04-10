@@ -1,0 +1,25 @@
+<%
+  slug = Static::ViewHelpers.problem_slug(problem)
+  url = "/en/fontainebleau/#{area_slug}/#{slug}"
+%>
+<li class="px-4 sm:-mx-2 sm:px-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg">
+  <a href="<%= url %>">
+    <div class="py-2">
+      <div>
+        <span><%= problem["name"] %></span>
+        <span class="ml-1 text-gray-500 dark:text-gray-400"><%= problem["grade"] %></span>
+      </div>
+      <div class="flex flex-wrap items-center gap-1.5 text-xs text-gray-500 dark:text-gray-400 mt-1">
+        <%- if problem["popularity"].to_i > 0 -%>
+          <%= Static::ViewHelpers.metadata_badge(problem["popularity"], icon: "&#9733;") %>
+        <%- end -%>
+        <%- if problem["steepness"] -%>
+          <%= Static::ViewHelpers.metadata_badge(Static::ViewHelpers::STEEPNESS_LABELS[problem["steepness"]] || problem["steepness"]) %>
+        <%- end -%>
+        <%- if problem["circuit_color"] -%>
+          <%= Static::ViewHelpers.circuit_badge(problem["circuit_color"], problem["circuit_number"]) %>
+        <%- end -%>
+      </div>
+    </div>
+  </a>
+</li>

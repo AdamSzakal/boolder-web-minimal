@@ -58,6 +58,12 @@
       }
     </style>
 
+    <!-- Shared constants from ViewHelpers (single source of truth for JS) -->
+    <script>
+    window.BOOLDER_COLOR_HEX = <%= Static::ViewHelpers.color_hex_json %>;
+    window.BOOLDER_STEEPNESS_LABELS = <%= Static::ViewHelpers.steepness_labels_json %>;
+    </script>
+
     <!-- Project list localStorage API (in head so page scripts can use it) -->
     <script>
     var BoolderProjects = (function() {
@@ -184,7 +190,7 @@
       var index = null;
       var activeIdx = -1;
 
-      var colorHex = {yellow:"#FFCC02",purple:"#D783FF",orange:"#FF9500",green:"#77C344",blue:"#017AFF",skyblue:"#5AC7FA",salmon:"#FDAF8A",red:"#FF3B2F",black:"#000000",white:"#FFFFFF"};
+      var colorHex = window.BOOLDER_COLOR_HEX;
 
       // Lazy-load search index
       function ensureIndex(cb) {
