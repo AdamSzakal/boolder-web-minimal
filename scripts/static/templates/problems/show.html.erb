@@ -1,7 +1,8 @@
 <%
-  topo_html = (defined?(topo_html) && topo_html) || ""
-  variants = (defined?(variants) && variants) || []
-  area_circuits = (defined?(area_circuits) && area_circuits) || []
+  # Use self.x to call the TemplateContext method (avoids local variable shadowing)
+  _topo_html = self.topo_html.to_s
+  _variants = self.variants || []
+  _area_circuits = self.area_circuits || []
 %>
 
 <div class="container" style="padding-top:1.5rem;padding-bottom:2rem;">
@@ -48,8 +49,8 @@
 
       <!-- Topo -->
       <div style="margin-top:1rem;">
-        <%- if topo_html.to_s.strip.length > 0 -%>
-          <%= topo_html %>
+        <%- if _topo_html.strip.length > 0 -%>
+          <%= _topo_html %>
         <%- else -%>
           <div class="topo-placeholder">
             <span>No photo</span>
@@ -135,11 +136,11 @@
       </div>
 
       <!-- Variants -->
-      <%- if variants && variants.any? -%>
+      <%- if _variants.any? -%>
         <div class="inner" style="padding:1rem 0;">
           <h2 class="subsection-title">Variants</h2>
           <ul>
-            <%- variants.each do |variant| -%>
+            <%- _variants.each do |variant| -%>
               <%
                 v_slug = Static::ViewHelpers.problem_slug(variant)
                 v_area = (defined?(_areas_by_id) && _areas_by_id) && _areas_by_id[variant["area_id"]]
@@ -162,11 +163,11 @@
       <%- end -%>
 
       <!-- Circuits in this area -->
-      <%- if area_circuits && area_circuits.any? -%>
+      <%- if _area_circuits.any? -%>
         <div class="inner" style="padding:1rem 0;">
           <h2 class="subsection-title">Circuits in <%= area["name"] %></h2>
           <ul role="list">
-            <%- area_circuits.each do |ac| -%>
+            <%- _area_circuits.each do |ac| -%>
               <%
                 ac_hex = Static::ViewHelpers.circuit_hex(ac["color"])
                 ac_active = circuit && circuit["id"] == ac["id"]

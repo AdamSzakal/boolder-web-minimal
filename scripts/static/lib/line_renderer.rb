@@ -31,9 +31,9 @@ module Static
       uid = "topo-#{line["id"] || object_id}"
 
       <<~HTML
-        <div class="relative inline-block w-full">
-          <img src="#{escape(topo_url)}" alt="Topo photo" class="w-full rounded-lg" loading="lazy" />
-          <svg class="absolute inset-0 w-full h-full" viewBox="0 0 #{IMG_WIDTH} #{IMG_HEIGHT}" preserveAspectRatio="none">
+        <div class="topo-wrap">
+          <img src="#{escape(topo_url)}" alt="Topo photo" class="topo-img" loading="lazy" />
+          <svg class="topo-overlay" viewBox="0 0 #{IMG_WIDTH} #{IMG_HEIGHT}" preserveAspectRatio="none">
             <style>
               @keyframes #{uid}-draw {
                 from { stroke-dashoffset: var(--path-length); }
@@ -67,8 +67,8 @@ module Static
 
     def self.render_image_only(topo_url)
       <<~HTML
-        <div class="relative inline-block w-full">
-          <img src="#{escape(topo_url)}" alt="Topo photo" class="w-full rounded-lg" loading="lazy" />
+        <div class="topo-wrap">
+          <img src="#{escape(topo_url)}" alt="Topo photo" class="topo-img" loading="lazy" />
         </div>
       HTML
     end
