@@ -3,13 +3,13 @@
   text_col = Static::ViewHelpers.circuit_text_color(circuit["color"])
 %>
 
-<div class="container" style="padding-top:1.5rem;">
+<div class="container page-section">
   <div class="inner">
     <%= Static::ViewHelpers.breadcrumb(["Fontainebleau", "/en/fontainebleau"], [area["name"], "/en/fontainebleau/#{area["slug"]}"]) %>
   </div>
 </div>
 
-<div class="container" style="padding-bottom:2rem;">
+<div class="container page-section--bottom">
   <div class="two-col-md">
     <div>
       <div>
@@ -31,7 +31,7 @@
           </span>
         <%- end -%>
 
-        <ul role="list" style="padding-top:0.5rem;">
+        <ul role="list" class="content-section">
           <%- problems.each do |problem| -%>
             <%
               problem_slug = Static::ViewHelpers.problem_slug(problem)

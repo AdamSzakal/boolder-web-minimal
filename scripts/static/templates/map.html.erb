@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" style="height:100%;margin:0;">
+<html lang="en" class="map-page">
   <head>
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
@@ -17,8 +17,8 @@
     <script src="https://api.mapbox.com/mapbox-gl-js/v3.11.0/mapbox-gl.js"></script>
   </head>
 
-  <body style="height:100%;margin:0;">
-    <div class="map-layout" style="background:var(--bg-secondary);">
+  <body class="map-page">
+    <div class="map-layout">
       <div class="map-layout-nav">
         <nav class="nav">
           <div class="nav-inner">
@@ -61,19 +61,19 @@
         </div>
 
         <!-- Filters modal -->
-        <div id="filterModal" class="hidden" style="position:relative;z-index:20;" role="dialog">
+        <div id="filterModal" class="filter-modal hidden" role="dialog">
           <div class="modal-backdrop"></div>
           <div class="modal-container">
             <div class="modal-center">
               <div class="modal-panel">
                 <div class="modal-close">
                   <button id="filterCloseBtn" type="button">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width:1.5rem;height:1.5rem;">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                   </button>
                 </div>
-                <div style="display:flex;flex-direction:column;gap:1.5rem;">
+                <div class="modal-filters">
                   <!-- Grade filter -->
                   <div>
                     <div class="modal-title">Grade</div>

@@ -3,8 +3,8 @@
   warning = area["warning_en"]
 %>
 
-<div class="container hidden" style="padding-top:1.25rem;margin-top:0.25rem;background:var(--bg-secondary);">
-  <a href="/en/fontainebleau" class="breadcrumb" style="display:inline-flex;">
+<div class="container area-breadcrumb-bar hidden">
+  <a href="/en/fontainebleau" class="breadcrumb">
     <div>Fontainebleau</div>
   </a>
 </div>
@@ -27,20 +27,20 @@
   </div>
 </div>
 
-<div class="container" style="margin-bottom:2rem;">
+<div class="container page-section--bottom">
   <div class="two-col">
     <div>
       <div>
-        <div class="card" style="margin-top:1rem;">
+        <div class="card">
           <ul role="list" class="area-stats-list">
             <li>
-              <div style="display:flex;align-items:center;padding:0.75rem 1rem;">
-                <div style="display:flex;min-width:0;flex:1;align-items:center;">
-                  <div style="display:flex;justify-content:space-between;width:100%;padding-right:0.5rem;">
-                    <div style="color:var(--text-muted);">
+              <div class="area-stats-row">
+                <div class="area-stats-content">
+                  <div class="area-stats-spread">
+                    <div class="area-stats-count">
                       <%= area["problems_count"] %> problems
                     </div>
-                    <div style="display:flex;gap:0.25rem;">
+                    <div class="grade-cells">
                       <%- 1.upto(8) do |level| -%>
                         <%- count = area["level#{level}_count"] || 0 -%>
                         <span class="grade-cell <%= count >= 20 ? 'grade-cell--active' : 'grade-cell--inactive' %>">
@@ -55,8 +55,8 @@
           </ul>
         </div>
 
-        <div style="padding-top:0.5rem;">
-          <div class="inner" style="padding-top:0.5rem;">
+        <div class="content-section">
+          <div class="inner content-section">
             <%- if area["tags"] && area["tags"].any? -%>
               <div class="tags-row">
                 <%- tag_labels = { "popular" => "Popular", "beginner_friendly" => "Beginner friendly", "family_friendly" => "Family friendly", "dry_fast" => "Dries fast" } -%>
@@ -67,7 +67,7 @@
             <%- end -%>
 
             <%- if description.to_s.strip.length > 0 -%>
-              <div style="padding-top:1rem;">
+              <div class="content-section--lg">
                 <div class="prose">
                   <%- description.split(/\r?\n\r?\n/).each do |para| -%>
                     <p><%= para.strip %></p>
@@ -77,7 +77,7 @@
             <%- end -%>
 
             <%- if warning.to_s.strip.length > 0 -%>
-              <div style="padding-top:1rem;">
+              <div class="content-section--lg">
                 <div class="warning-box">
                   <div>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -108,8 +108,8 @@
           <%- end -%>
 
           <div>
-            <div class="popular-header section-title inner">
-              <h2 class="section-title" style="margin:0;padding:0;">Popular problems</h2>
+            <div class="popular-header inner">
+              <h2 class="section-title">Popular problems</h2>
               <span class="icon-heart"><%= Static::ViewHelpers::ICON_HEART %></span>
             </div>
             <ul role="list">
@@ -122,7 +122,7 @@
           <%- if poi_routes && poi_routes.any? -%>
             <div>
               <h2 class="section-title inner">Access</h2>
-              <ul class="inner" style="padding-top:0.5rem;">
+              <ul class="inner content-section">
                 <%- poi_routes.sort_by { |r| r["distance_in_minutes"] || 0 }.each do |route| -%>
                   <%
                     poi = route["poi"]

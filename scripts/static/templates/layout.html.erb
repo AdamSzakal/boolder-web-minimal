@@ -61,7 +61,7 @@
   </head>
 
   <body>
-    <div style="background: var(--bg-secondary);">
+    <div class="page-bg">
 
       <!-- Nav -->
       <nav class="nav">
@@ -75,7 +75,7 @@
           </div>
           <div class="nav-search-wrap">
             <button type="button" id="searchOpenBtn" class="nav-search-btn" aria-label="Open search">
-              <svg style="width:1.25rem;height:1.25rem;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                 <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
               </svg>
             </button>
@@ -84,8 +84,8 @@
       </nav>
 
       <!-- Search modal -->
-      <div id="searchModal" class="hidden" style="position:fixed;inset:0;z-index:50;overflow-y:auto;" role="dialog" aria-modal="true">
-        <div style="display:flex;justify-content:center;padding:1rem 0.25rem 5rem;text-align:center;">
+      <div id="searchModal" class="search-modal hidden" role="dialog" aria-modal="true">
+        <div class="search-modal-inner">
           <div id="searchBackdrop" class="search-backdrop">
             <div class="search-backdrop-inner"></div>
           </div>
@@ -116,8 +116,8 @@
 
       <footer class="footer">
         <div class="footer-inner">
-          <nav style="display:flex;flex-wrap:wrap;justify-content:center;">
-            <div style="padding:0.5rem 1rem;">
+          <nav class="footer-nav">
+            <div class="footer-nav-item">
               <a href="https://www.boolder.com">Boolder</a>
             </div>
           </nav>
