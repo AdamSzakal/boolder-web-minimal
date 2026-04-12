@@ -845,7 +845,7 @@ hr { border: none; border-top: 1px solid var(--divider); margin: 0; }
   font-weight: 500;
 }
 .grade-cell--active {
-  background: rgba(190, 149, 255, 0.15);
+  background: var(--success);
   color: var(--accent);
 }
 .grade-cell--inactive {
@@ -893,15 +893,26 @@ hr { border: none; border-top: 1px solid var(--divider); margin: 0; }
   padding: 1rem;
   display: flex;
   justify-content: space-between;
+	gap: 10px;
 }
 @media (min-width: 640px) { .area-list-item-inner { padding: 1rem 1.5rem; } }
 
-.area-name { color: var(--text); }
+.area-name { 
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 1;
+  color: var(--text);
+}
 .area-count {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   color: var(--text-faint);
+}
+.area-count > span {
+  display: flex;
+	width: 3ch;
+	justify-content: flex-end;
 }
 .area-count svg { width: 1rem; height: 1rem; }
 
@@ -1131,6 +1142,7 @@ hr { border: none; border-top: 1px solid var(--divider); margin: 0; }
 .area-stats-spread  { display: flex; justify-content: space-between; width: 100%; padding-right: 0.5rem; }
 .area-stats-count   { color: var(--text-muted); }
 .grade-cells        { display: flex; gap: 0.25rem; }
+.grade-cells-inline { display: inline-flex; gap: 0.25rem; vertical-align: middle; margin-left: 0.375rem; }
 
 /* Topo section spacing */
 .topo-section { margin-top: 1rem; }
@@ -1173,7 +1185,7 @@ hr { border: none; border-top: 1px solid var(--divider); margin: 0; }
   .action-link { gap: 0.375rem; }
   .action-link svg { width: 1.25rem; height: 1.25rem; }
   .circuit-nav svg { width: 0.875rem; height: 0.875rem; }
-  .area-list-item-inner { padding: 0.75rem; }
+  .area-list-item-inner { padding: 0.75rem;  gap: 10px; }
   .btn { padding: 0.375rem 0.75rem; font-size: 0.8125rem; }
   .filter-select { height: 2.25rem; font-size: 0.8125rem; }
   .nav-inner { height: 2.75rem; }

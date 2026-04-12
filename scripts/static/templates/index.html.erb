@@ -13,7 +13,15 @@
             <li>
               <a href="/en/fontainebleau/<%= area["slug"] %>" class="area-list-item">
                 <div class="area-list-item-inner">
-                  <p class="area-name"><%= area["name"] %></p>
+                  <p class="area-name">
+                    <%= area["name"] %>
+                    <span class="grade-cells-inline">
+                      <%- 1.upto(8) do |level| -%>
+                        <%- count = area["level#{level}_count"] || 0 -%>
+                        <span class="grade-cell <%= count >= 20 ? 'grade-cell--active' : 'grade-cell--inactive' %>"><%= level %></span>
+                      <%- end -%>
+                    </span>
+                  </p>
                   <div class="area-count">
                     <span><%= area["problems_count"] %></span>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
