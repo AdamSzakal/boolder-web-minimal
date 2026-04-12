@@ -47,10 +47,38 @@ def main
   write_page("en/projects/index.html", projects_html)
   write_page("en/index.html", projects_html)
 
+  # Compute train-accessible area IDs from POI routes
+  pois_by_id = catalog.pois.each_with_object({}) { |p, h| h[p["id"]] = p }
+  train_area_ids = catalog.poi_routes
+    .select { |r| pois_by_id.dig(r["poi_id"], "poi_type") == "train_station" }
+    .map { |r| r["area_id"] }
+    .uniq
+    .to_set
+
+  areas_json = read_models.all_areas.map { |a|
+    center_lat = if a["south_west_lat"] && a["north_east_lat"]
+      (a["south_west_lat"] + a["north_east_lat"]) / 2.0
+    end
+    center_lng = if a["south_west_lng"] && a["north_east_lng"]
+      (a["south_west_lng"] + a["north_east_lng"]) / 2.0
+    end
+
+    {
+      "name" => a["name"],
+      "slug" => a["slug"],
+      "problems_count" => a["problems_count"],
+      "tags" => a["tags"] || [],
+      "train_accessible" => train_area_ids.include?(a["id"]),
+      "lat" => center_lat,
+      "lng" => center_lng,
+      "levels" => 1.upto(8).map { |l| (a["level#{l}_count"] || 0) >= 20 }
+    }
+  }
+
   # Area index
   write_page("en/fontainebleau/index.html", renderer.render("index",
     "page_title" => "Fontainebleau Bouldering",
-    "areas" => read_models.all_areas
+    "areas_json" => JSON.generate(areas_json)
   ))
 
   # Area pages

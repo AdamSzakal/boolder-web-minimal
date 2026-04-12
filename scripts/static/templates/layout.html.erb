@@ -14,10 +14,67 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Shared constants from ViewHelpers (single source of truth for JS) -->
+    <!-- Shared constants and helpers (single source of truth for JS) -->
     <script>
     window.BOOLDER_COLOR_HEX = <%= Static::ViewHelpers.color_hex_json %>;
     window.BOOLDER_STEEPNESS_LABELS = <%= Static::ViewHelpers.steepness_labels_json %>;
+
+    window._bEsc = function(s) { return (s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); };
+
+    // Shared boulder list item renderer.
+    // p: { name, grade, url, area/area_name, cc/circuit_color, cn/circuit_number, _dist }
+    window.renderBoulderItem = function(p, opts) {
+      opts = opts || {};
+      var esc = window._bEsc;
+      var colorHex = window.BOOLDER_COLOR_HEX;
+      var steepnessLabels = window.BOOLDER_STEEPNESS_LABELS;
+
+      var name = p.name || '';
+      var grade = p.grade || '';
+      var url = p.url || '';
+      var areaName = p.area_name || p.area || '';
+      var steepness = p.steepness || p.st || '';
+      var circuitColor = p.circuit_color || p.cc || '';
+      var circuitNumber = p.circuit_number || p.cn || '';
+      var popularity = p.popularity || p.pop || 0;
+
+      function capitalize(s) { return s ? s.charAt(0).toUpperCase() + s.slice(1) : ''; }
+
+      // Badges
+      var badges = '';
+      if (popularity > 0) {
+        badges += '<span class="badge badge--meta">\u2605 ' + popularity + '</span>';
+      }
+      if (steepness && steepnessLabels[steepness]) {
+        badges += '<span class="badge badge--meta">' + steepnessLabels[steepness] + '</span>';
+      }
+      if (areaName) {
+        badges += '<span class="badge badge--meta">' + esc(areaName) + '</span>';
+      }
+      if (circuitColor) {
+        var cHex = colorHex[circuitColor] || '#999';
+        var cText = circuitColor === 'white' ? '#000' : '#FFF';
+        var label = capitalize(circuitColor);
+        if (circuitNumber) label += ' ' + circuitNumber;
+        badges += '<span class="badge badge--circuit" style="background-color:' + cHex + ';color:' + cText + ';">' + label + '</span>';
+      }
+      if (p._dist != null) {
+        var distText = p._dist < 1 ? Math.round(p._dist * 1000) + ' m' : p._dist.toFixed(1) + ' km';
+        badges += '<span class="badge badge--meta">' + distText + '</span>';
+      }
+
+      var suffix = opts.suffix || '';
+
+      return '<li class="list-item">' +
+        '<a href="' + esc(url) + '">' +
+          '<div class="list-item-inner">' +
+            '<div><span>' + esc(name) + '</span> <span class="problem-grade-inline">' + esc(grade) + '</span></div>' +
+            '<div class="meta-row">' + badges + '</div>' +
+          '</div>' +
+        '</a>' +
+        suffix +
+      '</li>';
+    };
     </script>
 
     <!-- Project list localStorage API (in head so page scripts can use it) -->

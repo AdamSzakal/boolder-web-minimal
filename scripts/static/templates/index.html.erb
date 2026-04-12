@@ -7,33 +7,119 @@
     <div>
       <h2 class="section-title inner">Areas</h2>
 
+      <div class="inner filters-stack" style="margin-bottom: 1rem;">
+        <div>
+          <label class="filter-label">Filter</label>
+          <select id="area-filter" class="filter-select filter-select--narrow">
+            <option value="">All</option>
+            <option value="beginner_friendly">Beginner friendly</option>
+            <option value="dry_fast">Dries fast</option>
+            <option value="train_accessible">Accessible by train or bike</option>
+          </select>
+        </div>
+        <div>
+          <label class="filter-label">Sort by</label>
+          <select id="area-sort" class="filter-select filter-select--narrow">
+            <option value="name">Name</option>
+            <option value="distance">Distance</option>
+          </select>
+        </div>
+      </div>
+
       <div class="area-list-card">
-        <ul role="list" class="area-list">
-          <%- areas.each do |area| -%>
-            <li>
-              <a href="/en/fontainebleau/<%= area["slug"] %>" class="area-list-item">
-                <div class="area-list-item-inner">
-                  <p class="area-name">
-                    <%= area["name"] %>
-                    <span class="grade-cells-inline">
-                      <%- 1.upto(8) do |level| -%>
-                        <%- count = area["level#{level}_count"] || 0 -%>
-                        <span class="grade-cell <%= count >= 20 ? 'grade-cell--active' : 'grade-cell--inactive' %>"><%= level %></span>
-                      <%- end -%>
-                    </span>
-                  </p>
-                  <div class="area-count">
-                    <span><%= area["problems_count"] %></span>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                    </svg>
-                  </div>
-                </div>
-              </a>
-            </li>
-          <%- end -%>
-        </ul>
+        <ul role="list" class="area-list" id="area-list"></ul>
       </div>
     </div>
   </div>
 </div>
+
+<script>
+(function() {
+  var allAreas = <%= areas_json %>;
+  var esc = window._bEsc;
+  var listEl = document.getElementById('area-list');
+  var filterEl = document.getElementById('area-filter');
+  var sortEl = document.getElementById('area-sort');
+  var userLat = null, userLng = null;
+
+  function distKm(lat1, lng1, lat2, lng2) {
+    var R = 6371;
+    var dLat = (lat2 - lat1) * Math.PI / 180;
+    var dLng = (lng2 - lng1) * Math.PI / 180;
+    var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+      Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+      Math.sin(dLng/2) * Math.sin(dLng/2);
+    return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  }
+
+  function renderAreas() {
+    var filter = filterEl.value;
+    var sortBy = sortEl.value;
+
+    var areas = allAreas.filter(function(a) {
+      if (!filter) return true;
+      if (filter === 'train_accessible') return a.train_accessible;
+      return (a.tags || []).indexOf(filter) !== -1;
+    });
+
+    if (sortBy === 'distance' && userLat !== null) {
+      areas.forEach(function(a) {
+        a._dist = (a.lat != null) ? distKm(userLat, userLng, a.lat, a.lng) : null;
+      });
+      areas.sort(function(a, b) {
+        if (a._dist == null) return 1;
+        if (b._dist == null) return -1;
+        return a._dist - b._dist;
+      });
+    } else {
+      areas.sort(function(a, b) { return a.name.localeCompare(b.name); });
+    }
+
+    listEl.innerHTML = areas.map(function(a) {
+      var levels = '';
+      for (var i = 0; i < 8; i++) {
+        var cls = a.levels[i] ? 'grade-cell grade-cell--active' : 'grade-cell grade-cell--inactive';
+        levels += '<span class="' + cls + '">' + (i + 1) + '</span>';
+      }
+
+      var distInfo = '';
+      if (sortBy === 'distance' && a._dist != null) {
+        distInfo = '<span class="area-dist">' +
+          (a._dist < 1 ? Math.round(a._dist * 1000) + ' m' : a._dist.toFixed(1) + ' km') +
+          '</span>';
+      }
+
+      return '<li>' +
+        '<a href="/en/fontainebleau/' + esc(a.slug) + '" class="area-list-item">' +
+          '<div class="area-list-item-inner">' +
+            '<p class="area-name">' +
+              esc(a.name) +
+              ' <span class="grade-cells-inline">' + levels + '</span>' +
+            '</p>' +
+            '<div class="area-count">' +
+              (distInfo || '<span>' + a.problems_count + '</span>') +
+              '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">' +
+                '<path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />' +
+              '</svg>' +
+            '</div>' +
+          '</div>' +
+        '</a>' +
+      '</li>';
+    }).join('');
+  }
+
+  filterEl.addEventListener('change', renderAreas);
+  sortEl.addEventListener('change', function() {
+    if (sortEl.value === 'distance' && userLat === null) {
+      navigator.geolocation.getCurrentPosition(
+        function(pos) { userLat = pos.coords.latitude; userLng = pos.coords.longitude; renderAreas(); },
+        function() { sortEl.value = 'name'; renderAreas(); }
+      );
+      return;
+    }
+    renderAreas();
+  });
+
+  renderAreas();
+})();
+</script>

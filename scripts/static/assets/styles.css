@@ -256,7 +256,6 @@ hr { border: none; border-top: 1px solid var(--divider); margin: 0; }
 }
 /* Circuit pill badge — bg/fg set via inline style */
 .badge--circuit {
-  font-size: 0.875rem;
   font-weight: 500;
   padding: 0.125rem 0.625rem;
 }
@@ -339,15 +338,14 @@ hr { border: none; border-top: 1px solid var(--divider); margin: 0; }
 
 /* --- List items --- */
 .list-item {
-  padding: 0 1rem;
-  border-radius: var(--radius-lg);
-}
-.list-item:hover { background: var(--bg-secondary); }
-@media (min-width: 640px) {
-  .list-item { margin-left: -0.5rem; margin-right: 0; padding: 0 0.5rem; }
+  display: flex;
+	justify-content: space-between;
+	padding .5rem;
+	border-bottom: 1px solid var(--bg-secondary);
 }
 
-.list-item-inner { padding: 0.5rem 0; }
+.list-item:hover { background: var(--bg-secondary); }
+
 
 /* Circuit list item layout */
 .circuit-list-link {
@@ -880,13 +878,13 @@ hr { border: none; border-top: 1px solid var(--divider); margin: 0; }
 .area-list > * + * { border-top: 1px solid var(--divider); }
 
 /* --- Area index (home) --- */
-.area-list-card {
+.area-list-card, .project-list, #boulders-list {
   background: var(--bg-card);
   box-shadow: var(--shadow);
   border: 1px solid rgba(0,0,0,0.05);
   overflow: hidden;
+	border-radius: var(--radius-lg);
 }
-@media (min-width: 768px) { .area-list-card { border-radius: var(--radius-lg); } }
 
 .area-list-item { display: block; }
 .area-list-item:hover { background: var(--bg-secondary); }
@@ -916,6 +914,7 @@ hr { border: none; border-top: 1px solid var(--divider); margin: 0; }
 	justify-content: flex-end;
 }
 .area-count svg { width: 1rem; height: 1rem; }
+.area-dist { font-size: 0.8125rem; white-space: nowrap; }
 
 /* --- Projects page header --- */
 .projects-header { display: flex; justify-content: space-between; align-items: center; }
@@ -1157,7 +1156,7 @@ hr { border: none; border-top: 1px solid var(--divider); margin: 0; }
 }
 
 /* Filter form stacks */
-.filters-stack { display: flex; flex-direction: column; gap: 1rem; }
+.filters-stack { display: flex; flex-direction: column; gap: 1rem; max-width: 48rem; }
 .modal-filters { display: flex; flex-direction: column; gap: 1.5rem; }
 .filter-modal  { position: relative; z-index: 20; }
 

@@ -17,6 +17,7 @@ module Static
         "problems" => @catalog.problems.map { |p|
           area = @areas_by_id[p["area_id"]]
           slug = [p["id"], p["name"]&.downcase&.gsub(/[^a-z0-9]+/, "-")&.gsub(/-$/, "")].compact.join("-")
+          loc = p["location"] || {}
           {
             "id" => p["id"],
             "name" => p["name"],
@@ -28,6 +29,8 @@ module Static
             "cc" => p["circuit_color"],
             "cn" => p["circuit_number"],
             "cid" => p["circuit_id"],
+            "lat" => loc["lat"],
+            "lng" => loc["lng"],
             "url" => "/en/fontainebleau/#{area ? area["slug"] : ""}/#{slug}"
           }
         }

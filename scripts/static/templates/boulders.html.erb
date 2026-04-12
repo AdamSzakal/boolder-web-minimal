@@ -214,29 +214,7 @@
     countEl.textContent = filtered.length + ' problems' + (filtered.length > 200 ? ' (showing first 200)' : '');
 
     listEl.innerHTML = display.map(function(p) {
-      var cHex = colorHex[p.circuit_color] || '';
-      var cText = p.circuit_color === 'white' ? '#000' : '#FFF';
-      var circuitBadge = p.circuit_color
-        ? '<span class="badge badge--circuit" style="background-color:' + cHex + ';color:' + cText + ';">' + capitalize(p.circuit_color) + (p.circuit_number ? ' ' + p.circuit_number : '') + '</span>'
-        : '';
-      var distBadge = (sortBy === 'distance' && p._dist != null)
-        ? '<span class="badge badge--meta">' + (p._dist < 1 ? Math.round(p._dist * 1000) + ' m' : p._dist.toFixed(1) + ' km') + '</span>'
-        : '';
-
-      return '<li class="list-item">' +
-        '<a href="' + p.url + '">' +
-          '<div class="list-item-inner">' +
-            '<div><span>' + esc(p.name) + '</span> <span class="problem-grade-inline">' + (p.grade || '') + '</span></div>' +
-            '<div class="meta-row">' +
-              (p.popularity > 0 ? '<span class="badge badge--meta">\u2605 ' + p.popularity + '</span>' : '') +
-              '<span class="badge badge--meta">' + (steepnessLabels[p.steepness] || p.steepness) + '</span>' +
-              '<span class="badge badge--meta">' + esc(p.area_name) + '</span>' +
-              circuitBadge +
-              distBadge +
-            '</div>' +
-          '</div>' +
-        '</a>' +
-      '</li>';
+      return renderBoulderItem(p);
     }).join('');
   }
 
