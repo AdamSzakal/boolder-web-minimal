@@ -115,6 +115,34 @@
       };
     })();
     </script>
+
+    <!-- Navbar weather indicator (fetched from Open-Meteo) -->
+    <script>
+    (function() {
+      var WMO_ICON = {
+        0: '☀️', 1: '🌤', 2: '⛅', 3: '☁️',
+        45: '🌫', 48: '🌫',
+        51: '🌦', 53: '🌦', 55: '🌧',
+        61: '🌧', 63: '🌧', 65: '🌧',
+        71: '🌨', 73: '🌨', 75: '🌨',
+        80: '🌦', 81: '🌧', 82: '🌧',
+        95: '⛈', 96: '⛈', 99: '⛈'
+      };
+      fetch('https://api.open-meteo.com/v1/forecast?latitude=48.4036&longitude=2.5843&daily=weather_code,temperature_2m_max&timezone=Europe%2FParis&forecast_days=1')
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          var d = data.daily;
+          if (!d || !d.time) return;
+          var icon = WMO_ICON[d.weather_code[0]] || '❓';
+          var temp = Math.round(d.temperature_2m_max[0]);
+          var el = document.getElementById('nav-weather');
+          if (el) {
+            el.textContent = icon + ' ' + temp + '°';
+            el.classList.remove('hidden');
+          }
+        }).catch(function() {});
+    })();
+    </script>
   </head>
 
   <body>
@@ -130,7 +158,8 @@
             <a href="/en/fontainebleau/boulders" class="nav-link">Boulders</a>
             <a href="/en/map" class="nav-link">Map</a>
           </div>
-          <div class="nav-search-wrap">
+          <div class="nav-right">
+            <a href="/en/weather" id="nav-weather" class="nav-weather hidden" aria-label="Weather forecast"></a>
             <button type="button" id="searchOpenBtn" class="nav-search-btn" aria-label="Open search">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                 <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />

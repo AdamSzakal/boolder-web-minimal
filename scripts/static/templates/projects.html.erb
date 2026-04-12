@@ -1,4 +1,4 @@
-<div class="container-narrow page-section page-section--bottom">
+<div class="container page-section page-section--bottom">
   <!-- Header: shown when viewing own list -->
   <div id="ownHeader">
     <div class="projects-header">
@@ -101,7 +101,7 @@
   </div>
 
   <!-- Problem list -->
-  <ul id="problemList" class="project-list"></ul>
+  <ul id="problemList" class="project-list hidden"></ul>
 </div>
 
 <script>
@@ -225,11 +225,13 @@
 
     if (ids.length === 0) {
       list.innerHTML = '';
+      list.classList.add('hidden');
       empty.classList.remove('hidden');
       filtersEl.classList.add('hidden');
       return;
     }
     empty.classList.add('hidden');
+    list.classList.remove('hidden');
     if (editable) filtersEl.classList.remove('hidden');
 
     populateAreaFilter(ids);

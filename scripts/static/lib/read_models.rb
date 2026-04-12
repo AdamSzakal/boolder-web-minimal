@@ -145,7 +145,7 @@ module Static
     def popular_problems_for(area_id)
       problems = @problems_by_area[area_id] || []
       problems
-        .select { |p| p["featured"] || (p["popularity"] && p["popularity"] >= 20) }
+        .select { |p| p["popularity"] && p["popularity"] >= 20 }
         .sort_by { |p| [-(grade_value(p["grade"])), -(p["popularity"] || 0)] }
     end
 

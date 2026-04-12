@@ -1,0 +1,73 @@
+<div class="container page-section page-section--bottom">
+  <h1 class="page-title inner">Weather — Fontainebleau</h1>
+
+  <div id="weather-forecast" class="inner">
+    <p class="text-muted">Loading forecast...</p>
+  </div>
+</div>
+
+<script>
+(function() {
+  var LAT = 48.4036, LNG = 2.5843;
+  var url = 'https://api.open-meteo.com/v1/forecast?latitude=' + LAT +
+    '&longitude=' + LNG +
+    '&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,precipitation_sum,wind_speed_10m_max' +
+    '&timezone=Europe%2FParis&forecast_days=10';
+
+  var WMO = {
+    0: ['\u2600\uFE0F', 'Clear'], 1: ['\uD83C\uDF24', 'Mostly clear'], 2: ['\u26C5', 'Partly cloudy'], 3: ['\u2601\uFE0F', 'Overcast'],
+    45: ['\uD83C\uDF2B', 'Fog'], 48: ['\uD83C\uDF2B', 'Rime fog'],
+    51: ['\uD83C\uDF26', 'Light drizzle'], 53: ['\uD83C\uDF26', 'Drizzle'], 55: ['\uD83C\uDF27', 'Heavy drizzle'],
+    61: ['\uD83C\uDF27', 'Light rain'], 63: ['\uD83C\uDF27', 'Rain'], 65: ['\uD83C\uDF27', 'Heavy rain'],
+    71: ['\uD83C\uDF28', 'Light snow'], 73: ['\uD83C\uDF28', 'Snow'], 75: ['\uD83C\uDF28', 'Heavy snow'],
+    80: ['\uD83C\uDF26', 'Light showers'], 81: ['\uD83C\uDF27', 'Showers'], 82: ['\uD83C\uDF27', 'Heavy showers'],
+    95: ['\u26C8', 'Thunderstorm'], 96: ['\u26C8', 'Thunderstorm + hail'], 99: ['\u26C8', 'Thunderstorm + heavy hail']
+  };
+
+  var dayLabels = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+  fetch(url).then(function(r) { return r.json(); }).then(function(data) {
+    var d = data.daily;
+    if (!d || !d.time) return;
+
+    var container = document.getElementById('weather-forecast');
+    var html = '<div class="weather-grid">';
+
+    for (var i = 0; i < d.time.length; i++) {
+      var date = new Date(d.time[i] + 'T12:00:00');
+      var dayName = i === 0 ? 'Today' : i === 1 ? 'Tomorrow' : dayLabels[date.getDay()];
+      var dateStr = date.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
+      var code = d.weather_code[i];
+      var wmo = WMO[code] || ['\u2753', 'Unknown'];
+      var hi = Math.round(d.temperature_2m_max[i]);
+      var lo = Math.round(d.temperature_2m_min[i]);
+      var rain = d.precipitation_probability_max[i];
+      var precip = d.precipitation_sum[i];
+      var wind = Math.round(d.wind_speed_10m_max[i]);
+
+      html += '<div class="weather-row">' +
+        '<div class="weather-row-left">' +
+          '<span class="weather-row-icon">' + wmo[0] + '</span>' +
+          '<div>' +
+            '<div class="weather-row-day">' + dayName + ' <span class="weather-row-date">' + dateStr + '</span></div>' +
+            '<div class="weather-row-desc">' + wmo[1] + '</div>' +
+          '</div>' +
+        '</div>' +
+        '<div class="weather-row-right">' +
+          '<div class="weather-row-temp">' + lo + '° / ' + hi + '°</div>' +
+          '<div class="weather-row-details">' +
+            (rain > 0 ? '<span>\uD83D\uDCA7 ' + rain + '%</span>' : '') +
+            (precip > 0 ? '<span>' + precip.toFixed(1) + ' mm</span>' : '') +
+            '<span>\uD83D\uDCA8 ' + wind + ' km/h</span>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+    }
+
+    html += '</div>';
+    container.innerHTML = html;
+  }).catch(function() {
+    document.getElementById('weather-forecast').innerHTML = '<p class="text-muted">Could not load forecast.</p>';
+  });
+})();
+</script>

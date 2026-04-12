@@ -112,11 +112,15 @@
               <h2 class="section-title">Popular problems</h2>
               <span class="icon-heart"><%= Static::ViewHelpers::ICON_HEART %></span>
             </div>
-            <ul role="list">
-              <%- popular_problems.each do |problem| -%>
-                <%= render_partial("problem_list_item", "problem" => problem, "area_slug" => area["slug"]) %>
-              <%- end -%>
-            </ul>
+            <ul role="list" id="popular-problems"></ul>
+            <script>
+            (function() {
+              var problems = <%= popular_problems_json %>;
+              document.getElementById('popular-problems').innerHTML = problems.map(function(p) {
+                return renderBoulderItem(p);
+              }).join('');
+            })();
+            </script>
           </div>
 
           <%- if poi_routes && poi_routes.any? -%>

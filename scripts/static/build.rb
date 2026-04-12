@@ -47,6 +47,11 @@ def main
   write_page("en/projects/index.html", projects_html)
   write_page("en/index.html", projects_html)
 
+  # Weather page
+  write_page("en/weather/index.html", renderer.render("weather",
+    "page_title" => "Weather"
+  ))
+
   # Compute train-accessible area IDs from POI routes
   pois_by_id = catalog.pois.each_with_object({}) { |p, h| h[p["id"]] = p }
   train_area_ids = catalog.poi_routes
@@ -92,10 +97,23 @@ def main
     cover_topo_id = read_models.area_cover_topo_id(area["id"])
     cover_image_url = cover_topo_id ? media_manifest.topo_url(cover_topo_id) : nil
 
+    # Build JSON for popular problems to render client-side with shared component
+    popular_problems_json = payload["popular_problems"].map { |p|
+      {
+        "name" => p["name"],
+        "grade" => p["grade"],
+        "steepness" => p["steepness"],
+        "popularity" => p["popularity"] || 0,
+        "circuit_color" => p["circuit_color"],
+        "circuit_number" => p["circuit_number"],
+        "url" => "/en/fontainebleau/#{area["slug"]}/#{[p["id"], p["name"]&.downcase&.gsub(/[^a-z0-9]+/, "-")&.gsub(/-$/, "")].compact.join("-")}"
+      }
+    }
+
     write_page("en/fontainebleau/#{area["slug"]}/index.html", renderer.render("areas/show",
       "page_title" => area["name"],
       "area" => payload["area"],
-      "popular_problems" => payload["popular_problems"],
+      "popular_problems_json" => JSON.generate(popular_problems_json),
       "circuits" => payload["circuits"],
       "poi_routes" => payload["poi_routes"],
       "media_manifest" => media_manifest,
