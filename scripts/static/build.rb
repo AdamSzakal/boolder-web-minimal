@@ -42,20 +42,15 @@ def main
 
   # --- Pages ---
 
-  # Homepage / area index
-  write_page("en/index.html", renderer.render("index",
-    "page_title" => "Fontainebleau Bouldering",
-    "areas" => read_models.all_areas
-  ))
-  # Also create /en/fontainebleau/index.html pointing to same content
+  # Projects page (also the homepage)
+  projects_html = renderer.render("projects", "page_title" => "Projects")
+  write_page("en/projects/index.html", projects_html)
+  write_page("en/index.html", projects_html)
+
+  # Area index
   write_page("en/fontainebleau/index.html", renderer.render("index",
     "page_title" => "Fontainebleau Bouldering",
     "areas" => read_models.all_areas
-  ))
-
-  # Projects page
-  write_page("en/projects/index.html", renderer.render("projects",
-    "page_title" => "Ticks"
   ))
 
   # Area pages

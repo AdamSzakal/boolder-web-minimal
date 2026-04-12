@@ -24,8 +24,10 @@ module Static
             "grade" => p["grade"],
             "pop" => p["popularity"] || 0,
             "area" => area ? area["name"] : "",
+            "st" => p["steepness"],
             "cc" => p["circuit_color"],
             "cn" => p["circuit_number"],
+            "cid" => p["circuit_id"],
             "url" => "/en/fontainebleau/#{area ? area["slug"] : ""}/#{slug}"
           }
         }

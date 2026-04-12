@@ -36,6 +36,13 @@
         </div>
 
         <div>
+          <label class="filter-label">Area</label>
+          <select id="filter-area" class="filter-select filter-select--narrow">
+            <option value="">All</option>
+          </select>
+        </div>
+
+        <div>
           <label class="filter-label">Circuit</label>
           <select id="filter-circuit" class="filter-select filter-select--medium">
             <option value="">All</option>
@@ -88,13 +95,38 @@
     level8: new Set(allGrades.slice(42)),
   };
 
-  var circuitEl = document.getElementById('filter-circuit');
-  allCircuits.forEach(function(c) {
+  // Populate area dropdown from problem data
+  var areaEl = document.getElementById('filter-area');
+  var areaNames = {};
+  allProblems.forEach(function(p) { if (p.area_name) areaNames[p.area_name] = 1; });
+  Object.keys(areaNames).sort().forEach(function(name) {
     var opt = document.createElement('option');
-    opt.value = c.id;
-    opt.textContent = c.area_name + ' \u2013 ' + capitalize(c.color);
-    circuitEl.appendChild(opt);
+    opt.value = name;
+    opt.textContent = name;
+    areaEl.appendChild(opt);
   });
+
+  var circuitEl = document.getElementById('filter-circuit');
+
+  function populateCircuits(areaFilter) {
+    var prev = circuitEl.value;
+    circuitEl.innerHTML = '<option value="">All</option>';
+    var circuits = areaFilter
+      ? allCircuits.filter(function(c) { return c.area_name === areaFilter; })
+      : allCircuits;
+    circuits.forEach(function(c) {
+      var opt = document.createElement('option');
+      opt.value = c.id;
+      // Skip area prefix when already filtered to a single area
+      opt.textContent = areaFilter ? capitalize(c.color) : c.area_name + ' \u2013 ' + capitalize(c.color);
+      circuitEl.appendChild(opt);
+    });
+    // Restore previous selection if it still exists
+    circuitEl.value = prev;
+    if (!circuitEl.value) circuitEl.value = '';
+  }
+
+  populateCircuits('');
 
   var gradeEl = document.getElementById('filter-grade');
   var steepnessEl = document.getElementById('filter-steepness');
@@ -129,6 +161,7 @@
   function applyFilters() {
     var gradeFilter = gradeEl.value;
     var steepnessFilter = steepnessEl.value;
+    var areaFilter = areaEl.value;
     var circuitFilter = circuitEl.value;
     var sortBy = sortEl.value;
 
@@ -138,6 +171,10 @@
       filtered = filtered.filter(function(p) { return p.circuit_id === parseInt(circuitFilter); });
     } else {
       filtered = filtered.filter(function(p) { return p.popularity >= 1; });
+    }
+
+    if (areaFilter) {
+      filtered = filtered.filter(function(p) { return p.area_name === areaFilter; });
     }
 
     if (gradeFilter && gradeRanges[gradeFilter]) {
@@ -208,6 +245,10 @@
 
   gradeEl.addEventListener('change', applyFilters);
   steepnessEl.addEventListener('change', applyFilters);
+  areaEl.addEventListener('change', function() {
+    populateCircuits(areaEl.value);
+    applyFilters();
+  });
   circuitEl.addEventListener('change', function() {
     if (circuitEl.value) {
       direction = 'asc';
