@@ -42,6 +42,13 @@
 
       // Badges
       var badges = '';
+      if (circuitColor) {
+        var cHex = colorHex[circuitColor] || '#999';
+        var cText = circuitColor === 'white' ? '#000' : '#FFF';
+        var label = capitalize(circuitColor);
+        if (circuitNumber) label += ' ' + circuitNumber;
+        badges += '<span class="badge badge--circuit" style="background-color:' + cHex + ';color:' + cText + ';">' + label + '</span>';
+      }
       if (popularity > 0) {
         badges += '<span class="badge badge--meta">\u2605 ' + popularity + '</span>';
       }
@@ -50,13 +57,6 @@
       }
       if (areaName) {
         badges += '<span class="badge badge--meta">' + esc(areaName) + '</span>';
-      }
-      if (circuitColor) {
-        var cHex = colorHex[circuitColor] || '#999';
-        var cText = circuitColor === 'white' ? '#000' : '#FFF';
-        var label = capitalize(circuitColor);
-        if (circuitNumber) label += ' ' + circuitNumber;
-        badges += '<span class="badge badge--circuit" style="background-color:' + cHex + ';color:' + cText + ';">' + label + '</span>';
       }
       if (p._dist != null) {
         var distText = p._dist < 1 ? Math.round(p._dist * 1000) + ' m' : p._dist.toFixed(1) + ' km';

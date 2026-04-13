@@ -182,16 +182,26 @@ def main
     main_area = areas_by_id[circuit["main_area_id"]]
     next unless main_area
 
-    # Add _area_slug to each problem for cross-area linking
-    problems.each do |p|
+    # Build JSON for problems to render client-side with shared component
+    problems_json = problems.map { |p|
       p_area = areas_by_id[p["area_id"]]
-      p["_area_slug"] = p_area ? p_area["slug"] : main_area["slug"]
-    end
+      area_slug = p_area ? p_area["slug"] : main_area["slug"]
+      slug = Static::ViewHelpers.problem_slug(p)
+      {
+        "name" => p["name"],
+        "grade" => p["grade"],
+        "steepness" => p["steepness"],
+        "popularity" => p["popularity"] || 0,
+        "circuit_color" => circuit["color"],
+        "circuit_number" => p["circuit_number"],
+        "url" => "/en/fontainebleau/#{area_slug}/#{slug}"
+      }
+    }
 
     write_page("en/fontainebleau/circuits/#{circuit["id"]}/index.html", renderer.render("circuits/show",
       "page_title" => "Circuit #{circuit["color"].capitalize}",
       "circuit" => circuit,
-      "problems" => problems,
+      "problems_json" => JSON.generate(problems_json),
       "area" => main_area
     ))
   end

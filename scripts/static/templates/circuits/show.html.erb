@@ -31,31 +31,15 @@
           </span>
         <%- end -%>
 
-        <ul role="list" class="content-section">
-          <%- problems.each do |problem| -%>
-            <%
-              problem_slug = Static::ViewHelpers.problem_slug(problem)
-              area_slug = problem["_area_slug"] || area["slug"]
-            %>
-            <li class="list-item">
-              <a href="/en/fontainebleau/<%= area_slug %>/<%= problem_slug %>">
-                <div class="circuit-problem-row">
-                  <div>
-                    <%- if problem["circuit_number"] -%>
-                      <%= Static::ViewHelpers.circuit_badge(circuit["color"], problem["circuit_number"], size: :dot) %>
-                    <%- else -%>
-                      <span class="badge--empty-dot">&nbsp;</span>
-                    <%- end -%>
-                    <span class="circuit-problem-name"><%= problem["name"] %></span>
-                  </div>
-                  <div class="circuit-problem-right">
-                    <div class="circuit-list-grade"><%= problem["grade"] %></div>
-                  </div>
-                </div>
-              </a>
-            </li>
-          <%- end -%>
-        </ul>
+        <ul role="list" id="circuit-problems" class="boulder-list"></ul>
+        <script>
+        (function() {
+          var problems = <%= problems_json %>;
+          document.getElementById('circuit-problems').innerHTML = problems.map(function(p) {
+            return renderBoulderItem(p);
+          }).join('');
+        })();
+        </script>
       </div>
     </div>
   </div>

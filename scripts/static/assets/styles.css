@@ -351,14 +351,6 @@ hr { border: none; border-top: 1px solid var(--divider); margin: 0; }
 .circuit-status-icon--danger { color: var(--danger); }
 .circuit-status-icon--beginner { color: var(--success); }
 
-/* Circuit problem row (circuits/show) */
-.circuit-problem-row {
-  display: flex;
-  justify-content: space-between;
-  padding: 0.5rem 0;
-}
-.circuit-problem-name { margin-left: 0.5rem; }
-.circuit-problem-right { display: flex; gap: 0.5rem; }
 
 /* Semantic color classes for icons */
 .icon-danger  { color: var(--danger); }
