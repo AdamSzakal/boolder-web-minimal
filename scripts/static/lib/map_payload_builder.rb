@@ -8,7 +8,8 @@ module Static
     def build
       {
         "areas" => build_area_bounds,
-        "problemLookup" => build_problem_lookup
+        "problemLookup" => build_problem_lookup,
+        "tagAreaIds" => build_tag_area_ids
       }
     end
 
@@ -21,6 +22,17 @@ module Static
           "southWest" => { "lat" => a["south_west_lat"], "lng" => a["south_west_lng"] },
           "northEast" => { "lat" => a["north_east_lat"], "lng" => a["north_east_lng"] }
         }
+      end
+      result
+    end
+
+    # Maps each area tag to the list of area IDs that have it
+    def build_tag_area_ids
+      result = {}
+      @catalog.areas.select { |a| a["published"] }.each do |a|
+        (a["tags"] || []).each do |tag|
+          (result[tag] ||= []) << a["id"]
+        end
       end
       result
     end
@@ -40,6 +52,7 @@ module Static
           "grade" => p["grade"],
           "steepness" => p["steepness"],
           "circuitId" => p["circuit_id"],
+          "areaId" => p["area_id"],
           "lat" => loc["lat"],
           "lng" => loc["lng"]
         }

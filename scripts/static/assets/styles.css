@@ -881,15 +881,18 @@ hr { border: none; border-top: 1px solid var(--divider); margin: 0; }
 }
 @media (min-width: 640px) { .area-list-item-inner { padding: 1rem 1.5rem; } }
 
-.area-name { 
+.area-name {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
-  flex-grow: 1;
+  flex: 1;
+  min-width: 0;
   color: var(--text);
 }
 .area-count {
   display: flex;
   align-items: center;
+  flex-shrink: 0;
   gap: 0.5rem;
   color: var(--text-faint);
 }
@@ -899,7 +902,7 @@ hr { border: none; border-top: 1px solid var(--divider); margin: 0; }
 	justify-content: flex-end;
 }
 .area-count svg { width: 1rem; height: 1rem; }
-.area-dist { font-size: 0.8125rem; white-space: nowrap; }
+.area-dist { font-size: 0.8125rem; white-space: nowrap; width: 8ch !important; }
 
 /* --- Weather forecast page --- */
 .weather-grid {
@@ -1061,7 +1064,7 @@ hr { border: none; border-top: 1px solid var(--divider); margin: 0; }
   position: fixed;
   inset: 0;
   z-index: 20;
-  overflow-y: auto;
+  overflow: hidden;
 }
 .modal-center {
   display: flex;
@@ -1075,7 +1078,10 @@ hr { border: none; border-top: 1px solid var(--divider); margin: 0; }
 
 .modal-panel {
   position: relative;
-  overflow: hidden;
+  overflow-y: auto;
+  max-height: calc(100vh - 4rem);
+  max-height: calc(100dvh - 4rem);
+  margin-bottom: 1rem;
   border-radius: var(--radius-lg);
   background: var(--bg-card);
   padding: 1.25rem 1rem 1rem;
@@ -1151,7 +1157,7 @@ hr { border: none; border-top: 1px solid var(--divider); margin: 0; }
 .area-stats-spread  { display: flex; justify-content: space-between; width: 100%; padding-right: 0.5rem; }
 .area-stats-count   { color: var(--text-muted); }
 .grade-cells        { display: flex; gap: 0.25rem; }
-.grade-cells-inline { display: inline-flex; gap: 0.25rem; vertical-align: middle; margin-left: 0.375rem; }
+.grade-cells-inline { display: inline-flex; gap: 0.25rem; vertical-align: middle;}
 
 /* Topo section spacing */
 .topo-section { margin-top: 1rem; }

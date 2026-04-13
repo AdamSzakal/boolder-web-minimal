@@ -79,32 +79,16 @@
                 <div class="modal-filters">
                   <!-- Grade filter -->
                   <div>
-                    <div class="modal-title">Grade</div>
-                    <fieldset>
-                      <div class="radio-group">
-                        <label class="radio-option">
-                          <span class="radio-option-label">
-                            <input type="radio" name="gradeRadio" value="beginner">
-                            <span class="radio-option-text">Beginner</span>
-                          </span>
-                          <span class="radio-option-hint">1a &rarr; 3c+</span>
-                        </label>
-                        <% (4..7).each do |level| %>
-                          <label class="radio-option">
-                            <span class="radio-option-label">
-                              <input type="radio" name="gradeRadio" value="level<%= level %>">
-                              <span class="radio-option-text">Level <%= level %></span>
-                            </span>
-                          </label>
-                        <% end %>
-                        <label class="radio-option">
-                          <span class="radio-option-label">
-                            <input type="radio" name="gradeRadio" value="custom">
-                            <span class="radio-option-text">Custom</span>
-                          </span>
-                        </label>
-                      </div>
-                    </fieldset>
+                    <label class="filter-label">Grade</label>
+                    <select id="filter-grade" class="filter-select">
+                      <option value="">All</option>
+                      <option value="beginner">Beginner (1a &rarr; 3c+)</option>
+                      <option value="level4">Level 4</option>
+                      <option value="level5">Level 5</option>
+                      <option value="level6">Level 6</option>
+                      <option value="level7">Level 7</option>
+                      <option value="custom">Custom</option>
+                    </select>
                     <div id="customGradePicker" class="grade-picker hidden">
                       <div>
                         <label for="gradeMin" class="filter-label">Min</label>
@@ -143,6 +127,17 @@
                     <label class="filter-label">Circuit</label>
                     <select id="filter-circuit" class="filter-select">
                       <option value="">All</option>
+                    </select>
+                  </div>
+
+                  <!-- Area tag filter -->
+                  <div>
+                    <label class="filter-label">Filter area by</label>
+                    <select id="filter-area-tag" class="filter-select">
+                      <option value="">All</option>
+                      <option value="beginner_friendly">Beginner friendly</option>
+                      <option value="family_friendly">Family friendly</option>
+                      <option value="dry_fast">Dries fast</option>
                     </select>
                   </div>
                 </div>
@@ -240,6 +235,12 @@
             filter: ["match", ["geometry-type"], ["Point"], true, false],
           });
 
+          // Improve area layer contrast against the map background
+          map.setPaintProperty('areas', 'text-color', '#1a1a1a');
+          map.setPaintProperty('areas', 'text-halo-color', '#ffffff');
+          map.setPaintProperty('areas', 'text-halo-width', 1.5);
+          map.setPaintProperty('areas-hulls', 'fill-opacity', 0.3);
+
           if (boundsData) {
             const cam = map.cameraForBounds(
               [[boundsData.southWest.lng, boundsData.southWest.lat], [boundsData.northEast.lng, boundsData.northEast.lat]],
@@ -322,14 +323,15 @@
         });
 
         // --- Filters ---
-        let selectedGradeRadio = null;
         const filterModal = document.getElementById('filterModal');
         const filterBtn = document.getElementById('filterBtn');
         const filterCounter = document.getElementById('filterCounter');
         const filterIconEl = document.getElementById('filterIcon');
+        const gradeEl = document.getElementById('filter-grade');
         const customPicker = document.getElementById('customGradePicker');
         const steepnessEl = document.getElementById('filter-steepness');
         const circuitEl = document.getElementById('filter-circuit');
+        const areaTagEl = document.getElementById('filter-area-tag');
 
         function capitalize(s) { return s ? s.charAt(0).toUpperCase() + s.slice(1) : ''; }
         allCircuits.forEach(c => {
@@ -341,14 +343,22 @@
 
         filterBtn.addEventListener('click', () => filterModal.classList.remove('hidden'));
         document.getElementById('filterCloseBtn').addEventListener('click', () => filterModal.classList.add('hidden'));
-
-        document.querySelectorAll('input[name="gradeRadio"]').forEach(radio => {
-          radio.addEventListener('change', (e) => {
-            selectedGradeRadio = e.target.value;
-            customPicker.classList.toggle('hidden', selectedGradeRadio !== 'custom');
-          });
+        document.querySelector('.modal-container').addEventListener('click', (e) => {
+          // Close when clicking outside the panel (on the backdrop area)
+          if (!e.target.closest('.modal-panel')) filterModal.classList.add('hidden');
         });
 
+        gradeEl.addEventListener('change', () => {
+          customPicker.classList.toggle('hidden', gradeEl.value !== 'custom');
+        });
+
+        // Returns the set of area IDs matching the selected tag, or null if no tag selected
+        function getSelectedAreaIds() {
+          if (!areaTagEl.value) return null;
+          return new Set(mapData.tagAreaIds[areaTagEl.value] || []);
+        }
+
+        // Build Mapbox filter expression for the problems layer
         function buildFilter() {
           const conditions = [];
           let grades;
@@ -361,35 +371,55 @@
             level8: allGrades.slice(42, 48),
           };
 
-          if (selectedGradeRadio === 'custom') {
+          if (gradeEl.value === 'custom') {
             const min = document.getElementById('gradeMin').value;
             const max = document.getElementById('gradeMax').value;
             grades = allGrades.slice(allGrades.indexOf(min), allGrades.indexOf(max) + 2);
           } else {
-            grades = gradeRanges[selectedGradeRadio] || null;
+            grades = gradeRanges[gradeEl.value] || null;
           }
           if (grades) conditions.push(['match', ['get', 'grade'], grades, true, false]);
 
           if (steepnessEl.value) conditions.push(['==', ['get', 'steepness'], steepnessEl.value]);
           if (circuitEl.value) conditions.push(['==', ['get', 'circuitId'], parseInt(circuitEl.value)]);
 
+          // Filter problems by area: collect matching problem IDs from the lookup
+          const areaIds = getSelectedAreaIds();
+          if (areaIds) {
+            const matchingIds = [];
+            for (const id in mapData.problemLookup) {
+              if (areaIds.has(mapData.problemLookup[id].areaId)) matchingIds.push(parseInt(id));
+            }
+            conditions.push(['match', ['get', 'id'], matchingIds.length > 0 ? matchingIds : [0], true, false]);
+          }
+
           if (conditions.length === 0) return null;
           if (conditions.length === 1) return conditions[0];
           return ['all'].concat(conditions);
         }
 
+        // Build Mapbox filter expression for the areas/areas-hulls layers
+        function buildAreaFilter() {
+          const areaIds = getSelectedAreaIds();
+          if (!areaIds) return null;
+          const ids = Array.from(areaIds);
+          return ['match', ['get', 'areaId'], ids.length > 0 ? ids : [0], true, false];
+        }
+
         function countActiveFilters() {
           let n = 0;
-          if (selectedGradeRadio) n++;
+          if (gradeEl.value) n++;
           if (steepnessEl.value) n++;
           if (circuitEl.value) n++;
+          if (areaTagEl.value) n++;
           return n;
         }
 
-        function matchesFilters(p, gradeSet, steepness, circuitId) {
+        function matchesFilters(p, gradeSet, steepness, circuitId, areaIds) {
           if (gradeSet && !gradeSet.has(p.grade)) return false;
           if (steepness && p.steepness !== steepness) return false;
           if (circuitId && p.circuitId !== circuitId) return false;
+          if (areaIds && !areaIds.has(p.areaId)) return false;
           return true;
         }
 
@@ -403,17 +433,18 @@
             level8: allGrades.slice(42, 48),
           };
           let gradeSet = null;
-          if (selectedGradeRadio === 'custom') {
+          if (gradeEl.value === 'custom') {
             const min = document.getElementById('gradeMin').value;
             const max = document.getElementById('gradeMax').value;
             gradeSet = new Set(allGrades.slice(allGrades.indexOf(min), allGrades.indexOf(max) + 2));
-          } else if (selectedGradeRadio && gradeRanges[selectedGradeRadio]) {
-            gradeSet = new Set(gradeRanges[selectedGradeRadio]);
+          } else if (gradeEl.value && gradeRanges[gradeEl.value]) {
+            gradeSet = new Set(gradeRanges[gradeEl.value]);
           }
           return {
             gradeSet: gradeSet,
             steepness: steepnessEl.value || null,
-            circuitId: circuitEl.value ? parseInt(circuitEl.value) : null
+            circuitId: circuitEl.value ? parseInt(circuitEl.value) : null,
+            areaIds: getSelectedAreaIds()
           };
         }
 
@@ -423,7 +454,7 @@
           for (const id in mapData.problemLookup) {
             const p = mapData.problemLookup[id];
             if (!p.lat || !p.lng) continue;
-            if (!matchesFilters(p, criteria.gradeSet, criteria.steepness, criteria.circuitId)) continue;
+            if (!matchesFilters(p, criteria.gradeSet, criteria.steepness, criteria.circuitId, criteria.areaIds)) continue;
             if (p.lat < minLat) minLat = p.lat;
             if (p.lat > maxLat) maxLat = p.lat;
             if (p.lng < minLng) minLng = p.lng;
@@ -453,6 +484,12 @@
             map.setFilter(layer, filter ? ['all', baseFilter, filter] : baseFilter);
           });
 
+          // Filter area labels and hulls when an area tag is selected
+          const areaFilter = buildAreaFilter();
+          ['areas', 'areas-hulls'].forEach(layer => {
+            map.setFilter(layer, areaFilter);
+          });
+
           if (n > 0) {
             const result = countAndBound(currentFilterCriteria());
             matchCountEl.querySelector('span').textContent = result.count.toLocaleString() + ' boulders';
@@ -476,17 +513,18 @@
 
         document.getElementById('clearFiltersBtn').addEventListener('click', () => {
           filterModal.classList.add('hidden');
-          selectedGradeRadio = null;
-          document.querySelectorAll('input[name="gradeRadio"]').forEach(r => r.checked = false);
+          gradeEl.value = '';
           customPicker.classList.add('hidden');
           steepnessEl.value = '';
           circuitEl.value = '';
+          areaTagEl.value = '';
           applyAllFilters();
         });
 
+        gradeEl.value = '';
         steepnessEl.value = '';
         circuitEl.value = '';
-        document.querySelectorAll('input[name="gradeRadio"]').forEach(r => r.checked = false);
+        areaTagEl.value = '';
 
         document.getElementById('gradeMin').addEventListener('change', () => {
           const iMin = allGrades.indexOf(document.getElementById('gradeMin').value);
@@ -508,13 +546,13 @@
           navigator.geolocation.getCurrentPosition(pos => {
             const userLng = pos.coords.longitude;
             const userLat = pos.coords.latitude;
-            const { gradeSet, steepness, circuitId } = currentFilterCriteria();
+            const { gradeSet, steepness, circuitId, areaIds } = currentFilterCriteria();
 
             let bestDist = Infinity, bestId = null;
             for (const id in mapData.problemLookup) {
               const p = mapData.problemLookup[id];
               if (!p.lat || !p.lng) continue;
-              if (!matchesFilters(p, gradeSet, steepness, circuitId)) continue;
+              if (!matchesFilters(p, gradeSet, steepness, circuitId, areaIds)) continue;
               const d = (p.lng - userLng) ** 2 + (p.lat - userLat) ** 2;
               if (d < bestDist) { bestDist = d; bestId = id; }
             }
