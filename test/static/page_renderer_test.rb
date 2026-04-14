@@ -1,13 +1,11 @@
 require "test_helper"
 require_relative "../../scripts/static/lib/page_renderer"
 
-class Static::PageRendererTest < ActiveSupport::TestCase
-  test "renders template with locals" do
-    # Create a minimal temp template for testing
+class Static::PageRendererTest < Minitest::Test
+  def test_renders_template_with_locals
     dir = Dir.mktmpdir
     template_dir = Pathname(dir)
 
-    # Layout that just wraps content
     File.write(template_dir.join("layout.html.erb"), <<~ERB)
       <!DOCTYPE html>
       <html>
@@ -16,7 +14,6 @@ class Static::PageRendererTest < ActiveSupport::TestCase
       </html>
     ERB
 
-    # Problem template
     FileUtils.mkdir_p(template_dir.join("problems"))
     File.write(template_dir.join("problems", "show.html.erb"), <<~ERB)
       <h1><%= problem["name"] %> — <%= problem["grade"] %></h1>
@@ -36,7 +33,7 @@ class Static::PageRendererTest < ActiveSupport::TestCase
     FileUtils.remove_entry(dir) if dir
   end
 
-  test "renders layout around content" do
+  def test_renders_layout_around_content
     dir = Dir.mktmpdir
     template_dir = Pathname(dir)
 

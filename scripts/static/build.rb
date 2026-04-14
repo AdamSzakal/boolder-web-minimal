@@ -3,6 +3,7 @@ require "pathname"
 require "json"
 require "fileutils"
 require "erb"
+require "set"
 
 # Load .env file if present (keys not already in ENV)
 env_file = File.expand_path("../../.env", __dir__)
@@ -289,11 +290,11 @@ def main
   copy_if_exists(ROOT.join("scripts/static/assets/styles.css"), DIST.join("assets/styles.css"))
 
   # Images
-  copy_dir_if_exists(ROOT.join("app/assets/images"), DIST.join("images"))
+  copy_dir_if_exists(ROOT.join("scripts/static/assets/images"), DIST.join("images"))
 
   # Icons
-  copy_if_exists(ROOT.join("public/icon.png"), DIST.join("icon.png"))
-  copy_if_exists(ROOT.join("public/icon.svg"), DIST.join("icon.svg"))
+  copy_if_exists(ROOT.join("scripts/static/assets/icon.png"), DIST.join("icon.png"))
+  copy_if_exists(ROOT.join("scripts/static/assets/icon.svg"), DIST.join("icon.svg"))
 
   # Topo photos served from CDN (assets.boolder.com) — no local media copy needed
 

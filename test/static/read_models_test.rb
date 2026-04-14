@@ -2,7 +2,7 @@ require "test_helper"
 require_relative "../../scripts/static/lib/source_catalog"
 require_relative "../../scripts/static/lib/read_models"
 
-class Static::ReadModelsTest < ActiveSupport::TestCase
+class Static::ReadModelsTest < Minitest::Test
   class FakeCatalog
     def areas
       [
@@ -58,11 +58,11 @@ class Static::ReadModelsTest < ActiveSupport::TestCase
     end
   end
 
-  setup do
+  def setup
     @models = Static::ReadModels.new(FakeCatalog.new)
   end
 
-  test "area_page returns area, popular_problems, circuits, and poi_routes" do
+  def test_area_page_returns_area_popular_problems_circuits_and_poi_routes
     payload = @models.area_page("franchard-isatis")
 
     assert_equal "Franchard Isatis", payload["area"]["name"]
@@ -71,7 +71,7 @@ class Static::ReadModelsTest < ActiveSupport::TestCase
     assert payload["poi_routes"].all? { |r| r.key?("transport") }
   end
 
-  test "popular_problems are sorted by grade desc then popularity desc" do
+  def test_popular_problems_are_sorted_by_grade_desc_then_popularity_desc
     payload = @models.area_page("franchard-isatis")
     grades = payload["popular_problems"].map { |p| p["grade"] }
 
@@ -79,17 +79,17 @@ class Static::ReadModelsTest < ActiveSupport::TestCase
     assert_equal "7c", grades.first
   end
 
-  test "problem_page returns all expected fields" do
+  def test_problem_page_returns_all_expected_fields
     payload = @models.problem_page(10)
 
     assert_equal "Carnage", payload["problem"]["name"]
     assert_equal "Franchard Isatis", payload["area"]["name"]
-    assert_not_nil payload["line"]
-    assert_not_nil payload["topo"]
+    refute_nil payload["line"]
+    refute_nil payload["topo"]
     assert payload["variants"].any? { |v| v["name"] == "Carnage Assis" }
   end
 
-  test "problem_page includes circuit navigation" do
+  def test_problem_page_includes_circuit_navigation
     payload = @models.problem_page(11)
 
     assert_equal "red", payload["circuit"]["color"]
@@ -97,7 +97,7 @@ class Static::ReadModelsTest < ActiveSupport::TestCase
     assert_equal "Red 6", payload["circuit_next"]["name"]
   end
 
-  test "all_areas returns published areas sorted by name" do
+  def test_all_areas_returns_published_areas_sorted_by_name
     areas = @models.all_areas
     names = areas.map { |a| a["name"] }
 
