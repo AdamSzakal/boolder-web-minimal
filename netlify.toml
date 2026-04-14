@@ -1,16 +1,39 @@
-# Redirect root to /en/
+# Redirect root to areas page
 [[redirects]]
   from = "/"
-  to = "/en/"
+  to = "/areas/"
   status = 301
 
-# Pretty URLs: /en/fontainebleau/area-slug -> /en/fontainebleau/area-slug/index.html
-# Netlify handles this automatically for index.html files
+# Redirect old /en/ paths to new structure
+[[redirects]]
+  from = "/en/fontainebleau/*"
+  to = "/areas/:splat"
+  status = 301
+
+[[redirects]]
+  from = "/en/map/*"
+  to = "/map/:splat"
+  status = 301
+
+[[redirects]]
+  from = "/en/projects/*"
+  to = "/projects/:splat"
+  status = 301
+
+[[redirects]]
+  from = "/en/weather/*"
+  to = "/weather/:splat"
+  status = 301
+
+[[redirects]]
+  from = "/en/*"
+  to = "/:splat"
+  status = 301
 
 # SPA-style fallback for map routes
 [[redirects]]
-  from = "/en/map/*"
-  to = "/en/map/index.html"
+  from = "/map/*"
+  to = "/map/index.html"
   status = 200
 
 [[headers]]
