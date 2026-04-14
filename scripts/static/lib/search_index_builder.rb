@@ -11,7 +11,7 @@ module Static
           {
             "name" => a["name"],
             "n" => normalize(a["name"]),
-            "url" => "/en/fontainebleau/#{a["slug"]}"
+            "url" => "/areas/#{a["slug"]}"
           }
         },
         "problems" => @catalog.problems.map { |p|
@@ -31,7 +31,7 @@ module Static
             "cid" => p["circuit_id"],
             "lat" => loc["lat"],
             "lng" => loc["lng"],
-            "url" => "/en/fontainebleau/#{area ? area["slug"] : ""}/#{slug}"
+            "url" => "/areas/#{area ? area["slug"] : ""}/#{slug}"
           }
         }
       }

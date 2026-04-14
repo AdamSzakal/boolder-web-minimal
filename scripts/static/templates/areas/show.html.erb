@@ -4,8 +4,8 @@
 %>
 
 <div class="container area-breadcrumb-bar hidden">
-  <a href="/en/fontainebleau" class="breadcrumb">
-    <div>Fontainebleau</div>
+  <a href="/areas" class="breadcrumb">
+    <div>Areas</div>
   </a>
 </div>
 
@@ -93,7 +93,7 @@
               </div>
             <%- end -%>
 
-            <%= Static::ViewHelpers.action_link("/en/map/#{area["slug"]}", Static::ViewHelpers::ICON_MAP_PIN, "See on map") %>
+            <%= Static::ViewHelpers.action_link("/map/#{area["slug"]}", Static::ViewHelpers::ICON_MAP_PIN, "See on map") %>
           </div>
 
           <%- if circuits && circuits.any? -%>

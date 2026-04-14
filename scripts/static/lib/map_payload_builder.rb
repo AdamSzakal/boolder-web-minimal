@@ -47,7 +47,7 @@ module Static
         loc = p["location"] || {}
         slug = [p["id"], p["name"]&.downcase&.gsub(/[^a-z0-9]+/, "-")&.gsub(/-$/, "")].compact.join("-")
         result[p["id"].to_s] = {
-          "url" => "/en/fontainebleau/#{area["slug"]}/#{slug}",
+          "url" => "/areas/#{area["slug"]}/#{slug}",
           "name" => p["name"],
           "grade" => p["grade"],
           "steepness" => p["steepness"],

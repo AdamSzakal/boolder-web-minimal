@@ -10,7 +10,7 @@
     <div>
       <!-- Breadcrumbs -->
       <div class="inner">
-        <%= Static::ViewHelpers.breadcrumb(["Fontainebleau", "/en/fontainebleau"], [area["name"], "/en/fontainebleau/#{area["slug"]}"]) %>
+        <%= Static::ViewHelpers.breadcrumb(["Areas", "/areas"], [area["name"], "/areas/#{area["slug"]}"]) %>
 
         <!-- Title + grade -->
         <div class="problem-header">
@@ -60,7 +60,7 @@
                 prev_area = (defined?(_areas_by_id) && _areas_by_id) && _areas_by_id[circuit_previous["area_id"]]
                 prev_area_slug = prev_area ? prev_area["slug"] : area["slug"]
               %>
-              <a href="/en/fontainebleau/<%= prev_area_slug %>/<%= prev_slug %>">
+              <a href="/areas/<%= prev_area_slug %>/<%= prev_slug %>">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18" />
                 </svg>
@@ -75,7 +75,7 @@
                 next_area = (defined?(_areas_by_id) && _areas_by_id) && _areas_by_id[circuit_next["area_id"]]
                 next_area_slug = next_area ? next_area["slug"] : area["slug"]
               %>
-              <a href="/en/fontainebleau/<%= next_area_slug %>/<%= next_slug %>">
+              <a href="/areas/<%= next_area_slug %>/<%= next_slug %>">
                 <div>Next</div>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -116,10 +116,10 @@
         })();
         </script>
 
-        <%= Static::ViewHelpers.action_link("/en/map/#{area["slug"]}?pid=#{problem["id"]}", Static::ViewHelpers::ICON_MAP_PIN, "See on map", rel: "nofollow") %>
+        <%= Static::ViewHelpers.action_link("/map/#{area["slug"]}?pid=#{problem["id"]}", Static::ViewHelpers::ICON_MAP_PIN, "See on map", rel: "nofollow") %>
 
         <%- if circuit -%>
-          <%= Static::ViewHelpers.action_link("/en/fontainebleau/circuits/#{circuit["id"]}", Static::ViewHelpers::ICON_CIRCUIT, "See circuit", rel: "nofollow") %>
+          <%= Static::ViewHelpers.action_link("/areas/circuits/#{circuit["id"]}", Static::ViewHelpers::ICON_CIRCUIT, "See circuit", rel: "nofollow") %>
         <%- end -%>
 
         <%- if problem["bleau_info_id"].to_s.strip.length > 0 -%>
@@ -139,7 +139,7 @@
                 v_area_slug = v_area ? v_area["slug"] : area["slug"]
               %>
               <li class="variant-item">
-                <a href="/en/fontainebleau/<%= v_area_slug %>/<%= v_slug %>">
+                <a href="/areas/<%= v_area_slug %>/<%= v_slug %>">
                   <%- if variant["circuit_color"] && variant["circuit_number"] -%>
                     <%= Static::ViewHelpers.circuit_badge(variant["circuit_color"], variant["circuit_number"], size: :dot) %>
                   <%- else -%>
@@ -165,7 +165,7 @@
                 ac_active = circuit && circuit["id"] == ac["id"]
               %>
               <li class="circuit-sidebar-item">
-                <a href="/en/fontainebleau/circuits/<%= ac["id"] %>" class="circuit-sidebar-link<%= ac_active ? ' circuit-sidebar-link--active' : '' %>">
+                <a href="/areas/circuits/<%= ac["id"] %>" class="circuit-sidebar-link<%= ac_active ? ' circuit-sidebar-link--active' : '' %>">
                   <span class="circuit-dot-sm" style="background-color: <%= ac_hex %>;"></span>
                   <span><%= ac["color"].capitalize %></span>
                   <span class="circuit-sidebar-grade"><%= ac["average_grade"] %></span>

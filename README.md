@@ -24,7 +24,7 @@ Topo photos are served from the Boolder CDN (`assets.boolder.com`). Map tiles ar
 ## Stack
 
 - Ruby 3.3 (build scripts only, no runtime server)
-- ERB templates with Tailwind CSS
+- ERB templates with custom CSS
 - Mapbox GL JS for the map
 - Vanilla JavaScript for search, filtering, and project lists
 - Static JSON for all data
@@ -50,7 +50,7 @@ This reads source data from `data/source/content/` and generates a deployable `d
 python3 -m http.server 4173 --directory dist
 ```
 
-Then open http://localhost:4173/en/fontainebleau
+Then open http://localhost:4173/areas
 
 ### Deploy
 

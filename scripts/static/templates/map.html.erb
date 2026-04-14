@@ -23,14 +23,14 @@
         <nav class="nav">
           <div class="nav-inner">
             <div class="nav-links">
-              <a href="/en/projects" class="logo-emoji" aria-label="Boolder">🍷</a>
-              <a href="/en/projects" class="nav-link">Projects</a>
-              <a href="/en/fontainebleau" class="nav-link">Areas</a>
-              <a href="/en/fontainebleau/boulders" class="nav-link">Boulders</a>
-              <a href="/en/map" class="nav-link">Map</a>
+              <a href="/projects" class="logo-emoji" aria-label="Boolder">🍷</a>
+              <a href="/projects" class="nav-link">Projects</a>
+              <a href="/areas" class="nav-link">Areas</a>
+              <a href="/areas/boulders" class="nav-link">Boulders</a>
+              <a href="/map" class="nav-link">Map</a>
             </div>
             <div class="nav-right">
-              <a href="/en/weather" id="nav-weather" class="nav-weather hidden" aria-label="Weather forecast"></a>
+              <a href="/weather" id="nav-weather" class="nav-weather hidden" aria-label="Weather forecast"></a>
             </div>
           </div>
         </nav>
@@ -574,7 +574,7 @@
         });
 
         map.on('movestart', () => {
-          history.replaceState({}, '', '/en/map');
+          history.replaceState({}, '', '/map');
         });
       })();
     </script>

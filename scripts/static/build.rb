@@ -44,11 +44,11 @@ def main
 
   # Projects page (also the homepage)
   projects_html = renderer.render("projects", "page_title" => "Projects")
-  write_page("en/projects/index.html", projects_html)
-  write_page("en/index.html", projects_html)
+  write_page("projects/index.html", projects_html)
+  write_page("index.html", projects_html)
 
   # Weather page
-  write_page("en/weather/index.html", renderer.render("weather",
+  write_page("weather/index.html", renderer.render("weather",
     "page_title" => "Weather"
   ))
 
@@ -81,7 +81,7 @@ def main
   }
 
   # Area index
-  write_page("en/fontainebleau/index.html", renderer.render("index",
+  write_page("areas/index.html", renderer.render("index",
     "page_title" => "Fontainebleau Bouldering",
     "areas_json" => JSON.generate(areas_json)
   ))
@@ -106,11 +106,11 @@ def main
         "popularity" => p["popularity"] || 0,
         "circuit_color" => p["circuit_color"],
         "circuit_number" => p["circuit_number"],
-        "url" => "/en/fontainebleau/#{area["slug"]}/#{[p["id"], p["name"]&.downcase&.gsub(/[^a-z0-9]+/, "-")&.gsub(/-$/, "")].compact.join("-")}"
+        "url" => "/areas/#{area["slug"]}/#{[p["id"], p["name"]&.downcase&.gsub(/[^a-z0-9]+/, "-")&.gsub(/-$/, "")].compact.join("-")}"
       }
     }
 
-    write_page("en/fontainebleau/#{area["slug"]}/index.html", renderer.render("areas/show",
+    write_page("areas/#{area["slug"]}/index.html", renderer.render("areas/show",
       "page_title" => area["name"],
       "area" => payload["area"],
       "popular_problems_json" => JSON.generate(popular_problems_json),
@@ -154,7 +154,7 @@ def main
 
     problem_slug = [problem["id"], problem["name"]&.downcase&.gsub(/[^a-z0-9]+/, "-")&.gsub(/-$/, "")].compact.join("-")
 
-    write_page("en/fontainebleau/#{area["slug"]}/#{problem_slug}/index.html", renderer.render("problems/show",
+    write_page("areas/#{area["slug"]}/#{problem_slug}/index.html", renderer.render("problems/show",
       "page_title" => "#{problem["name"]} #{problem["grade"]}",
       "problem" => problem,
       "area" => area,
@@ -170,7 +170,7 @@ def main
 
   # Circuit index
   circuits_sorted = catalog.circuits.sort_by { |c| Static::ReadModels::GRADE_VALUES.index(c["average_grade"]) || 0 }
-  write_page("en/fontainebleau/circuits/index.html", renderer.render("circuits/index",
+  write_page("areas/circuits/index.html", renderer.render("circuits/index",
     "page_title" => "Circuits",
     "circuits" => circuits_sorted
   ))
@@ -194,11 +194,11 @@ def main
         "popularity" => p["popularity"] || 0,
         "circuit_color" => circuit["color"],
         "circuit_number" => p["circuit_number"],
-        "url" => "/en/fontainebleau/#{area_slug}/#{slug}"
+        "url" => "/areas/#{area_slug}/#{slug}"
       }
     }
 
-    write_page("en/fontainebleau/circuits/#{circuit["id"]}/index.html", renderer.render("circuits/show",
+    write_page("areas/circuits/#{circuit["id"]}/index.html", renderer.render("circuits/show",
       "page_title" => "Circuit #{circuit["color"].capitalize}",
       "circuit" => circuit,
       "problems_json" => JSON.generate(problems_json),
@@ -224,7 +224,7 @@ def main
       "area_name" => p_area ? p_area["name"] : "",
       "lat" => loc["lat"],
       "lng" => loc["lng"],
-      "url" => "/en/fontainebleau/#{p_area ? p_area["slug"] : ""}/#{slug}"
+      "url" => "/areas/#{p_area ? p_area["slug"] : ""}/#{slug}"
     }
   end
 
@@ -234,7 +234,7 @@ def main
     .sort_by { |c| [c["main_area_name"].downcase, c["color"]] }
     .map { |c| { "id" => c["id"], "color" => c["color"], "area_name" => c["main_area_name"] } }
 
-  write_page("en/fontainebleau/boulders/index.html", renderer.render("boulders",
+  write_page("areas/boulders/index.html", renderer.render("boulders",
     "page_title" => "Boulders",
     "problems_json" => JSON.generate(boulders_problems),
     "circuits_json" => JSON.generate(boulders_circuits)
@@ -248,7 +248,7 @@ def main
   circuits_json = JSON.generate(boulders_circuits)
 
   # Main map page
-  write_page("en/map/index.html", renderer.render_standalone("map",
+  write_page("map/index.html", renderer.render_standalone("map",
     "page_title" => "Map",
     "map_data_json" => map_data_json,
     "circuits_json" => circuits_json,
@@ -263,7 +263,7 @@ def main
       "southWest" => { "lat" => area["south_west_lat"], "lng" => area["south_west_lng"] },
       "northEast" => { "lat" => area["north_east_lat"], "lng" => area["north_east_lng"] }
     }
-    write_page("en/map/#{area["slug"]}/index.html", renderer.render_standalone("map",
+    write_page("map/#{area["slug"]}/index.html", renderer.render_standalone("map",
       "page_title" => "Map — #{area["name"]}",
       "map_data_json" => map_data_json,
       "circuits_json" => circuits_json,

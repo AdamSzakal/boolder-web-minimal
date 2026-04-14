@@ -37,7 +37,7 @@
         </svg>
         <span>Save all to my list</span>
       </button>
-      <a href="/en/projects" class="btn btn--outline">
+      <a href="/projects" class="btn btn--outline">
         View my list
       </a>
     </div>
@@ -98,8 +98,8 @@
     </svg>
     <p>Your project list is empty.</p>
     <p class="empty-state-cta">
-      <a href="/en/fontainebleau" class="btn btn--outline">Explore areas</a>
-      <a href="/en/fontainebleau/boulders" class="btn btn--outline">Browse boulders</a>
+      <a href="/areas" class="btn btn--outline">Explore areas</a>
+      <a href="/areas/boulders" class="btn btn--outline">Browse boulders</a>
     </p>
   </div>
 
@@ -273,7 +273,7 @@
   }
 
   function buildShareUrl(ids) {
-    var base = window.location.origin + '/en/projects';
+    var base = window.location.origin + '/projects';
     return base + '#n=Projects&p=' + ids.join(',');
   }
 
