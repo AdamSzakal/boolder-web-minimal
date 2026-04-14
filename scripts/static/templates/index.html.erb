@@ -7,24 +7,27 @@
     <div>
       <h2 class="section-title inner">Areas</h2>
 
-      <div class="inner filters-stack" style="margin-bottom: 1rem;">
-        <div>
-          <label class="filter-label">Filter</label>
-          <select id="area-filter" class="filter-select filter-select--narrow">
-            <option value="">All</option>
-            <option value="beginner_friendly">Beginner friendly</option>
-            <option value="dry_fast">Dries fast</option>
-            <option value="train_accessible">Accessible by train or bike</option>
-          </select>
+      <details class="filters-toggle inner">
+        <summary>Filters</summary>
+        <div class="filters-stack">
+          <div>
+            <label class="filter-label">Filter</label>
+            <select id="area-filter" class="filter-select filter-select--narrow">
+              <option value="">All</option>
+              <option value="beginner_friendly">Beginner friendly</option>
+              <option value="dry_fast">Dries fast</option>
+              <option value="train_accessible">Accessible by train or bike</option>
+            </select>
+          </div>
+          <div>
+            <label class="filter-label">Sort by</label>
+            <select id="area-sort" class="filter-select filter-select--narrow">
+              <option value="name">Name</option>
+              <option value="distance">Distance</option>
+            </select>
+          </div>
         </div>
-        <div>
-          <label class="filter-label">Sort by</label>
-          <select id="area-sort" class="filter-select filter-select--narrow">
-            <option value="name">Name</option>
-            <option value="distance">Distance</option>
-          </select>
-        </div>
-      </div>
+      </details>
 
       <div class="area-list-card">
         <ul role="list" class="area-list" id="area-list"></ul>

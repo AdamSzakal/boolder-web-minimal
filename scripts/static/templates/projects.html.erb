@@ -47,46 +47,49 @@
   </div>
 
   <!-- Filters (hidden until list has items) -->
-  <div id="projectFilters" class="filters-stack hidden">
-    <div>
-      <label class="filter-label">Grade</label>
-      <select id="pf-grade" class="filter-select filter-select--narrow">
-        <option value="">All</option>
-        <option value="beginner">Beginner (1–3)</option>
-        <option value="level4">Level 4</option>
-        <option value="level5">Level 5</option>
-        <option value="level6">Level 6</option>
-        <option value="level7">Level 7</option>
-        <option value="level8">Level 8+</option>
-      </select>
+  <details id="projectFilters" class="filters-toggle hidden">
+    <summary>Filters</summary>
+    <div class="filters-stack">
+      <div>
+        <label class="filter-label">Grade</label>
+        <select id="pf-grade" class="filter-select filter-select--narrow">
+          <option value="">All</option>
+          <option value="beginner">Beginner (1–3)</option>
+          <option value="level4">Level 4</option>
+          <option value="level5">Level 5</option>
+          <option value="level6">Level 6</option>
+          <option value="level7">Level 7</option>
+          <option value="level8">Level 8+</option>
+        </select>
+      </div>
+      <div>
+        <label class="filter-label">Steepness</label>
+        <select id="pf-steepness" class="filter-select filter-select--narrow">
+          <option value="">All</option>
+          <option value="wall">Wall</option>
+          <option value="slab">Slab</option>
+          <option value="overhang">Overhang</option>
+          <option value="roof">Roof</option>
+          <option value="traverse">Traverse</option>
+        </select>
+      </div>
+      <div>
+        <label class="filter-label">Area</label>
+        <select id="pf-area" class="filter-select filter-select--narrow">
+          <option value="">All</option>
+        </select>
+      </div>
+      <div>
+        <label class="filter-label">Sort by</label>
+        <select id="pf-sort" class="filter-select filter-select--narrow">
+          <option value="added">Added order</option>
+          <option value="grade">Grade</option>
+          <option value="area">Area</option>
+          <option value="distance">Distance</option>
+        </select>
+      </div>
     </div>
-    <div>
-      <label class="filter-label">Steepness</label>
-      <select id="pf-steepness" class="filter-select filter-select--narrow">
-        <option value="">All</option>
-        <option value="wall">Wall</option>
-        <option value="slab">Slab</option>
-        <option value="overhang">Overhang</option>
-        <option value="roof">Roof</option>
-        <option value="traverse">Traverse</option>
-      </select>
-    </div>
-    <div>
-      <label class="filter-label">Area</label>
-      <select id="pf-area" class="filter-select filter-select--narrow">
-        <option value="">All</option>
-      </select>
-    </div>
-    <div>
-      <label class="filter-label">Sort by</label>
-      <select id="pf-sort" class="filter-select filter-select--narrow">
-        <option value="added">Added order</option>
-        <option value="grade">Grade</option>
-        <option value="area">Area</option>
-        <option value="distance">Distance</option>
-      </select>
-    </div>
-  </div>
+  </details>
 
   <!-- Empty state -->
   <div id="emptyState" class="empty-state hidden">
