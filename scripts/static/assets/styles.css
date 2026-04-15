@@ -190,7 +190,6 @@ hr { border: none; border-top: 1px solid var(--divider); margin: 0; }
   inset: 0;
   background: rgba(0, 0, 0, 0.6);
   z-index: 40;
-  animation: navFadeIn 0.15s ease;
 }
 .nav-dropdown {
   position: fixed;
@@ -204,7 +203,6 @@ hr { border: none; border-top: 1px solid var(--divider); margin: 0; }
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  animation: navSlideDown 0.2s ease;
 }
 .nav-dropdown-header {
   display: flex;
@@ -1287,6 +1285,6 @@ hr { border: none; border-top: 1px solid var(--divider); margin: 0; }
   .area-list-item-inner { padding: 0.75rem;  gap: 10px; }
   .btn { padding: 0.375rem 0.75rem; font-size: 0.8125rem; }
   .filter-select { height: 2.25rem; font-size: 0.8125rem; }
-  .nav-inner { height: 2.75rem; }
+  .nav-inner { height: 3rem; }
 }
 
