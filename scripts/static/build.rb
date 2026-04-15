@@ -189,6 +189,7 @@ def main
       area_slug = p_area ? p_area["slug"] : main_area["slug"]
       slug = Static::ViewHelpers.problem_slug(p)
       {
+        "id" => p["id"],
         "name" => p["name"],
         "grade" => p["grade"],
         "steepness" => p["steepness"],

@@ -31,13 +31,38 @@
           </span>
         <%- end -%>
 
+        <div class="inner" style="margin-bottom: 1rem;">
+          <button type="button" id="addCircuitBtn" class="btn btn--outline">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+            </svg>
+            <span id="addCircuitLabel">Add circuit to projects</span>
+          </button>
+        </div>
+
         <ul role="list" id="circuit-problems" class="boulder-list"></ul>
         <script>
         (function() {
           var problems = <%= problems_json %>;
+          var ids = problems.map(function(p) { return p.id; });
           document.getElementById('circuit-problems').innerHTML = problems.map(function(p) {
             return renderBoulderItem(p);
           }).join('');
+
+          var btn = document.getElementById('addCircuitBtn');
+          var label = document.getElementById('addCircuitLabel');
+
+          function updateLabel() {
+            var allAdded = ids.every(function(id) { return BoolderProjects.has(id); });
+            label.textContent = allAdded ? 'Circuit added to projects' : 'Add circuit to projects';
+          }
+          updateLabel();
+
+          btn.addEventListener('click', function() {
+            BoolderProjects.addAll(ids);
+            updateNavProjectCount();
+            updateLabel();
+          });
         })();
         </script>
       </div>

@@ -257,6 +257,7 @@
           BoolderProjects.remove(removeId);
           renderList(BoolderProjects.list(), true);
           updateShareBtn();
+          updateNavProjectCount();
         });
       });
     }
@@ -307,6 +308,7 @@
 
     document.getElementById('saveAllBtn').addEventListener('click', function() {
       BoolderProjects.addAll(sharedIds);
+      updateNavProjectCount();
       document.getElementById('savedNotice').classList.remove('hidden');
     });
   } else {

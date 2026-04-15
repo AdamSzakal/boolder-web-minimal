@@ -172,18 +172,79 @@ hr { border: none; border-top: 1px solid var(--divider); margin: 0; }
 @media (min-width: 640px) { .nav-inner { padding: 0 1rem; } }
 @media (min-width: 1024px) { .nav-inner { padding: 0 2rem; } }
 
-.nav-links {
+/* Menu toggle button */
+.nav-menu-btn {
   display: flex;
   align-items: center;
-  padding: 0 0.5rem;
-  gap: 1rem;
-}
-@media (min-width: 1024px) { .nav-links { padding: 0; } }
-
-.nav-link {
+  gap: 0.375rem;
+  padding: 0.375rem 0.5rem;
   font-size: 0.875rem;
-  font-weight: 400;
+  font-weight: 500;
   color: var(--text);
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Menu overlay + dropdown modal */
+.nav-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 40;
+  animation: navFadeIn 0.15s ease;
+}
+.nav-dropdown {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background: var(--bg-card);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: navSlideDown 0.2s ease;
+}
+.nav-dropdown-header {
+  display: flex;
+  align-items: center;
+  height: 3rem;
+  padding: 0 0.5rem;
+}
+@media (min-width: 640px) { .nav-dropdown-header { padding: 0 1rem; } }
+.nav-dropdown-link {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  color: var(--text);
+  border-top: 1px solid var(--divider);
+}
+.nav-dropdown-link:hover { background: var(--bg-secondary); }
+
+@keyframes navFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes navSlideDown {
+  from { opacity: 0; transform: translateY(-1rem); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.nav-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.25rem;
+  height: 1.25rem;
+  padding: 0 0.35rem;
+  margin-left: 0.25rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  line-height: 1;
+  border-radius: 9999px;
+  background: var(--accent);
+  color: #fff;
 }
 
 .logo-emoji {
@@ -1227,7 +1288,5 @@ hr { border: none; border-top: 1px solid var(--divider); margin: 0; }
   .btn { padding: 0.375rem 0.75rem; font-size: 0.8125rem; }
   .filter-select { height: 2.25rem; font-size: 0.8125rem; }
   .nav-inner { height: 2.75rem; }
-  .nav-link { font-size: 0.8125rem; }
-  .nav-links { gap: 0.75rem; }
 }
 

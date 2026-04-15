@@ -114,6 +114,15 @@
         clear: function() { localStorage.removeItem(KEY); }
       };
     })();
+
+    // Update project count badge in nav
+    window.updateNavProjectCount = function() {
+      var el = document.getElementById('nav-project-count');
+      if (!el) return;
+      var n = BoolderProjects.list().length;
+      if (n > 0) { el.textContent = n; el.classList.remove('hidden'); }
+      else { el.classList.add('hidden'); }
+    };
     </script>
 
     <!-- Navbar weather indicator (fetched from Open-Meteo) -->
@@ -151,13 +160,9 @@
       <!-- Nav -->
       <nav class="nav">
         <div class="nav-inner">
-          <div class="nav-links">
-            <a href="/projects" class="logo-emoji" aria-label="Boolder">🍷</a>
-            <a href="/projects" class="nav-link">Projects</a>
-            <a href="/areas" class="nav-link">Areas</a>
-            <a href="/areas/boulders" class="nav-link">Boulders</a>
-            <a href="/map" class="nav-link">Map</a>
-          </div>
+          <button type="button" id="menuToggleBtn" class="nav-menu-btn">
+            <span class="logo-emoji">🍷</span><span>Menu</span>
+          </button>
           <div class="nav-right">
             <a href="/weather" id="nav-weather" class="nav-weather hidden" aria-label="Weather forecast"></a>
             <button type="button" id="searchOpenBtn" class="nav-search-btn" aria-label="Open search">
@@ -168,6 +173,20 @@
           </div>
         </div>
       </nav>
+
+      <!-- Menu modal -->
+      <div id="navOverlay" class="nav-overlay hidden"></div>
+      <div id="navMenu" class="nav-dropdown hidden">
+        <div class="nav-dropdown-header">
+          <button type="button" id="menuCloseBtn" class="nav-menu-btn">
+            <span class="logo-emoji">🍷</span><span>Close</span>
+          </button>
+        </div>
+        <a href="/projects" class="nav-dropdown-link">Projects<span id="nav-project-count" class="nav-count hidden"></span></a>
+        <a href="/areas" class="nav-dropdown-link">Areas</a>
+        <a href="/areas/boulders" class="nav-dropdown-link">Boulders</a>
+        <a href="/map" class="nav-dropdown-link">Map</a>
+      </div>
 
       <!-- Search modal -->
       <div id="searchModal" class="search-modal hidden" role="dialog" aria-modal="true">
@@ -382,5 +401,17 @@
     })();
     </script>
 
+    <script>
+    updateNavProjectCount();
+    (function() {
+      var menu = document.getElementById('navMenu');
+      var overlay = document.getElementById('navOverlay');
+      function openMenu() { menu.classList.remove('hidden'); overlay.classList.remove('hidden'); }
+      function closeMenu() { menu.classList.add('hidden'); overlay.classList.add('hidden'); }
+      document.getElementById('menuToggleBtn').addEventListener('click', openMenu);
+      document.getElementById('menuCloseBtn').addEventListener('click', closeMenu);
+      overlay.addEventListener('click', closeMenu);
+    })();
+    </script>
   </body>
 </html>
