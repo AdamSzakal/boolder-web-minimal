@@ -184,12 +184,21 @@ hr { border: none; border-top: 1px solid var(--divider); margin: 0; }
   -webkit-tap-highlight-color: transparent;
 }
 
-/* Menu overlay + dropdown modal */
+/* Menu overlay + dropdown modal — use visibility instead of display:none
+   to avoid iOS Safari bug where removing display:none !important doesn't
+   properly restore display:flex on fixed-position elements. */
 .nav-overlay {
   position: fixed;
   top: 0; right: 0; bottom: 0; left: 0;
   background: rgba(0, 0, 0, 0.6);
   z-index: 40;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.15s, visibility 0.15s;
+}
+.nav-overlay.is-open {
+  visibility: visible;
+  opacity: 1;
 }
 .nav-dropdown {
   position: fixed;
@@ -203,6 +212,15 @@ hr { border: none; border-top: 1px solid var(--divider); margin: 0; }
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-1rem);
+  transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+}
+.nav-dropdown.is-open {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
 }
 .nav-dropdown-header {
   display: flex;
@@ -221,14 +239,6 @@ hr { border: none; border-top: 1px solid var(--divider); margin: 0; }
 }
 .nav-dropdown-link:hover { background: var(--bg-secondary); }
 
-@keyframes navFadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-@keyframes navSlideDown {
-  from { opacity: 0; transform: translateY(-1rem); }
-  to { opacity: 1; transform: translateY(0); }
-}
 .nav-count {
   display: inline-flex;
   align-items: center;
