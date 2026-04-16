@@ -58,8 +58,8 @@
         </nav>
 
         <!-- Menu modal -->
-        <div id="navOverlay" class="nav-overlay"></div>
-        <div id="navMenu" class="nav-dropdown">
+        <div id="navOverlay" class="nav-overlay hidden"></div>
+        <div id="navMenu" class="nav-dropdown hidden">
           <div class="nav-dropdown-header">
             <button type="button" id="menuCloseBtn" class="nav-menu-btn">
               <span class="logo-emoji">🍷</span><span>Close</span>
@@ -639,8 +639,8 @@
     (function() {
       var menu = document.getElementById('navMenu');
       var overlay = document.getElementById('navOverlay');
-      function openMenu() { menu.classList.add('is-open'); overlay.classList.add('is-open'); }
-      function closeMenu() { menu.classList.remove('is-open'); overlay.classList.remove('is-open'); }
+      function openMenu() { menu.classList.remove('hidden'); overlay.classList.remove('hidden'); }
+      function closeMenu() { menu.classList.add('hidden'); overlay.classList.add('hidden'); }
       document.getElementById('menuToggleBtn').addEventListener('click', openMenu);
       document.getElementById('menuCloseBtn').addEventListener('click', closeMenu);
       overlay.addEventListener('click', closeMenu);
