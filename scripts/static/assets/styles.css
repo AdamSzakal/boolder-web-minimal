@@ -192,7 +192,12 @@ hr { border: none; border-top: 1px solid var(--divider); margin: 0; }
   z-index: 40;
 }
 .nav-dropdown {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
   position: fixed;
+	max-width: 80rem;
+margin: 0 auto;
   top: 0;
   left: 0;
   right: 0;
@@ -200,9 +205,8 @@ hr { border: none; border-top: 1px solid var(--divider); margin: 0; }
   background: var(--bg-card);
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
   border-radius: 0 0 var(--radius-lg) var(--radius-lg);
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
+border: 1px solid var(--bg-tertiary);
+border-top: none;
 }
 .nav-dropdown-header {
   display: flex;
@@ -717,6 +721,7 @@ hr { border: none; border-top: 1px solid var(--divider); margin: 0; }
   color: var(--text-faint);
 }
 .footer a:hover { color: var(--text); }
+.footer-text { font-size: 0.8125rem; color: var(--text-faint); text-align: center; }
 
 /* --- Area tags row --- */
 .tags-row { padding: 1rem 0 0.5rem; display: flex; flex-wrap: wrap; }
@@ -978,13 +983,18 @@ hr { border: none; border-top: 1px solid var(--divider); margin: 0; }
 .weather-row-right { text-align: right; }
 .weather-row-temp { font-size: 0.875rem; font-weight: 500; color: var(--text); }
 .weather-row-details { font-size: 0.75rem; color: var(--text-faint); display: flex; gap: 0.5rem; justify-content: flex-end; margin-top: 0.125rem; }
+.weather-attribution { font-size: 0.75rem; color: var(--text-faint); margin-top: 0.75rem; text-align: right; }
+.weather-attribution a { color: var(--text-muted); text-decoration: underline; }
+.weather-attribution a:hover { color: var(--text); }
 
 /* --- Projects page header --- */
-.projects-header { display: flex; justify-content: space-between; align-items: center; }
+.projects-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;
+gap: .5rem;
+margin-bottom: 1rem;}
 .projects-subtitle { color: var(--text-muted); margin-top: 0.25rem; }
 .btn-group { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 .shared-actions { display: flex; gap: 0.75rem; margin-top: 0.75rem; }
-.project-list { margin-top: 1.5rem; }
+.project-list { margin-top: 1rem; }
 .project-list > * + * { border-top: 1px solid var(--divider); }
 
 /* --- Project list items --- */

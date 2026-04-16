@@ -65,6 +65,7 @@
     }
 
     html += '</div>';
+    html += '<p class="weather-attribution">Weather data from <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a></p>';
     container.innerHTML = html;
   }).catch(function() {
     document.getElementById('weather-forecast').innerHTML = '<p class="text-muted">Could not load forecast.</p>';
